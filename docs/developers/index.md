@@ -1,4 +1,4 @@
-# Exercises for Developers ||10
+# Developers ||10
 
 Welcome! Here you can train yourself to be a holochain developer.
 
