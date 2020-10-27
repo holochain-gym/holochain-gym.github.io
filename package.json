@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "rocket start",
-    "build": "rocket build"
+    "build": "rocket build",
+    "publish": "npm run build && gh-pages -d site"
   },
   "repository": {
     "type": "git",
@@ -25,6 +26,7 @@
     "@mdjs/mdjs-story": "0.0.1"
   },
   "devDependencies": {
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4"
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
+    "gh-pages": "^3.1.0"
   }
 }
