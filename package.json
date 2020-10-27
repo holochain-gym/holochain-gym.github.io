@@ -6,7 +6,7 @@
   "scripts": {
     "start": "rocket start",
     "build": "rocket build",
-    "publish": "npm run build && gh-pages -d _site"
+    "publish": "gh-pages -d _site"
   },
   "repository": {
     "type": "git",
