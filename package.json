@@ -1,0 +1,30 @@
+{
+  "name": "holochain-gym.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "rocket start",
+    "build": "rocket build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holochain-gym/holochain-gym.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/holochain-gym/holochain-gym.github.io/issues"
+  },
+  "homepage": "https://github.com/holochain-gym/holochain-gym.github.io#readme",
+  "dependencies": {
+    "@d4kmor/cli": "^0.5.6",
+    "@d4kmor/launch": "^0.4.10",
+    "@mdjs/core": "^0.4.0",
+    "@mdjs/mdjs-story": "0.0.1"
+  },
+  "devDependencies": {
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4"
+  }
+}
