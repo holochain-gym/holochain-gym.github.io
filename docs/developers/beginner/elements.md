@@ -1,15 +1,23 @@
 # Beginner >> Elements ||10
+
 ```js script
-import { html } from 'lit-html';
+import { html } from "lit-html";
 ```
 
 ```html story
-<iframe width="100%" height="500" src="https://www.youtube.com/embed/fI9dEy9JzFM" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<iframe
+  width="100%"
+  height="500"
+  src="https://www.youtube.com/embed/fI9dEy9JzFM"
+  frameborder="0"
+  allow="autoplay; encrypted-media"
+  allowfullscreen
+></iframe>
 ```
 
 ---
 
-Almost all hdk functions deal with elements, because they are such an important part of the holochain data integrity mechanism. 
+Almost all hdk functions deal with elements, because they are such an important part of the holochain data integrity mechanism.
 
 These are all the header types that you can find in holochain:
 
@@ -32,5 +40,5 @@ pub enum Header {
 
 > [Link to source code](https://github.com/holochain-gym/developer-exercises/tree/master/basic/elements)
 
-- Implement all `unimplemented!()` functions in the exercise. 
+- Implement all `unimplemented!()` functions in the exercise.
 - Run `cargo test` to test your implementation.
