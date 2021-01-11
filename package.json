@@ -1,12 +1,9 @@
 {
   "name": "holochain-gym.github.io",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "rocket start",
-    "build": "rocket build",
-    "publish": "npm run build && echo 'adf' > _site/.nojekyll && gh-pages -d _site --dotfiles=true"
+    "start": "rocket start"
   },
   "repository": {
     "type": "git",
@@ -19,17 +16,16 @@
     "url": "https://github.com/holochain-gym/holochain-gym.github.io/issues"
   },
   "homepage": "https://github.com/holochain-gym/holochain-gym.github.io#readme",
-  "dependencies": {
-    "@mdjs/core": "^0.4.0",
-    "@mdjs/mdjs-story": "0.0.1",
-    "holochain-playground": "git+https://github.com/holochain-playground/holochain-playground.git#ui-build"
-  },
   "devDependencies": {
-    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.4",
     "@rocket/cli": "^0.1.4",
     "@rocket/launch": "^0.1.2",
-    "@rollup/plugin-commonjs": "^16.0.0",
-    "babel-plugin-transform-commonjs": "^1.1.6",
-    "gh-pages": "^3.1.0"
-  }
+    "@rollup/plugin-commonjs": "^17.0.0"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "holochain-playground": "git+https://github.com/holochain-playground/holochain-playground.git#ui-build"
+  },
+  "description": ""
 }

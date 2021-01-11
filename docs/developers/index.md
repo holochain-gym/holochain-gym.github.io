@@ -11,3 +11,10 @@ To finish an exercise, you must replace all `unimplemented` functions with worki
 It's better to be following the exercises from start to end, since earlier concepts are needed to understand the following ones.
 
 Good luck!
+
+
+```js script
+import { html } from 'lit-html';
+
+console.log(html`<div>aha</div>`)
+```

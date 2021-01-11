@@ -60,7 +60,7 @@ export const Simple = () => {
       }}
     >
       <holochain-playground-source-chain
-        style="height: 100vh"
+        style="height: 800px; width: 100%"
       ></holochain-playground-source-chain>
     </holochain-playground-provider>
   `;
