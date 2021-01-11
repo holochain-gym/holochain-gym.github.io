@@ -9,7 +9,7 @@ Paths are the replacement of anchors in RSM. They fill the same role but add a l
 The content of each path is a string with segments separated by a dot, for example: `all_tasks.project1.finished`. This path will create these entries:
 
 - `all_tasks`
-- `all_tasks.project`
+- `all_tasks.project1`
 - `all_tasks.project1.finished`
 
 Here, you can see that the root parent of the path is `all_tasks`, which has `all_tasks.project1` as child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.
