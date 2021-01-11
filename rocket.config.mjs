@@ -1,5 +1,15 @@
-import { rocketLaunch } from '@d4kmor/launch';
+import { rocketLaunch } from "@rocket/launch";
+import commonjs from "@rollup/plugin-commonjs";
+import { addPlugin } from 'plugins-manager';
 
+/** @type {Partial<import("@rocket/cli").RocketCliOptions>} */
 export default {
-  themes: [rocketLaunch()],
+  presets: [rocketLaunch()],
+  setupDevAndBuildPlugins: [
+    addPlugin({
+      name: "commonjs",
+      plugin: commonjs,
+      location: "top",
+    }),
+  ],
 };

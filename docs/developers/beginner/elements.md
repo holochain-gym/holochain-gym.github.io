@@ -2,6 +2,8 @@
 
 ```js script
 import { html } from "lit-html";
+import "holochain-playground/dist/elements/holochain-playground-provider";
+import "holochain-playground/dist/elements/holochain-playground-source-chain";
 ```
 
 ```html story
@@ -34,6 +36,35 @@ pub enum Header {
     Update(Update),                         // Produced by `update_entry(updated_header_hash, entry)`, carries its entry
     Delete(Delete),                         // Produced by `delete_entry(deleted_header_hash)`
 }
+```
+
+```js story
+export const Simple = () => {
+  return html`
+    <holochain-playground-provider
+      .numberOfSimulatedConductors=${1}
+      @ready=${(e) => {
+        const conductor = e.detail.conductors[0];
+
+        const cellId = conductor.cells[0].id;
+        conductor.callZomeFn({
+          cellId,
+          zome: "sample",
+          fnName: "create_entry",
+          payload: {
+            content: { myman: "mygirl" },
+            entry_type: "haha",
+          },
+          cap: null,
+        });
+      }}
+    >
+      <holochain-playground-source-chain
+        style="height: 100vh"
+      ></holochain-playground-source-chain>
+    </holochain-playground-provider>
+  `;
+};
 ```
 
 ### Exercise
