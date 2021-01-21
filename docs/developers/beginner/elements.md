@@ -2,8 +2,6 @@
 
 ```js script
 import { html } from "lit-html";
-import "holochain-playground/dist/elements/holochain-playground-provider";
-import "holochain-playground/dist/elements/holochain-playground-source-chain";
 ```
 
 ```html story
