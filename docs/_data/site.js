@@ -2,15 +2,17 @@ module.exports = async function () {
   return {
     name: "Holochain Gym",
     description:
-      "Holochain Gym contains exercises, resources and trainings to learn and ",
+      "Holochain Gym contains exercises, resources and trainings to learn holochain",
     socialLinks: [
       {
         name: "GitHub",
         url: "https://github.com/holochain-gym/",
       },
     ],
+    gitSiteUrl: 'https://github.com/holochain-gym/holochain-gym.github.io',
+    gitBranch: 'master',
     helpUrl: "https://github.com/holochain-gym/",
-    logoAlt: "O with occluded right edge to appear also as a C",
-    socialMediaImage: "/_assets/social-media-image.jpg",
+    logoAlt: "A gym tool",
+    socialMediaImage: "/_assets/holochain-gym.png",
   };
 };

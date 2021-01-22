@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Holochain",
+    "children": [
+      {
+        "text": "Documentation",
+        "href": ""
+      },
+      {
+        "text": "Forum",
+        "href": "https://forum.holochain.org"
+      }
+    ]
+  },
+  {
+    "name": "Gym",
+    "children": [
+      {
+        "text": "Help and Feedback",
+        "href": "https://github.com/holochain-gym/holochain.github.io/issues"
+      }
+    ]
+  },
+  {
+    "name": "Discover",
+    "children": [
+      {
+        "text": "Holochain Open Dev Blog",
+        "href": "https://holochain-open-dev.github.io/blog"
+      },
+      {
+        "text": "Open Source Modules",
+        "href": "https://github.com/holochain-open-dev"
+      }
+    ]
+  }
+]
