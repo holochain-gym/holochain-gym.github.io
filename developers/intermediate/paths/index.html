@@ -146,7 +146,7 @@
 <p>The content of each path is a string with segments separated by a dot, for example: <code>all_tasks.project1.finished</code>. This path will create these entries:</p>
 <ul>
 <li><code>all_tasks</code></li>
-<li><code>all_tasks.project</code></li>
+<li><code>all_tasks.project1</code></li>
 <li><code>all_tasks.project1.finished</code></li>
 </ul>
 <p>Here, you can see that the root parent of the path is <code>all_tasks</code>, which has <code>all_tasks.project1</code> as child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.</p>
