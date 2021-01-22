@@ -1,0 +1,1 @@
+{"version":3,"file":"timestamp.js","sourceRoot":"","sources":["../src/timestamp.ts"],"names":[],"mappings":"","sourcesContent":["export type Timestamp = [number, number];\n"]}

@@ -1,0 +1,15 @@
+import { Cell } from '../../core/cell';
+import { Conductor } from '../../core/conductor';
+import { AgentPubKey, Hash } from '../../types/common';
+export declare function selectCells(dna: Hash, conductor: Conductor): Cell[];
+export declare function selectAllCells(dna: Hash, conductors: Conductor[]): Cell[];
+export declare function selectGlobalDHTOpsCount(cells: Cell[]): number;
+export declare function selectHoldingCells(entryHash: Hash, cells: Cell[]): Cell[];
+export declare function selectConductorByAgent(agentPubKey: AgentPubKey, conductors: Conductor[]): Conductor | undefined;
+export declare function selectCell(dnaHash: Hash, agentPubKey: AgentPubKey, conductors: Conductor[]): Cell | undefined;
+export declare function selectUniqueDHTOpsCount(cells: Cell[]): number;
+export declare function selectFromCAS(hash: Hash, cells: Cell[]): any;
+export declare function selectHeaderEntry(headerHash: Hash, cells: Cell[]): any;
+export declare function selectMedianHoldingDHTOps(cells: Cell[]): number;
+export declare function selectAllDNAs(conductors: Conductor[]): Hash[];
+export declare function selectRedundancyFactor(cell: Cell): number;

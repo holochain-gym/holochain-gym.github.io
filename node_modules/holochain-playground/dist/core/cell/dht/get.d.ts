@@ -1,0 +1,13 @@
+import { CellState, IntegrationLimboValue, ValidationLimboStatus, ValidationLimboValue } from '../../../types/cell-state';
+import { Dictionary, Hash } from '../../../types/common';
+import { Header } from '../../../types/header';
+import { EntryDetails, EntryDhtStatus, LinkMetaVal } from '../../../types/metadata';
+export declare function getValidationLimboDhtOps(state: CellState, status: ValidationLimboStatus): Dictionary<ValidationLimboValue>;
+export declare function pullAllIntegrationLimboDhtOps(state: CellState): Dictionary<IntegrationLimboValue>;
+export declare function getHeadersForEntry(state: CellState, entryHash: Hash): Header[];
+export declare function getLinksForEntry(state: CellState, entryHash: Hash): LinkMetaVal[];
+export declare function getEntryDhtStatus(state: CellState, entryHash: Hash): EntryDhtStatus;
+export declare function getEntryDetails(state: CellState, entryHash: Hash): EntryDetails;
+export declare function getAllHeldEntries(state: CellState): string[];
+export declare function isHoldingEntry(state: CellState, entryHash: Hash): boolean;
+export declare function getDhtShard(state: CellState): Dictionary<EntryDetails>;

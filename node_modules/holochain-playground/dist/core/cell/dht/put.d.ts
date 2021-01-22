@@ -1,0 +1,13 @@
+import { CellState, IntegratedDhtOpsValue, IntegrationLimboValue, ValidationLimboValue } from '../../../types/cell-state';
+import { Hash } from '../../../types/common';
+import { DHTOp } from '../../../types/dht-op';
+import { Header } from '../../../types/header';
+import { SysMetaVal } from '../../../types/metadata';
+export declare const putValidationLimboValue: (dhtOpHash: Hash, validationLimboValue: ValidationLimboValue) => (state: CellState) => void;
+export declare const deleteValidationLimboValue: (dhtOpHash: Hash) => (state: CellState) => void;
+export declare const putIntegrationLimboValue: (dhtOpHash: Hash, integrationLimboValue: IntegrationLimboValue) => (state: CellState) => void;
+export declare const putDhtOpData: (dhtOp: DHTOp) => (state: CellState) => Promise<void>;
+export declare const putDhtOpMetadata: (dhtOp: DHTOp) => (state: CellState) => Promise<void>;
+export declare const register_header_on_basis: (basis: Hash, header: Header) => (state: CellState) => Promise<void>;
+export declare const putSystemMetadata: (basis: string, value: SysMetaVal) => (state: CellState) => void;
+export declare const putDhtOpToIntegrated: (dhtOpHash: Hash, integratedValue: IntegratedDhtOpsValue) => (state: CellState) => void;

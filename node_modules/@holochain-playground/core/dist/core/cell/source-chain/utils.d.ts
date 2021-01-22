@@ -1,0 +1,10 @@
+import { Hash, AgentPubKey, CellId, Element, Dictionary, DHTOp, SignedHeaderHashed } from '@holochain-open-dev/core-types';
+import { CellState } from '../state';
+export declare function getTipOfChain(cellState: CellState): Hash;
+export declare function getAuthor(cellState: CellState): AgentPubKey;
+export declare function getDnaHash(state: CellState): Hash;
+export declare function getHeaderAt(cellState: CellState, index: number): SignedHeaderHashed;
+export declare function getNextHeaderSeq(cellState: CellState): number;
+export declare function getElement(state: CellState, headerHash: Hash): Element;
+export declare function getCellId(state: CellState): CellId;
+export declare function getNonPublishedDhtOps(state: CellState): Dictionary<DHTOp>;

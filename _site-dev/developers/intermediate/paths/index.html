@@ -1,0 +1,676 @@
+<!doctype html>
+
+<html lang="en" dir="ltr">
+
+
+  <head>
+    
+      
+
+  
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intermediate: Paths: Holochain Gym</title>
+
+<meta name="generator" content="rocket 0.1">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/_merged_assets/_static/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/_merged_assets/_static/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/_merged_assets/_static/icons/favicon-16x16.png">
+<link rel="manifest" href="/_merged_assets/webmanifest.json">
+<link rel="mask-icon" href="/_merged_assets/_static/icons/safari-pinned-tab.svg" color="#3f93ce">
+<meta name="msapplication-TileColor" content="#1d3557">
+<meta name="theme-color" content="#1d3557">
+
+<link rel="canonical" href="/developers/intermediate/paths/"/>
+
+<meta property="og:site_name" content="Holochain Gym"/>
+<meta property="og:title" content="Intermediate: Paths: Holochain Gym"/>
+<meta property="og:type" content="website"/>
+
+
+
+<meta property="og:image" content="/_merged_assets/social-media-image.jpg"/>
+<meta property="og:url" content="/developers/intermediate/paths/"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+
+
+
+<meta name="description" content="Holochain Gym contains exercises, resources and trainings to learn holochain"/>
+<meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain"/>
+
+<link rel="stylesheet" href="/_merged_assets/variables.css">
+<link rel="stylesheet" href="/_merged_assets/layout.css">
+<link rel="stylesheet" href="/_merged_assets/markdown.css">
+<link rel="stylesheet" href="/_merged_assets/style.css">
+<noscript><link rel="stylesheet" href="/_merged_assets/noscript.css"/></noscript>
+
+
+
+    
+  </head>
+
+  
+  <body layout="with-sidebar">
+
+
+    
+      <header id="main-header">
+  <div class="content-area">
+    <button id="mobile-menu-trigger">
+      <span class="sr-only">Show Menu</span>
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewbox="0 0 448 512" class="icon">
+        <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path>
+      </svg>
+
+    </button>
+    
+      <a class="logo-link" href="/">
+  <img src="/_merged_assets/logo.svg" alt="A gym tool" />
+  <span>Holochain Gym</span>
+</a>
+
+    
+      <a href="/developers/" class="
+              
+               active 
+            ">Developers</a>
+      <a href="/architects/" class="
+              
+              
+            ">Architects</a>
+
+    <launch-dark-switch class="light-dark-switch" label="Toggle darkmode"></launch-dark-switch>
+
+    
+      <a class="social-link" href="https://github.com/holochain-gym/" aria-label="Holochain Gym on GitHub" rel="noopener noreferrer" target="_blank">
+        <span class="sr-only">GitHub</span>
+        
+          <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 17 16" fill="none">
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8.18391.249268C3.82241.249268.253906 3.81777.253906 8.17927c0 3.46933 2.279874 6.44313 5.451874 7.53353.3965.0991.49563-.1983.49563-.3965v-1.3878c-2.18075.4956-2.67638-.9912-2.67638-.9912-.3965-.8922-.89212-1.1895-.89212-1.1895-.69388-.4957.09912-.4957.09912-.4957.793.0992 1.1895.793 1.1895.793.69388 1.2887 1.88338.8922 2.27988.6939.09912-.4956.29737-.8921.49562-1.0904-1.78425-.1982-3.5685-.8921-3.5685-3.96496 0-.89212.29738-1.586.793-2.08162-.09912-.19825-.3965-.99125.09913-2.08163 0 0 .69387-.19825 2.18075.793.59475-.19825 1.28862-.29737 1.9825-.29737.69387 0 1.38775.09912 1.98249.29737 1.4869-.99125 2.1808-.793 2.1808-.793.3965 1.09038.1982 1.88338.0991 2.08163.4956.59475.793 1.28862.793 2.08162 0 3.07286-1.8834 3.66766-3.66764 3.86586.29737.3965.59474.8921.59474 1.586v2.1808c0 .1982.0991.4956.5948.3965 3.172-1.0904 5.4518-4.0642 5.4518-7.53353-.0991-4.3615-3.6676-7.930002-8.02909-7.930002z" clip-rule="evenodd"></path>
+</svg>
+
+        
+      </a>
+  </div>
+</header>
+
+    
+
+    <div id="content-wrapper">
+      <div class="content-area">
+        
+  <rocket-drawer id="sidebar">
+    <nav slot="content" id="sidebar-nav">
+      <a class="logo-link" href="/">
+  <img src="/_merged_assets/logo.svg" alt="A gym tool" />
+  <span>Holochain Gym</span>
+</a>
+
+      <rocket-navigation>
+        <ul><li class="menu-item"><a href="/developers/requirements/">Requirements</a><ul><li class="menu-item"><a href="/developers/requirements/setup/">Setup</a></li></ul></li>
+<li class="menu-item"><a href="/developers/beginner/">Beginner</a><ul><li class="menu-item"><a href="/developers/beginner/elements/">Elements</a></li></ul></li>
+<li class="menu-item active"><a href="/developers/intermediate/" class="active">Intermediate</a><ul><li class="menu-item current"><a href="/developers/intermediate/paths/">Paths</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/paths/#try-it" class="anchor">Try it!</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/paths/#exercise" class="anchor">Exercise</a></li></ul></li>
+<li class="menu-item"><a href="/developers/intermediate/capability-tokens/">Capability Tokens</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#subconsious-flow" class="anchor">Subconsious flow</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#hdk-actions" class="anchor">HDK actions</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#data-structures" class="anchor">Data structures</a></li></ul></li></ul></li></ul>
+        <div class="sidebar-bottom">
+  <hr>
+  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">
+    Toggle darkmode
+  </launch-dark-switch>
+  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+</div>
+
+      </rocket-navigation>
+    </nav>
+  </rocket-drawer>
+
+
+        
+  <main class="markdown-body">
+    
+
+
+    <h1 id="intermediate-paths"><a class="anchor" href="#intermediate-paths"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Paths</h1>
+<p>Paths are the replacement of anchors in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allow you to create complex indexes to query faster the DHT very easily.</p>
+<p>The content of each path is a string with segments separated by a dot, for example: <code>all_tasks.project1.finished</code>. This path will create these entries:</p>
+<ul>
+<li><code>all_tasks</code></li>
+<li><code>all_tasks.project</code></li>
+<li><code>all_tasks.project1.finished</code></li>
+</ul>
+<p>Here, you can see that the root parent of the path is <code>all_tasks</code>, which has <code>all_tasks.project1</code> as child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.</p>
+<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
+<p>Here you can create paths yourself, and see which entries and links are created.</p>
+<mdjs-story mdjs-story-name="Simple"></mdjs-story>
+<p>The basic mechanism for which these entries are useful is to attach links to them. If you attach a link to the <code>all_tasks.project1.finished</code> that points to all tasks related with <code>project1</code> that have finished, now you can do a <code>get_links</code> on that path to get only those.</p>
+<p>If, on the contrary, you want to get all tasks within the project regardless of status, you can get all the children paths from <code>all_tasks.project1</code>, which will give you for example <code>all_tasks.project1.todo</code>, <code>all_tasks.project1.doing</code> and <code>all_tasks.project1.finished</code>, and then do a <code>get_links</code> to tasks on those.</p>
+<p>You can imagine different types of indexes built on top of paths, with multidimensional properties.</p>
+<inline-notification type="warning" title="Including paths in zomes">
+Keep in mind that paths are already incorporated in the core hdk, so you don't need to import them from an external library. Although it is necessary to define them as an entry definition in your zome like this:
+<pre class="language-rust"><code class="language-rust"><span class="token function">entry_defs!</span><span class="token punctuation">[</span>
+    Path<span class="token punctuation">::</span><span class="token function">entry_def</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">...</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+</inline-notification>
+<h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
+<h3 id="problem-statement"><a class="anchor" href="#problem-statement"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Problem statement</h3>
+<p>We need to code a small zome that satisfies these capabilities:</p>
+<ul>
+<li>Create a new post, passing a content and some tags</li>
+<li>Get all posts within a day or an hour, examples:
+<ul>
+<li>"get me all posts posted on 21st February, 2021"</li>
+<li>"get me all posts posted between 21:00 and 22:00 of 21st February, 2021"</li>
+</ul>
+</li>
+<li>Get all the tags that have been created</li>
+<li>Get all posts that have been created with a certain tag
+<ul>
+<li>"get me all posts that have been posted with the tag "nature""</li>
+</ul>
+</li>
+</ul>
+<p>You can follow this entry design to accomplish it:</p>
+<mdjs-story mdjs-story-name="Exercise"></mdjs-story>
+<inline-notification type="tip" title="Exercise">
+<ol>
+<li>Go to the <a href="https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/1.paths">source code for the exercise</a>.</li>
+<li>Implement all <code>unimplemented!()</code> functions in the exercise.</li>
+<li>Run <code>npm test</code> to test your implementation.</li>
+</ol>
+</inline-notification>
+
+    
+
+
+    <div class="content-footer">
+  <p>
+    Caught a mistake or want to contribute to the documentation?
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/paths.md">Edit this page on GitHub!</a>
+  </p>
+</div>
+
+  </main>
+
+      </div>
+    </div>
+
+    
+      <footer id="main-footer">
+  
+
+  <div id="footer-menu">
+    <div class="content-area">
+      
+        <nav>
+          <h3>Holochain</h3>
+          <ul>
+            
+              <li>
+                <a href=".">Documentation</a>
+              </li>
+            
+              <li>
+                <a href="https://forum.holochain.org">Forum</a>
+              </li>
+            
+          </ul>
+        </nav>
+      
+        <nav>
+          <h3>Gym</h3>
+          <ul>
+            
+              <li>
+                <a href="https://github.com/holochain-gym/holochain.github.io/issues">Help and Feedback</a>
+              </li>
+            
+          </ul>
+        </nav>
+      
+        <nav>
+          <h3>Discover</h3>
+          <ul>
+            
+              <li>
+                <a href="https://holochain-open-dev.github.io/blog">Holochain Open Dev Blog</a>
+              </li>
+            
+              <li>
+                <a href="https://github.com/holochain-open-dev">Open Source Modules</a>
+              </li>
+            
+          </ul>
+        </nav>
+      
+    </div>
+  </div>
+</footer>
+
+      
+  <script type="module">
+    import '@rocket/launch/inline-notification/inline-notification.js';
+import { html } from "lit-html";
+import { HolochainPlaygroundContainer } from "@holochain-playground/container";
+import { HolochainPlaygroundEntryDetail } from "@holochain-playground/elements/dist/elements/holochain-playground-entry-detail";
+import { HolochainPlaygroundEntryGraph } from "@holochain-playground/elements/dist/elements/holochain-playground-entry-graph";
+import { HolochainPlaygroundCallZome } from "@holochain-playground/elements/dist/elements/holochain-playground-call-zome";
+
+customElements.define(
+  "holochain-playground-container",
+  HolochainPlaygroundContainer
+);
+customElements.define(
+  "holochain-playground-entry-graph",
+  HolochainPlaygroundEntryGraph
+);
+customElements.define(
+  "holochain-playground-entry-detail",
+  HolochainPlaygroundEntryDetail
+);
+const sampleZome = {
+  name: "sample",
+  entry_defs: [
+    {
+      id: "path",
+      visibility: "Public",
+    },
+  ],
+  zome_functions: {
+    create_path: {
+      call: (hdk) => ({ path }) => {
+        return hdk.path.ensure(path, hdk);
+      },
+      arguments: [{ name: "path", type: "String" }],
+    },
+  },
+};
+
+const simulatedDnaTemplate = {
+  zomes: [sampleZome],
+};
+export const Simple = () => {
+  return html`
+    <holochain-playground-container
+      .numberOfSimulatedConductors=${1}
+      .simulatedDnaTemplate=${simulatedDnaTemplate}
+      @ready=${(e) => {
+        customElements.define(
+          "holochain-playground-call-zome",
+          HolochainPlaygroundCallZome
+        );
+        const callZome = e.target.querySelector("#call-zome");
+        const conductor = e.detail.conductors[0];
+
+        const cellId = conductor.cells[0].id;
+
+        callZome.conductor = conductor;
+        callZome.cellId = cellId;
+        callZome.zome = Object.values(conductor.registeredDnas)[0].zomes[0];
+
+        conductor
+          .callZomeFn({
+            cellId,
+            zome: "sample",
+            fnName: "create_path",
+            payload: { path: "a.sample.path" },
+            cap: null,
+          })
+          .then(() => {
+            conductor.callZomeFn({
+              cellId,
+              zome: "sample",
+              fnName: "create_path",
+              payload: { path: "a.sample.path2" },
+              cap: null,
+            });
+          });
+      }}
+    >
+      <holochain-playground-call-zome id="call-zome">
+      </holochain-playground-call-zome>
+      <holochain-playground-entry-graph
+        .showFilter=${false}
+        .excludedEntryTypes=${["Agent"]}
+        style="height: 600px; width: 100%; margin-bottom: 20px;"
+      ></holochain-playground-entry-graph>
+      <holochain-playground-entry-detail
+        style="height: 250px; flex: 1; margin-bottom: 20px;"
+      >
+      </holochain-playground-entry-detail>
+    </holochain-playground-container>
+  `;
+};
+const sampleZome1 = {
+  name: "sample",
+  entry_defs: [
+    {
+      id: "post",
+      visibility: "Public",
+    },
+    {
+      id: "path",
+      visibility: "Public",
+    },
+  ],
+  zome_functions: {
+    create_post: {
+      call: (hdk) => async ({ content, tag1, tag2 }) => {
+        await hdk.create_entry({
+          content,
+          entry_def_id: 'post',
+        });
+        const postHash = await hdk.hash_entry({content});
+
+        const date = new Date();
+        const pathStr = `all_posts.${date.getUTCFullYear()}-${date.getMonth() + 1}-${date.getUTCDate()}.${date.getHours()}`;
+
+        await hdk.path.ensure(pathStr, hdk);
+        const pathHash = await hdk.hash_entry({content: pathStr});
+
+        await hdk.create_link({ base: pathHash, target: postHash, tag: null });
+
+        for (const tag of [tag1, tag2]) {
+          if (tag) {
+
+            const pathContent = `all_tags.${tag}`;
+          await hdk.path.ensure(pathContent, hdk);
+
+          const tagPathHash = await hdk.hash_entry({content: pathContent});
+          await hdk.create_link({ base: tagPathHash, target: postHash, tag: null });
+          }
+        }
+
+        return postHash;
+      },
+      arguments: [
+        { name: "content", type: "String" },
+        { name: "tag1", type: "String" },
+        { name: "tag2", type: "String" },
+      ],
+    },
+  },
+};
+
+const simulatedDnaTemplate1 = {
+  zomes: [sampleZome1],
+};
+export const Exercise = () => {
+  return html`
+    <holochain-playground-container
+      .numberOfSimulatedConductors=${1}
+      .simulatedDnaTemplate=${simulatedDnaTemplate1}
+      @ready=${(e) => {
+        const callZome = e.target.querySelector("#call-zome");
+        const conductor = e.detail.conductors[0];
+
+        const cellId = conductor.cells[0].id;
+
+        callZome.conductor = conductor;
+        callZome.cellId = cellId;
+        callZome.zome = Object.values(conductor.registeredDnas)[0].zomes[0];
+
+        conductor
+          .callZomeFn({
+            cellId,
+            zome: "sample",
+            fnName: "create_post",
+            payload: { content:"good morning", tag1: 'nature', tag2: 'giraffe' },
+            cap: null,
+          })
+      }}
+    >
+      <holochain-playground-call-zome id="call-zome">
+      </holochain-playground-call-zome>
+      <holochain-playground-entry-graph
+        .excludedEntryTypes=${["Agent"]}
+        .showFilter=${false}
+        style="height: 600px; width: 100%; margin-bottom: 20px;"
+      ></holochain-playground-entry-graph>
+      <holochain-playground-entry-detail
+        style="height: 250px; flex: 1; margin-bottom: 20px;"
+      >
+      </holochain-playground-entry-detail>
+    </holochain-playground-container>
+  `;
+};
+const rootNode = document;
+const stories = [{ key: 'Simple', story: Simple, code: `<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> sampleZome <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">"sample"</span><span class="token punctuation">,</span>
+  entry_defs<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      id<span class="token punctuation">:</span> <span class="token string">"path"</span><span class="token punctuation">,</span>
+      visibility<span class="token punctuation">:</span> <span class="token string">"Public"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  zome_functions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    create_path<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token function-variable function">call</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token parameter">hdk</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> path <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> hdk<span class="token punctuation">.</span><span class="token property-access">path</span><span class="token punctuation">.</span><span class="token method function property-access">ensure</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> hdk<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      arguments<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"path"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"String"</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> simulatedDnaTemplate <span class="token operator">=</span> <span class="token punctuation">{</span>
+  zomes<span class="token punctuation">:</span> <span class="token punctuation">[</span>sampleZome<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function"><span class="token maybe-class-name">Simple</span></span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token html language-html">
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>holochain-playground-container</span>
+      <span class="token attr-name">.numberOfSimulatedConductors</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token number">1</span><span class="token interpolation-punctuation punctuation">}</span></span></span>
+      <span class="token attr-name">.simulatedDnaTemplate</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>simulatedDnaTemplate<span class="token interpolation-punctuation punctuation">}</span></span></span>
+      <span class="token attr-name">@ready</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        customElements<span class="token punctuation">.</span><span class="token method function property-access">define</span><span class="token punctuation">(</span>
+          <span class="token string">"holochain-playground-call-zome"</span><span class="token punctuation">,</span>
+          <span class="token maybe-class-name">HolochainPlaygroundCallZome</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> callZome <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token property-access">target</span><span class="token punctuation">.</span><span class="token method function property-access">querySelector</span><span class="token punctuation">(</span><span class="token string">"#call-zome"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> conductor <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token property-access">detail</span><span class="token punctuation">.</span><span class="token property-access">conductors</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">const</span> cellId <span class="token operator">=</span> conductor<span class="token punctuation">.</span><span class="token property-access">cells</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">id</span><span class="token punctuation">;</span>
+
+        callZome<span class="token punctuation">.</span><span class="token property-access">conductor</span> <span class="token operator">=</span> conductor<span class="token punctuation">;</span>
+        callZome<span class="token punctuation">.</span><span class="token property-access">cellId</span> <span class="token operator">=</span> cellId<span class="token punctuation">;</span>
+        callZome<span class="token punctuation">.</span><span class="token property-access">zome</span> <span class="token operator">=</span> <span class="token known-class-name class-name">Object</span><span class="token punctuation">.</span><span class="token method function property-access">values</span><span class="token punctuation">(</span>conductor<span class="token punctuation">.</span><span class="token property-access">registeredDnas</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">zomes</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        conductor
+          <span class="token punctuation">.</span><span class="token method function property-access">callZomeFn</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            cellId<span class="token punctuation">,</span>
+            zome<span class="token punctuation">:</span> <span class="token string">"sample"</span><span class="token punctuation">,</span>
+            fnName<span class="token punctuation">:</span> <span class="token string">"create_path"</span><span class="token punctuation">,</span>
+            payload<span class="token punctuation">:</span> <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">"a.sample.path"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            cap<span class="token punctuation">:</span> <span class="token keyword null nil">null</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span>
+          <span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+            conductor<span class="token punctuation">.</span><span class="token method function property-access">callZomeFn</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+              cellId<span class="token punctuation">,</span>
+              zome<span class="token punctuation">:</span> <span class="token string">"sample"</span><span class="token punctuation">,</span>
+              fnName<span class="token punctuation">:</span> <span class="token string">"create_path"</span><span class="token punctuation">,</span>
+              payload<span class="token punctuation">:</span> <span class="token punctuation">{</span> path<span class="token punctuation">:</span> <span class="token string">"a.sample.path2"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+              cap<span class="token punctuation">:</span> <span class="token keyword null nil">null</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token interpolation-punctuation punctuation">}</span></span>);</span>
+      <span class="token attr-name">}}</span>
+    <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>holochain-playground-call-zome</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>call-zome<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>holochain-playground-call-zome</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>holochain-playground-entry-graph</span>
+        <span class="token attr-name">.showFilter</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token boolean">false</span><span class="token interpolation-punctuation punctuation">}</span></span></span>
+        <span class="token attr-name">.excludedEntryTypes</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token punctuation">[</span><span class="token string">"Agent"</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span></span><span class="token style-attr language-css"><span class="token attr-name">
+        <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">600</span><span class="token unit">px</span><span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token unit">%</span><span class="token punctuation">;</span> <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token unit">px</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>holochain-playground-entry-graph</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>holochain-playground-entry-detail</span><span class="token style-attr language-css"><span class="token attr-name">
+        <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">250</span><span class="token unit">px</span><span class="token punctuation">;</span> <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token unit">px</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>holochain-playground-entry-detail</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>holochain-playground-container</span><span class="token punctuation">></span></span>
+  </span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>` }, { key: 'Exercise', story: Exercise, code: `<pre class="language-js"><code class="language-js"><span class="token keyword">const</span> sampleZome1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">"sample"</span><span class="token punctuation">,</span>
+  entry_defs<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+      id<span class="token punctuation">:</span> <span class="token string">"post"</span><span class="token punctuation">,</span>
+      visibility<span class="token punctuation">:</span> <span class="token string">"Public"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      id<span class="token punctuation">:</span> <span class="token string">"path"</span><span class="token punctuation">,</span>
+      visibility<span class="token punctuation">:</span> <span class="token string">"Public"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  zome_functions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    create_post<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token function-variable function">call</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token parameter">hdk</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> content<span class="token punctuation">,</span> tag1<span class="token punctuation">,</span> tag2 <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">await</span> hdk<span class="token punctuation">.</span><span class="token method function property-access">create_entry</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          content<span class="token punctuation">,</span>
+          entry_def_id<span class="token punctuation">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> postHash <span class="token operator">=</span> <span class="token keyword">await</span> hdk<span class="token punctuation">.</span><span class="token method function property-access">hash_entry</span><span class="token punctuation">(</span><span class="token punctuation">{</span>content<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">const</span> date <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> pathStr <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">all_posts.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>date<span class="token punctuation">.</span><span class="token method function property-access">getUTCFullYear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>date<span class="token punctuation">.</span><span class="token method function property-access">getMonth</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>date<span class="token punctuation">.</span><span class="token method function property-access">getUTCDate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>date<span class="token punctuation">.</span><span class="token method function property-access">getHours</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">;</span>
+
+        <span class="token keyword">await</span> hdk<span class="token punctuation">.</span><span class="token property-access">path</span><span class="token punctuation">.</span><span class="token method function property-access">ensure</span><span class="token punctuation">(</span>pathStr<span class="token punctuation">,</span> hdk<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> pathHash <span class="token operator">=</span> <span class="token keyword">await</span> hdk<span class="token punctuation">.</span><span class="token method function property-access">hash_entry</span><span class="token punctuation">(</span><span class="token punctuation">{</span>content<span class="token punctuation">:</span> pathStr<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">await</span> hdk<span class="token punctuation">.</span><span class="token method function property-access">create_link</span><span class="token punctuation">(</span><span class="token punctuation">{</span> base<span class="token punctuation">:</span> pathHash<span class="token punctuation">,</span> target<span class="token punctuation">:</span> postHash<span class="token punctuation">,</span> tag<span class="token punctuation">:</span> <span class="token keyword null nil">null</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> tag <span class="token keyword">of</span> <span class="token punctuation">[</span>tag1<span class="token punctuation">,</span> tag2<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>tag<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token keyword">const</span> pathContent <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token string">all_tags.</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>tag<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">;</span>
+          <span class="token keyword">await</span> hdk<span class="token punctuation">.</span><span class="token property-access">path</span><span class="token punctuation">.</span><span class="token method function property-access">ensure</span><span class="token punctuation">(</span>pathContent<span class="token punctuation">,</span> hdk<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+          <span class="token keyword">const</span> tagPathHash <span class="token operator">=</span> <span class="token keyword">await</span> hdk<span class="token punctuation">.</span><span class="token method function property-access">hash_entry</span><span class="token punctuation">(</span><span class="token punctuation">{</span>content<span class="token punctuation">:</span> pathContent<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">await</span> hdk<span class="token punctuation">.</span><span class="token method function property-access">create_link</span><span class="token punctuation">(</span><span class="token punctuation">{</span> base<span class="token punctuation">:</span> tagPathHash<span class="token punctuation">,</span> target<span class="token punctuation">:</span> postHash<span class="token punctuation">,</span> tag<span class="token punctuation">:</span> <span class="token keyword null nil">null</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> postHash<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      arguments<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"content"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"String"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"tag1"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"String"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">"tag2"</span><span class="token punctuation">,</span> type<span class="token punctuation">:</span> <span class="token string">"String"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> simulatedDnaTemplate1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+  zomes<span class="token punctuation">:</span> <span class="token punctuation">[</span>sampleZome1<span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function"><span class="token maybe-class-name">Exercise</span></span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> html<span class="token template-string"><span class="token template-punctuation string">\`</span><span class="token html language-html">
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>holochain-playground-container</span>
+      <span class="token attr-name">.numberOfSimulatedConductors</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token number">1</span><span class="token interpolation-punctuation punctuation">}</span></span></span>
+      <span class="token attr-name">.simulatedDnaTemplate</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span>simulatedDnaTemplate1<span class="token interpolation-punctuation punctuation">}</span></span></span>
+      <span class="token attr-name">@ready</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> callZome <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token property-access">target</span><span class="token punctuation">.</span><span class="token method function property-access">querySelector</span><span class="token punctuation">(</span><span class="token string">"#call-zome"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">const</span> conductor <span class="token operator">=</span> e<span class="token punctuation">.</span><span class="token property-access">detail</span><span class="token punctuation">.</span><span class="token property-access">conductors</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">const</span> cellId <span class="token operator">=</span> conductor<span class="token punctuation">.</span><span class="token property-access">cells</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">id</span><span class="token punctuation">;</span>
+
+        callZome<span class="token punctuation">.</span><span class="token property-access">conductor</span> <span class="token operator">=</span> conductor<span class="token punctuation">;</span>
+        callZome<span class="token punctuation">.</span><span class="token property-access">cellId</span> <span class="token operator">=</span> cellId<span class="token punctuation">;</span>
+        callZome<span class="token punctuation">.</span><span class="token property-access">zome</span> <span class="token operator">=</span> <span class="token known-class-name class-name">Object</span><span class="token punctuation">.</span><span class="token method function property-access">values</span><span class="token punctuation">(</span>conductor<span class="token punctuation">.</span><span class="token property-access">registeredDnas</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token property-access">zomes</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        conductor
+          <span class="token punctuation">.</span><span class="token method function property-access">callZomeFn</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            cellId<span class="token punctuation">,</span>
+            zome<span class="token punctuation">:</span> <span class="token string">"sample"</span><span class="token punctuation">,</span>
+            fnName<span class="token punctuation">:</span> <span class="token string">"create_post"</span><span class="token punctuation">,</span>
+            payload<span class="token punctuation">:</span> <span class="token punctuation">{</span> content<span class="token punctuation">:</span><span class="token string">"good morning"</span><span class="token punctuation">,</span> tag1<span class="token punctuation">:</span> <span class="token string">'nature'</span><span class="token punctuation">,</span> tag2<span class="token punctuation">:</span> <span class="token string">'giraffe'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            cap<span class="token punctuation">:</span> <span class="token keyword null nil">null</span><span class="token punctuation">,</span>
+          <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token interpolation-punctuation punctuation">}</span></span>}</span>
+    <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>holochain-playground-call-zome</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>call-zome<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>holochain-playground-call-zome</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>holochain-playground-entry-graph</span>
+        <span class="token attr-name">.excludedEntryTypes</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token punctuation">[</span><span class="token string">"Agent"</span><span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span></span>
+        <span class="token attr-name">.showFilter</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">\${</span><span class="token boolean">false</span><span class="token interpolation-punctuation punctuation">}</span></span></span><span class="token style-attr language-css"><span class="token attr-name">
+        <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">600</span><span class="token unit">px</span><span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">100</span><span class="token unit">%</span><span class="token punctuation">;</span> <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token unit">px</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>holochain-playground-entry-graph</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;</span>holochain-playground-entry-detail</span><span class="token style-attr language-css"><span class="token attr-name">
+        <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">250</span><span class="token unit">px</span><span class="token punctuation">;</span> <span class="token property">flex</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token unit">px</span><span class="token punctuation">;</span></span><span class="token punctuation">"</span></span>
+      <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>holochain-playground-entry-detail</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&#x3C;/</span>holochain-playground-container</span><span class="token punctuation">></span></span>
+  </span><span class="token template-punctuation string">\`</span></span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>` }];
+for (const story of stories) {
+  const storyEl = rootNode.querySelector(`[mdjs-story-name="${story.key}"]`);
+  storyEl.codeHasHtml = true;
+  storyEl.story = story.story;
+  storyEl.code = story.code;
+};
+if (!customElements.get('mdjs-preview')) { import('@mdjs/mdjs-preview/mdjs-preview.js'); }
+if (!customElements.get('mdjs-story')) { import('@mdjs/mdjs-story/mdjs-story.js'); }
+  </script>
+
+
+
+
+<script>
+  async function handleServiceWorker() {
+  if ('serviceWorker' in navigator) {
+    const oldReg = await navigator.serviceWorker.getRegistration();
+    let oldSwState;
+    if (oldReg && oldReg.active) {
+      oldSwState = oldReg.active.state;
+    }
+
+    let refreshing;
+
+    navigator.serviceWorker.addEventListener('controllerchange', async () => {
+      if (refreshing) {
+        return;
+      }
+
+      const newReg = await navigator.serviceWorker.getRegistration();
+      let newSwState;
+      if (newReg && newReg.active) {
+        newSwState = newReg.active.state;
+      }
+
+      if (oldSwState === 'activated' && newSwState === 'activating') {
+        refreshing = true;
+        window.location.reload();
+      }
+    });
+  }
+}
+
+handleServiceWorker();
+
+</script>
+
+      <script type="module">
+  import '@rocket/navigation/rocket-navigation.js';
+  import '@rocket/drawer/rocket-drawer.js';
+  const drawer = document.querySelector('#sidebar');
+
+  // Toggle button
+  document
+    .querySelector('#mobile-menu-trigger')
+    .addEventListener('click', function () {
+      drawer.opened = true;
+    });
+</script>
+
+    
+  </body>
+</html>

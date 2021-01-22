@@ -1,0 +1,19 @@
+
+{
+    "name": "Holochain Gym",
+    "short_name": "holochain-gym",
+    "theme_color": "#e63946",
+    "background_color": "#1d3557",
+    "display": "standalone",
+    "orientation": "portrait",
+    "Scope": "/",
+    "start_url": "/",
+    "icons": [
+      {
+        "src": "../_merged_assets/_static/holochain-gym-logo.png",
+        "sizes": "*",
+        "type": "image/png"
+      }
+    ],
+    "splash_pages": null
+  }

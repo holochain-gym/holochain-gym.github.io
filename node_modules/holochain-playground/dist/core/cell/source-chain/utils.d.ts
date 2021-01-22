@@ -1,0 +1,13 @@
+import { CellState } from '../../../types/cell-state';
+import { AgentPubKey, CellId, Dictionary, Hash } from '../../../types/common';
+import { Header } from '../../../types/header';
+import { Element } from '../../../types/element';
+import { DHTOp } from '../../../types/dht-op';
+export declare function getTipOfChain(cellState: CellState): string;
+export declare function getAuthor(cellState: CellState): AgentPubKey;
+export declare function getDnaHash(state: CellState): Hash;
+export declare function getHeaderAt(cellState: CellState, index: number): Header;
+export declare function getNextHeaderSeq(cellState: CellState): number;
+export declare function getElement(state: CellState, headerHash: Hash): Element;
+export declare function getCellId(state: CellState): CellId;
+export declare function getNonPublishedDhtOps(state: CellState): Dictionary<DHTOp>;

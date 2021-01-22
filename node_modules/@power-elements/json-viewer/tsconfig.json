@@ -1,0 +1,14 @@
+{
+  "files": ["json-viewer.js"],
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "target": "ES2017",
+    "lib": [
+      "DOM",
+      "ES2020"
+    ]
+  },
+}
