@@ -1,0 +1,1 @@
+import"./7b976933.js";import"./1f529ce5.js";import"./daaff894.js";import"./962426a7.js";const e=document.querySelector("#sidebar");document.querySelector("#mobile-menu-trigger").addEventListener("click",(function(){e.opened=!0}));
