@@ -2,6 +2,8 @@
 
 ```js script
 import { html } from "lit-html";
+import '@rocket/launch/inline-notification/inline-notification.js';
+
 ```
 
 ```html story
@@ -65,9 +67,10 @@ export const Simple = () => {
 };
 ```
 
-### Exercise
+<inline-notification type="tip" title="Exercise">
 
-> [Link to source code](https://github.com/holochain-gym/developer-exercises/tree/master/basic/elements)
+1. Go to the [source code for the exercise](https://github.com/holochain-gym/developer-exercises/tree/master/basic/1.elements).
+2. Implement all `unimplemented!()` functions in the exercise.
+3. Run `cargo test` to test your implementation.
 
-- Implement all `unimplemented!()` functions in the exercise.
-- Run `cargo test` to test your implementation.
+</inline-notification>

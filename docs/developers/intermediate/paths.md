@@ -1,6 +1,7 @@
 # Intermediate >> Paths ||10
 
 ```js script
+import '@rocket/launch/inline-notification/inline-notification.js';
 import { html } from "lit-html";
 import { HolochainPlaygroundContainer } from "@holochain-playground/container";
 import { HolochainPlaygroundEntryDetail } from "@holochain-playground/elements/dist/elements/holochain-playground-entry-detail";
@@ -117,6 +118,8 @@ If, on the contrary, you want to get all tasks within the project regardless of 
 
 You can imagine different types of indexes built on top of paths, with multidimensional properties.
 
+
+<inline-notification type="warning" title="Including paths in zomes">
 Keep in mind that paths are already incorporated in the core hdk, so you don't need to import them from an external library. Although it is necessary to define them as an entry definition in your zome like this:
 
 ```rust
@@ -125,6 +128,7 @@ entry_defs![
     ...
 ];
 ```
+</inline-notification>
 
 ## Exercise
 
@@ -238,9 +242,11 @@ export const Exercise = () => {
 };
 ```
 
-### Your turn!
 
-> [Link to source code](https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/1.paths)
+<inline-notification type="tip" title="Exercise">
 
-- Implement all `unimplemented!()` functions in the exercise.
-- Run `npm test` to test your implementation.
+1. Go to the [source code for the exercise](https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/1.paths).
+2. Implement all `unimplemented!()` functions in the exercise.
+3. Run `npm test` to test your implementation.
+
+</inline-notification>
