@@ -1,4 +1,6 @@
 html {
+  --mdc-theme-primary: var(--primary-color, #e63946);
+  --mdc-theme-secondary: var(--primary-color-darker, #cee5f6);
   --primary-color: #e63946;
   --primary-color-lighter: #e25761;
   --primary-color-darker: #a22831;
