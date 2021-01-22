@@ -4,7 +4,8 @@
   "main": "index.js",
   "scripts": {
     "start": "rocket start",
-    "gh-pages": "gh-pages -d . -b gh-pages"
+    "build": "rocket build",
+    "gh-pages": "npm run build && gh-pages -d _site -b gh-pages"
   },
   "repository": {
     "type": "git",
