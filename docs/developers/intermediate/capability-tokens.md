@@ -2,6 +2,23 @@
 
 ```js script
 import { html } from "lit-html";
+import { HolochainPlaygroundCallZome } from "@holochain-playground/elements/dist/elements/holochain-playground-call-zome";
+import { HolochainPlaygroundDhtCells } from "@holochain-playground/elements/dist/elements/holochain-playground-dht-cells";
+import { HolochainPlaygroundContainer } from "@holochain-playground/container";
+import { NetworkRequestType, WorkflowType } from "@holochain-playground/core";
+
+customElements.define(
+  "holochain-playground-container",
+  HolochainPlaygroundContainer
+);
+customElements.define(
+  "holochain-playground-dht-cells",
+  HolochainPlaygroundDhtCells
+);
+customElements.define(
+  "holochain-playground-call-zome",
+  HolochainPlaygroundCallZome
+);
 ```
 
 **Capability tokens** are the unified security model of holochain. Whenever you want to call a zome function, the conductor will check whether you have capabilities to call it, and return and error if that's not the case.
@@ -19,6 +36,91 @@ By default, all calls from other agent pub keys are **not authorized**. This mea
 This is how the flow of capability tokens works from a conceptual point of view:
 
 ![](/_assets/cap-tokens.png)
+
+## Demo
+
+```js story
+const dna = {
+  zomes: [
+    {
+      name: "sample",
+      entry_defs: [],
+      zome_functions: {
+        create_cap: {
+          call: ({ create_cap_grant }) => ({ grantedAgent }) => {
+            return create_cap_grant({
+              tag: "",
+              access: {
+                Assigned: {
+                  secret: "",
+                  assignees: [grantedAgent],
+                },
+              },
+              functions: [{ zome: "sample", fn_name: "sample_fn" }],
+            });
+          },
+          arguments: [{ type: "AgentPubKey", name: "grantedAgent" }],
+        },
+        sample_fn: {
+          call: () => () => {
+            return "Hello";
+          },
+          arguments: [],
+        },
+        revoke_cap: {
+          call: ({ delete_cap_grant }) => ({ capGrantToRevoke }) => {
+            return delete_cap_grant({ header_hash: capGrantToRevoke });
+          },
+          arguments: [{ type: "HeaderHash", name: "capGrantToRevoke" }],
+        },
+        remote_sample_fn: {
+          call: ({ call_remote }) => ({ agentToCall }) => {
+            return call_remote({
+              agent: agentToCall,
+              zome: "sample",
+              fn_name: "sample_fn",
+              cap: null,
+              payload: null,
+            });
+          },
+          arguments: [{ type: "AgentPubKey", name: "agentToCall" }],
+        },
+      },
+    },
+  ],
+};
+const workflowsToDisplay = [WorkflowType.CALL_ZOME];
+const newtorkRequestToDisplay = [NetworkRequestType.CALL_REMOTE];
+
+async function demo(conductors) {
+  const alice = conductors[0];
+  const aliceCellId = alice.getAllCells()[0].cellId;
+  const bob = conductors[1];
+  const bobCellId = bob.getAllCells()[0].cellId;
+
+
+  alice.callZomeFn({
+    cellId: aliceCellId,
+    zome: 'sample',
+    fn_name: 'sample_fn',
+    payload: null,
+    cap: null
+  })
+}
+
+export const Demo = () => html` <holochain-playground-container
+  id="container"
+  .numberOfSimulatedConductors=${2}
+  .simulatedDnaTemplate=${dna}
+  .workflowsToDisplay=${workflowsToDisplay}
+  .newtorkRequestToDisplay=${newtorkRequestToDisplay}
+  @ready=${e => demo(e.detail.conductors)}
+>
+  <holochain-playground-dht-cells
+    style="height: 600px; width: 100%"
+  ></holochain-playground-dht-cells>
+</holochain-playground-container>`;
+```
 
 ## Subconsious flow
 
