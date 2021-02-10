@@ -92,32 +92,35 @@ const dna = {
 const workflowsToDisplay = [WorkflowType.CALL_ZOME];
 const newtorkRequestToDisplay = [NetworkRequestType.CALL_REMOTE];
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(), ms));
+
 async function demo(conductors) {
   const alice = conductors[0];
   const aliceCellId = alice.getAllCells()[0].cellId;
   const bob = conductors[1];
   const bobCellId = bob.getAllCells()[0].cellId;
+  
+  await sleep(1000);
 
-
-  alice.callZomeFn({
+  const r = await alice.callZomeFn({
     cellId: aliceCellId,
-    zome: 'sample',
-    fn_name: 'sample_fn',
+    zome: "sample",
+    fnName: "sample_fn",
     payload: null,
-    cap: null
-  })
+    cap: null,
+  });
 }
 
 export const Demo = () => html` <holochain-playground-container
   id="container"
   .numberOfSimulatedConductors=${2}
   .simulatedDnaTemplate=${dna}
-  .workflowsToDisplay=${workflowsToDisplay}
-  .newtorkRequestToDisplay=${newtorkRequestToDisplay}
-  @ready=${e => demo(e.detail.conductors)}
+  @ready=${(e) => demo(e.detail.conductors)}
 >
   <holochain-playground-dht-cells
     style="height: 600px; width: 100%"
+    .workflowsToDisplay=${workflowsToDisplay}
+    .networkRequestsToDisplay=${newtorkRequestToDisplay}
   ></holochain-playground-dht-cells>
 </holochain-playground-container>`;
 ```
