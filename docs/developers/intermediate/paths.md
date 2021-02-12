@@ -58,27 +58,30 @@ export const Simple = () => {
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
       .simulatedDnaTemplate=${simulatedDnaTemplate}
-      @ready=${async (e) => {
+      @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
         const cellId = conductor.getAllCells()[0].cellId;
 
         e.target.activeAgentPubKey = cellId[1];
 
-        await conductor.callZomeFn({
-          cellId,
-          zome: "sample",
-          fnName: "create_path",
-          payload: { path: "a.sample.path" },
-          cap: null,
-        });
-        await conductor.callZomeFn({
-          cellId,
-          zome: "sample",
-          fnName: "create_path",
-          payload: { path: "a.sample.path2" },
-          cap: null,
-        });
+        conductor
+          .callZomeFn({
+            cellId,
+            zome: "sample",
+            fnName: "create_path",
+            payload: { path: "a.sample.path" },
+            cap: null,
+          })
+          .then(() =>
+            conductor.callZomeFn({
+              cellId,
+              zome: "sample",
+              fnName: "create_path",
+              payload: { path: "a.sample.path2" },
+              cap: null,
+            })
+          );
       }}
     >
       <call-zome-fns
@@ -214,17 +217,20 @@ export const Exercise = () => {
         });
       }}
     >
-      <holochain-playground-call-zome id="call-zome">
-      </holochain-playground-call-zome>
-      <holochain-playground-entry-graph
+      <call-zome-fns
+        id="call-zome"
+        hide-results
+        hide-zome-selector
+        style="height: 300px; margin-bottom: 20px;"
+      >
+      </call-zome-fns>
+      <entry-graph
         .excludedEntryTypes=${["Agent"]}
         .showFilter=${false}
         style="height: 600px; width: 100%; margin-bottom: 20px;"
-      ></holochain-playground-entry-graph>
-      <holochain-playground-entry-detail
-        style="height: 250px; flex: 1; margin-bottom: 20px;"
-      >
-      </holochain-playground-entry-detail>
+      ></entry-graph>
+      <entry-detail style="height: 250px; flex: 1; margin-bottom: 20px;">
+      </entry-detail>
     </holochain-playground-container>
   `;
 };
