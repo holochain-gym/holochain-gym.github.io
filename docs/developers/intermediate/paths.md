@@ -6,7 +6,7 @@ import { html } from "lit-html";
 import { HolochainPlaygroundContainer } from "@holochain-playground/container";
 import { EntryDetail } from "@holochain-playground/elements/dist/elements/entry-detail";
 import { EntryGraph } from "@holochain-playground/elements/dist/elements/entry-graph";
-import { CallZome } from "@holochain-playground/elements/dist/elements/call-zome-fns";
+import { CallZomeFns } from "@holochain-playground/elements/dist/elements/call-zome-fns";
 
 customElements.define(
   "holochain-playground-container",
@@ -14,7 +14,7 @@ customElements.define(
 );
 customElements.define("entry-graph", EntryGraph);
 customElements.define("entry-detail", EntryDetail);
-customElements.define("call-zome-fns", CallZome);
+customElements.define("call-zome-fns", CallZomeFns);
 ```
 
 Paths are the replacement of anchors in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allow you to create complex indexes to query faster the DHT very easily.
@@ -81,7 +81,13 @@ export const Simple = () => {
         });
       }}
     >
-      <call-zome-fns id="call-zome" style="height: 200px;"> </call-zome-fns>
+      <call-zome-fns
+        id="call-zome"
+        style="height: 150px; margin-bottom: 20px;"
+        hide-results
+        hide-zome-selector
+      >
+      </call-zome-fns>
       <entry-graph
         .showFilter=${false}
         .excludedEntryTypes=${["Agent"]}
