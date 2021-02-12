@@ -1,25 +1,20 @@
 # Intermediate >> Paths ||10
 
 ```js script
-import '@rocket/launch/inline-notification/inline-notification.js';
+import "@rocket/launch/inline-notification/inline-notification.js";
 import { html } from "lit-html";
 import { HolochainPlaygroundContainer } from "@holochain-playground/container";
-import { HolochainPlaygroundEntryDetail } from "@holochain-playground/elements/dist/elements/holochain-playground-entry-detail";
-import { HolochainPlaygroundEntryGraph } from "@holochain-playground/elements/dist/elements/holochain-playground-entry-graph";
-import { HolochainPlaygroundCallZome } from "@holochain-playground/elements/dist/elements/holochain-playground-call-zome";
+import { EntryDetail } from "@holochain-playground/elements/dist/elements/entry-detail";
+import { EntryGraph } from "@holochain-playground/elements/dist/elements/entry-graph";
+import { CallZomeFns } from "@holochain-playground/elements/dist/elements/call-zome-fns";
 
 customElements.define(
   "holochain-playground-container",
   HolochainPlaygroundContainer
 );
-customElements.define(
-  "holochain-playground-entry-graph",
-  HolochainPlaygroundEntryGraph
-);
-customElements.define(
-  "holochain-playground-entry-detail",
-  HolochainPlaygroundEntryDetail
-);
+customElements.define("entry-graph", EntryGraph);
+customElements.define("entry-detail", EntryDetail);
+customElements.define("call-zome-fns", CallZomeFns);
 ```
 
 Paths are the replacement of anchors in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allow you to create complex indexes to query faster the DHT very easily.
@@ -64,18 +59,11 @@ export const Simple = () => {
       .numberOfSimulatedConductors=${1}
       .simulatedDnaTemplate=${simulatedDnaTemplate}
       @ready=${(e) => {
-        customElements.define(
-          "holochain-playground-call-zome",
-          HolochainPlaygroundCallZome
-        );
-        const callZome = e.target.querySelector("#call-zome");
         const conductor = e.detail.conductors[0];
 
-        const cellId = conductor.cells[0].id;
+        const cellId = conductor.getAllCells()[0].cellId;
 
-        callZome.conductor = conductor;
-        callZome.cellId = cellId;
-        callZome.zome = Object.values(conductor.registeredDnas)[0].zomes[0];
+        e.target.activeAgentPubKey = cellId[1];
 
         conductor
           .callZomeFn({
@@ -85,28 +73,31 @@ export const Simple = () => {
             payload: { path: "a.sample.path" },
             cap: null,
           })
-          .then(() => {
+          .then(() =>
             conductor.callZomeFn({
               cellId,
               zome: "sample",
               fnName: "create_path",
               payload: { path: "a.sample.path2" },
               cap: null,
-            });
-          });
+            })
+          );
       }}
     >
-      <holochain-playground-call-zome id="call-zome">
-      </holochain-playground-call-zome>
-      <holochain-playground-entry-graph
+      <call-zome-fns
+        id="call-zome"
+        style="height: 150px; margin-bottom: 20px;"
+        hide-results
+        hide-zome-selector
+      >
+      </call-zome-fns>
+      <entry-graph
         .showFilter=${false}
         .excludedEntryTypes=${["Agent"]}
         style="height: 600px; width: 100%; margin-bottom: 20px;"
-      ></holochain-playground-entry-graph>
-      <holochain-playground-entry-detail
-        style="height: 250px; flex: 1; margin-bottom: 20px;"
-      >
-      </holochain-playground-entry-detail>
+      ></entry-graph>
+      <entry-detail style="height: 250px; flex: 1; margin-bottom: 20px;">
+      </entry-detail>
     </holochain-playground-container>
   `;
 };
@@ -118,7 +109,6 @@ If, on the contrary, you want to get all tasks within the project regardless of 
 
 You can imagine different types of indexes built on top of paths, with multidimensional properties.
 
-
 <inline-notification type="warning" title="Including paths in zomes">
 Keep in mind that paths are already incorporated in the core hdk, so you don't need to import them from an external library. Although it is necessary to define them as an entry definition in your zome like this:
 
@@ -128,6 +118,7 @@ entry_defs![
     ...
 ];
 ```
+
 </inline-notification>
 
 ## Exercise
@@ -164,26 +155,31 @@ const sampleZome1 = {
       call: (hdk) => async ({ content, tag1, tag2 }) => {
         await hdk.create_entry({
           content,
-          entry_def_id: 'post',
+          entry_def_id: "post",
         });
-        const postHash = await hdk.hash_entry({content});
+        const postHash = await hdk.hash_entry({ content });
 
         const date = new Date();
-        const pathStr = `all_posts.${date.getUTCFullYear()}-${date.getMonth() + 1}-${date.getUTCDate()}.${date.getHours()}`;
+        const pathStr = `all_posts.${date.getUTCFullYear()}-${
+          date.getMonth() + 1
+        }-${date.getUTCDate()}.${date.getHours()}`;
 
         await hdk.path.ensure(pathStr, hdk);
-        const pathHash = await hdk.hash_entry({content: pathStr});
+        const pathHash = await hdk.hash_entry({ content: pathStr });
 
         await hdk.create_link({ base: pathHash, target: postHash, tag: null });
 
         for (const tag of [tag1, tag2]) {
           if (tag) {
-
             const pathContent = `all_tags.${tag}`;
-          await hdk.path.ensure(pathContent, hdk);
+            await hdk.path.ensure(pathContent, hdk);
 
-          const tagPathHash = await hdk.hash_entry({content: pathContent});
-          await hdk.create_link({ base: tagPathHash, target: postHash, tag: null });
+            const tagPathHash = await hdk.hash_entry({ content: pathContent });
+            await hdk.create_link({
+              base: tagPathHash,
+              target: postHash,
+              tag: null,
+            });
           }
         }
 
@@ -207,41 +203,38 @@ export const Exercise = () => {
       .numberOfSimulatedConductors=${1}
       .simulatedDnaTemplate=${simulatedDnaTemplate1}
       @ready=${(e) => {
-        const callZome = e.target.querySelector("#call-zome");
         const conductor = e.detail.conductors[0];
 
-        const cellId = conductor.cells[0].id;
+        const cellId = conductor.getAllCells()[0].cellId;
 
-        callZome.conductor = conductor;
-        callZome.cellId = cellId;
-        callZome.zome = Object.values(conductor.registeredDnas)[0].zomes[0];
-
-        conductor
-          .callZomeFn({
-            cellId,
-            zome: "sample",
-            fnName: "create_post",
-            payload: { content:"good morning", tag1: 'nature', tag2: 'giraffe' },
-            cap: null,
-          })
+        e.target.activeAgentPubKey = cellId[1];
+        conductor.callZomeFn({
+          cellId,
+          zome: "sample",
+          fnName: "create_post",
+          payload: { content: "good morning", tag1: "nature", tag2: "giraffe" },
+          cap: null,
+        });
       }}
     >
-      <holochain-playground-call-zome id="call-zome">
-      </holochain-playground-call-zome>
-      <holochain-playground-entry-graph
+      <call-zome-fns
+        id="call-zome"
+        hide-results
+        hide-zome-selector
+        style="height: 300px; margin-bottom: 20px;"
+      >
+      </call-zome-fns>
+      <entry-graph
         .excludedEntryTypes=${["Agent"]}
         .showFilter=${false}
         style="height: 600px; width: 100%; margin-bottom: 20px;"
-      ></holochain-playground-entry-graph>
-      <holochain-playground-entry-detail
-        style="height: 250px; flex: 1; margin-bottom: 20px;"
-      >
-      </holochain-playground-entry-detail>
+      ></entry-graph>
+      <entry-detail style="height: 250px; flex: 1; margin-bottom: 20px;">
+      </entry-detail>
     </holochain-playground-container>
   `;
 };
 ```
-
 
 <inline-notification type="tip" title="Exercise">
 
