@@ -1,4 +1,4 @@
-# Intermediate >> Paths ||10
+# Intermediate >> Paths ||201
 
 ```js script
 import '@rocket/launch/inline-notification/inline-notification.js';
