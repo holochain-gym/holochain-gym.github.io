@@ -3,10 +3,7 @@
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
 import { html } from "lit-html";
-import { HolochainPlaygroundContainer } from "@holochain-playground/container";
-import { EntryDetail } from "@holochain-playground/elements/dist/elements/entry-detail";
-import { EntryGraph } from "@holochain-playground/elements/dist/elements/entry-graph";
-import { CallZomeFns } from "@holochain-playground/elements/dist/elements/call-zome-fns";
+import { EntryDetail, HolochainPlaygroundContainer, EntryGraph, CallZomeFns } from "@holochain-playground/elements";
 
 customElements.define(
   "holochain-playground-container",
