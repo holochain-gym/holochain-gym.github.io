@@ -2,9 +2,7 @@
 
 ```js script
 import { html } from "lit-html";
-import { HolochainPlaygroundCallZome } from "@holochain-playground/elements/dist/elements/holochain-playground-call-zome";
-import { HolochainPlaygroundDhtCells } from "@holochain-playground/elements/dist/elements/holochain-playground-dht-cells";
-import { HolochainPlaygroundContainer } from "@holochain-playground/container";
+import { CallZomeFns, DhtCells, HolochainPlaygroundContainer } from "@holochain-playground/elements";
 import { NetworkRequestType, WorkflowType } from "@holochain-playground/core";
 
 customElements.define(
@@ -13,11 +11,11 @@ customElements.define(
 );
 customElements.define(
   "holochain-playground-dht-cells",
-  HolochainPlaygroundDhtCells
+  DhtCells
 );
 customElements.define(
   "holochain-playground-call-zome",
-  HolochainPlaygroundCallZome
+  CallZomeFns
 );
 ```
 
