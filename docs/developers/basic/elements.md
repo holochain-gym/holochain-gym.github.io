@@ -1,4 +1,4 @@
-# Beginner >> Elements ||104
+# Basic >> Elements ||104
 
 ```js script
 import { html } from "lit-html";
