@@ -2,21 +2,19 @@
 
 ```js script
 import { html } from "lit-html";
-import { CallZomeFns, DhtCells, HolochainPlaygroundContainer } from "@holochain-playground/elements";
+import {
+  CallZomeFns,
+  DhtCells,
+  HolochainPlaygroundContainer,
+} from "@holochain-playground/elements";
 import { NetworkRequestType, WorkflowType } from "@holochain-playground/core";
 
 customElements.define(
   "holochain-playground-container",
   HolochainPlaygroundContainer
 );
-customElements.define(
-  "holochain-playground-dht-cells",
-  DhtCells
-);
-customElements.define(
-  "holochain-playground-call-zome",
-  CallZomeFns
-);
+customElements.define("dht-cells", DhtCells);
+customElements.define("call-zome", CallZomeFns);
 ```
 
 **Capability tokens** are the unified security model of holochain. Whenever you want to call a zome function, the conductor will check whether you have capabilities to call it, and return and error if that's not the case.
@@ -97,7 +95,7 @@ async function demo(conductors) {
   const aliceCellId = alice.getAllCells()[0].cellId;
   const bob = conductors[1];
   const bobCellId = bob.getAllCells()[0].cellId;
-  
+
   await sleep(1000);
 
   const r = await alice.callZomeFn({
@@ -115,11 +113,12 @@ export const Demo = () => html` <holochain-playground-container
   .simulatedDnaTemplate=${dna}
   @ready=${(e) => demo(e.detail.conductors)}
 >
-  <holochain-playground-dht-cells
+  <dht-cells
+    step-by-step
     style="height: 600px; width: 100%"
     .workflowsToDisplay=${workflowsToDisplay}
     .networkRequestsToDisplay=${newtorkRequestToDisplay}
-  ></holochain-playground-dht-cells>
+  ></dht-cells>
 </holochain-playground-container>`;
 ```
 
