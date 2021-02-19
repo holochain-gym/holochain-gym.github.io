@@ -28,9 +28,8 @@
     "doc": "docs"
   },
   "dependencies": {
-    "@holochain-playground/container": "git+https://github.com/holochain-playground/container.git#build",
     "@holochain-playground/core": "git+https://github.com/holochain-playground/core.git#build",
-    "@holochain-playground/elements": "git+https://github.com/holochain-playground/elements.git#build"
+    "@holochain-playground/elements": "github:holochain-playground/elements#build"
   },
   "description": ""
 }

@@ -41,3 +41,9 @@ html.dark {
   --markdown-link-color: #fb7881;
   --markdown-blockquote-color: #c9e3ff;
 }
+
+@media screen and (min-width: 1024px) {
+  .content-area {
+    max-width: 1600px !important;
+  }
+}
