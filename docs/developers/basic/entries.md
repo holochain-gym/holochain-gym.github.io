@@ -50,12 +50,6 @@ const sampleZome = {
       },
       arguments: [{ name: "content", type: "String" }],
     },
-    get: {
-      call: ({ get }) => ({ hash }) => {
-        return get(hash);
-      },
-      arguments: [{ name: "hash", type: "EntryHash" }],
-    },
   },
 };
 
@@ -77,9 +71,10 @@ export const Simple = () => {
     >
       <call-zome-fns
         id="call-zome"
-        style="height: 400px; margin-bottom: 20px;"
+        style="height: 200px; margin-bottom: 20px;"
         hide-zome-selector
         hide-agent-pub-key
+        hide-results
       >
       </call-zome-fns>
       <div style="display: flex; flex-direction: row; align-items: start;">
