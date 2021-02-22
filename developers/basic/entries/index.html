@@ -1,0 +1,426 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+  
+    
+
+  
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic: Entries: Holochain Gym</title>
+<meta property="og:title" content="Basic: Entries: Holochain Gym">
+
+<meta name="generator" content="rocket 0.1">
+<link rel="canonical" href="/developers/basic/entries/">
+
+
+
+<meta name="description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
+<meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
+
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
+<link rel="manifest" href="../../../assets/webmanifest.json">
+<link rel="mask-icon" href="../../../assets/safari-pinned-tab.svg" color="#3f93ce">
+<meta name="msapplication-TileColor" content="#1d3557">
+<meta name="theme-color" content="#1d3557">
+
+  
+    <meta property="og:site_name" content="Holochain Gym">
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="../../../7c51fc7d.png">
+<meta property="og:url" content="/developers/basic/entries/">
+
+<meta name="twitter:card" content="summary_large_image">
+
+  
+    <link rel="stylesheet" href="../../../5cbbbada.css">
+<link rel="stylesheet" href="../../../490f016e.css">
+<link rel="stylesheet" href="../../../a0513237.css">
+<link rel="stylesheet" href="../../../b8c01bc2.css">
+
+  
+    <noscript><link rel="stylesheet" href="/_merged_assets/_static/noscript.css"/></noscript>
+
+  
+
+<link rel="preload" href="../../../adc1a8b9.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../092198c1.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../1f529ce5.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d9245f0a.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../daaff894.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../62b060933.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6a21a435.js" as="script" crossorigin="anonymous">
+</head>
+
+  
+
+  
+  <body layout="layout-sidebar">
+  
+
+    
+      <header id="main-header">
+  <div class="content-area">
+    
+      <button id="mobile-menu-trigger" data-action="trigger-mobile-menu">
+	<span class="sr-only">Show Menu</span>
+	      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon">
+        <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path>
+      </svg>
+
+</button>
+
+    
+      
+	<a class="logo-link" href="/">
+  <img src="../../../a9d80dbb.svg" alt="A gym tool">
+  <span>Holochain Gym</span>
+</a>
+
+
+
+    
+      
+  <a href="/architects/" class="
+          
+          
+        "></a>
+  <a href="/developers/" class="
+          
+           active 
+        ">Developers</a>
+
+    
+      <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+
+
+    
+      
+	<a class="social-link" href="https://github.com/holochain-gym/" aria-label="Holochain Gym on GitHub" rel="noopener noreferrer" target="_blank">
+		<span class="sr-only">GitHub</span>
+		
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16" fill="none">
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8.18391.249268C3.82241.249268.253906 3.81777.253906 8.17927c0 3.46933 2.279874 6.44313 5.451874 7.53353.3965.0991.49563-.1983.49563-.3965v-1.3878c-2.18075.4956-2.67638-.9912-2.67638-.9912-.3965-.8922-.89212-1.1895-.89212-1.1895-.69388-.4957.09912-.4957.09912-.4957.793.0992 1.1895.793 1.1895.793.69388 1.2887 1.88338.8922 2.27988.6939.09912-.4956.29737-.8921.49562-1.0904-1.78425-.1982-3.5685-.8921-3.5685-3.96496 0-.89212.29738-1.586.793-2.08162-.09912-.19825-.3965-.99125.09913-2.08163 0 0 .69387-.19825 2.18075.793.59475-.19825 1.28862-.29737 1.9825-.29737.69387 0 1.38775.09912 1.98249.29737 1.4869-.99125 2.1808-.793 2.1808-.793.3965 1.09038.1982 1.88338.0991 2.08163.4956.59475.793 1.28862.793 2.08162 0 3.07286-1.8834 3.66766-3.66764 3.86586.29737.3965.59474.8921.59474 1.586v2.1808c0 .1982.0991.4956.5948.3965 3.172-1.0904 5.4518-4.0642 5.4518-7.53353-.0991-4.3615-3.6676-7.930002-8.02909-7.930002z" clip-rule="evenodd"></path>
+</svg>
+
+		
+	</a>
+
+    
+  </div>
+</header>
+
+    
+
+    
+  <div id="content-wrapper">
+    <div class="content-area">
+      
+        <rocket-drawer id="sidebar">
+  <nav slot="content" id="sidebar-nav">
+    
+      <a class="logo-link" href="/">
+  <img src="../../../a9d80dbb.svg" alt="A gym tool">
+  <span>Holochain Gym</span>
+</a>
+
+
+    
+      <rocket-navigation>
+  <ul><li class="menu-item"><a href="/developers/requirements/">Requirements</a><ul><li class="menu-item"><a href="/developers/requirements/setup/">Setup</a></li></ul></li>
+<li class="menu-item active"><a href="/developers/basic/" class="active">Basic</a><ul><li class="menu-item current"><a href="/developers/basic/entries/">Entries</a><ul><li class="menu-item anchor"><a href="/developers/basic/entries/#what-is-an-entry" class="anchor">What is an entry</a></li>
+<li class="menu-item anchor"><a href="/developers/basic/entries/#try-it" class="anchor">Try it!</a></li>
+<li class="menu-item anchor"><a href="/developers/basic/entries/#getting-ready" class="anchor">Getting ready</a></li>
+<li class="menu-item anchor"><a href="/developers/basic/entries/#exercise" class="anchor">Exercise</a></li>
+<li class="menu-item anchor"><a href="/developers/basic/entries/#errors" class="anchor">Errors</a></li></ul></li>
+<li class="menu-item"><a href="/developers/basic/elements/">Elements</a></li></ul></li>
+<li class="menu-item"><a href="/developers/intermediate/">Intermediate</a><ul><li class="menu-item"><a href="/developers/intermediate/paths/">Paths</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/paths/#try-it" class="anchor">Try it!</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/paths/#exercise" class="anchor">Exercise</a></li></ul></li>
+<li class="menu-item"><a href="/developers/intermediate/capability-tokens/">Capability Tokens</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#subconsious-flow" class="anchor">Subconsious flow</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#hdk-actions" class="anchor">HDK actions</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#data-structures" class="anchor">Data structures</a></li></ul></li></ul></li></ul>
+  <div class="sidebar-bottom">
+  <hr>
+  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+
+
+  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+</div>
+
+</rocket-navigation>
+
+    
+  </nav>
+</rocket-drawer>
+
+      
+      
+        <main class="markdown-body">
+  
+    <h1 id="basic-entries"><a class="anchor" href="#basic-entries"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Entries</h1>
+<h2 id="what-is-an-entry"><a class="anchor" href="#what-is-an-entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>What is an entry</h2>
+<p>One the most basic things you can do in a zome is creating an entry. Just a quick reminder: a zome is a module in a DNA, and a DNA is the base of any holochain app.
+And adding an entry is basicly taking some data and saving it somewhere locally. I bet you are thinking: "I already know how to do that. I'm going to jump to the advanced exercises".</p>
+<p>Well, in your holochain app, when you create an entry a few things will happen. First of all your holochain app will validate your piece of data, but we will get into that in later exercises. We do not want you to get injured during your very first exercise.<br>
+Next, your piece of data will be attached to the source chain of your agent, hence the chain in Holochain. And last but not least, your holochain app will send your piece of data to some random people who are running the same app. Don't worry, soon we will talk about source chains, agents and why sending data to random people is not scary as it sounds.</p>
+<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
+<p>Your first exercise will be a genuine "Hello World" exercise. The challenge is to create an entry in your holochain app which will contains the text "Hello World".
+To prove we are a first class gym, we have setup a simulation below where you can try this out before you actual start coding.
+Select "say<em>greeting" in the CallZomeFns below, type <strong>Hello World</strong> in the input and click _EXECUTE</em>.
+Notice how a greeting object gets added to the Entry Graph. Click on the newly added object to see more details in Entry Details.</p>
+<mdjs-story mdjs-story-name="Simple"></mdjs-story>
+<br>  
+<br>
+<p>In the details you see 3 things: the <em>entry hash</em>, the <em>entry type</em> and <em>content</em>. Content is a custom field, meaning you can give it a different name if you want to. You could add more fields as well, but for now one will do.<br>
+The <strong>Entry type</strong> is something specific to the holochain technology underpinning our app. There are 4 types of entries: Agent, App, CapClaim, CapGrant. For this exercise we limit our focus to App entries.<br>
+The <strong>Entry hash</strong> is the last of the three. You could think of the entry hash as the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.</p>
+<h2 id="getting-ready"><a class="anchor" href="#getting-ready"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting ready</h2>
+<p>So, lets get to the real work. In case you forgot, zomes are written in Rust, so you will be doing your most of the exercises in Rust. Don't worry if you are new to Rust, we will help you out.<br>
+We went ahead and added some code already for you in the exercise.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
+    content<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">say_greeting</span><span class="token punctuation">(</span>input<span class="token punctuation">:</span> SomeExternalInput<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>HeaderHash<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">unimplemented</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h3 id="external-inputs"><a class="anchor" href="#external-inputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External inputs</h3>
+<p>Above you see the code we already added to the <code>zomes/exercise/src/lib.rs</code> file. One thing you need to remember is that zomes are just modules, by them self they don't do much. You need to feed them data and ask them to do stuff. To be really honest, zomes do a lot, even when you are you not looking, but that will become clear over time.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
+    content<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>The <code>SomeExternalInput</code> struct is a simple Rust struct. A struct is a bit similar to classes in some other languages. In this case it contains one simple field to hold your "Hello World" greeting.<br>
+On top of it you see <code>#[derive(Serialize, Deserialize, Clone, Debug)]</code>. This is what they call an attribute in Rust. This annotation adds some useful stuff. Especially <code>Serialize</code> and <code>Deserialize</code> are crucial. They make sure that the data in this struct can be sent to this zome sent over a network, from a GUI or, like in the our case, from a test script.</p>
+<h3 id="external-calls"><a class="anchor" href="#external-calls"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External calls</h3>
+<p>So we have a struct that can carry our data from the outside into our zome. Now we need to know to how to actually send this data to our zome. We have this public function <code>say_greeting</code> in our code. But it being a public function is not enough. We need to add two more things.</p>
+<p>First you need to add an attribute on top of this function to make it clear that this function can be called from outside the zome. The attribute you need to add is <code>#[hdk_extern]</code>. Only public functions with this attribute can be called from outside a zome.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[hdk_extern]</span>         <span class="token comment">// add this attribute</span>
+<span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">say_greeting</span><span class="token punctuation">(</span>input<span class="token punctuation">:</span> SomeExternalInput<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>HeaderHash<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">unimplemented</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="import-hdk-functions"><a class="anchor" href="#import-hdk-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Import hdk functions</h3>
+<p>The other thing you need to do is tell the code where this <code>#[hdk_extern]</code> comes from. This attribute may give our public function special powers, it cannot come out of nowhere.<br>
+The Holochain team built a Rust library <code>hdk3</code>, which stands for <em>holochain development kit</em> and contains all important Holochain functions you will want to call from within your zome. So add this line to the top your file.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> hdk3<span class="token punctuation">::</span>prelude<span class="token punctuation">::</span><span class="token operator">*</span><span class="token punctuation">;</span>
+</code></pre>
+<p>This is how import are done in Rust. You start with <code>use</code> followed by the name of the library <code>hdk3</code>. In this case <code>prelude</code> which is just a file inside the hdk3 library where they gathered all the useful hdk functions in one place. This way you can add all these functions at once , just adding the <code>*</code>.</p>
+<p>Go ahead and take a quick look at that <code>prelude</code> file:<br>
+<a href="https://github.com/holochain/holochain/blob/develop/crates/hdk3/src/prelude.rs">https://github.com/holochain/holochain/blob/develop/crates/hdk3/src/prelude.rs</a><br>
+You will find most of the things you will use in your exercise listed in that file.</p>
+<h3 id="external-outputs"><a class="anchor" href="#external-outputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External outputs</h3>
+<p>The challenge is to create an entry which contains the text "Hello World". The text will be passed to the zome as a <code>SomeExternalInput</code> struct by the test script. But we still need to create an actual entry. Luckily, the hdk has specific function for that, with the unimaginative name: <code>create_entry</code>. And since you imported all functions from the prelude already, you can use this function immediately in your code.</p>
+<p>So, your first attempt might look something like this <code>create_entry(String::from("Hello World"))</code> or <code>create_entry(input.content)</code>. But this won't work.<br>
+Because an entry needs to be saved locally and send over the network, it has to be serializable. And a String itself is not serializable. To do this we create a <code>struct</code> that will hold our data.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token function">Greeting</span><span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>The name of the struct <code>Greeting</code> is just a name you chose. And <code>Greeting(String)</code> is a Rust way of saying that you want to disguise a String as a Greeting struct, so you can put attributes on it. When you start developing your own zomes you will likely have multiple fields in a struct, but for now we will keep it simple.</p>
+<h3 id="hdk_entry"><a class="anchor" href="#hdk_entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Hdk_entry</h3>
+<p>Wrapping your "Hello World" in a struct is not enough. You need to add an attribute. And that attribute is <code>#[hdk_entry()]</code>. The nice thing about it is that it already adds a <code>Serialize</code> and <code>Deserialize</code> attribute behind the screens. So you only need to add one attribute, not three.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[hdk_entry(id = "greeting")]</span>
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token function">Greeting</span><span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="entry-definition"><a class="anchor" href="#entry-definition"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Entry definition</h3>
+<p>The final thing you need to do, is to register your struct as an entry definition so your application knows you want to create entries with this particular struct. You do this by adding the following line somewhere in your zome code: <code>entry_defs![Greeting::entry_def()];</code>. Greeting is the name of your struct and <code>entry_def()</code> is a static function defined on that struct. You might be quick to point out that you did not create any methods for the Greeting struct. Well that is one of a things the <code>#[hdk_entry()]</code> attribute does for you. It generates a definition based on your struct and a method to get this definition.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[hdk_entry(id = "greeting")]</span>
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token function">Greeting</span><span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">entry_defs!</span><span class="token punctuation">[</span>Greeting<span class="token punctuation">::</span><span class="token function">entry_def</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
+<p>So now it is up to you to finish this exercise. Add all the things we just explained to your code and finish by implementing the <code>say_greeting</code> function, build your zome and run the test.
+You only need to add a few lines in this first exercise, but know that when the test succeeds, you:</p>
+<ul>
+<li>made your first zome module in Rust</li>
+<li>compiled your zome into a DNA in WASM, a state of the art binary format</li>
+<li>ran a test script, written in Typescript, executed in Nodejs</li>
+<li>initiated an actual real holochain conductor</li>
+<li>which instantiated your DNA into a real, actual holochain cell</li>
+<li>and executed test script that asked your cell to make a real entry in with the words "Hello World"</li>
+</ul>
+<p>You will in fact have created your very first decentralized, agent centric, boundary pushing holochain app. A real hApp!</p>
+<inline-notification type="tip" title="Exercise">
+<ol>
+<li>Go to the <code>developer-exercises/basic/0.entries</code>.</li>
+<li>Enter the nix-shell: <code>nix-shell</code><br>
+<em>running this the first time might take several minutes or longer</em></li>
+<li>Define a new struct for your entry: 'Greeting'</li>
+<li>Implement the function with <code>unimplemented!()</code></li>
+<li>Compile your code: <code>CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown</code>.</li>
+<li>Run the test: <code>./run_tests</code></li>
+<li>Don't stop until the test runs green</li>
+</ol>
+</inline-notification>
+<h2 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h2>
+<p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
+<ul>
+<li>You forgot to add the <code>#[hdk_extern]</code> attribute on the <code>say_greeting</code> function.</li>
+</ul>
+<pre class="language-js"><code class="language-js">got an error <span class="token keyword">for</span> test <span class="token string">'say a greeting'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">'error'</span><span class="token punctuation">,</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token string">'ribosome_error'</span><span class="token punctuation">,</span>
+    data<span class="token punctuation">:</span> <span class="token string">"Attempted to call a zome function that doesn't exist: Zome: exercise Fn say_greeting"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>You forgot to compile the zome. Run <code>CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown</code> in the <em>developer-exercises/basic/0.entries</em> folder.</li>
+</ul>
+<pre><code>thread 'holochain-tokio-thread' panicked at 'TODO: DnaError
+(ZomeNotFound("Zome \'exercise\' not found"))',
+/build/source/crates/holochain/src/core/ribosome.rs:336:14
+</code></pre>
+        
+      
+
+  
+    <div class="content-footer">
+  <p>
+    Caught a mistake or want to contribute to the documentation?
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/basic/entries.md">Edit this page on GitHub!</a>
+  </p>
+</div>
+
+  
+</main>
+
+      
+    </div>
+  </div>
+
+
+    
+      <footer id="main-footer">
+  
+    
+
+  
+    <div id="footer-menu">
+  <div class="content-area">
+    
+      <nav>
+        <h3>Holochain</h3>
+        <ul>
+          
+            <li>
+              <a href="https://developer.holochain.org/docs/references/">Documentation</a>
+            </li>
+          
+            <li>
+              <a href="https://forum.holochain.org">Forum</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+      <nav>
+        <h3>Gym</h3>
+        <ul>
+          
+            <li>
+              <a href="https://github.com/holochain-gym/holochain.github.io/issues">Help and Feedback</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+      <nav>
+        <h3>Discover</h3>
+        <ul>
+          
+            <li>
+              <a href="https://holochain-open-dev.github.io/blog">Holochain Open Dev Blog</a>
+            </li>
+          
+            <li>
+              <a href="https://github.com/holochain-open-dev">Open Source Modules</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+  </div>
+</div>
+
+  
+</footer>
+
+    
+
+    
+  
+
+
+
+  <script>
+  async function serviceWorkerUpdate() {
+  if ('serviceWorker' in navigator) {
+    const oldReg = await navigator.serviceWorker.getRegistration();
+    let oldSwState;
+    if (oldReg && oldReg.active) {
+      oldSwState = oldReg.active.state;
+    }
+
+    let refreshing;
+
+    navigator.serviceWorker.addEventListener('controllerchange', async () => {
+      if (refreshing) {
+        return;
+      }
+
+      const newReg = await navigator.serviceWorker.getRegistration();
+      let newSwState;
+      if (newReg && newReg.active) {
+        newSwState = newReg.active.state;
+      }
+
+      if (oldSwState === 'activated' && newSwState === 'activating') {
+        refreshing = true;
+        window.location.reload();
+      }
+    });
+  }
+}
+
+serviceWorkerUpdate();
+
+</script>
+
+
+  
+
+
+
+  
+
+<script inject-service-worker="">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker
+          .register('../../../service-worker.js')
+          .then(function() {
+            console.log('ServiceWorker registered from "../../../service-worker.js".');
+          })
+          .catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
+<script type="module" src="../../../adc1a8b9.js"></script>
+<script type="module" src="../../../62b060933.js"></script>
+
+</body></html>
