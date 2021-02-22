@@ -8,11 +8,11 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Requirements: Setup: Holochain Gym</title>
-<meta property="og:title" content="Requirements: Setup: Holochain Gym">
+<title>Basic: Source-Chain: Holochain Gym</title>
+<meta property="og:title" content="Basic: Source-Chain: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
-<link rel="canonical" href="/developers/requirements/setup/">
+<link rel="canonical" href="/developers/basic/source-chain/">
 
 
 
@@ -32,8 +32,8 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../6014a13c.png">
-<meta property="og:url" content="/developers/requirements/setup/">
+<meta property="og:image" content="../../../fd3b66c0.png">
+<meta property="og:url" content="/developers/basic/source-chain/">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -48,13 +48,14 @@
 
   
 
-<link rel="preload" href="../../../fb682b062.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../58896797.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../092198c1.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../daaff894.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../1f529ce5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../62b0609314.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../6a21a435.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../c53b5f0a.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../daaff894.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../62b060935.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6a21a435.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -133,17 +134,17 @@
 
     
       <rocket-navigation>
-  <ul><li class="menu-item active"><a href="/developers/requirements/" class="active">Requirements</a><ul><li class="menu-item current"><a href="/developers/requirements/setup/">Setup</a></li>
+  <ul><li class="menu-item"><a href="/developers/requirements/">Requirements</a><ul><li class="menu-item"><a href="/developers/requirements/setup/">Setup</a></li>
 <li class="menu-item"><a href="/developers/requirements/documentation/">Documentation</a></li>
 <li class="menu-item"><a href="/developers/requirements/rust/">Rust</a></li></ul></li>
-<li class="menu-item"><a href="/developers/basic/">Basic</a><ul><li class="menu-item"><a href="/developers/basic/entries/">Entries</a><ul><li class="menu-item anchor"><a href="/developers/basic/entries/#what-is-an-entry" class="anchor">What is an entry</a></li>
+<li class="menu-item active"><a href="/developers/basic/" class="active">Basic</a><ul><li class="menu-item"><a href="/developers/basic/entries/">Entries</a><ul><li class="menu-item anchor"><a href="/developers/basic/entries/#what-is-an-entry" class="anchor">What is an entry</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/entries/#try-it" class="anchor">Try it!</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/entries/#getting-ready" class="anchor">Getting ready</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/entries/#exercise" class="anchor">Exercise</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/entries/#errors" class="anchor">Errors</a></li></ul></li>
 <li class="menu-item"><a href="/developers/basic/links/">Links</a><ul><li class="menu-item anchor"><a href="/developers/basic/links/#what-is-a-link" class="anchor">What is a link?</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/links/#try-it" class="anchor">Try it!</a></li></ul></li>
-<li class="menu-item"><a href="/developers/basic/source-chain/">Source-Chain</a><ul><li class="menu-item anchor"><a href="/developers/basic/source-chain/#what-is-a-source-chain" class="anchor">What is a source-chain?</a></li>
+<li class="menu-item current"><a href="/developers/basic/source-chain/">Source-Chain</a><ul><li class="menu-item anchor"><a href="/developers/basic/source-chain/#what-is-a-source-chain" class="anchor">What is a source-chain?</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/source-chain/#try-it" class="anchor">Try it!</a></li></ul></li></ul></li>
 <li class="menu-item"><a href="/developers/intermediate/">Intermediate</a><ul><li class="menu-item"><a href="/developers/intermediate/dht/">DHT</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/dht/#holochains-dht" class="anchor">Holochain's DHT</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/dht/#try-it" class="anchor">Try it!</a></li></ul></li>
@@ -170,18 +171,16 @@
       
         <main class="markdown-body">
   
-    <h1 id="requirements-setup"><a class="anchor" href="#requirements-setup"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Requirements: Setup</h1>
-<p>If you haven't, install <code>nix-shell</code> following the instructions of the holochain <a href="https://developer.holochain.org/docs/install/">getting started guide</a>. Note that to complete the exercises you only need <code>nix-shell</code> installed, since they will already contain the necessary files to get you set up with holochain RSM itself.</p>
-<p>To setup the code exercises that follow along the sections of this page, clone the <a href="https://github.com/holochain-gym/developer-exercises">developer-exercises repository</a>.</p>
-<p>We recommend using <a href="https://code.visualstudio.com/">VSCode</a> with the <a href="https://rust-analyzer.github.io/">rust-analyzer</a> extension while coding rust.</p>
-<p>You can access the exercises with the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions.</p>
-<p>To finish an exercise, you must replace all <code>unimplemented</code> functions with working implementations, and <strong>make all the tests pass</strong>.</p>
-<inline-notification type="warning" title="Order of exercises">
-<p>It's better to be following the exercises from start to end, since earlier concepts are needed to understand the following ones.</p>
-</inline-notification>
-<inline-notification type="tip" title="Solutions">
-<p>If you get stuck with some exercise, the developer-exercises has a <a href="https://github.com/holochain-gym/developer-exercises/tree/solution">solution branch</a> that you can look at for complete working solutions. Try not to use this too much though!</p>
-</inline-notification>
+    <h1 id="basic-source-chain"><a class="anchor" href="#basic-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Source-Chain</h1>
+<h2 id="what-is-a-source-chain"><a class="anchor" href="#what-is-a-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>What is a source-chain?</h2>
+<p>A holochain DNA has two places in which you can store data:</p>
+<ul>
+<li>One global and shared public DHT (with which we have been playing in the previous exercises).</li>
+<li>A private source-chain per each agent in the network.</li>
+</ul>
+<p>Essentially, the source-chain is a <strong>hash-chain of all the actions that a particular agent has committed in this DNA</strong>. Whenever a new action is committed (creating entries or links, updating...) a new element is added to that chain, with its header referencing the previous one.</p>
+<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
+<mdjs-story mdjs-story-name="Simple"></mdjs-story>
         
       
 
@@ -189,7 +188,7 @@
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/requirements/setup.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/basic/source-chain.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -319,7 +318,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../fb682b062.js"></script>
-<script type="module" src="../../../62b0609314.js"></script>
+<script type="module" src="../../../58896797.js"></script>
+<script type="module" src="../../../62b060935.js"></script>
 
 </body></html>
