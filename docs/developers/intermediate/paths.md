@@ -3,7 +3,12 @@
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
 import { html } from "lit-html";
-import { EntryDetail, HolochainPlaygroundContainer, EntryGraph, CallZomeFns } from "@holochain-playground/elements";
+import {
+  EntryDetail,
+  HolochainPlaygroundContainer,
+  EntryGraph,
+  CallZomeFns,
+} from "@holochain-playground/elements";
 
 customElements.define(
   "holochain-playground-container",
@@ -81,20 +86,25 @@ export const Simple = () => {
           );
       }}
     >
-      <call-zome-fns
-        id="call-zome"
-        style="height: 150px; margin-bottom: 20px;"
-        hide-results
-        hide-zome-selector
+      <div
+        style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
-      </call-zome-fns>
+        <call-zome-fns
+          id="call-zome"
+          style="height: 250px; margin-right: 20px;"
+          hide-zome-selector
+          hide-agent-pub-key
+          hide-results
+        >
+        </call-zome-fns>
+        <entry-detail style="flex-basis: 500px; height: 250px;"> </entry-detail>
+      </div>
       <entry-graph
         .showFilter=${false}
         .excludedEntryTypes=${["Agent"]}
-        style="height: 600px; width: 100%; margin-bottom: 20px;"
-      ></entry-graph>
-      <entry-detail style="height: 250px; flex: 1; margin-bottom: 20px;">
-      </entry-detail>
+        style="flex: 1; height: 500px; margin-bottom: 24px;"
+      >
+      </entry-graph>
     </holochain-playground-container>
   `;
 };
@@ -214,20 +224,25 @@ export const Exercise = () => {
         });
       }}
     >
-      <call-zome-fns
-        id="call-zome"
-        hide-results
-        hide-zome-selector
-        style="height: 300px; margin-bottom: 20px;"
+      <div
+        style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
-      </call-zome-fns>
+        <call-zome-fns
+          id="call-zome"
+          style="height: 400px; margin-right: 20px;"
+          hide-zome-selector
+          hide-agent-pub-key
+          hide-results
+        >
+        </call-zome-fns>
+        <entry-detail style="flex-basis: 500px; height: 400px;"> </entry-detail>
+      </div>
       <entry-graph
-        .excludedEntryTypes=${["Agent"]}
         .showFilter=${false}
-        style="height: 600px; width: 100%; margin-bottom: 20px;"
-      ></entry-graph>
-      <entry-detail style="height: 250px; flex: 1; margin-bottom: 20px;">
-      </entry-detail>
+        .excludedEntryTypes=${["Agent"]}
+        style="flex: 1; height: 500px; margin-bottom: 24px;"
+      >
+      </entry-graph>
     </holochain-playground-container>
   `;
 };
