@@ -4,6 +4,8 @@ If you haven't, install `nix-shell` following the instructions of the holochain 
 
 To setup the code exercises that follow along the sections of this page, clone the [developer-exercises repository](https://github.com/holochain-gym/developer-exercises).
 
+We recommend using [VSCode](https://code.visualstudio.com/) with the [rust-analyzer](https://rust-analyzer.github.io/) extension while coding rust.
+
 You can access the exercises with the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions.
 
 To finish an exercise, you must replace all `unimplemented` functions with working implementations, and **make all the tests pass**. 

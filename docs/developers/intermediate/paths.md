@@ -1,10 +1,10 @@
-# Intermediate >> Paths ||201
+# Intermediate >> Paths ||202
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
 import { html } from "lit-html";
 import {
-  EntryDetail,
+  EntryContents,
   HolochainPlaygroundContainer,
   EntryGraph,
   CallZomeFns,
@@ -15,7 +15,7 @@ customElements.define(
   HolochainPlaygroundContainer
 );
 customElements.define("entry-graph", EntryGraph);
-customElements.define("entry-detail", EntryDetail);
+customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
@@ -97,7 +97,7 @@ export const Simple = () => {
           hide-results
         >
         </call-zome-fns>
-        <entry-detail style="flex-basis: 500px; height: 250px;"> </entry-detail>
+        <entry-contents style="flex-basis: 500px; height: 250px;"> </entry-contents>
       </div>
       <entry-graph
         .showFilter=${false}
@@ -235,7 +235,7 @@ export const Exercise = () => {
           hide-results
         >
         </call-zome-fns>
-        <entry-detail style="flex-basis: 500px; height: 400px;"> </entry-detail>
+        <entry-contents style="flex-basis: 500px; height: 400px;"> </entry-contents>
       </div>
       <entry-graph
         .showFilter=${false}

@@ -5,7 +5,7 @@ import "@rocket/launch/inline-notification/inline-notification.js";
 import { html } from "lit-html";
 import {
   HolochainPlaygroundContainer,
-  EntryDetail,
+  EntryContents,
   EntryGraph,
   CallZomeFns,
 } from "@holochain-playground/elements";
@@ -15,7 +15,7 @@ customElements.define(
   HolochainPlaygroundContainer
 );
 customElements.define("entry-graph", EntryGraph);
-customElements.define("entry-detail", EntryDetail);
+customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
@@ -78,7 +78,7 @@ export const Simple = () => {
           hide-results
         >
         </call-zome-fns>
-        <entry-detail style="flex-basis: 500px; height: 250px;"> </entry-detail>
+        <entry-contents style="flex-basis: 500px; height: 250px;"> </entry-contents>
       </div>
       <entry-graph
         .showFilter=${false}
@@ -203,6 +203,8 @@ You only need to add a few lines in this first exercise, but know that when the 
 - and executed test script that asked your cell to make a real entry in with the words "Hello World"
 
 You will in fact have created your very first decentralized, agent centric, boundary pushing holochain app. A real hApp!
+
+Relevant HDK documentation: [create_entry](https://developer.holochain.org/rustdoc/hdk3/entry/create_entry/fn.create_entry).
 
 <inline-notification type="tip" title="Exercise">
 
