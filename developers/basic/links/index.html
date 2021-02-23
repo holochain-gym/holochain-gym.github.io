@@ -48,10 +48,10 @@
 
   
 
-<link rel="preload" href="../../../2a408b8f.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../01e340d7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../092198c1.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../1f529ce5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../c53b5f0a.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../e1481b77.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../daaff894.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../62b060934.js" as="script" crossorigin="anonymous">
@@ -194,9 +194,14 @@
 <p>Now you should see the two entries linked together.</p>
 <mdjs-story mdjs-story-name="Simple"></mdjs-story>
 <p>Great! Now you might be thinking: what do we do with links? Links are useful to attach metadata to entries, without having to change its content (and if we don't change the content, the hash doesn't change either).</p>
-<p>Here we have some posts created, with a link from</p>
+<p>Here we have some posts created, with a link from the author public key to all the posts they have created.</p>
+<p>Try creating some posts and see how the entries behave, and try to do a <code>get_links</code> with the public key of the author to get the links to all the posts that that agent has created.</p>
 <mdjs-story mdjs-story-name="Simple2"></mdjs-story>
-<p>Relevant HDK documentation: <a href="https://developer.holochain.org/rustdoc/hdk3/host_fn/create_link/fn.create_link">create_link</a>.</p>
+<p>Relevant HDK documentation:</p>
+<ul>
+<li><a href="https://developer.holochain.org/rustdoc/hdk3/host_fn/create_link/fn.create_link">create_link</a>.</li>
+<li><a href="https://developer.holochain.org/rustdoc/hdk3/host_fn/get_links/fn.get_links">get_links</a>.</li>
+</ul>
         
       
 
@@ -334,7 +339,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../2a408b8f.js"></script>
+<script type="module" src="../../../01e340d7.js"></script>
 <script type="module" src="../../../62b060934.js"></script>
 
 </body></html>
