@@ -100,7 +100,8 @@ export const Simple = () => {
           hide-results
         >
         </call-zome-fns>
-        <entry-contents style="flex-basis: 500px; height: 350px;"> </entry-contents>
+        <entry-contents style="flex-basis: 500px; height: 350px;">
+        </entry-contents>
       </div>
       <entry-graph
         .showFilter=${false}
@@ -115,7 +116,9 @@ export const Simple = () => {
 
 Great! Now you might be thinking: what do we do with links? Links are useful to attach metadata to entries, without having to change its content (and if we don't change the content, the hash doesn't change either).
 
-Here we have some posts created, with a link from
+Here we have some posts created, with a link from the author public key to all the posts they have created.
+
+Try creating some posts and see how the entries behave, and try to do a `get_links` with the public key of the author to get the links to all the posts that that agent has created.
 
 ```js story
 const sampleZome2 = {
@@ -153,7 +156,7 @@ const sampleZome2 = {
     },
     get_links: {
       call: ({ get_links }) => ({ base }) => {
-        return get_links({ base, tag: null });
+        return get_links(base);
       },
       arguments: [{ name: "base", type: "EntryHash" }],
     },
@@ -192,11 +195,15 @@ export const Simple2 = () => {
           style="flex: 1; height: 500px; margin-right: 20px;"
         >
         </entry-graph>
-        <entry-contents style="flex-basis: 500px; height: 350px;"> </entry-contents>
+        <entry-contents style="flex-basis: 500px; height: 350px;">
+        </entry-contents>
       </div>
     </holochain-playground-container>
   `;
 };
 ```
 
-Relevant HDK documentation: [create_link](https://developer.holochain.org/rustdoc/hdk3/host_fn/create_link/fn.create_link).
+Relevant HDK documentation:
+
+- [create_link](https://developer.holochain.org/rustdoc/hdk3/host_fn/create_link/fn.create_link).
+- [get_links](https://developer.holochain.org/rustdoc/hdk3/host_fn/get_links/fn.get_links).

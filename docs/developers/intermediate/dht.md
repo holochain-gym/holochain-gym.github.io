@@ -110,7 +110,7 @@ export const Simple = () => {
 
         const dhtCells = e.target.querySelector("#dht-cells");
         setTimeout(() => {
-          console.log(dhtCells);
+          
           dhtCells.workflowsToDisplay = [
             WorkflowType.CALL_ZOME,
             WorkflowType.APP_VALIDATION,
