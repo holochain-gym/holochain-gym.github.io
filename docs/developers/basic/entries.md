@@ -81,7 +81,8 @@ export const Simple = () => {
         <entry-contents style="flex-basis: 500px; height: 250px;"> </entry-contents>
       </div>
       <entry-graph
-        .showFilter=${false}
+        show-entry-contents
+        hide-filter
         .excludedEntryTypes=${["Agent"]}
         style="flex: 1; height: 500px;"
       >

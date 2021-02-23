@@ -104,7 +104,7 @@ export const Simple = () => {
         </entry-contents>
       </div>
       <entry-graph
-        .showFilter=${false}
+        hide-filter
         .excludedEntryTypes=${["Agent"]}
         style="flex: 1; height: 500px; margin-bottom: 20px;"
       >
@@ -199,7 +199,7 @@ export const Simple2 = () => {
         style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
         <entry-graph
-          .showFilter=${false}
+          hide-filter
           style="flex: 1; height: 500px; margin-right: 20px;"
         >
         </entry-graph>

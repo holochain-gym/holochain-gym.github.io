@@ -100,7 +100,8 @@ export const Simple = () => {
         <entry-contents style="flex-basis: 500px; height: 250px;"> </entry-contents>
       </div>
       <entry-graph
-        .showFilter=${false}
+        hide-filter
+        show-entry-contents
         .excludedEntryTypes=${["Agent"]}
         style="flex: 1; height: 500px; margin-bottom: 24px;"
       >
@@ -238,7 +239,8 @@ export const Exercise = () => {
         <entry-contents style="flex-basis: 500px; height: 400px;"> </entry-contents>
       </div>
       <entry-graph
-        .showFilter=${false}
+        hide-filter
+        show-entry-contents
         .excludedEntryTypes=${["Agent"]}
         style="flex: 1; height: 500px; margin-bottom: 24px;"
       >
