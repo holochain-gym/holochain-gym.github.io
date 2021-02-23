@@ -177,6 +177,14 @@ export const Simple2 = () => {
         const cell = conductor.getAllCells()[0];
 
         e.target.activeAgentPubKey = cell.cellId[1];
+
+        conductor.callZomeFn({
+          cellId: cell.cellId,
+          zome: "links",
+          fnName: "create_post",
+          payload: { content: "Good morning!" },
+          cap: null,
+        });
       }}
     >
       <call-zome-fns

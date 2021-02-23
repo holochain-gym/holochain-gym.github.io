@@ -11,7 +11,11 @@ import {
   SourceChain,
   DhtCells,
 } from "@holochain-playground/elements";
-import { GetStrategy, NetworkRequestType, WorkflowType } from "@holochain-playground/core";
+import {
+  GetStrategy,
+  NetworkRequestType,
+  WorkflowType,
+} from "@holochain-playground/core";
 
 customElements.define(
   "holochain-playground-container",
@@ -63,13 +67,14 @@ const simulatedDnaTemplate = {
       zome_functions: {
         create_entry: {
           call: ({ create_entry, hash_entry }) => async ({ content }) => {
-            return create_entry({ content, entry_def_id: "sample" });
+            await create_entry({ content, entry_def_id: "sample" });
+            return hash_entry({ content });
           },
           arguments: [{ name: "content", type: "String" }],
         },
         get: {
-          call: ({ get }) => ({hash}) => {
-            return get(hash, {strategy: GetStrategy.Latest});
+          call: ({ get }) => ({ hash }) => {
+            return get(hash, { strategy: GetStrategy.Latest });
           },
           arguments: [{ name: "hash", type: "Hash" }],
         },
@@ -110,7 +115,6 @@ export const Simple = () => {
 
         const dhtCells = e.target.querySelector("#dht-cells");
         setTimeout(() => {
-          
           dhtCells.workflowsToDisplay = [
             WorkflowType.CALL_ZOME,
             WorkflowType.APP_VALIDATION,
@@ -133,17 +137,11 @@ export const Simple = () => {
           <source-chain
             style="height: 400px; margin-bottom: 20px"
           ></source-chain>
-          <entry-contents
-            style="height: 280px;"
-          ></entry-contents>
+          <entry-contents style="height: 280px;"></entry-contents>
         </div>
       </div>
       <div style="display: flex; flex-direction: row; align-items: start;">
-        <call-zome-fns
-          id="call-zome"
-          style="height: 400px;"
-        >
-        </call-zome-fns>
+        <call-zome-fns id="call-zome" style="height: 400px;"> </call-zome-fns>
       </div>
     </holochain-playground-container>
   `;
