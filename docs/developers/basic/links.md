@@ -213,5 +213,5 @@ export const Simple2 = () => {
 
 Relevant HDK documentation:
 
-- [create_link](https://developer.holochain.org/rustdoc/hdk3/host_fn/create_link/fn.create_link).
-- [get_links](https://developer.holochain.org/rustdoc/hdk3/host_fn/get_links/fn.get_links).
+- [create_link](https://docs.rs/hdk/latest/hdk/link/fn.create_link.html).
+- [get_links](https://docs.rs/hdk/lastest/hdk/link/fn.get_links.html).
