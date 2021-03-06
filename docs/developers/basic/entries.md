@@ -155,7 +155,7 @@ use hdk3::prelude::*;
 This is how import are done in Rust. You start with `use` followed by the name of the library `hdk3`. In this case `prelude` which is just a file inside the hdk3 library where they gathered all the useful hdk functions in one place. This way you can add all these functions at once , just adding the `*`.
 
 Go ahead and take a quick look at that `prelude` file:  
-https://github.com/holochain/holochain/blob/develop/crates/hdk3/src/prelude.rs  
+https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs  
 You will find most of the things you will use in your exercise listed in that file.
 
 ### External outputs
