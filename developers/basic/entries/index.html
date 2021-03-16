@@ -48,10 +48,10 @@
 
   
 
-<link rel="preload" href="../../../677bcd78.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../92404fdd.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../092198c1.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../1f529ce5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../e1481b77.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../e28f1150.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../daaff894.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../62b060932.js" as="script" crossorigin="anonymous">
@@ -222,12 +222,12 @@ On top of it you see <code>#[derive(Serialize, Deserialize, Clone, Debug)]</code
 </code></pre>
 <h3 id="import-hdk-functions"><a class="anchor" href="#import-hdk-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Import hdk functions</h3>
 <p>The other thing you need to do is tell the code where this <code>#[hdk_extern]</code> comes from. This attribute may give our public function special powers, it cannot come out of nowhere.<br>
-The Holochain team built a Rust library <code>hdk3</code>, which stands for <em>holochain development kit</em> and contains all important Holochain functions you will want to call from within your zome. So add this line to the top your file.</p>
-<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> hdk3<span class="token punctuation">::</span>prelude<span class="token punctuation">::</span><span class="token operator">*</span><span class="token punctuation">;</span>
+The Holochain team built a Rust library <code>hdk</code>, which stands for <em>holochain development kit</em> and contains all important Holochain functions you will want to call from within your zome. So add this line to the top your file.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> hdk<span class="token punctuation">::</span>prelude<span class="token punctuation">::</span><span class="token operator">*</span><span class="token punctuation">;</span>
 </code></pre>
-<p>This is how import are done in Rust. You start with <code>use</code> followed by the name of the library <code>hdk3</code>. In this case <code>prelude</code> which is just a file inside the hdk3 library where they gathered all the useful hdk functions in one place. This way you can add all these functions at once , just adding the <code>*</code>.</p>
+<p>This is how import are done in Rust. You start with <code>use</code> followed by the name of the library <code>hdk</code>. In this case <code>prelude</code> which is just a file inside the hdk library where they gathered all the useful hdk functions in one place. This way you can add all these functions at once , just adding the <code>*</code>.</p>
 <p>Go ahead and take a quick look at that <code>prelude</code> file:<br>
-<a href="https://github.com/holochain/holochain/blob/develop/crates/hdk3/src/prelude.rs">https://github.com/holochain/holochain/blob/develop/crates/hdk3/src/prelude.rs</a><br>
+<a href="https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs">https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs</a><br>
 You will find most of the things you will use in your exercise listed in that file.</p>
 <h3 id="external-outputs"><a class="anchor" href="#external-outputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External outputs</h3>
 <p>The challenge is to create an entry which contains the text "Hello World". The text will be passed to the zome as a <code>SomeExternalInput</code> struct by the test script. But we still need to create an actual entry. Luckily, the hdk has specific function for that, with the unimaginative name: <code>create_entry</code>. And since you imported all functions from the prelude already, you can use this function immediately in your code.</p>
@@ -260,7 +260,7 @@ You only need to add a few lines in this first exercise, but know that when the 
 <li>and executed test script that asked your cell to make a real entry in with the words "Hello World"</li>
 </ul>
 <p>You will in fact have created your very first decentralized, agent centric, boundary pushing holochain app. A real hApp!</p>
-<p>Relevant HDK documentation: <a href="https://developer.holochain.org/rustdoc/hdk3/entry/create_entry/fn.create_entry">create_entry</a>.</p>
+<p>Relevant HDK documentation: <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">create_entry</a>.</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
 <li>Go to the <code>developer-exercises/basic/0.entries</code>.</li>
@@ -430,7 +430,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../677bcd78.js"></script>
+<script type="module" src="../../../92404fdd.js"></script>
 <script type="module" src="../../../62b060932.js"></script>
 
 </body></html>
