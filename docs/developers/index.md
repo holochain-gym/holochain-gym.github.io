@@ -2,7 +2,7 @@
 
 Welcome! Here you can train yourself to be a holochain developer.
 
-On the left, you have a list of exercises, ordered from easier to harder. Start with the [setup](https://holochain-gym.github.io/developers/requirements/setup) to get ready, and then [get started with first exercise](https://holochain-gym.github.io/developers/beginner/entries).
+On the left, you have a list of exercises, ordered from easier to harder. Start with the [setup](https://holochain-gym.github.io/developers/requirements/setup) to get ready, and then [get started with first exercise](https://holochain-gym.github.io/developers/basic/entries).
 
 Good luck!
 
