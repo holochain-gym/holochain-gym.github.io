@@ -21,18 +21,35 @@ customElements.define("call-zome-fns", CallZomeFns);
 
 ## What is an entry
 
-One of the most basic things you can do in a zome is creating an entry. Just a quick reminder: a zome is a module in a DNA, and a DNA is the base of any Holochain app.
-Adding an entry is basically taking some data and saving it somewhere locally. I bet you are thinking: "I already know how to do that. I'm going to jump to the advanced exercises".
+An entry is a basic unit of user data. As a Holochain developer one of the most basic things you can do is create an entry in a Zome.
 
-Well, in your Holochain app, when you create an entry a few things will happen. First of all your Holochain app will validate your piece of data, but we will get into that in later exercises. We do not want you to get injured during your very first exercise.
-Next, your piece of data will be attached to the source chain of your agent, hence the "chain" in "Holochain". And last but not least, your Holochain app will send your piece of data to some random people who are running the same app. Don't worry, soon we will talk about source chains, agents and why sending data to random people is not as scary as it sounds.
+*Quick reminder - A [Zome](https://developer.holochain.org/docs/glossary/#zome) is a module in a [DNA](https://developer.holochain.org/docs/glossary/#dna); the base of any [Holochain application (hApp)](https://developer.holochain.org/docs/glossary/#holochain-application-happ).*
+
+## Creating an entry
+
+*NOTE: If you are thinking "I already know how to do that, I'm going to jump to the advanced exercises!" - hold on as we not want you to get injured during your very first exercise!*
+
+When you create an entry a few things will happen:
+
+1. Data validation *(we will learn how this works in later exercises)*
+2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) *(hence the 'chain' in 'Holochain')*
+3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp *(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)*
 
 ## Try it!
 
-Your first exercise will be a genuine "Hello World" exercise. The challenge is to create an entry in your Holochain app which will contain the text "Hello World".
-To prove we are a first class gym, we have set up a simulation below where you can try this out before you actually start coding.
-Select "say*greeting" in the CallZomeFns below, type **Hello World** in the input and click \_EXECUTE*.
-Notice how a greeting object gets added to the Entry Graph. Click on the newly added object to see more details in Entry Details.
+Your first exercise will be [a traditional "Hello, World!" program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) with a tiny twist to the text!
+
+The challenge is to create an entry in your hApp which will contain the text "Holo, World!".
+
+To prove we are a first class gym, we have set up a simulation below where you can try this out before you start coding:
+
+1. Click `say_greeting` in the `CallZomeFns` section below to ensure it is selected
+2. Type "Holo, World!" in the `content: String` input field
+3. Click `EXECUTE`
+
+Notice how a greeting object gets added to the `Entry Graph`.
+
+Click on the newly added object to see more details in `Entry Details`.
 
 ```js story
 const sampleZome = {
