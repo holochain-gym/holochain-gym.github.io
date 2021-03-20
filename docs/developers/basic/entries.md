@@ -146,13 +146,13 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 ### Import HDK functions
 
 The other thing you need to do is tell the code where this `#[hdk_extern]` comes from. This attribute may give our public function special powers, so it cannot come out of nowhere.  
-The Holochain team built a Rust library `hdk3`, which stands for _Holochain Development Kit_ and contains all important Holochain functions you will want to call from within your zome. So add this line to the top of your file.
+The Holochain team built a Rust library `hdk`, which stands for _Holochain Development Kit_ and contains all important Holochain functions you will want to call from within your zome. So add this line to the top of your file.
 
 ```rust
-use hdk3::prelude::*;
+use hdk::prelude::*;
 ```
 
-This is how imports are done in Rust. You start with `use` followed by the name of the library `hdk3`. In this case we further select `prelude` which is just a file inside the hdk3 library where the team has gathered all the useful HDK functions in one place. This way you can add all these functions at once, simply by adding the `*`.
+This is how imports are done in Rust. You start with `use` followed by the name of the library `hdk`. In this case we further select `prelude` which is just a file inside the hdk library where the team has gathered all the useful HDK functions in one place. This way you can add all these functions at once, simply by adding the `*`.
 
 Go ahead and take a quick look at that `prelude` file:  
 https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs  
@@ -205,7 +205,7 @@ You only need to add a few lines in this first exercise, but know that when the 
 
 You will in fact have created your very first decentralized, agent centric, boundary pushing Holochain app. A real hApp!
 
-Relevant HDK documentation: [create_entry](https://developer.holochain.org/rustdoc/hdk3/entry/create_entry/fn.create_entry).
+Relevant HDK documentation: [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
 
 <inline-notification type="tip" title="Exercise">
 
