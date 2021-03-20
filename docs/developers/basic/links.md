@@ -213,5 +213,5 @@ export const Simple2 = () => {
 
 Relevant HDK documentation:
 
-- [create_link](https://docs.rs/hdk/latest/hdk/link/fn.create_link.html).
-- [get_links](https://docs.rs/hdk/lastest/hdk/link/fn.get_links.html).
+- [create_link](https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html).
+- [get_links](https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html).
