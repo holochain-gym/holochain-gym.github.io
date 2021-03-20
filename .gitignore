@@ -5,3 +5,4 @@ docs/_merged_includes/
 node_modules/
 _site-dev/
 _site/
+*.code-workspace
