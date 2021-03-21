@@ -260,7 +260,8 @@ ok 1 should be truthy
 }
 not ok 2 Test threw an exception. See output for details.
 ```
-==> verify that fieldname in typescript, match with the fieldnames in Rust
+
+Verify that fieldname in typescript, match with the fieldnames in Rust
 ```
 // Rust
 #[derive(Serialize, Deserialize, Clone, Debug)]
