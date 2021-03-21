@@ -5,7 +5,7 @@ import "@rocket/launch/inline-notification/inline-notification.js";
 import { html } from "lit-html";
 import {
   HolochainPlaygroundContainer,
-  EntryDetail,
+  EntryContents,
   EntryGraph,
   CallZomeFns,
 } from "@holochain-playground/elements";
@@ -15,7 +15,7 @@ customElements.define(
   HolochainPlaygroundContainer
 );
 customElements.define("entry-graph", EntryGraph);
-customElements.define("entry-detail", EntryDetail);
+customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
@@ -90,12 +90,12 @@ export const Simple = () => {
       </call-zome-fns>
       <div style="display: flex; flex-direction: row; align-items: start;">
         <entry-graph
-          .showFilter=${false}
+          hide-filter
           .excludedEntryTypes=${["Agent"]}
           style="flex: 1; margin-right: 20px; height: 500px;"
         >
         </entry-graph>
-        <entry-detail style="flex-basis: 600px; height: 500px;"> </entry-detail>
+        <entry-contents style="flex-basis: 600px; height: 500px;"> </entry-contents>
       </div>
     </holochain-playground-container>
   `;
@@ -184,12 +184,12 @@ export const Exercise = () => {
       </call-zome-fns>
       <div style="display: flex; flex-direction: row; align-items: start;">
         <entry-graph
-          .showFilter=${false}
+          hide-filter
           .excludedEntryTypes=${["Agent"]}
           style="flex: 1; margin-right: 20px; height: 500px;"
         >
         </entry-graph>
-        <entry-detail style="flex-basis: 600px; height: 500px;"> </entry-detail>
+        <entry-contents style="flex-basis: 600px; height: 500px;"> </entry-contents>
       </div>
     </holochain-playground-container>
   `;
