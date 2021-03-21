@@ -1,4 +1,4 @@
-# Intermediate >> Capability Tokens ||202
+# Intermediate >> Capability Tokens ||203
 
 ```js script
 import { html } from "lit-html";
