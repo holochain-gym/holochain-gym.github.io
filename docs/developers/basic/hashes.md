@@ -36,7 +36,7 @@ And that an entry has a hash. Not bad for your first exercise!
 
 Hashes are one of the main ingredients in a holochain app. So let's find out what they are. And since we are a gym and not a library you are going to try it out.
 Select "say_greeting" in the CallZomeFns below, type **Hello World** in the input and click _EXECUTE_.
-Click on the newly added object in the Entry Graph and look at the value of Entry hash of in Entry Details.
+Click on the newly added object in the Entry Graph and look at the value of Entry hash of in Entry Contents.
 Now type something else, like Hello World in your own language, and execute again. Open the details of the new object and compare the hash values. What do you notice?
 
 ```js story
@@ -54,12 +54,6 @@ const sampleZome = {
         return create_entry({ content, entry_def_id: "greeting" });
       },
       arguments: [{ name: "content", type: "String" }],
-    },
-    get_greeting: {
-      call: ({ get }) => ({ hash }) => {
-        return get(hash);
-      },
-      arguments: [{ name: "hash", type: "EntryHash" }],
     },
   },
 };
@@ -82,13 +76,13 @@ export const Simple = () => {
     >
       <call-zome-fns
         id="call-zome"
-        style="height: 200px; margin-bottom: 20px;"
+        style="height: 250px; margin-bottom: 20px;"
         hide-zome-selector
         hide-agent-pub-key
         hide-results
       >
       </call-zome-fns>
-      <div style="display: flex; flex-direction: row; align-items: start;">
+      <div style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;">
         <entry-graph
           hide-filter
           .excludedEntryTypes=${["Agent"]}
@@ -182,7 +176,7 @@ export const Exercise = () => {
         hide-agent-pub-key
       >
       </call-zome-fns>
-      <div style="display: flex; flex-direction: row; align-items: start;">
+      <div style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;">
         <entry-graph
           hide-filter
           .excludedEntryTypes=${["Agent"]}
