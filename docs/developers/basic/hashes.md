@@ -5,7 +5,7 @@ import "@rocket/launch/inline-notification/inline-notification.js";
 import { html } from "lit-html";
 import {
   HolochainPlaygroundContainer,
-  EntryDetail,
+  EntryContents,
   EntryGraph,
   CallZomeFns,
 } from "@holochain-playground/elements";
@@ -15,7 +15,7 @@ customElements.define(
   HolochainPlaygroundContainer
 );
 customElements.define("entry-graph", EntryGraph);
-customElements.define("entry-detail", EntryDetail);
+customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
@@ -36,7 +36,7 @@ And that an entry has a hash. Not bad for your first exercise!
 
 Hashes are one of the main ingredients in a holochain app. So let's find out what they are. And since we are a gym and not a library you are going to try it out.
 Select "say_greeting" in the CallZomeFns below, type **Hello World** in the input and click _EXECUTE_.
-Click on the newly added object in the Entry Graph and look at the value of Entry hash of in Entry Details.
+Click on the newly added object in the Entry Graph and look at the value of Entry hash of in Entry Contents.
 Now type something else, like Hello World in your own language, and execute again. Open the details of the new object and compare the hash values. What do you notice?
 
 ```js story
@@ -54,12 +54,6 @@ const sampleZome = {
         return create_entry({ content, entry_def_id: "greeting" });
       },
       arguments: [{ name: "content", type: "String" }],
-    },
-    get_greeting: {
-      call: ({ get }) => ({ hash }) => {
-        return get(hash);
-      },
-      arguments: [{ name: "hash", type: "EntryHash" }],
     },
   },
 };
@@ -82,20 +76,20 @@ export const Simple = () => {
     >
       <call-zome-fns
         id="call-zome"
-        style="height: 200px; margin-bottom: 20px;"
+        style="height: 250px; margin-bottom: 20px;"
         hide-zome-selector
         hide-agent-pub-key
         hide-results
       >
       </call-zome-fns>
-      <div style="display: flex; flex-direction: row; align-items: start;">
+      <div style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;">
         <entry-graph
-          .showFilter=${false}
+          hide-filter
           .excludedEntryTypes=${["Agent"]}
           style="flex: 1; margin-right: 20px; height: 500px;"
         >
         </entry-graph>
-        <entry-detail style="flex-basis: 600px; height: 500px;"> </entry-detail>
+        <entry-contents style="flex-basis: 600px; height: 500px;"> </entry-contents>
       </div>
     </holochain-playground-container>
   `;
@@ -118,7 +112,7 @@ When you combine all these properties of hashes you can do interesting stuff. If
 So I hope you see that hashes play a big role in how data is stored and retrieved. You will see them poping up when we talk about headers, elements, the DHT, validations. They are everywhere.  
 Enough talking. It is time to get ready for the exercise. 
 
-This time you are building a library zome. The zome will need 2 functions that can be called from the outside: `add_book` and `get_book`. You will add your favorite book and retrieve it from the library zome based on -you guessed it- the hash of its entry. In one of the next exercise we will see that there are better ways to retrieve your data: headers and elements. But it is good to know you can always find your entry again based on its entry hash.
+This time you are building a library zome. The zome will need 2 functions that can be called from the outside: `add_book` and `get_book`. You will add your favorite book and retrieve it from the library zome based on -you guessed it- the hash of its entry. In one of the next exercise we will see that there are other ways to retrieve your data: headers and elements. But it is good to know you can always find your entry again based on its entry hash.
 
 First let's practice a bit in the simulation gym.
 Select "add_book" in the CallZomeFns below, type the title of your favorite book in the input and click _EXECUTE_.
@@ -182,14 +176,14 @@ export const Exercise = () => {
         hide-agent-pub-key
       >
       </call-zome-fns>
-      <div style="display: flex; flex-direction: row; align-items: start;">
+      <div style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;">
         <entry-graph
-          .showFilter=${false}
+          hide-filter
           .excludedEntryTypes=${["Agent"]}
           style="flex: 1; margin-right: 20px; height: 500px;"
         >
         </entry-graph>
-        <entry-detail style="flex-basis: 600px; height: 500px;"> </entry-detail>
+        <entry-contents style="flex-basis: 600px; height: 500px;"> </entry-contents>
       </div>
     </holochain-playground-container>
   `;
