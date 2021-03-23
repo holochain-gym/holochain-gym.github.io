@@ -29,31 +29,86 @@ By now you know what entries are, how you save them in your holochain app, retri
 
 Headers are a delightful topic. Knowing how to work with headers will give you great flexibility! And what is strength without flexibility...
 In one of the previous exercises you already saw some header stuff passing by. So let's take a look at them again.
-Select "say_greeting" in the CallZomeFns below, type **Hello World** in the input and click _EXECUTE_.
-Click on the newly added object in the Entry Graph and look at the value of Entry hash of in Entry Details.
-Now type something else, like Hello World in your own language, and execute again. Open the details of the new object and compare the hash values. What do you notice?
+In the simulation below we already added one entry.
+Click on the object we added for you in the Entry Graph and look at the details in Entry Contents.
+
+You will see blob of json data, just as you see below. The response get is something that is called an `element` in Holochain language. You will look a elements in more detail in the next exercise, but basiccaly an element is just the combination of an entry and a header.
+You will see that there are 2 top level objects: entry and signed_header. The signed_header consists of a header and a signature. You can ignore the latter. Before we talk about the header, take one more look at the entry. What do you notice?
+
+```json
+{
+  "entry": {
+    "entry_type": "App",
+    "content": "test"
+  },
+  "signed_header": {
+    "header": {
+      "content": {
+        "author": "uhCAkoDzMAJlwuREYcXo1eDx10ENBdLdkHn5TohTN0O0_DMk",
+        "header_seq": 3,
+        "prev_header": "uhCkkna67BAwyKQVzOKa_dahakn5IOcST_dtcRNcZcdYc0jQ",
+        "timestamp": [
+          1616329685,
+          727000
+        ],
+        "entry_hash": "uhCEkkosgNmlD4q_RHrwOri5TqTvxd6T881vMZNUDcE5l4gI",
+        "entry_type": {
+          "App": {
+            "id": 0,
+            "zome_id": 0,
+            "visibility": "Public"
+          }
+        },
+        "type": "Create"
+      },
+      "hash": "uhCkkMBuCXQu8jNaZBLp_4UBLmj87KNn2P3IK_IL4O8jAcrw"
+    },
+    "signature": ...
+  }
+}
+```
+
+Well the most stricking aspect of the entry is its simplicity. This is by design. Remember that the entry is stored and retrieved based in its hash, the content adressable stuff... Well if you and I and 100 others want to store a picture of Wangari Maathai in our Holochain app then there is no need to store it 102 times. One copy would be enough. In reality Holochain apps will keep several copies to ensure the app is reliable and perfomant, but that a whole different topic.
+
+So the main idea is: keep entries simple, so they are efficient to store and retrieve. An entry can tell you two things 
+1. what type of entry it is: Agent, App, CapClaim, CapGrant
+2. what the content of the entry is
+
+An entry does not tell you who created the entry, when it was created or if it was modified. This is where the header comes in. You could think of an header as a kind of metadata.
+Let take a look what we can decypher from the example above.
+
+`author` the public key of the agent (cell) that signed the entry. This is a crucial component to prove to others you are really the author of this entry. Luckily it is all added automaticaly.  
+`timestamp` of when this entry was committed. It will state the time for when the entry was created. This the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is combination standard Linux Epoch Time _1616329685_  combined with elapsed nanoseconds, _727000_.  While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.
+`header_seq` & `prev_header` are a better way to determine order. We will talk about them in a next exercise.
+`type` indication what type of header this is. There are a number of header types: Dna,  AgentValidationPkg, InitZomesComplete, CreateLink, DeleteLink, Create, Update, Delete. In this exercise you will only have to deal with Create, Update, Delete.
+
+All headers have the above mentioned fields, with one small exception of the Dna header, which doesn't have a prev_header, for the very simple reason that it is always the first header to be created in a holochain app.
+And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these field tell something about entries. Because entries a very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header. 
+`entry_hash` is the hash of the entry. It is exactly the same hash you worked with in the previous exercise. And since you can get the entry based on its hash, it is enough to store the entry hash inside the header. This makes a header a lightweight data structure. Whether your entry contains all published articles of Elisabeth Sawin or just a single "Hello world", the size of the header will about the same size. That is why entries and headers make such a good team: **entries are simple, headers are light**.
+`entry_type`: contains some additional information on about the entry itself, like the id of the hApp, the id of the zome, it's visibility. We touch on this in the next exercise.
+
 
 ```js story
 const sampleZome = {
-  name: "helloworld",
+  name: "boxstorage",
   entry_defs: [
     {
-      id: "greeting",
+      id: "box",
       visibility: "Public",
     },
   ],
   zome_functions: {
-    say_greeting: {
+    store_box: {
       call: ({ create_entry }) => ({ content }) => {
-        return create_entry({ content, entry_def_id: "greeting" });
+        return create_entry({ content, entry_def_id: "box" });
       },
       arguments: [{ name: "content", type: "String" }],
     },
-    get_greeting: {
+    get_box: {
       call: ({ get }) => ({ hash }) => {
         return get(hash);
       },
-      arguments: [{ name: "hash", type: "EntryHash" }],
+      arguments: [{ name: "hash", type: "HeaderHash" }],
     },
   },
 };
@@ -75,9 +130,9 @@ export const Simple = () => {
 
         conductor.callZomeFn({
             cellId,
-            zome: "helloworld",
-            fnName: "say_greeting",
-            payload: "hello world" ,
+            zome: "boxstorage",
+            fnName: "add_box",
+            payload: "a toy, a towel and a t-shirt" ,
             cap: null,
           });
 
@@ -104,24 +159,32 @@ export const Simple = () => {
   `;
 };
 ```
+- relatie tussen header
 
-First of all each hash has the same length. No matter how small or how big the input is, the hash is always the same length. If you don't believe it, try it. Try a really long greeting, but please do not damage our equipement.
-The second thing you will find is that hashes do not look very similar. In fact, even the smallest difference in the input will give a very different hash. Don't believe, try! Create an entry for *hello world* all lowercase, or add a comma or even a space.
-The hashes will be very different.
-Finally for the grand finale: add *Hello world* as an entry and then add it again. What do you notice?
+exercise -> create  & update
+exercise -> delete + notice no entry in delete, hence soft delete
 
-Nothing happens. And that is a feature, not a bug. Because the same input, always returns the same hash. So when you added the *Hello World* entry a second and a third time the Entry Graph detected it already has entry with this hash. And why save it again, if you already have it. It is a smart way to store data.
-
-## Hash table
-
-When you combine all these properties of hashes you can do interesting stuff. If for every piece of data or content you have, you can calculate the hash value, then you could easily make a nice big list of all the hashes. No matter the size of the data you want to store, each piece will have it's own hash, which is unique but has the same size as all other hashes. And since all those hashes can be mapped to their content, you can use that list as an index. This type of list has a name, it's a **hash table**. And the fancy name for this way of storing and retrieving your data is called**content addressable storage**. Because the content, well actually the hash of the content, can be used as a unique address for the content. I will really get interesting when we upgrade this hash table to a distribute hash table.
+ELEMENTS:
+- varianten van headers
+- visibility
 
 ## Getting ready
 
-So I hope you see that hashes play a big role in how data is stored and retrieved. You will see them poping up when we talk about headers, elements, the DHT, validations. They are everywhere.  
-Enough talking. It is time to get ready for the exercise. 
+So let's get to work with headers and entries. This time you will do your workout in the kitchen.
+On your table you have 3 jars filled with nuts. Jar #1 contains pistacchios, jar #2 brazil nuts and jar #3 contains peanuts. And since you want to keep everything neatly ordered, you are going to label the jars. Sadly after you try your first peanut, you realise you are allergic to them.
+After a day and a night in the hospital you are back on your feet and decide to throw away all peanuts and use the jar, after thouroughly washing it out, for cashews. And that is the moment that you realise that you need to change the label on the jar. Luckily there is a zome function for that. Which you are going to write. In total the zome will need 3 functions that can be called from the outside: `add_label`, `get_label` and `change_label`. 
 
-This time you are building a library zome. The zome will need 2 functions that can be called from the outside: `add_book` and `get_book`. You will add your favorite book and retrieve it from the library zome with -you guessed it- via the hash of its entry. In the next exercise we will see that there are better way to retrieve your data: headers and elements. But it is good to know you can always find your entry again based on its entry hash.
+Let's do a dry run in the simulation gym.
+Select "add_label" in the CallZomeFns below, type the jar number `#1` and the corresponding label `pistacchios` in the inputs and click _EXECUTE_. Dp the same for jar #2 with the brazil nuts and jar #3 with peanuts.
+Click on one of the newly added objects in the Entry Graph and copy the value of Entry hash. 
+Select "get_book" in the CallZomeFns, put in the hash and click _EXECUTE_. Open the last item with the green check with the text `get_book in library zome, result: `, in the panel just right of the execute button. Inspect the details. We told you you would see hashes everywhere. Look for the entry_hash and check if it matches.
+If it does, it means you succesfully created and retrieved an entry from the holochain simulation app.
+
+Bonus: delete. Jar breaks
+no data mutations, data is immutable.
+pistacchios: create
+peanut: create>update
+brazil: create>delete
 
 First let's practice a bit in the simulation gym.
 Select "add_book" in the CallZomeFns below, type the title of your favorite book in the input and click _EXECUTE_.
