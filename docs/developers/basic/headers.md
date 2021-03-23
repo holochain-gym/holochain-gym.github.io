@@ -5,7 +5,7 @@ import "@rocket/launch/inline-notification/inline-notification.js";
 import { html } from "lit-html";
 import {
   HolochainPlaygroundContainer,
-  EntryDetail,
+  EntryContents,
   EntryGraph,
   CallZomeFns,
 } from "@holochain-playground/elements";
@@ -15,7 +15,7 @@ customElements.define(
   HolochainPlaygroundContainer
 );
 customElements.define("entry-graph", EntryGraph);
-customElements.define("entry-detail", EntryDetail);
+customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
@@ -23,7 +23,7 @@ customElements.define("call-zome-fns", CallZomeFns);
 
 Nice to see you again. We are happy to see your progress. You are really building up some core strength here.
 
-By now you know what entries are, how you save them in your holochain app, retrieve them and even write a test for a zome function. And you took a long and hard look at hashes. Perhaps they were not new to you, but they are such a crucial aspect of any holochain app, that it couldn't hurt to refresh those muscles.
+By now you know what entries are, how you save them in your holochain app, retrieve them and even write a test for a zome function. And you took a long and hard look at hashes. Perhaps they were not new to you, but they are such a crucial aspect of any holochain app, that it couldn't hurt to refresh those muscles. So on to the next topic: headers.
 
 ## Headers
 
@@ -87,73 +87,69 @@ And some headers have some extra fields. Create and Update have 2 more fields. A
 `entry_hash` is the hash of the entry. It is exactly the same hash you worked with in the previous exercise. And since you can get the entry based on its hash, it is enough to store the entry hash inside the header. This makes a header a lightweight data structure. Whether your entry contains all published articles of Elisabeth Sawin or just a single "Hello world", the size of the header will about the same size. That is why entries and headers make such a good team: **entries are simple, headers are light**.
 `entry_type`: contains some additional information on about the entry itself, like the id of the hApp, the id of the zome, it's visibility. We touch on this in the next exercise.
 
-
 ```js story
-const sampleZome = {
-  name: "boxstorage",
+const sampleZome2 = {
+  name: "library",
   entry_defs: [
     {
-      id: "box",
+      id: "book",
       visibility: "Public",
     },
   ],
   zome_functions: {
-    store_box: {
-      call: ({ create_entry }) => ({ content }) => {
-        return create_entry({ content, entry_def_id: "box" });
+    add_book: {
+      call: (hdk) => async ({ content }) => {
+        await hdk.create_entry({
+          content,
+          entry_def_id: "book",
+        });
+        const postHash = await hdk.hash_entry({ content });
+        return ""; 
       },
-      arguments: [{ name: "content", type: "String" }],
+      arguments: [
+        { name: "content", type: "String" },
+      ],
     },
-    get_box: {
+    get_book: {
       call: ({ get }) => ({ hash }) => {
         return get(hash);
       },
-      arguments: [{ name: "hash", type: "HeaderHash" }],
+      arguments: [{ name: "hash", type: "EntryHash" }],
     },
   },
 };
 
-const simulatedDnaTemplate = {
-  zomes: [sampleZome],
+const simulatedDnaTemplate2 = {
+  zomes: [sampleZome2],
 };
-export const Simple = () => {
+export const Exercise = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate}
+      .simulatedDnaTemplate=${simulatedDnaTemplate2}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
         const cellId = conductor.getAllCells()[0].cellId;
 
         e.target.activeAgentPubKey = cellId[1];
-
-        conductor.callZomeFn({
-            cellId,
-            zome: "boxstorage",
-            fnName: "add_box",
-            payload: "a toy, a towel and a t-shirt" ,
-            cap: null,
-          });
-
-
       }}
     >
       <call-zome-fns
-        id="call-zome"
-        style="height: 200px; margin-bottom: 20px;"
+        id="call-zome2"
+        style="height: 500px; margin-bottom: 20px;"
         hide-zome-selector
         hide-agent-pub-key
       >
       </call-zome-fns>
-      <div style="display: flex; flex-direction: row; align-items: start;">
+      <div style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;">
         <entry-graph
-          .showFilter=${false}
+          hide-filter
           .excludedEntryTypes=${["Agent"]}
           style="flex: 1; margin-right: 20px; height: 500px;"
         >
         </entry-graph>
-        <entry-detail style="flex-basis: 600px; height: 500px;"> </entry-detail>
+        <entry-contents style="flex-basis: 600px; height: 500px;"> </entry-contents>
       </div>
     </holochain-playground-container>
   `;
