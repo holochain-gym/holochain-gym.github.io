@@ -203,7 +203,7 @@ const simulatedDna1 = {
             { name: "new_content", type: "String" },
           ],
         },
-        delete_entry: {
+        delete_label: {
           call: ({ delete_entry }) => ({ deletes_header_address }) => {
             return delete_entry(deletes_header_address);
           },
@@ -251,120 +251,23 @@ So in a holochain app data is never overwritten. If you change the label on the 
 
 ## Exercise
 
+Ok, it is time to start stretching. We raise the bar a little more this time. You start with an empty `lib.rs` file in your zome. It is up to you to add the `add_label`, `get_label` and `update_label`. Look at the tests or in previous exercises if you get lost.
+
+It is up to you to add struct Book with two fields, title and content, to define your entry, add all the attributes and to register your entry definition. Again, look [here](https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs) to see what functions might help you accomplish your goals.
+
 ## Deleting entries
 
-## Exercise
+When you are done creating a zome that can add an update labels, you might start wondering: given that entries in a holochain app never really disappear, you might be wondering how you delete an entry? The answers is simple: with a header. Just like the add_label function that created an header pointing to a new entry, you can delete that same entry by creating an delete header.
 
-
-
-*****************************************
-BELOW = old stuff, and temporary notes
-*****************************************
-- relatie tussen header
-
-exercise -> create  & update
-exercise -> delete + notice no entry in delete, hence soft delete
-
-ELEMENTS:
-- varianten van headers
-- visibility
-- update to previous entry
-
-Bonus: delete. Jar breaks
-no data mutations, data is immutable.
-pistacchios: create
-peanut: create>update
-brazil: create>delete
-
-First let's practice a bit in the simulation gym.
-Select "add_book" in the CallZomeFns below, type the title of your favorite book in the input and click _EXECUTE_.
-Click on the newly added object in the Entry Graph and copy the value of Entry hash. 
-Select "get_book" in the CallZomeFns, put in the hash and click _EXECUTE_. Open the last item with the green check with the text `get_book in library zome, result: `, in the panel just right of the execute button. Inspect the details. We told you you would see hashes everywhere. Look for the entry_hash and check if it matches.
-If it does, it means you succesfully created and retrieved an entry from the holochain simulation app.
-
-
-## Exercise
-
-### Add book
-
-Since the previous exercise went well, we will raise the bar a little and leave a bit more of the work to you. We will start you of with this:
-
-```rust
-#[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct SomeExternalInput {
-    title: String,
-    content: String,
-}
-
-pub fn add_book(input: SomeExternalInput) -> ExternResult<EntryHash> {
-    unimplemented!();
-}
-
-pub fn get_book(hash: String) -> ExternResult<Book> {
-    unimplemented()
-}
-```
-
-It is up to you to add struct Book with two fields, title and content, to define your entry, add all the attributes and to register your entry definition.
-There is one thing we didn't tell in the previous exercise: `create_entry` returns a `ExternResult<HeaderHash>` and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look [here](https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs) to see what function might be suited for that.
-
-
-### Add test  
-
-If you really want to take your exercises seriously, you need to know how to add tests yourself. Until now, every time you ran `./run_tests` script, it would jump in the tests directory up and run the tests, written in typescript, with `npm test`. In these tests we take the zome, that was compiled into a dna, and have a holochain conductor create a cell, for a specific user, with this dna. 
-The tests are fairly straightforward. Take a look at the code in `tests\src\index.ts`. If you are done exploring, add the code here below, just behind this line `t.ok(entryHash, "test add book");`.
-
-
-```typescript
-let book = await alice_common.cells[0].call(
-  "exercise",    // name of zome
-  "get_book",    // function to call
-  entryHash      // value to pass to the function
-);
-t.ok(book, "test get book"); // tape test assertion
-```
-
-Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test, is the test that failed at least once. That way you know you are actually testing something real.
-
-### Get book
-
-After you get a failing test, it is up to you to make it pass. Implement the `get_book` function.
-Run the tests. And if everything passes, then it is time to put your feet up, relax and rest.
-
+You can also delete updates. And according to the docs: if you delete all the headers `a previously published Entry will become inaccessible if all of its`. We have not simulation of exercise for that. But you can take up that challenge and build one yourself. We will reward you with a lifetime membership to the holochain gym if you can come up with a good exercise.
 
 # Errors
 
-ok 1 should be truthy
-07:29:31 [tryorama] error: Test error: {
-  type: 'error',
-  data: {
-    type: 'ribosome_error',
-    data: 'Wasm error while working with Ribosome: Deserialize([0])'
-  }
-}
-not ok 2 Test threw an exception. See output for details.
+If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
 
-==> verify that fieldname in typescript, match with the fieldnames in Rust
-// Rust
-#[derive(Serialize, Deserialize, Clone, Debug)]
-pub struct SomeExternalEntryHash{
-    value: String,  // has to match with 
-}
-
-// Typescript
-let book = await alice_common.cells[0].call(
-  "exercise",
-  "get_book",
-  {
-    // CORRECT
-    value: "SDJCZjlsjfldkjfzerezmdljfdsmoiezr",
-    // WRONG
-    differentfieldname: "SDJCZjlsjfldkjfzerezmdljfdsmoiezr",
-  }
-);
-
-
-
+```rust
+no error added yet
+```
 
 For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15
