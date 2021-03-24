@@ -28,3 +28,14 @@ where
 **fn_name**: Name of the actual function that we want to evoke. <br>
 **cap_secret**: The secret from the cabability token that the target agent authored and shared. It is possible to send `None` here but that will result in a authentification error unless the target zome function has been marked by the target agent as having `Unrestricted` Capability Access. <br>
 **payload**: The data that will be passed into the zome function of the remote agent.
+
+## Exercise
+
+### Problem statement
+
+We need to code a small zome that has the following abilities:
+
+ - Create and share a post with another agent; p2p
+ - Have the post persist so agent can read their incoming messages
+    - Provide a method of getting posts an agent has received
+ - Allow the receiving of cap token secrets from other agents
