@@ -24,7 +24,7 @@ customElements.define("call-zome-fns", CallZomeFns);
 Welcome back to our Holochain gym. In the previous exercise you learned how to create a entry in a zome. You compiled your zome to a dna, you asked the holochain conductor to turn that dna in a cell, you tested your zome code in that cell through a test script. And you learned that you needed the following things in your code:
 - import hdk library
 - a serializable struct for input
-- a public function with `#[hdk_extern()]` to make calls from the outside into your zome
+- a public function with `#[hdk_extern]` to make calls from the outside into your zome
 - a struct with `#[hdk_entry()]` to serve as the base for your entry definition
 - register your entry definition `entry_defs![NameOfYourStruct::entry_def()];`
 

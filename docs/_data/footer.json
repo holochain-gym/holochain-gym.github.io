@@ -17,6 +17,10 @@
     "children": [
       {
         "text": "Help and Feedback",
+        "href": "https://forum.holochain.org/c/learning-library/gym/133"
+      },
+      {
+        "text": "Tasks for Contributors to the Gym",
         "href": "https://github.com/holochain-gym/holochain.github.io/issues"
       }
     ]
