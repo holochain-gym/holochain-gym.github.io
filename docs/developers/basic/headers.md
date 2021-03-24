@@ -251,9 +251,9 @@ So in a holochain app data is never overwritten. If you change the label on the 
 
 ## Exercise
 
-Ok, it is time to start stretching. We raise the bar a little more this time. You start with an empty `lib.rs` file in your zome. It is up to you to add the `add_label`, `get_label` and `update_label`. Look at the tests or in previous exercises if you get lost.
+Ok, it is time to start stretching. We raise the bar a little more this time. You start with an empty `lib.rs` file in your zome. It is up to you to add the `add_label`, `get_label` and `update_label`. Look at the tests or in previous exercises. And if you really get lost, you can always take a look at the solution branch in git.
 
-It is up to you to add struct Book with two fields, title and content, to define your entry, add all the attributes and to register your entry definition. Again, look [here](https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs) to see what functions might help you accomplish your goals.
+It is up to you to add KitchenJar struct with one field: label and to implement all the methods. Again, look [here](https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs) to see what functions might help you accomplish your goals.
 
 ## Deleting entries
 
