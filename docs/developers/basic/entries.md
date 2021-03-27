@@ -135,7 +135,7 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 
 ### External inputs
 
-Above you see the code we already added to the `zomes/exercise/src/lib.rs` file. One thing you need to remember is that zomes are just modules, which means that by themselves they don't do much. You need to feed them data and ask them to do stuff. To be honest, zomes can actually do a lot, even when you are you not looking, but that will become clear over time.
+Above you see the code we already added to the `zomes/exercise/src/lib.rs` file. One thing you need to remember is that zomes are just modules, which means that by themselves they don't do much. You need to feed them data and ask them to do stuff. To be honest, zomes can actually do a lot, even when you are not looking, but that will become clear over time.
 
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug)]
