@@ -93,7 +93,7 @@ export const Sim0 = () => {
 };
 ```
 
-When you click on the blue square, you will see a blob of json data, just as you see below. The response get is something that is called an `element` in Holochain language. You will look a elements in more detail in the next exercise, but basically an element is just the combination of an entry and a header.
+When you click on the blue square, you will see a blob of json data, just as you see below. The response get is something that is called an `element` in Holochain language. We will look at elements in more detail in another exercise, but basically an element is just the combination of an entry and a header.
 You will see that there are 2 top level objects: entry and signed_header. The signed_header consists of a header and a signature. You can ignore the latter. Before we talk about the header, take one more look at the entry. What do you notice?
 
 ```json
@@ -129,22 +129,22 @@ You will see that there are 2 top level objects: entry and signed_header. The si
 }
 ```
 
-Well the most stricking aspect of the entry is its simplicity. This is by design. Remember that the entry is stored and retrieved based on its hash, the content adressable stuff... Well if you and I and 100 others want to store a picture of Wangari Maathai in our Holochain app then there is no need to store it 102 times. One copy would be enough. In reality Holochain apps will keep several copies to ensure the app is reliable and perfomant, but that a whole different topic.
+Well the most striking aspect of the entry is its simplicity. This is by design. Remember that the entry is stored and retrieved based on its hash, the content adressable stuff... Well if you and I and 100 others want to store a picture of Wangari Maathai in our Holochain app then there is no need to store it 102 times. One copy would be enough. In reality Holochain apps will keep several copies to ensure the app is reliable and perfomant, but that a whole different topic.
 
 So the main idea is: keep entries simple, so they are efficient to store and retrieve. An entry can tell you two things 
 1. what type of entry it is: Agent, App, CapClaim, CapGrant
 2. what the content of the entry is
 
 An entry does not tell you who created the entry, when it was created or if it was modified. This is where the header comes in. You could think of an header as a kind of metadata.
-Let take a look what we can decypher from the example above.
+Let's take a look what we can decypher from the example above.
 
-* **author** the public key of the agent (cell) that signed the entry. This is a crucial component to prove to others you are really the author of this entry. Luckily it is all added automaticaly.    
-* **timestamp** of when this entry was committed. It will state the time for when the entry was created. This the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is combination standard Linux Epoch Time e.g._1616571211_  combined with elapsed nanoseconds,e.g._293000_.  While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.  
+* **author** the public key of the agent (cell) that signed the entry. This is a crucial component to prove to others you are really the author of this entry. Luckily it is all added automatically.    
+* **timestamp** of when this entry was committed. It will state the time for when the entry was created. This the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is a combination of standard Linux Epoch Time e.g._1616571211_  combined with elapsed nanoseconds, e.g._293000_.  While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.  
 * **header_seq** & **prev_header** are a better way to determine order. We will talk about them in a next exercise.  
-* **type** indication what type of header this is. There are a number of header types: Dna,  AgentValidationPkg, InitZomesComplete, CreateLink, DeleteLink, Create, Update, Delete. In this exercise you will only have to deal with Create, Update, Delete.
+* **type** indication what type of header this is. There are a number of header types: Dna,  AgentValidationPkg, InitZomesComplete, CreateLink, DeleteLink, Create, Update, Delete. In this exercise you will only have to deal with Create, Update and Delete.
 
 All headers have the above mentioned fields, with one small exception of the Dna header, which doesn't have a prev_header, for the very simple reason that it is always the first header to be created in a holochain app.  
-And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these field tell something about entries. Because entries a very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header.  
+And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these fields tell something about entries. Because entries a very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header.  
 * **entry_hash** is the hash of the entry. It is exactly the same hash you worked with in the previous exercise. And since you can get the entry based on its hash, it is enough to store the entry hash inside the header. This makes a header a lightweight data structure. Whether your entry contains all published articles of Elisabeth Sawin or just a single "Hello world", the size of the header will about the same size. That is why entries and headers make such a good team: _**entries are simple, headers are light**_.  
 * **entry_type**: contains some additional information on about the entry itself, like the id of the hApp, the id of the zome, it's visibility. We touch on this in the next exercise.
 
@@ -154,7 +154,7 @@ And some headers have some extra fields. Create and Update have 2 more fields. A
 
 So let's get to work with headers and entries. This time you will do your workout in the kitchen.
 On your kitchen table you have 3 jars filled with nuts. Jar #1 contains pistacchios, jar #2 brazil nuts and jar #3 contains peanuts. And since you want to keep everything neatly ordered, you are going to label the jars. Sadly after you try your first peanut, you realise you are allergic to them.
-After a day and a night in the hospital you are back on your feet and decide to throw away all peanuts and use the jar, after thouroughly washing it out, for cashews. And that is the moment that you realise that you need to change the label on the jar. Luckily there is a zome function for that. Which you are going to write. In total the zome will need 3 functions that can be called from the outside: `add_label`, `get_label` and `change_label`. 
+After a day and a night in the hospital you are back on your feet and decide to throw away all peanuts and use the jar, after thoroughly washing it out, for cashews. And that is the moment that you realise that you need to change the label on the jar. Luckily there is a zome function for that. Which you are going to write. In total the zome will need 3 functions that can be called from the outside: `add_label`, `get_label` and `change_label`. 
 
 Let's do a dry run in the simulation gym.
 Select "add_label" in the CallZomeFns below, type `#1 pistacchios` in the input and click _EXECUTE_. Do the same for `#2 brazil nuts` and `#3 peanuts`.
@@ -245,7 +245,7 @@ export const Sim1 = () => {
 };
 ```
 
-What you see is that the original Create header is still there and the original entry is still there and it is not updated. But you do see a new header of type Update with a new header. And if you open Update header you will see that it refers to the original create header and the original entry. 
+What you see is that the original Create header is still there and that the original entry is still there and it is not updated. But you do see a new header of type Update with a new header. And if you open Update header you will see that it refers to the original create header and the original entry. 
 The update header is basically saying: "Hey, remember that jar you labelled as #3 peanuts? Well I am renaming it to #3 cashews".
 So in a holochain app data is never overwritten. If you change the label on the jar 10 times, then your _chain_ will contain at least 11 headers. One create header and 10 update headers. And all these headers will point to entries.
 
@@ -257,17 +257,29 @@ It is up to you to add KitchenJar struct with one field: label and to implement 
 
 ## Deleting entries
 
-When you are done creating a zome that can add an update labels, you might start wondering: given that entries in a holochain app never really disappear, you might be wondering how you delete an entry? The answers is simple: with a header. Just like the add_label function that created an header pointing to a new entry, you can delete that same entry by creating an delete header.
+When you are done creating a zome that can add and update labels, you might start wondering: given that entries in a holochain app never really disappear, you might be wondering how you delete an entry? The answers is simple: with a header. Just like the add_label function that created an header pointing to a new entry, you can delete that same entry by creating an delete header.
 
-You can also delete updates. And according to the docs: if you delete all the headers `a previously published Entry will become inaccessible if all of its`. We have not simulation of exercise for that. But you can take up that challenge and build one yourself. We will reward you with a lifetime membership to the holochain gym if you can come up with a good exercise.
+You can also delete updates. And according to the [docs](https://github.com/holochain/holochain/blob/d92678918b1b85f7ef40b866bdec0ea52cba77c4/crates/holochain_zome_types/src/header.rs#L373): if you delete all the headers `a previously published Entry will become inaccessible if all of its Headers are marked deleted`. We have no simulation or exercise for that. But you can take up that challenge and build one yourself. We will reward you with a lifetime membership to the holochain gym if you can come up with a good exercise.
 
 # Errors
 
 If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
 
 ```rust
-no error added yet
+ERROR wasm_trace: exercise::__add_label_extern:zomes/exercise/src/lib.rs:15 output_type = "core::result::Result<hc_utils::wrappers::WrappedHeaderHash, holochain_wasmer_common::result::WasmError>"; bytes = [129, 165, 108, 97, 98, 101, 108, 170, 35, 51, 32, 112, 101, 97, 110, 117, 116, 115]; Deserialize("invalid type: map, expected a string")
 ```
+
+    let entryHash3 = await alice_common.cells[0].call(
+      "exercise",
+      "add_label",
+      //OK
+      "#3 peanuts"
+      //WRONG IF in zome --> pub struct KitchenJarLabel(String);
+      "
+      {
+        label: "#3 peanuts",
+      }
+    );
 
 For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15
