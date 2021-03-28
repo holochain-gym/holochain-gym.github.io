@@ -93,3 +93,14 @@ enum CapAccess {
 }
 
 ```
+
+## Exercise
+
+### Problem statement
+
+We need to code a small zome that has the following abilities:
+
+ - Give Unrestricted capability access to other agents so agents may receive cap secrets for transferable or assigned tokens
+ - Ability to grant transferable cability access to some agent
+ - Ability to grant assigned cability access to some agent 
+ - Ability to get cap claims received from other agents
