@@ -25,6 +25,8 @@ An entry is a basic unit of user data. As a Holochain developer one of the most 
 
 *Quick reminder - A [Zome](https://developer.holochain.org/docs/glossary/#zome) is a module in a [DNA](https://developer.holochain.org/docs/glossary/#dna); the base of any [Holochain application (hApp)](https://developer.holochain.org/docs/glossary/#holochain-application-happ).*
 
+> You can always click `Core Concepts` and `Glossary` in the menu above to review the terms that you don't understand yet.
+
 ## Creating an entry
 
 *NOTE: If you are thinking "I already know how to do that, I'm going to jump to the advanced exercises!" - hold on as we not want you to get injured during your very first exercise!*
