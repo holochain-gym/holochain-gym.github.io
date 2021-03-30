@@ -8,11 +8,11 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intermediate: Paths: Holochain Gym</title>
-<meta property="og:title" content="Intermediate: Paths: Holochain Gym">
+<title>Intermediate: Remote Call: Holochain Gym</title>
+<meta property="og:title" content="Intermediate: Remote Call: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
-<link rel="canonical" href="/developers/intermediate/paths/">
+<link rel="canonical" href="/developers/intermediate/remote-call/">
 
 
 
@@ -32,8 +32,8 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../446f8f22.png">
-<meta property="og:url" content="/developers/intermediate/paths/">
+<meta property="og:image" content="../../../2274089f.png">
+<meta property="og:url" content="/developers/intermediate/remote-call/">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -48,13 +48,12 @@
 
   
 
-<link rel="preload" href="../../../e477b19a.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../4952c3ac2.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../7d681bc6.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../6d60778911.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6d60778912.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../be7b5f53.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -160,9 +159,9 @@
 <li class="menu-item anchor"><a href="/developers/basic/source-chain/#try-it" class="anchor">Try it!</a></li></ul></li></ul></li>
 <li class="menu-item active"><a href="/developers/intermediate/" class="active">Intermediate</a><ul><li class="menu-item"><a href="/developers/intermediate/dht/">DHT</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/dht/#holochains-dht" class="anchor">Holochain's DHT</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/dht/#try-it" class="anchor">Try it!</a></li></ul></li>
-<li class="menu-item current"><a href="/developers/intermediate/paths/">Paths</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/paths/#try-it" class="anchor">Try it!</a></li>
+<li class="menu-item"><a href="/developers/intermediate/paths/">Paths</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/paths/#try-it" class="anchor">Try it!</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/paths/#exercise" class="anchor">Exercise</a></li></ul></li>
-<li class="menu-item"><a href="/developers/intermediate/remote-call/">Remote Call</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/remote-call/#hdk-actions" class="anchor">HDK actions</a></li>
+<li class="menu-item current"><a href="/developers/intermediate/remote-call/">Remote Call</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/remote-call/#hdk-actions" class="anchor">HDK actions</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/remote-call/#exercise" class="anchor">Exercise</a></li></ul></li>
 <li class="menu-item"><a href="/developers/intermediate/capability-tokens/">Capability Tokens</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#subconsious-flow" class="anchor">Subconsious flow</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#hdk-actions" class="anchor">HDK actions</a></li>
@@ -186,52 +185,45 @@
       
         <main class="markdown-body">
   
-    <h1 id="intermediate-paths"><a class="anchor" href="#intermediate-paths"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Paths</h1>
-<p>Paths are the replacement of anchors in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allow you to create complex indexes to query faster the DHT very easily.</p>
-<p>The content of each path is a string with segments separated by a dot, for example: <code>all_tasks.project1.finished</code>. This path will create these entries:</p>
-<ul>
-<li><code>all_tasks</code></li>
-<li><code>all_tasks.project1</code></li>
-<li><code>all_tasks.project1.finished</code></li>
-</ul>
-<p>Here, you can see that the root parent of the path is <code>all_tasks</code>, which has <code>all_tasks.project1</code> as child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.</p>
-<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
-<p>Here you can create paths yourself, and see which entries and links are created.</p>
-<mdjs-story mdjs-story-name="Simple"></mdjs-story>
-<p>The basic mechanism for which these entries are useful is to attach links to them. If you attach a link to the <code>all_tasks.project1.finished</code> that points to all tasks related with <code>project1</code> that have finished, now you can do a <code>get_links</code> on that path to get only those.</p>
-<p>If, on the contrary, you want to get all tasks within the project regardless of status, you can get all the children paths from <code>all_tasks.project1</code>, which will give you for example <code>all_tasks.project1.todo</code>, <code>all_tasks.project1.doing</code> and <code>all_tasks.project1.finished</code>, and then do a <code>get_links</code> to tasks on those.</p>
-<p>You can imagine different types of indexes built on top of paths, with multidimensional properties.</p>
-<inline-notification type="warning" title="Including paths in zomes">
-Keep in mind that paths are already incorporated in the core hdk, so you don't need to import them from an external library. Although it is necessary to define them as an entry definition in your zome like this:
-<pre class="language-rust"><code class="language-rust"><span class="token function">entry_defs!</span><span class="token punctuation">[</span>
-    Path<span class="token punctuation">::</span><span class="token function">entry_def</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <h1 id="intermediate-remote-call"><a class="anchor" href="#intermediate-remote-call"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Remote Call</h1>
+<p><strong>Remote Calls</strong> are a method for calling a zome function of another agent in a Holochain DHT network. This remote function exection happens in p2p and relies heavily on capability tokens for the security model.
+Remote calls are useful for the purposes of allowing other agents to create entries in your chain (private or public) on your behalf. This has many applications and could be used in things such as: shared authoring of posts or synchronous p2p communication!</p>
+<p>Note the example of synchronous communication vs asynchronous. Remote calls require that the target be online in order to properly execute. If the target agent is not online then the call will fail with a network error.</p>
+<p>Remote calls have deep ties with Capability Tokens. Not only do you need a Capability Tokens secret to send a remote call, but agents should also receive these secrets via remote calls to their own conductor!</p>
+<h2 id="hdk-actions"><a class="anchor" href="#hdk-actions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>HDK actions</h2>
+<p>Lets take a look at the hdk function and detail each parameter of the function call, that will help give us a clearer picture of how it works and what is expected from us.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">fn</span> call_remote<span class="token operator">&lt;</span>I<span class="token operator">&gt;</span><span class="token punctuation">(</span>
+    agent<span class="token punctuation">:</span> AgentPubKey<span class="token punctuation">,</span>
+    zome<span class="token punctuation">:</span> ZomeName<span class="token punctuation">,</span>
+    fn_name<span class="token punctuation">:</span> FunctionName<span class="token punctuation">,</span>
+    cap_secret<span class="token punctuation">:</span> Option<span class="token operator">&lt;</span>CapSecret<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+    payload<span class="token punctuation">:</span> I
+<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>ZomeCallResponse<span class="token operator">&gt;</span>
+<span class="token keyword">where</span>
+    I<span class="token punctuation">:</span> Serialize <span class="token operator">+</span> Debug<span class="token punctuation">,</span>
 </code></pre>
-</inline-notification>
+<ul>
+<li><strong>agent</strong>: The first thing we need to pass is the <code>AgentPubKey</code>. This is the public key of the agent you wish to send the remote call to. You should already be familiar about the role of agent keys in holochain, but if not check out some of the previous exercises. <br></li>
+<li><strong>zome</strong>: Name of zome that contains the function that we want to remote execute. <br></li>
+<li><strong>fn_name</strong>: Name of the actual function that we want to evoke. <br></li>
+<li><strong>cap_secret</strong>: The secret from the cabability token that the target agent authored and shared. It is possible to send <code>None</code> here but that will result in a authentification error unless the target zome function has been marked by the target agent as having <code>Unrestricted</code> Capability Access. <br></li>
+<li><strong>payload</strong>: The data that will be passed into the zome function of the remote agent.</li>
+</ul>
 <h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
 <h3 id="problem-statement"><a class="anchor" href="#problem-statement"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Problem statement</h3>
-<p>We need to code a small zome that satisfies these capabilities:</p>
+<p>We need to code a small zome that has the following abilities:</p>
 <ul>
-<li>Create a new post, passing a content and some tags</li>
-<li>Get all posts within a day or an hour, examples:
+<li>Create and share a post with another agent; p2p</li>
+<li>Have the post persist so agent can read their incoming messages
 <ul>
-<li>"get me all posts posted on 21st February, 2021"</li>
-<li>"get me all posts posted between 21:00 and 22:00 of 21st February, 2021"</li>
+<li>Provide a method of getting posts an agent has received</li>
 </ul>
 </li>
-<li>Get all the tags that have been created</li>
-<li>Get all posts that have been created with a certain tag
-<ul>
-<li>"get me all posts that have been posted with the tag "nature""</li>
+<li>Allow the receiving of cap token secrets from other agents</li>
 </ul>
-</li>
-</ul>
-<p>You can follow this entry design to accomplish it:</p>
-<mdjs-story mdjs-story-name="Exercise"></mdjs-story>
 <inline-notification type="tip" title="Exercise">
 <ol>
-<li>Go to the <a href="https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/1.paths">source code for the exercise</a>.</li>
+<li>Go to the <a href="https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/2.remote-call">source code for the exercise</a>.</li>
 <li>Implement all <code>unimplemented!()</code> functions in the exercise.</li>
 <li>Run <code>npm test</code> to test your implementation.</li>
 </ol>
@@ -243,7 +235,7 @@ Keep in mind that paths are already incorporated in the core hdk, so you don't n
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/paths.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/remote-call.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -377,7 +369,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../e477b19a.js"></script>
-<script type="module" src="../../../6d60778911.js"></script>
+<script type="module" src="../../../4952c3ac2.js"></script>
+<script type="module" src="../../../6d60778912.js"></script>
 
 </body></html>

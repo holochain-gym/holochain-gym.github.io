@@ -48,11 +48,11 @@
 
   
 
-<link rel="preload" href="../../../ee69e6a2.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../1f529ce5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../62b060938.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../6a21a435.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../daaff894.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../0152022a.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6d6077898.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../be7b5f53.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 </head>
 
@@ -95,13 +95,15 @@
         ">Developers</a>
 
     
-      <a href="https://forum.holochain.org/c/learning-library/gym/133" class="">Give us Feedback!</a>
+      <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
 
     
-      <a href="https://holochain-playground.github.io" class="">Playground</a>
+      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
+    
+      <a href="https://forum.holochain.org/c/learning-library/gym/133" class="">Give us Feedback!</a>
     
       
 	<a class="social-link" href="https://github.com/holochain-gym/" aria-label="Holochain Gym on GitHub" rel="noopener noreferrer" target="_blank">
@@ -136,7 +138,7 @@
 
     
       <rocket-navigation>
-  <ul><li class="menu-item"><a href="/developers/requirements/">Requirements</a><ul><li class="menu-item"><a href="/developers/requirements/setup/">Setup</a></li>
+  <ul><li class="menu-item"><a href="/developers/requirements/">Requirements</a><ul><li class="menu-item"><a href="/developers/requirements/setup/">Setup</a><ul><li class="menu-item anchor"><a href="/developers/requirements/setup/#basic-holochain-dna-optional" class="anchor">Basic Holochain DNA (optional)</a></li></ul></li>
 <li class="menu-item"><a href="/developers/requirements/documentation/">Documentation</a></li>
 <li class="menu-item"><a href="/developers/requirements/rust/">Rust</a></li></ul></li>
 <li class="menu-item"><a href="/developers/basic/">Basic</a><ul><li class="menu-item"><a href="/developers/basic/entries/">Entries</a><ul><li class="menu-item anchor"><a href="/developers/basic/entries/#what-is-an-entry" class="anchor">What is an entry</a></li>
@@ -159,9 +161,12 @@
 <li class="menu-item anchor"><a href="/developers/intermediate/dht/#try-it" class="anchor">Try it!</a></li></ul></li>
 <li class="menu-item"><a href="/developers/intermediate/paths/">Paths</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/paths/#try-it" class="anchor">Try it!</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/paths/#exercise" class="anchor">Exercise</a></li></ul></li>
+<li class="menu-item"><a href="/developers/intermediate/remote-call/">Remote Call</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/remote-call/#hdk-actions" class="anchor">HDK actions</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/remote-call/#exercise" class="anchor">Exercise</a></li></ul></li>
 <li class="menu-item current"><a href="/developers/intermediate/capability-tokens/">Capability Tokens</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#subconsious-flow" class="anchor">Subconsious flow</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#hdk-actions" class="anchor">HDK actions</a></li>
-<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#data-structures" class="anchor">Data structures</a></li></ul></li></ul></li></ul>
+<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#data-structures" class="anchor">Data structures</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#exercise" class="anchor">Exercise</a></li></ul></li></ul></li></ul>
   <div class="sidebar-bottom">
   <hr>
   <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
@@ -271,6 +276,22 @@
 <span class="token punctuation">}</span>
 
 </code></pre>
+<h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
+<h3 id="problem-statement"><a class="anchor" href="#problem-statement"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Problem statement</h3>
+<p>We need to code a small zome that has the following abilities:</p>
+<ul>
+<li>Give Unrestricted capability access to other agents so agents may receive cap secrets for transferable or assigned tokens</li>
+<li>Ability to grant transferable cability access to some agent</li>
+<li>Ability to grant assigned cability access to some agent</li>
+<li>Ability to get cap claims received from other agents</li>
+</ul>
+<inline-notification type="tip" title="Exercise">
+<ol>
+<li>Go to the <a href="https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/3.capability-tokens">source code for the exercise</a>.</li>
+<li>Implement all <code>unimplemented!()</code> functions in the exercise.</li>
+<li>Run <code>npm test</code> to test your implementation.</li>
+</ol>
+</inline-notification>
         
       
 
@@ -412,7 +433,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../ee69e6a2.js"></script>
-<script type="module" src="../../../62b060938.js"></script>
+<script type="module" src="../../../0152022a.js"></script>
+<script type="module" src="../../../6d6077898.js"></script>
 
 </body></html>

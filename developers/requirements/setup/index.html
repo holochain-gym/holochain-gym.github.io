@@ -48,12 +48,11 @@
 
   
 
-<link rel="preload" href="../../../fb682b062.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../092198c1.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../daaff894.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../1f529ce5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../62b0609315.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../6a21a435.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../4952c3ac3.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6d60778916.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../be7b5f53.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 </head>
 
@@ -96,13 +95,15 @@
         ">Developers</a>
 
     
-      <a href="https://forum.holochain.org/c/learning-library/gym/133" class="">Give us Feedback!</a>
+      <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
 
     
-      <a href="https://holochain-playground.github.io" class="">Playground</a>
+      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
+    
+      <a href="https://forum.holochain.org/c/learning-library/gym/133" class="">Give us Feedback!</a>
     
       
 	<a class="social-link" href="https://github.com/holochain-gym/" aria-label="Holochain Gym on GitHub" rel="noopener noreferrer" target="_blank">
@@ -137,7 +138,7 @@
 
     
       <rocket-navigation>
-  <ul><li class="menu-item active"><a href="/developers/requirements/" class="active">Requirements</a><ul><li class="menu-item current"><a href="/developers/requirements/setup/">Setup</a></li>
+  <ul><li class="menu-item active"><a href="/developers/requirements/" class="active">Requirements</a><ul><li class="menu-item current"><a href="/developers/requirements/setup/">Setup</a><ul><li class="menu-item anchor"><a href="/developers/requirements/setup/#basic-holochain-dna-optional" class="anchor">Basic Holochain DNA (optional)</a></li></ul></li>
 <li class="menu-item"><a href="/developers/requirements/documentation/">Documentation</a></li>
 <li class="menu-item"><a href="/developers/requirements/rust/">Rust</a></li></ul></li>
 <li class="menu-item"><a href="/developers/basic/">Basic</a><ul><li class="menu-item"><a href="/developers/basic/entries/">Entries</a><ul><li class="menu-item anchor"><a href="/developers/basic/entries/#what-is-an-entry" class="anchor">What is an entry</a></li>
@@ -160,9 +161,12 @@
 <li class="menu-item anchor"><a href="/developers/intermediate/dht/#try-it" class="anchor">Try it!</a></li></ul></li>
 <li class="menu-item"><a href="/developers/intermediate/paths/">Paths</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/paths/#try-it" class="anchor">Try it!</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/paths/#exercise" class="anchor">Exercise</a></li></ul></li>
+<li class="menu-item"><a href="/developers/intermediate/remote-call/">Remote Call</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/remote-call/#hdk-actions" class="anchor">HDK actions</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/remote-call/#exercise" class="anchor">Exercise</a></li></ul></li>
 <li class="menu-item"><a href="/developers/intermediate/capability-tokens/">Capability Tokens</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#subconsious-flow" class="anchor">Subconsious flow</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#hdk-actions" class="anchor">HDK actions</a></li>
-<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#data-structures" class="anchor">Data structures</a></li></ul></li></ul></li></ul>
+<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#data-structures" class="anchor">Data structures</a></li>
+<li class="menu-item anchor"><a href="/developers/intermediate/capability-tokens/#exercise" class="anchor">Exercise</a></li></ul></li></ul></li></ul>
   <div class="sidebar-bottom">
   <hr>
   <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
@@ -182,8 +186,8 @@
         <main class="markdown-body">
   
     <h1 id="requirements-setup"><a class="anchor" href="#requirements-setup"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Requirements: Setup</h1>
-<p>If you haven't, install <code>nix-shell</code> following the instructions of the Holochain <a href="https://developer.holochain.org/docs/install/">getting started guide</a>. Note that to complete the exercises you only need <code>nix-shell</code> installed, since they will already contain the necessary files to get you set up with Holochain RSM itself.</p>
-<p>To setup the code exercises that follow along the sections of this page, clone the <a href="https://github.com/holochain-gym/developer-exercises">developer-exercises repository</a>.</p>
+<p>If you haven't, install <code>nix-shell</code> following the instructions of the Holochain <a href="https://developer.holochain.org/docs/install/">getting started guide</a>. <strong>Note that to complete the exercises you only need <code>nix-shell</code> installed</strong>, since they will already contain the necessary files to get you set up with Holochain RSM itself.</p>
+<p>To setup the code exercises that follow along the sections of this page, clone the <a href="https://github.com/holochain-gym/developer-exercises">developer-exercises repository</a>. Every exercise will define its own <code>default.nix</code> file, which you will use to get the appropriate Holochain version.</p>
 <p>We recommend using <a href="https://code.visualstudio.com/">VSCode</a> with the <a href="https://rust-analyzer.github.io/">rust-analyzer</a> extension while coding rust.</p>
 <p>You can access the exercises with the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions.</p>
 <p>To finish an exercise, you must replace all <code>unimplemented</code> functions with working implementations, and <strong>make all the tests pass</strong>.</p>
@@ -193,6 +197,32 @@
 <inline-notification type="tip" title="Solutions">
 <p>If you get stuck with some exercise, the developer-exercises has a <a href="https://github.com/holochain-gym/developer-exercises/tree/solution">solution branch</a> that you can look at for complete working solutions. Try not to use this too much though!</p>
 </inline-notification>
+<h2 id="basic-holochain-dna-optional"><a class="anchor" href="#basic-holochain-dna-optional"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic Holochain DNA (optional)</h2>
+<p>If you want to familiarize yourself with a sample Holochain project, clone the <a href="https://github.com/holochain/holochain-dna-build-tutorial">Holochain DNA Build Tutorial</a>.</p>
+<ul>
+<li>Look at the folder structure:
+<ul>
+<li><code>zomes</code> contains various zomes (holochain modules), each zome is a normal rust crate.</li>
+<li><code>workdir</code> contains important Holochain files, defining your DNAs and hApp.</li>
+<li><code>tests</code> contains the tests for the DNA.</li>
+<li><code>default.nix</code>: this file is really important, as it defines which holochain binaries should be used with this happ.</li>
+</ul>
+</li>
+<li>Enter the <code>nix-shell</code> for this repository by running <code>nix-shell .</code> in the root folder.</li>
+<li>Compile the DNA with:</li>
+</ul>
+<pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">CARGO_TARGET_DIR</span><span class="token operator">=</span>target cargo build --release --target wasm32-unknown-unknown
+hc dna pack workdir/dna
+hc app pack workdir/happ
+</code></pre>
+<ul>
+<li>After compiling, run the tests with:</li>
+</ul>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tests
+<span class="token function">npm</span> <span class="token function">install</span>
+<span class="token function">npm</span> test`
+</code></pre>
+<p>You can look at the files of the project, and also play around with all the various commands that <code>hc sandbox</code> offers.</p>
         
       
 
@@ -334,7 +364,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../fb682b062.js"></script>
-<script type="module" src="../../../62b0609315.js"></script>
+<script type="module" src="../../../4952c3ac3.js"></script>
+<script type="module" src="../../../6d60778916.js"></script>
 
 </body></html>
