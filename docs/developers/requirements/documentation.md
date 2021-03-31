@@ -3,7 +3,7 @@
 Here you can find useful technical documentation for holochain:
 
 - [Core Concepts](https://developer.holochain.org/docs/concepts/)
-- [DNA Build Tutorial](https://github.com/holochain/holochain-dna-build-tutorial)
+- [Glossary of terms](https://developer.holochain.org/docs/glossary/)
 - [HDK documentation](https://docs.rs/hdk/0.0.100/hdk/)
 - [Tryorama documentation](https://github.com/holochain/tryorama)
 - [Conductor API](https://github.com/holochain/holochain-conductor-api)

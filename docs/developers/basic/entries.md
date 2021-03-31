@@ -25,6 +25,8 @@ An entry is a basic unit of user data. As a Holochain developer one of the most 
 
 *Quick reminder - A [Zome](https://developer.holochain.org/docs/glossary/#zome) is a module in a [DNA](https://developer.holochain.org/docs/glossary/#dna); the base of any [Holochain application (hApp)](https://developer.holochain.org/docs/glossary/#holochain-application-happ).*
 
+> You can always click `Core Concepts` and `Glossary` in the menu above to review the terms that you don't understand yet.
+
 ## Creating an entry
 
 *NOTE: If you are thinking "I already know how to do that, I'm going to jump to the advanced exercises!" - hold on as we not want you to get injured during your very first exercise!*
@@ -135,7 +137,7 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 
 ### External inputs
 
-Above you see the code we already added to the `zomes/exercise/src/lib.rs` file. One thing you need to remember is that zomes are just modules, which means that by themselves they don't do much. You need to feed them data and ask them to do stuff. To be honest, zomes can actually do a lot, even when you are you not looking, but that will become clear over time.
+Above you see the code we already added to the `zomes/exercise/src/lib.rs` file. One thing you need to remember is that zomes are just modules, which means that by themselves they don't do much. You need to feed them data and ask them to do stuff. To be honest, zomes can actually do a lot, even when you are not looking, but that will become clear over time.
 
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug)]

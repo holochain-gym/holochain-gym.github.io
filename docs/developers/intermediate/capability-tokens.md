@@ -1,7 +1,8 @@
-# Intermediate >> Capability Tokens ||203
+# Intermediate >> Capability Tokens ||204
 
 ```js script
 import { html } from "lit-html";
+import "@rocket/launch/inline-notification/inline-notification.js";
 ```
 
 **Capability tokens** are the unified security model of holochain. Whenever you want to call a zome function, the conductor will check whether you have capabilities to call it, and return and error if that's not the case.
@@ -93,3 +94,22 @@ enum CapAccess {
 }
 
 ```
+
+## Exercise
+
+### Problem statement
+
+We need to code a small zome that has the following abilities:
+
+- Give Unrestricted capability access to other agents so agents may receive cap secrets for transferable or assigned tokens
+- Ability to grant transferable cability access to some agent
+- Ability to grant assigned cability access to some agent
+- Ability to get cap claims received from other agents
+
+<inline-notification type="tip" title="Exercise">
+
+1. Go to the [source code for the exercise](https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/3.capability-tokens).
+2. Implement all `unimplemented!()` functions in the exercise.
+3. Run `npm test` to test your implementation.
+
+</inline-notification>
