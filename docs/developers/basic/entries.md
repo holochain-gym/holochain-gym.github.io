@@ -226,13 +226,16 @@ Relevant HDK documentation: [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry
 
 <inline-notification type="tip" title="Exercise">
 
-1. Go to the `developer-exercises/basic/0.entries`.
+1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`  
-   _running this the first time might take several minutes or longer_
-3. Define a new struct for your entry: 'Greeting'
-4. Implement the function with `unimplemented!()`
-5. Compile your code: `CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown`.
-6. Run the test: `./run_tests`
+   _you should run this in the folder containing the default.nix file_  
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_  
+3. Go to folder with the exercise `basic/0.entries`
+4. Inside `zome/exercise/src/lib.rs`
+    - Define a new struct for your entry: 'Greeting'
+    - Implement the function with `unimplemented!()`
+5. Compile your code: `./run_build.sh`.
+6. Run the test: `./run_tests.sh`
 7. Don't stop until the test runs green
 
 </inline-notification>

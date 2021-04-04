@@ -252,8 +252,15 @@ export const Exercise = () => {
 
 <inline-notification type="tip" title="Exercise">
 
-1. Go to the [source code for the exercise](https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/1.paths).
-2. Implement all `unimplemented!()` functions in the exercise.
-3. Run `npm test` to test your implementation.
+1. Go to the `developer-exercises`.
+2. Enter the nix-shell: `nix-shell`  
+   _you should run this in the folder containing the default.nix file_  
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_  
+3. Go to folder with the exercise `intermediate/1.paths`
+4. Inside `zome/exercise/src/lib.rs`
+    - Implement all `unimplemented!()` functions
+5. Compile your code: `./run_build.sh`.
+6. Run the test: `./run_tests.sh`
+7. Don't stop until the test runs green
 
 </inline-notification>
