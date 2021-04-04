@@ -25,7 +25,7 @@ customElements.define("dht-cells", DhtCells);
 
 ## What is a source-chain?
 
-A holochain DNA has two places in which you can store data: 
+A holochain DNA has two places in which you can store data:
 
 - One global and shared public DHT (with which we have been playing in the previous exercises).
 - A private source-chain per each agent in the network.
@@ -57,9 +57,8 @@ const simulatedDnaTemplate = {
             original_header_address,
             new_content,
           }) => {
-            return update_entry({
-              original_header_address,
-              new_content,
+            return update_entry(original_header_address, {
+              content: new_content,
               entry_def_id: "sample",
             });
           },
