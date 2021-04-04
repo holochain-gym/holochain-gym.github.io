@@ -31,20 +31,23 @@ An entry is a basic unit of user data. As a Holochain developer one of the most 
 
 When you create an entry a few things will happen:
 
-1. Data validation *(we will learn how this works in later exercises)*.
-2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) *(hence the 'chain' in 'Holochain')*.
-3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp *(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)*.
+1. Your data is validated locally *(we will learn how this works in later exercises)*
+2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) *(hence the 'chain' in 'Holochain')*
+3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp *(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)*
+4. The random people that received your data will validate your data using the same rules that were used in the first step. *(this is where the 'Holo', in Holochain comes from. To become an real entry, your entry has to be seen and validated by different people/agents. Just like a in a hologram, where different people can look at the same object from different angles and still agree on what they are seeing)*
+
+Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.
 
 ## Try it!
 
-Your first exercise will be [a traditional "Hello, World!" program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program) with a tiny twist to the text!
+Your first exercise will be [a traditional "Hello, World!" program](https://en.wikipedia.org/wiki/%22Hello,_World!%22_program).
 
-The challenge is to create an entry in your hApp which will contain the text "Holo, World!".
+The challenge is to create an entry in your hApp which will contain the text "Hello, World!".
 
-To prove we are a first class gym, we have set up a simulation below where you can try this out before you start coding:
+Since we are a first class gym, we have set up a simulation below where you can try this out before you start coding:
 
 1. Click `say_greeting` in the `CallZomeFns` section below to ensure it is selected.
-2. Type "Holo, World!" in the `greeting_text: String` input field.
+2. Type "Hello, World!" in the `content: String` input field.
 3. Click `EXECUTE`.
 
 Notice how a greeting object gets added to the `Entry Graph`.
@@ -53,7 +56,7 @@ Click on the newly created object to inspect the details in `Entry Contents`.
 
 ```js story
 const sampleZome = {
-  name: "holoworld",
+  name: "helloworld",
   entry_defs: [
     {
       id: "greeting",
@@ -62,10 +65,10 @@ const sampleZome = {
   ],
   zome_functions: {
     say_greeting: {
-      call: ({ create_entry }) => ({ greeting_text }) => {
-        return create_entry({ greeting_text, entry_def_id: "greeting" });
+      call: ({ create_entry }) => ({ content }) => {
+        return create_entry({ content, entry_def_id: "greeting" });
       },
-      arguments: [{ name: "greeting_text", type: "String" }],
+      arguments: [{ name: "content", type: "String" }],
     },
   },
 };
@@ -114,11 +117,12 @@ export const Simple = () => {
 
 In the `Entry Contents` you see three things: 
 
-1. `Entry Hash` - the unique adress of this specific entry. If you create another `"greeting_text"` entry by repeating the previous steps and inspect the details of the new object you will see the `Entry Hash` is completely different. [Hashes](https://developer.holochain.org/docs/glossary/#hash) have some interesting properties and benefits which we will learn more about in the next exercise.
+1. `Entry Hash` - the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. [Hashes](https://developer.holochain.org/docs/glossary/#hash) have some interesting properties and benefits which we will learn more about in the next exercise.
 
-2. `"entry_type"` is specific to the Holochain technology underpinning our app. There are four types of entries: Agent, App, CapClaim, and CapGrant. For this exercise we limit our focus to [App entries](https://developer.holochain.org/docs/glossary/#app-entry).
+2. `entry_type` is specific to the Holochain technology underpinning our app. There are four types of entries: Agent, App, CapClaim, and CapGrant. For this exercise we limit our focus to [App entries](https://developer.holochain.org/docs/glossary/#app-entry).
 
-3. `"greeting_text"` is a custom field so you can give it a different name if you want to. You could add more fields as well, but for now one will do.
+3. `content` is a custom field so you can give it a different name if you want to. You could add more fields as well, but for now one will do.
+
 
 ## Getting ready
 
@@ -151,7 +155,7 @@ pub struct SomeExternalInput {
 }
 ```
 
-The `SomeExternalInput` struct is a simple [Rust struct](https://doc.rust-lang.org/std/keyword.struct.html). A struct is similar to classes in other languages. In this case, it contains one custom field to hold your "Holo, World!" greeting.
+The `SomeExternalInput` struct is a simple [Rust struct](https://doc.rust-lang.org/std/keyword.struct.html). A struct is similar to classes in other languages. In this case, it contains one custom field to hold your "Hello, World!" greeting.
 
 On top of it you see `#[derive(Serialize, Deserialize, Clone, Debug)]`. This is what they call an ['attribute' in Rust](https://doc.rust-lang.org/rust-by-example/attribute.html). This annotation adds some useful metadata - `Serialize` and `Deserialize` are crucial; they make sure the data in this struct can be sent to this Zome over a network, from a GUI, or – like in our case – from a test script.
 
@@ -185,9 +189,9 @@ You will find most of the things you will use in this exercise listed in that fi
 
 ### External outputs
 
-The challenge is to create an entry which contains the text "Holo, World!". The text will be passed to the zome as a `SomeExternalInput` struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply `create_entry`. And since you imported all functions from the prelude already, you can use this function immediately in your code.
+The challenge is to create an entry which contains the text "Hello, World!". The text will be passed to the zome as a `SomeExternalInput` struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply `create_entry`. And since you imported all functions from the prelude already, you can use this function immediately in your code.
 
-So, your first attempt might look something like `create_entry(String::from("Holo, World!"))` or `create_entry(input.greeting_text)`. But this won't work.  
+So, your first attempt might look something like `create_entry(String::from("Hello, World!"))` or `create_entry(input.content)`. But this won't work.  
 Because an entry needs to be saved locally and sent over the network, it has to be serializable. And a String itself is not serializable. To do this we create a `struct` that will hold our data.
 
 ```rust
@@ -198,7 +202,7 @@ The name of the struct, in this case `Greeting`, is just a name you choose. And 
 
 ### hdk_entry
 
-Wrapping your "Holo, World!" in a struct is not enough. You need to add an attribute. And that attribute is `#[hdk_entry()]`. The nice thing about it is that it already adds a `Serialize` and `Deserialize` attribute behind the screens. So you only need to add one attribute, not three.
+Wrapping your "Hello, World!" in a struct is not enough. You need to add an attribute. And that attribute is `#[hdk_entry()]`. The nice thing about it is that it already adds a `Serialize` and `Deserialize` attribute behind the screens. So you only need to add one attribute, not three.
 
 ```rust
 #[hdk_entry(id = "greeting")]
@@ -226,7 +230,7 @@ You only need to add a few lines in this first exercise, but know that when the 
 - ran a test script, written in Typescript, executed in Nodejs
 - initiated an actual real holochain conductor
 - which instantiated your DNA into a real, actual Holochain cell
-- and executed a test script that asked your cell to make a real entry with the words "Holo, World!"
+- and executed a test script that asked your cell to make a real entry with the words "Hello, World!"
 
 You will in fact have created your very first decentralized, agent centric, boundary pushing Holochain app. A real hApp!
 
