@@ -102,7 +102,7 @@ We recommend using [VSCode](https://code.visualstudio.com/) with the [rust-analy
 Next up you have 3 options:
 - If you don't know core concepts of Holochain, you can check out the [docs section](/developers/requirements/documentation) to start reading
 - If you are new to Rust you can look [here](/developers/requirements/rust) to find out what you need to learn and where you can learn it
-- If you are ready to start the first exercise, it is a good idea to read about the [anatomy of an exercise](/developers/requirements/anatomy), so you understand the folder structure and specific files. After that it is a good idea to jump right in to [the first exercise](/developers/basic/entries).
+- If you are ready to start the first exercise, it is a good idea to read about the [anatomy of an exercise](/developers/requirements/anatomy), so you understand the folder structure and specific files. After that jump right in to [the first exercise](/developers/basic/entries).
 
 
 You can access all the exercises with the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions.
