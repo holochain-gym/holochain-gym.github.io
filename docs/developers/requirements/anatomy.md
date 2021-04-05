@@ -1,4 +1,4 @@
-# Requirements >> Anatomy exercise || 40
+# Requirements >> Anatomy || 40
 
 ## Anatomy of an exercise
 
