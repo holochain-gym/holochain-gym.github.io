@@ -37,5 +37,22 @@
         "href": "https://github.com/holochain-open-dev"
       }
     ]
+  },
+  {
+    "name": "License",
+    "children": [
+      {
+        "text": "This work is licensed under",
+        "href": "http://creativecommons.org/licenses/by/4.0/"
+      },
+      {
+        "text": "a Creative \nCommons Attribution 4.0",
+        "href": "http://creativecommons.org/licenses/by/4.0/"
+      },
+      {
+        "text": "International License",
+        "href": "http://creativecommons.org/licenses/by/4.0/"
+      }
+    ]
   }
 ]
