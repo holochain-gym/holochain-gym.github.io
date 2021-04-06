@@ -8,11 +8,11 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intermediate: Paths: Holochain Gym</title>
-<meta property="og:title" content="Intermediate: Paths: Holochain Gym">
+<title>Requirements: Anatomy: Holochain Gym</title>
+<meta property="og:title" content="Requirements: Anatomy: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
-<link rel="canonical" href="/developers/intermediate/paths/">
+<link rel="canonical" href="/developers/requirements/anatomy/">
 
 
 
@@ -32,8 +32,8 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../c4e92c68.png">
-<meta property="og:url" content="/developers/intermediate/paths/">
+<meta property="og:image" content="../../../52bd53a5.png">
+<meta property="og:url" content="/developers/requirements/anatomy/">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -48,13 +48,10 @@
 
   
 
-<link rel="preload" href="../../../e477b19a.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../7d681bc6.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../6d60778911.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6d60778913.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../be7b5f53.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -139,7 +136,7 @@
 
     
       <rocket-navigation>
-  <ul><li class="menu-item"><a href="/developers/requirements/">Requirements</a><ul><li class="menu-item"><a href="/developers/requirements/setup/">Setup</a><ul><li class="menu-item anchor"><a href="/developers/requirements/setup/#install-nix" class="anchor">Install Nix</a></li>
+  <ul><li class="menu-item active"><a href="/developers/requirements/" class="active">Requirements</a><ul><li class="menu-item"><a href="/developers/requirements/setup/">Setup</a><ul><li class="menu-item anchor"><a href="/developers/requirements/setup/#install-nix" class="anchor">Install Nix</a></li>
 <li class="menu-item anchor"><a href="/developers/requirements/setup/#clone-repo" class="anchor">Clone repo</a></li>
 <li class="menu-item anchor"><a href="/developers/requirements/setup/#check" class="anchor">Check</a></li>
 <li class="menu-item anchor"><a href="/developers/requirements/setup/#nix-shell" class="anchor">Nix-shell</a></li>
@@ -147,7 +144,7 @@
 <li class="menu-item anchor"><a href="/developers/requirements/setup/#start" class="anchor">Start</a></li></ul></li>
 <li class="menu-item"><a href="/developers/requirements/documentation/">Documentation</a></li>
 <li class="menu-item"><a href="/developers/requirements/rust/">Rust</a></li>
-<li class="menu-item"><a href="/developers/requirements/anatomy/">Anatomy</a><ul><li class="menu-item anchor"><a href="/developers/requirements/anatomy/#anatomy-of-an-exercise" class="anchor">Anatomy of an exercise</a></li>
+<li class="menu-item current"><a href="/developers/requirements/anatomy/">Anatomy</a><ul><li class="menu-item anchor"><a href="/developers/requirements/anatomy/#anatomy-of-an-exercise" class="anchor">Anatomy of an exercise</a></li>
 <li class="menu-item anchor"><a href="/developers/requirements/anatomy/#building-your-own-holochain-app-optional" class="anchor">Building your own Holochain app (optional)</a></li></ul></li></ul></li>
 <li class="menu-item"><a href="/developers/basic/">Basic</a><ul><li class="menu-item"><a href="/developers/basic/entries/">Entries</a><ul><li class="menu-item anchor"><a href="/developers/basic/entries/#what-is-an-entry" class="anchor">What is an entry</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/entries/#creating-an-entry" class="anchor">Creating an entry</a></li>
@@ -165,9 +162,9 @@
 <li class="menu-item anchor"><a href="/developers/basic/links/#try-it" class="anchor">Try it!</a></li></ul></li>
 <li class="menu-item"><a href="/developers/basic/source-chain/">Source-Chain</a><ul><li class="menu-item anchor"><a href="/developers/basic/source-chain/#what-is-a-source-chain" class="anchor">What is a source-chain?</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/source-chain/#try-it" class="anchor">Try it!</a></li></ul></li></ul></li>
-<li class="menu-item active"><a href="/developers/intermediate/" class="active">Intermediate</a><ul><li class="menu-item"><a href="/developers/intermediate/dht/">DHT</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/dht/#holochains-dht" class="anchor">Holochain's DHT</a></li>
+<li class="menu-item"><a href="/developers/intermediate/">Intermediate</a><ul><li class="menu-item"><a href="/developers/intermediate/dht/">DHT</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/dht/#holochains-dht" class="anchor">Holochain's DHT</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/dht/#try-it" class="anchor">Try it!</a></li></ul></li>
-<li class="menu-item current"><a href="/developers/intermediate/paths/">Paths</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/paths/#try-it" class="anchor">Try it!</a></li>
+<li class="menu-item"><a href="/developers/intermediate/paths/">Paths</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/paths/#try-it" class="anchor">Try it!</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/paths/#exercise" class="anchor">Exercise</a></li></ul></li>
 <li class="menu-item"><a href="/developers/intermediate/remote-call/">Remote Call</a><ul><li class="menu-item anchor"><a href="/developers/intermediate/remote-call/#hdk-actions" class="anchor">HDK actions</a></li>
 <li class="menu-item anchor"><a href="/developers/intermediate/remote-call/#exercise" class="anchor">Exercise</a></li></ul></li>
@@ -193,74 +190,56 @@
       
         <main class="markdown-body">
   
-    <h1 id="intermediate-paths"><a class="anchor" href="#intermediate-paths"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Paths</h1>
-<p>Paths are the replacement of anchors in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allow you to create complex indexes to query faster the DHT very easily.</p>
-<p>The content of each path is a string with segments separated by a dot, for example: <code>all_tasks.project1.finished</code>. This path will create these entries:</p>
+    <h1 id="requirements-anatomy"><a class="anchor" href="#requirements-anatomy"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Requirements: Anatomy</h1>
+<h2 id="anatomy-of-an-exercise"><a class="anchor" href="#anatomy-of-an-exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Anatomy of an exercise</h2>
+<p>The structure of a Holochain-gym exercise is very similar to a real holochain application. So let us review what you see when you open the entries exercise.</p>
+<p><img src="../../../dde020f9.png" alt=""></p>
+<p>The best place to start if you are lost is to read the <strong>README</strong> file again. It briefly states what you need to do to compile and test the exercise.</p>
+<p>The exercise is a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">Cargo workspace</a>. Cargo, is the build system for Rust. And a workspace is place in which you can define one or more Rust projects. <strong>Cargo.toml</strong> contains the configuration of the workspace. Open the file and you will see that is has one member <code>zomes/exercise</code>.
+Our gym exercise only contain one member, but holochain app will typically have multiple members.</p>
+<p><strong>Cargo.lock</strong> contains a snapshot of all the rust dependencies. It works much like <code>package-lock.json</code> in node projects. You should commit this file to the git repository if you are working with several people on the same project.</p>
+<p>The hart of the exercise lies withing <strong>zomes/exercise</strong>. This is a pure and simple Rust project and contains its own <code>Cargo.toml</code> and <code>Cargo.lock</code> file. You start adding Rust code in <code>src/lib.rs</code></p>
+<p>Once you are done adding code you need to compile your Rust code to a <a href="https://webassembly.org/">WASM</a> binary and package it in a DNA, a holochain specific format. The result will be stored in <strong>workdir</strong>.</p>
+<p>To make your live easy we put together a simple script that checks if you are running in the nix-shell and builds the code. To build your zome you only need to run <strong>./run_build.sh</strong>.</p>
+<p>The <strong>tests</strong> folder contains a full node/typescript project, complete with <code>package.json</code>,<code>package-lock.json</code>,<code>tsconfig.json</code> and a <code>src</code> folder. These tests can be viewed as integration tests. They actually run your compiled DNA in a real holochain <a href="https://developer.holochain.org/docs/glossary/#conductor">conductor</a>. The tests call your code, just like a regular web app would do.</p>
+<p>For running the tests we also provided a simple script that checks if you are running in the nix-shell and runs the tests. You only need to call <strong>./run_tests.sh</strong>.</p>
+<p>The folders <strong>.cargo</strong> &amp; <strong>target</strong> will only show when you try to build the project. You usually exclude these when committing code to a repository.</p>
+<p>Now you know enough to start the <a href="/developers/basic/entries">first exercise</a>. Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
+If want to start working on your own holochain apps, separate from the holochain-gym, you can read the next section.</p>
+<h2 id="building-your-own-holochain-app-optional"><a class="anchor" href="#building-your-own-holochain-app-optional"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Building your own Holochain app (optional)</h2>
+<p>If you want to familiarize yourself with a sample Holochain project, clone the <a href="https://github.com/holochain/holochain-dna-build-tutorial">Holochain DNA Build Tutorial</a>.</p>
 <ul>
-<li><code>all_tasks</code></li>
-<li><code>all_tasks.project1</code></li>
-<li><code>all_tasks.project1.finished</code></li>
+<li>Look at the folder structure:
+<ul>
+<li><code>zomes</code> contains various zomes (holochain modules), each zome is a normal rust crate.</li>
+<li><code>workdir</code> contains important Holochain files, defining your DNAs and hApp.</li>
+<li><code>tests</code> contains the tests for the DNA.</li>
+<li><code>default.nix</code>: this file is really important, as it defines which holochain binaries should be used with this happ. <em>Difference with holochain-gym</em>: In the gym we placed this file at the root of the repository, so you can work on all exercises in the same terminal.</li>
 </ul>
-<p>Here, you can see that the root parent of the path is <code>all_tasks</code>, which has <code>all_tasks.project1</code> as child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.</p>
-<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
-<p>Here you can create paths yourself, and see which entries and links are created.</p>
-<mdjs-story mdjs-story-name="Simple"></mdjs-story>
-<p>The basic mechanism for which these entries are useful is to attach links to them. If you attach a link to the <code>all_tasks.project1.finished</code> that points to all tasks related with <code>project1</code> that have finished, now you can do a <code>get_links</code> on that path to get only those.</p>
-<p>If, on the contrary, you want to get all tasks within the project regardless of status, you can get all the children paths from <code>all_tasks.project1</code>, which will give you for example <code>all_tasks.project1.todo</code>, <code>all_tasks.project1.doing</code> and <code>all_tasks.project1.finished</code>, and then do a <code>get_links</code> to tasks on those.</p>
-<p>You can imagine different types of indexes built on top of paths, with multidimensional properties.</p>
-<inline-notification type="warning" title="Including paths in zomes">
-Keep in mind that paths are already incorporated in the core hdk, so you don't need to import them from an external library. Although it is necessary to define them as an entry definition in your zome like this:
-<pre class="language-rust"><code class="language-rust"><span class="token function">entry_defs!</span><span class="token punctuation">[</span>
-    Path<span class="token punctuation">::</span><span class="token function">entry_def</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</li>
+<li>Enter the <code>nix-shell</code> for this repository by running <code>nix-shell .</code> in the root folder.</li>
+<li>Compile the DNA with:</li>
+</ul>
+<pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">CARGO_TARGET_DIR</span><span class="token operator">=</span>target cargo build --release --target wasm32-unknown-unknown
+hc dna pack workdir/dna
+hc app pack workdir/happ
 </code></pre>
-</inline-notification>
-<h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
-<h3 id="problem-statement"><a class="anchor" href="#problem-statement"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Problem statement</h3>
-<p>We need to code a small zome that satisfies these capabilities:</p>
+<p><em>Difference with holochain-gym</em>: In the gym we provide a simple build script <code>run_build.sh</code> that checks you are running inside a nix-shell and if so, runs the above steps.</p>
 <ul>
-<li>Create a new post, passing a content and some tags</li>
-<li>Get all posts within a day or an hour, examples:
-<ul>
-<li>"get me all posts posted on 21st February, 2021"</li>
-<li>"get me all posts posted between 21:00 and 22:00 of 21st February, 2021"</li>
+<li>After compiling, run the tests with:</li>
 </ul>
-</li>
-<li>Get all the tags that have been created</li>
-<li>Get all posts that have been created with a certain tag
-<ul>
-<li>"get me all posts that have been posted with the tag "nature""</li>
-</ul>
-</li>
-</ul>
-<p>You can follow this entry design to accomplish it:</p>
-<mdjs-story mdjs-story-name="Exercise"></mdjs-story>
-<inline-notification type="tip" title="Exercise">
-<ol>
-<li>Go to the <code>developer-exercises</code>.</li>
-<li>Enter the nix-shell: <code>nix-shell</code><br>
-<em>you should run this in the folder containing the default.nix file</em><br>
-<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em></li>
-<li>Go to folder with the exercise <code>intermediate/1.paths</code></li>
-<li>Inside <code>zome/exercise/src/lib.rs</code>
-<ul>
-<li>Implement all <code>unimplemented!()</code> functions</li>
-</ul>
-</li>
-<li>Compile your code: <code>./run_build.sh</code>.</li>
-<li>Run the test: <code>./run_tests.sh</code></li>
-<li>Don't stop until the test runs green</li>
-</ol>
-</inline-notification>
-        
-      
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tests
+<span class="token function">npm</span> <span class="token function">install</span>
+<span class="token function">npm</span> test`
+</code></pre>
+<p><em>Difference with holochain-gym</em>: In the gym we provide a simple test script <code>run_tests.sh</code> that checks you are running inside a nix-shell and if so, runs tests.</p>
+<p>You can look at the files of the project, and also play around with all the various commands that <code>hc sandbox</code> offers.</p>
 
   
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/paths.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/requirements/anatomy.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -394,7 +373,6 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../e477b19a.js"></script>
-<script type="module" src="../../../6d60778911.js"></script>
+<script type="module" src="../../../6d60778913.js"></script>
 
 </body></html>

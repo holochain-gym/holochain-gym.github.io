@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../6014a13c.png">
+<meta property="og:image" content="../../../b6fc6266.png">
 <meta property="og:url" content="/developers/requirements/setup/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -51,7 +51,7 @@
 <link rel="preload" href="../../../4952c3ac3.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../6d60778916.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6d60778917.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../be7b5f53.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 </head>
@@ -138,9 +138,16 @@
 
     
       <rocket-navigation>
-  <ul><li class="menu-item active"><a href="/developers/requirements/" class="active">Requirements</a><ul><li class="menu-item current"><a href="/developers/requirements/setup/">Setup</a><ul><li class="menu-item anchor"><a href="/developers/requirements/setup/#basic-holochain-dna-optional" class="anchor">Basic Holochain DNA (optional)</a></li></ul></li>
+  <ul><li class="menu-item active"><a href="/developers/requirements/" class="active">Requirements</a><ul><li class="menu-item current"><a href="/developers/requirements/setup/">Setup</a><ul><li class="menu-item anchor"><a href="/developers/requirements/setup/#install-nix" class="anchor">Install Nix</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#clone-repo" class="anchor">Clone repo</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#check" class="anchor">Check</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#nix-shell" class="anchor">Nix-shell</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#devtools" class="anchor">Devtools</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#start" class="anchor">Start</a></li></ul></li>
 <li class="menu-item"><a href="/developers/requirements/documentation/">Documentation</a></li>
-<li class="menu-item"><a href="/developers/requirements/rust/">Rust</a></li></ul></li>
+<li class="menu-item"><a href="/developers/requirements/rust/">Rust</a></li>
+<li class="menu-item"><a href="/developers/requirements/anatomy/">Anatomy</a><ul><li class="menu-item anchor"><a href="/developers/requirements/anatomy/#anatomy-of-an-exercise" class="anchor">Anatomy of an exercise</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/anatomy/#building-your-own-holochain-app-optional" class="anchor">Building your own Holochain app (optional)</a></li></ul></li></ul></li>
 <li class="menu-item"><a href="/developers/basic/">Basic</a><ul><li class="menu-item"><a href="/developers/basic/entries/">Entries</a><ul><li class="menu-item anchor"><a href="/developers/basic/entries/#what-is-an-entry" class="anchor">What is an entry</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/entries/#creating-an-entry" class="anchor">Creating an entry</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/entries/#try-it" class="anchor">Try it!</a></li>
@@ -186,43 +193,78 @@
         <main class="markdown-body">
   
     <h1 id="requirements-setup"><a class="anchor" href="#requirements-setup"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Requirements: Setup</h1>
-<p>If you haven't, install <code>nix-shell</code> following the instructions of the Holochain <a href="https://developer.holochain.org/docs/install/">getting started guide</a>. <strong>Note that to complete the exercises you only need <code>nix-shell</code> installed</strong>, since they will already contain the necessary files to get you set up with Holochain RSM itself.</p>
-<p>To setup the code exercises that follow along the sections of this page, clone the <a href="https://github.com/holochain-gym/developer-exercises">developer-exercises repository</a>. Every exercise will define its own <code>default.nix</code> file, which you will use to get the appropriate Holochain version.</p>
+<h2 id="install-nix"><a class="anchor" href="#install-nix"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Install Nix</h2>
+<p>You need the nix-shell to build the exercises and run the tests. And to get the nix-shell you need to install the nix package manager.</p>
+<h3 id="linux¶"><a class="anchor" href="#linux¶"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Linux¶</h3>
+<p>To install the package manager you run this command:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sh</span> <span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token function">curl</span> -L https://nixos.org/nix/install<span class="token punctuation">)</span>
+</code></pre>
+<p>After installing Nix, run the following command so you do not have to log in and out again:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">.</span> ~/.nix-profile/etc/profile.d/nix.sh
+</code></pre>
+<h3 id="windows"><a class="anchor" href="#windows"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Windows</h3>
+<p>Native development on Windows is not supported at the moment. But if you run Linux using WSL2 or a VM you can use the Linux instructions.</p>
+<h3 id="macos"><a class="anchor" href="#macos"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>MacOS</h3>
+<p>Make sure you have the <code>XCode Developer Tools</code> installed, then on</p>
+<p><strong>macOS 10.15 Catalina and later</strong></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sh</span> <span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token function">curl</span> -L https://nixos.org/nix/install<span class="token punctuation">)</span> --darwin-use-unencrypted-nix-store-volume
+</code></pre>
+<p><strong>macOS 10.14 Mojave and earlier</strong></p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">sh</span> <span class="token operator">&lt;</span><span class="token punctuation">(</span><span class="token function">curl</span> -L https://nixos.org/nix/install<span class="token punctuation">)</span>`
+</code></pre>
+<p>After installing Nix, run the following command so you do not have to log in and out again:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">.</span> ~/.nix-profile/etc/profile.d/nix.sh
+</code></pre>
+<h2 id="clone-repo"><a class="anchor" href="#clone-repo"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Clone repo</h2>
+<p>The next step is to clone the github repository.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/holochain-gym/developer-exercises.git
+</code></pre>
+<p>After that jump in to the base folder of the repository</p>
+<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> developer-exercises
+</code></pre>
+<h2 id="check"><a class="anchor" href="#check"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Check</h2>
+<p>Before diving into the nix-shell, you should check if everything is setup correct.</p>
+<p>Check if nix-shell is installed correctly:</p>
+<pre class="language-bash"><code class="language-bash">nix-shell --version
+</code></pre>
+<p>This should print out the version of the nix-shell.
+Next check if you have a <code>default.nix</code> file in the base folder of the cloned repository.</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">ls</span> default.nix
+</code></pre>
+<h2 id="nix-shell"><a class="anchor" href="#nix-shell"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Nix-shell</h2>
+<p>Now you are about to run the <code>nix-shell</code> command. This command will look for a default.nix file and build a complete development environment with all the necessary tools and dependencies with all the right versions.
+But... because Holochain development is still in a fast-paced alpha state, you cannot download everything as binary files. That means you have to build Holochain and some of its dependencies on your machine. And that means that <strong>running the nix-shell command for the first time will take somewhere between 20 to 80 minutes</strong>.
+It only takes this long the very first time or when we upgrade the Holochain version. <strong>After that it will take a few seconds.</strong> In the future, once Holochain is ready to release regular version, we can skip the long build.</p>
+<p>So go ahead and run</p>
+<pre class="language-bash"><code class="language-bash">nix-shell
+</code></pre>
+<p>If you have no idea what to do in the mean time...</p>
+<ul>
+<li>go for a long walk in nature</li>
+<li>call a friend with whom you have not been in contact with for a long time</li>
+<li>bake some <a href="https://www.bbcgoodfood.com/recipes/basic-cookies">cookies</a> and share them with your neighbors</li>
+</ul>
+<p>or if you want to stay on topic, you can read a bit more about why the Holochain projects use Nix in the article <a href="https://developer.holochain.org/docs/install-advanced/#more-info-on-nix">here</a>.</p>
+<h2 id="devtools"><a class="anchor" href="#devtools"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Devtools</h2>
 <p>We recommend using <a href="https://code.visualstudio.com/">VSCode</a> with the <a href="https://rust-analyzer.github.io/">rust-analyzer</a> extension while coding rust.</p>
-<p>You can access the exercises with the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions.</p>
-<p>To finish an exercise, you must replace all <code>unimplemented</code> functions with working implementations, and <strong>make all the tests pass</strong>.</p>
+<h2 id="start"><a class="anchor" href="#start"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Start</h2>
+<p>Next up you have 3 options:</p>
+<ul>
+<li>If you don't know core concepts of Holochain, you can check out the <a href="/developers/requirements/documentation">docs section</a> to start reading</li>
+<li>If you are new to Rust you can look <a href="/developers/requirements/rust">here</a> to find out what you need to learn and where you can learn it</li>
+<li>If you are ready to start the first exercise, it is a good idea to read about the <a href="/developers/requirements/anatomy">anatomy of an exercise</a>, so you understand the folder structure and specific files. After that jump right in to <a href="/developers/basic/entries">the first exercise</a>.</li>
+</ul>
+<p>You can access all the exercises with the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions.</p>
+<p>To each exercise have it own README file, that tells you how to build the exercises and run the tests.</p>
 <inline-notification type="warning" title="Order of exercises">
 <p>It's better to be following the exercises from start to end, since earlier concepts are needed to understand the following ones.</p>
 </inline-notification>
 <inline-notification type="tip" title="Solutions">
 <p>If you get stuck with some exercise, the developer-exercises has a <a href="https://github.com/holochain-gym/developer-exercises/tree/solution">solution branch</a> that you can look at for complete working solutions. Try not to use this too much though!</p>
+<p>To switch to this branch, run the following command in base folder of the developer-exercises repository:</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> checkout solution
+</code></pre>
 </inline-notification>
-<h2 id="basic-holochain-dna-optional"><a class="anchor" href="#basic-holochain-dna-optional"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic Holochain DNA (optional)</h2>
-<p>If you want to familiarize yourself with a sample Holochain project, clone the <a href="https://github.com/holochain/holochain-dna-build-tutorial">Holochain DNA Build Tutorial</a>.</p>
-<ul>
-<li>Look at the folder structure:
-<ul>
-<li><code>zomes</code> contains various zomes (holochain modules), each zome is a normal rust crate.</li>
-<li><code>workdir</code> contains important Holochain files, defining your DNAs and hApp.</li>
-<li><code>tests</code> contains the tests for the DNA.</li>
-<li><code>default.nix</code>: this file is really important, as it defines which holochain binaries should be used with this happ.</li>
-</ul>
-</li>
-<li>Enter the <code>nix-shell</code> for this repository by running <code>nix-shell .</code> in the root folder.</li>
-<li>Compile the DNA with:</li>
-</ul>
-<pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">CARGO_TARGET_DIR</span><span class="token operator">=</span>target cargo build --release --target wasm32-unknown-unknown
-hc dna pack workdir/dna
-hc app pack workdir/happ
-</code></pre>
-<ul>
-<li>After compiling, run the tests with:</li>
-</ul>
-<pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> tests
-<span class="token function">npm</span> <span class="token function">install</span>
-<span class="token function">npm</span> test`
-</code></pre>
-<p>You can look at the files of the project, and also play around with all the various commands that <code>hc sandbox</code> offers.</p>
         
       
 
@@ -365,6 +407,6 @@ serviceWorkerUpdate();
     }
   </script>
 <script type="module" src="../../../4952c3ac3.js"></script>
-<script type="module" src="../../../6d60778916.js"></script>
+<script type="module" src="../../../6d60778917.js"></script>
 
 </body></html>

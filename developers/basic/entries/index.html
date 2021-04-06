@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../7c51fc7d.png">
+<meta property="og:image" content="../../../4af35663.png">
 <meta property="og:url" content="/developers/basic/entries/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -139,9 +139,16 @@
 
     
       <rocket-navigation>
-  <ul><li class="menu-item"><a href="/developers/requirements/">Requirements</a><ul><li class="menu-item"><a href="/developers/requirements/setup/">Setup</a><ul><li class="menu-item anchor"><a href="/developers/requirements/setup/#basic-holochain-dna-optional" class="anchor">Basic Holochain DNA (optional)</a></li></ul></li>
+  <ul><li class="menu-item"><a href="/developers/requirements/">Requirements</a><ul><li class="menu-item"><a href="/developers/requirements/setup/">Setup</a><ul><li class="menu-item anchor"><a href="/developers/requirements/setup/#install-nix" class="anchor">Install Nix</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#clone-repo" class="anchor">Clone repo</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#check" class="anchor">Check</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#nix-shell" class="anchor">Nix-shell</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#devtools" class="anchor">Devtools</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/setup/#start" class="anchor">Start</a></li></ul></li>
 <li class="menu-item"><a href="/developers/requirements/documentation/">Documentation</a></li>
-<li class="menu-item"><a href="/developers/requirements/rust/">Rust</a></li></ul></li>
+<li class="menu-item"><a href="/developers/requirements/rust/">Rust</a></li>
+<li class="menu-item"><a href="/developers/requirements/anatomy/">Anatomy</a><ul><li class="menu-item anchor"><a href="/developers/requirements/anatomy/#anatomy-of-an-exercise" class="anchor">Anatomy of an exercise</a></li>
+<li class="menu-item anchor"><a href="/developers/requirements/anatomy/#building-your-own-holochain-app-optional" class="anchor">Building your own Holochain app (optional)</a></li></ul></li></ul></li>
 <li class="menu-item active"><a href="/developers/basic/" class="active">Basic</a><ul><li class="menu-item current"><a href="/developers/basic/entries/">Entries</a><ul><li class="menu-item anchor"><a href="/developers/basic/entries/#what-is-an-entry" class="anchor">What is an entry</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/entries/#creating-an-entry" class="anchor">Creating an entry</a></li>
 <li class="menu-item anchor"><a href="/developers/basic/entries/#try-it" class="anchor">Try it!</a></li>
@@ -194,36 +201,47 @@
 <p>You can always click <code>Core Concepts</code> and <code>Glossary</code> in the menu above to review the terms that you don't understand yet.</p>
 </blockquote>
 <h2 id="creating-an-entry"><a class="anchor" href="#creating-an-entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Creating an entry</h2>
-<p><em>NOTE: If you are thinking "I already know how to do that, I'm going to jump to the advanced exercises!" - hold on as we not want you to get injured during your very first exercise!</em></p>
 <p>When you create an entry a few things will happen:</p>
 <ol>
-<li>Data validation <em>(we will learn how this works in later exercises)</em></li>
+<li>Your data is validated locally <em>(we will learn how this works in later exercises)</em></li>
 <li>The entry is written to your local <a href="https://developer.holochain.org/docs/glossary/#source-chain">source chain</a> <em>(hence the 'chain' in 'Holochain')</em></li>
 <li>If your <a href="https://developer.holochain.org/docs/glossary/#entry-type">entry type</a> is marked as <a href="https://developer.holochain.org/docs/glossary/#public-entry">public</a> like the one in this first exercise, your hApp will send it to some random people who are running the same hApp <em>(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)</em></li>
+<li>The random people that received your data will validate your data using the same rules that were used in the first step. <em>(this is where the 'Holo', in Holochain comes from. To become an real entry, your entry has to be seen and validated by different people/agents. Just like a in a <a href="http://www.displayhologram.co.uk/the-hologram/the-basics/">hologram</a>, where different people can look at the same object from different angles and still agree on what they are seeing)</em></li>
 </ol>
+<p>Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.</p>
 <h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
-<p>Your first exercise will be <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">a traditional "Hello, World!" program</a> with a tiny twist to the text!</p>
-<p>The challenge is to create an entry in your hApp which will contain the text "Holo, World!".</p>
-<p>To prove we are a first class gym, we have set up a simulation below where you can try this out before you start coding:</p>
+<p>Your first exercise will be <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">a traditional "Hello, World!" program</a>.</p>
+<p>The challenge is to create an entry in your hApp which will contain the text "Hello, World!".</p>
+<p>Since we are a first class gym, we have set up a simulation below where you can try this out before you start coding:</p>
 <ol>
-<li>Click <code>say_greeting</code> in the <code>CallZomeFns</code> section below to ensure it is selected</li>
-<li>Type "Holo, World!" in the <code>content: String</code> input field</li>
-<li>Click <code>EXECUTE</code></li>
+<li>Click <code>say_greeting</code> in the <code>CallZomeFns</code> section below to ensure it is selected.</li>
+<li>Type "Hello, World!" in the <code>content: String</code> input field.</li>
+<li>Click <code>EXECUTE</code>.</li>
 </ol>
 <p>Notice how a greeting object gets added to the <code>Entry Graph</code>.</p>
-<p>Click on the newly added object to see more details in <code>Entry Details</code>.</p>
+<p>Click on the newly created object to inspect the details in <code>Entry Contents</code>.</p>
 <mdjs-story mdjs-story-name="Simple"></mdjs-story>
 <br>  
 <br>
-<p>In the details you see 3 things: the <em>entry hash</em>, the <em>entry type</em> and <em>content</em>. Content is a custom field, meaning you can give it a different name if you want to. You could add more fields as well, but for now one will do.<br>
-The <strong>Entry type</strong> is something specific to the Holochain technology underpinning our app. There are 4 types of entries: Agent, App, CapClaim, CapGrant. For this exercise we limit our focus to App entries.<br>
-The <strong>Entry hash</strong> is the last of the three. You could think of the entry hash as the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.</p>
+<p>In the <code>Entry Contents</code> you see three things:</p>
+<ol>
+<li>
+<p><code>Entry Hash</code> - the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. <a href="https://developer.holochain.org/docs/glossary/#hash">Hashes</a> have some interesting properties and benefits which we will learn more about in the next exercise.</p>
+</li>
+<li>
+<p><code>entry_type</code> is specific to the Holochain technology underpinning our app. There are four types of entries: Agent, App, CapClaim, and CapGrant. For this exercise we limit our focus to <a href="https://developer.holochain.org/docs/glossary/#app-entry">App entries</a>.</p>
+</li>
+<li>
+<p><code>content</code> is a custom field so you can give it a different name if you want to. You could add more fields as well, but for now one will do.</p>
+</li>
+</ol>
 <h2 id="getting-ready"><a class="anchor" href="#getting-ready"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting ready</h2>
-<p>So, lets get to the real work. In case you forgot, zomes are written in Rust, so you will be doing most of these exercises in Rust. Don't worry if you are new to the language, we will gladly help you grow comfortable with it.<br>
-We went ahead and added some code already for you in the exercise.</p>
+<p><em>So, lets get to the real work!</em></p>
+<p>In case you forgot, Zomes are written in <a href="https://www.rust-lang.org/">Rust</a>. Don't worry if you are new to the language, we will gladly help you grow comfortable with it - join us over at the <a href="https://forum.holochain.org/">Holochain forum</a>.</p>
+<p>We went ahead and added some code already for you in the <code>zomes/exercise/src/lib.rs</code> file:</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
 <span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
-    content<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+    greeting_text<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">say_greeting</span><span class="token punctuation">(</span>input<span class="token punctuation">:</span> SomeExternalInput<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>HeaderHash<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
@@ -232,14 +250,14 @@ We went ahead and added some code already for you in the exercise.</p>
 
 </code></pre>
 <h3 id="external-inputs"><a class="anchor" href="#external-inputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External inputs</h3>
-<p>Above you see the code we already added to the <code>zomes/exercise/src/lib.rs</code> file. One thing you need to remember is that zomes are just modules, which means that by themselves they don't do much. You need to feed them data and ask them to do stuff. To be honest, zomes can actually do a lot, even when you are not looking, but that will become clear over time.</p>
+<p>By themselves, Zomes don't do much - you need to feed them data and ask them to do stuff!</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
 <span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
-    content<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+    greeting_text<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The <code>SomeExternalInput</code> struct is a simple Rust struct. A struct is a bit similar to classes in some other languages. In this case it contains one simple field to hold your "Hello World" greeting.<br>
-On top of it you see <code>#[derive(Serialize, Deserialize, Clone, Debug)]</code>. This is what they call an attribute in Rust. This annotation adds some useful stuff. Especially <code>Serialize</code> and <code>Deserialize</code> are crucial. They make sure that the data in this struct can be sent to this zome over a network, from a GUI, or – like in our case – from a test script.</p>
+<p>The <code>SomeExternalInput</code> struct is a simple <a href="https://doc.rust-lang.org/std/keyword.struct.html">Rust struct</a>. A struct is similar to classes in other languages. In this case, it contains one custom field to hold your "Hello, World!" greeting.</p>
+<p>On top of it you see <code>#[derive(Serialize, Deserialize, Clone, Debug)]</code>. This is what they call an <a href="https://doc.rust-lang.org/rust-by-example/attribute.html">'attribute' in Rust</a>. This annotation adds some useful metadata - <code>Serialize</code> and <code>Deserialize</code> are crucial; they make sure the data in this struct can be sent to this Zome over a network, from a GUI, or – like in our case – from a test script.</p>
 <h3 id="external-calls"><a class="anchor" href="#external-calls"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External calls</h3>
 <p>So we have a struct that can carry our data from the outside into our zome. Now we need to know how to actually send this data to our zome. We have this public function <code>say_greeting</code> in our code, but it being a public function is not enough. We need to add two more things.</p>
 <p>First, you need to add an attribute on top of this function to make it clear that this function can be called from outside the zome. The attribute you need to add is <code>#[hdk_extern]</code>. Only public functions with this attribute can be called from outside a zome.</p>
@@ -258,14 +276,14 @@ The Holochain team built a Rust library <code>hdk</code>, which stands for <em>H
 <a href="https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs">https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs</a><br>
 You will find most of the things you will use in this exercise listed in that file.</p>
 <h3 id="external-outputs"><a class="anchor" href="#external-outputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External outputs</h3>
-<p>The challenge is to create an entry which contains the text "Hello World". The text will be passed to the zome as a <code>SomeExternalInput</code> struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply <code>create_entry</code>. And since you imported all functions from the prelude already, you can use this function immediately in your code.</p>
-<p>So, your first attempt might look something like <code>create_entry(String::from("Hello World"))</code> or <code>create_entry(input.content)</code>. But this won't work.<br>
+<p>The challenge is to create an entry which contains the text "Hello, World!". The text will be passed to the zome as a <code>SomeExternalInput</code> struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply <code>create_entry</code>. And since you imported all functions from the prelude already, you can use this function immediately in your code.</p>
+<p>So, your first attempt might look something like <code>create_entry(String::from("Hello, World!"))</code> or <code>create_entry(input.content)</code>. But this won't work.<br>
 Because an entry needs to be saved locally and sent over the network, it has to be serializable. And a String itself is not serializable. To do this we create a <code>struct</code> that will hold our data.</p>
 <pre class="language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token function">Greeting</span><span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The name of the struct, in this case <code>Greeting</code>, is just a name you choose. And <code>Greeting(String)</code> is a Rust way of saying that you want to disguise a String as a Greeting struct, so you can put attributes on it. When you start developing your own zomes you will likely have multiple fields in a struct, but for now we will keep it simple.</p>
 <h3 id="hdk_entry"><a class="anchor" href="#hdk_entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>hdk_entry</h3>
-<p>Wrapping your "Hello World" in a struct is not enough. You need to add an attribute. And that attribute is <code>#[hdk_entry()]</code>. The nice thing about it is that it already adds a <code>Serialize</code> and <code>Deserialize</code> attribute behind the screens. So you only need to add one attribute, not three.</p>
+<p>Wrapping your "Hello, World!" in a struct is not enough. You need to add an attribute. And that attribute is <code>#[hdk_entry()]</code>. The nice thing about it is that it already adds a <code>Serialize</code> and <code>Deserialize</code> attribute behind the screens. So you only need to add one attribute, not three.</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[hdk_entry(id = "greeting")]</span>
 <span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token function">Greeting</span><span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
@@ -285,19 +303,25 @@ You only need to add a few lines in this first exercise, but know that when the 
 <li>ran a test script, written in Typescript, executed in Nodejs</li>
 <li>initiated an actual real holochain conductor</li>
 <li>which instantiated your DNA into a real, actual Holochain cell</li>
-<li>and executed a test script that asked your cell to make a real entry with the words "Hello World"</li>
+<li>and executed a test script that asked your cell to make a real entry with the words "Hello, World!"</li>
 </ul>
 <p>You will in fact have created your very first decentralized, agent centric, boundary pushing Holochain app. A real hApp!</p>
 <p>Relevant HDK documentation: <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">create_entry</a>.</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
-<li>Go to the <code>developer-exercises/basic/0.entries</code>.</li>
+<li>Go to the <code>developer-exercises</code>.</li>
 <li>Enter the nix-shell: <code>nix-shell</code><br>
-<em>running this the first time might take several minutes or longer</em></li>
+<em>you should run this in the folder containing the default.nix file</em><br>
+<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em></li>
+<li>Go to folder with the exercise <code>basic/0.entries</code></li>
+<li>Inside <code>zome/exercise/src/lib.rs</code>
+<ul>
 <li>Define a new struct for your entry: 'Greeting'</li>
 <li>Implement the function with <code>unimplemented!()</code></li>
-<li>Compile your code: <code>CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown</code>.</li>
-<li>Run the test: <code>./run_tests</code></li>
+</ul>
+</li>
+<li>Compile your code: <code>./run_build.sh</code>.</li>
+<li>Run the test: <code>./run_tests.sh</code></li>
 <li>Don't stop until the test runs green</li>
 </ol>
 </inline-notification>
