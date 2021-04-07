@@ -95,7 +95,6 @@ export const Simple = () => {
           style="height: 250px; margin-right: 20px;"
           hide-zome-selector
           hide-agent-pub-key
-          hide-results
         >
         </call-zome-fns>
         <entry-contents style="flex-basis: 500px; height: 250px;"> </entry-contents>

@@ -97,7 +97,6 @@ export const Simple = () => {
           style="height: 350px; margin-right: 20px;"
           hide-zome-selector
           hide-agent-pub-key
-          hide-results
         >
         </call-zome-fns>
         <entry-contents style="flex-basis: 500px; height: 350px;">
@@ -187,14 +186,22 @@ export const Simple2 = () => {
         });
       }}
     >
-      <call-zome-fns
-        id="call-zome"
-        style="height: 350px; margin-bottom: 20px;"
-        hide-zome-selector
-        hide-agent-pub-key
-        selectedZomeFnName="get_links"
+      <div
+        style="display: flex; flex-direction: row; height: 350px; margin-bottom: 20px;"
       >
-      </call-zome-fns>
+        <call-zome-fns
+          id="call-zome"
+          style="flex: 1; margin-right: 20px;"
+          hide-zome-selector
+          hide-agent-pub-key
+          selectedZomeFnName="get_links"
+        >
+        </call-zome-fns>
+        <zome-fns-results
+          hide-agent-pub-key
+          style="flex: 1;"
+        ></zome-fns-results>
+      </div>
       <div
         style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
