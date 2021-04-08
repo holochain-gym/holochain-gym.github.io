@@ -234,6 +234,7 @@ export const Demo = () => html` <holochain-playground-container
     ></run-steps>
     <dht-cells
       step-by-step
+      hide-filter
       style="height: 600px;"
       show-zome-fn-success
       .workflowsToDisplay=${workflowsToDisplay}
