@@ -212,6 +212,8 @@ pub fn get_book(hash: String) -> ExternResult<Book> {
 }
 ```
 
+<!--- TODO add explanation for WasmError --->
+
 It is up to you to add Book struct with two fields: title and content, to define your entry, add all the attributes and to register your entry definition.
 There is one thing we didn't tell in the previous exercise: `create_entry` returns a `ExternResult<HeaderHash>` and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look [here](https://docs.rs/hdk/0.0.100/hdk/prelude/index.html) to see what function might be suited for that.
 
@@ -249,13 +251,15 @@ Run the tests and verify that you have a second assertion in your test, and that
 After you get a failing test, it is up to you to make it pass. Implement the `get_book` function.
 Run the tests. And if everything passes, then it is time to put your feet up, relax and rest. 
 
+<inline-notification type="tip" title="Exercise">
 1. Add the extra test
 2. Check if you are still inside the nix-shell
-_Your terminal should similar to this `[nix-shell:~/path-to-workspace/developer-exercises]$`
+  _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
 3. Implement the function `get_book`
 4. Compile your code: `./run_build.sh`.
 5. Run the test: `./run_tests.sh`
 6. Don't stop until the test runs green
+</inline-notification>
 
 ## Errors
 If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.

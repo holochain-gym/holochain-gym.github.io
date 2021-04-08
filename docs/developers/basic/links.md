@@ -1,4 +1,4 @@
-# Basic >> Links ||103
+# Basic >> Links ||104
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -8,6 +8,7 @@ import {
   EntryContents,
   EntryGraph,
   CallZomeFns,
+  SourceChain,
 } from "@holochain-playground/elements";
 
 customElements.define(
@@ -17,6 +18,8 @@ customElements.define(
 customElements.define("entry-graph", EntryGraph);
 customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
+customElements.define("source-chain", SourceChain);
+
 ```
 
 ## What is a link?
@@ -102,13 +105,16 @@ export const Simple = () => {
         </call-zome-fns>
         <entry-contents style="flex-basis: 500px; height: 350px;">
         </entry-contents>
-      </div>
+      
       <entry-graph
         hide-filter
         .excludedEntryTypes=${["Agent"]}
         style="flex: 1; height: 500px; margin-bottom: 20px;"
       >
       </entry-graph>
+              <source-chain style="flex: 1; height: 600px;">
+        </source-chain>
+        </div>
     </holochain-playground-container>
   `;
 };
@@ -205,6 +211,9 @@ export const Simple2 = () => {
         </entry-graph>
         <entry-contents style="flex-basis: 500px; height: 350px;">
         </entry-contents>
+
+              <source-chain style="flex: 1; height: 600px;">
+        </source-chain>
       </div>
     </holochain-playground-container>
   `;
