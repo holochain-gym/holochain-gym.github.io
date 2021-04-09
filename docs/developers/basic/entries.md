@@ -67,7 +67,7 @@ const sampleZome = {
     say_greeting: {
       call: ({ create_entry }) => ({ greeting_text }) => {
         return create_entry({
-          content: { greeting_text },
+          content: greeting_text,
           entry_def_id: "greeting",
         });
       },
