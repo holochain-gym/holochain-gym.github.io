@@ -3,6 +3,21 @@
 ```js script
 import { html } from "lit-html";
 import "@rocket/launch/inline-notification/inline-notification.js";
+import {
+  HolochainPlaygroundContainer,
+  DhtCells,
+  RunSteps,
+  ZomeFnsResults,
+} from "@holochain-playground/elements";
+import { WorkflowType, NetworkRequestType } from "@holochain-playground/core";
+
+customElements.define(
+  "holochain-playground-container",
+  HolochainPlaygroundContainer
+);
+customElements.define("dht-cells", DhtCells);
+customElements.define("run-steps", RunSteps);
+customElements.define("zome-fns-results", ZomeFnsResults);
 ```
 
 **Capability tokens** are the unified security model of holochain. Whenever you want to call a zome function, the conductor will check whether you have capabilities to call it, and return and error if that's not the case.
@@ -17,11 +32,219 @@ Keep in mind that when trying to do a bridge call from a cell, if it has the sam
 
 By default, all calls from other agent pub keys are **not authorized**. This means that if I try to do a remote call to another agent without having set up the capability tokens first, it will return an unauthorized error.
 
-This is how the flow of capability tokens works from a conceptual point of view:
+## Demo
 
-![](/_assets/cap-tokens.png)
+First, we are going to demo how capabilities work at a high level:
 
-## Subconsious flow
+1. Click `Run` to start the simulation.
+  - At every step, you can see what is happening with the nodes on the right panel.
+2. When you are ready, click the "Play" icon on the bottom of the right panel to advance the simulation.
+
+You can rerun it if needed.
+
+```js story
+let capGrantHash = undefined;
+const steps = [
+  {
+    title: "Alice tries to do a remote call on Bob's 'sample' zome function",
+    run: async (context) => {
+      const aliceConductor = context.conductors[0];
+      const aliceCellId = aliceConductor.getAllCells()[0].cellId;
+      const bobConductor = context.conductors[1];
+      const bobCellId = bobConductor.getAllCells()[0].cellId;
+
+      context.updatePlayground({
+        activeAgentPubKey: aliceCellId[1],
+      });
+      try {
+        await aliceConductor.callZomeFn({
+          cellId: aliceCellId,
+          zome: "sample",
+          payload: { agentToCall: bobCellId[1] },
+          fnName: "remote_sample_fn",
+          cap: null,
+        });
+      } catch (e) {}
+    },
+  },
+  {
+    title: "Bob trusts her, so he creates a capability grant for Alice",
+    run: async (context) => {
+      const aliceConductor = context.conductors[0];
+      const aliceCellId = aliceConductor.getAllCells()[0].cellId;
+      const bobConductor = context.conductors[1];
+      const bobCellId = bobConductor.getAllCells()[0].cellId;
+
+      context.updatePlayground({
+        activeAgentPubKey: bobCellId[1],
+      });
+      try {
+        capGrantHash = await bobConductor.callZomeFn({
+          cellId: bobCellId,
+          zome: "sample",
+          payload: { grantedAgent: aliceCellId[1] },
+          fnName: "create_cap",
+          cap: null,
+        });
+      } catch (e) {}
+    },
+  },
+  {
+    title: "Alice tries to call the 'sample' function for Bob again",
+    run: async (context) => {
+      const aliceConductor = context.conductors[0];
+      const aliceCellId = aliceConductor.getAllCells()[0].cellId;
+      const bobConductor = context.conductors[1];
+      const bobCellId = bobConductor.getAllCells()[0].cellId;
+
+      context.updatePlayground({
+        activeAgentPubKey: aliceCellId[1],
+      });
+      try {
+        await aliceConductor.callZomeFn({
+          cellId: aliceCellId,
+          zome: "sample",
+          payload: { agentToCall: bobCellId[1] },
+          fnName: "remote_sample_fn",
+          cap: null,
+        });
+      } catch (e) {}
+    },
+  },
+  {
+    title:
+      "Bob doesn't trust Alice anymore, so he revokes her capability grant",
+    run: async (context) => {
+      const aliceConductor = context.conductors[0];
+      const aliceCellId = aliceConductor.getAllCells()[0].cellId;
+      const bobConductor = context.conductors[1];
+      const bobCellId = bobConductor.getAllCells()[0].cellId;
+
+      context.updatePlayground({
+        activeAgentPubKey: bobCellId[1],
+      });
+      try {
+        await bobConductor.callZomeFn({
+          cellId: bobCellId,
+          zome: "sample",
+          payload: { capGrantToRevoke: capGrantHash },
+          fnName: "revoke_cap",
+          cap: null,
+        });
+      } catch (e) {}
+    },
+  },
+  {
+    title: "Alice tries to call the 'sample' function for Bob again",
+    run: async (context) => {
+      const aliceConductor = context.conductors[0];
+      const aliceCellId = aliceConductor.getAllCells()[0].cellId;
+      const bobConductor = context.conductors[1];
+      const bobCellId = bobConductor.getAllCells()[0].cellId;
+
+      context.updatePlayground({
+        activeAgentPubKey: aliceCellId[1],
+      });
+      try {
+        await aliceConductor.callZomeFn({
+          cellId: aliceCellId,
+          zome: "sample",
+          payload: { agentToCall: bobCellId[1] },
+          fnName: "remote_sample_fn",
+          cap: null,
+        });
+      } catch (e) {}
+    },
+  },
+];
+
+const dna = {
+  zomes: [
+    {
+      name: "sample",
+      entry_defs: [],
+      zome_functions: {
+        create_cap: {
+          call: ({ create_cap_grant }) => ({ grantedAgent }) => {
+            return create_cap_grant({
+              tag: "",
+              access: {
+                Assigned: {
+                  secret: "",
+                  assignees: [grantedAgent],
+                },
+              },
+              functions: [{ zome: "sample", fn_name: "sample_fn" }],
+            });
+          },
+          arguments: [{ type: "AgentPubKey", name: "grantedAgent" }],
+        },
+        sample_fn: {
+          call: () => () => {
+            return "Hello";
+          },
+          arguments: [],
+        },
+        revoke_cap: {
+          call: ({ delete_cap_grant }) => ({ capGrantToRevoke }) => {
+            return delete_cap_grant(capGrantToRevoke);
+          },
+          arguments: [{ type: "HeaderHash", name: "capGrantToRevoke" }],
+        },
+        remote_sample_fn: {
+          call: ({ call_remote }) => ({ agentToCall }) => {
+            return call_remote({
+              agent: agentToCall,
+              zome: "sample",
+              fn_name: "sample_fn",
+              cap: null,
+              payload: null,
+            });
+          },
+          arguments: [{ type: "AgentPubKey", name: "agentToCall" }],
+        },
+      },
+    },
+  ],
+};
+const workflowsToDisplay = [WorkflowType.CALL_ZOME];
+const newtorkRequestToDisplay = [NetworkRequestType.CALL_REMOTE];
+
+const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(), ms));
+
+export const Demo = () => html` <holochain-playground-container
+  id="container"
+  .numberOfSimulatedConductors=${2}
+  .simulatedDnaTemplate=${dna}
+  @ready=${(e) => {
+    e.target.querySelector(
+      "#alice-results"
+    ).forAgent = e.detail.conductors[0].getAllCells()[0].agentPubKey;
+    e.target.querySelector(
+      "#bob-results"
+    ).forAgent = e.detail.conductors[1].getAllCells()[0].agentPubKey;
+  }}
+>
+  <div
+    style="width: 100%; display: flex; flex-direction: row; margin-bottom: 20px;"
+  >
+    <run-steps
+      .steps=${steps}
+      style="flex: 1; margin-right: 20px; height: 350px;"
+    ></run-steps>
+    <dht-cells
+      step-by-step
+      hide-filter
+      style="height: 600px;"
+      show-zome-fn-success
+      .workflowsToDisplay=${workflowsToDisplay}
+      .networkRequestsToDisplay=${newtorkRequestToDisplay}
+    ></dht-cells>
+  </div>
+</holochain-playground-container>`;
+```
+
+## Subconsious Checks
 
 When a zome function call is received, holochain's subconscious does these checks:
 
@@ -29,7 +252,7 @@ When a zome function call is received, holochain's subconscious does these check
   - If not, return unauthorized error
 - Is the public key of the agent the same one than the one of the cell we are trying to call?
   - If so, skip all other checks
-- Do I have an unrevoked capability grant for this zome function, that contains the secret and the ?
+- Do I have an unrevoked capability grant for this zome function, that contains the secret and the agent that is trying to do the call as an assignee?
   - If not, return unauthorized error
 
 ## HDK actions

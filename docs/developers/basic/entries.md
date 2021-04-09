@@ -65,10 +65,13 @@ const sampleZome = {
   ],
   zome_functions: {
     say_greeting: {
-      call: ({ create_entry }) => ({ content }) => {
-        return create_entry({ content, entry_def_id: "greeting" });
+      call: ({ create_entry }) => ({ greeting_text }) => {
+        return create_entry({ 
+          content: greeting_text, 
+          entry_def_id: "greeting" 
+          });
       },
-      arguments: [{ name: "content", type: "String" }],
+      arguments: [{ name: "greeting_text", type: "String" }],
     },
   },
 };
@@ -95,7 +98,6 @@ export const Simple = () => {
           style="height: 250px; margin-right: 20px;"
           hide-zome-selector
           hide-agent-pub-key
-          hide-results
         >
         </call-zome-fns>
         <entry-contents style="flex-basis: 500px; height: 250px;"> </entry-contents>

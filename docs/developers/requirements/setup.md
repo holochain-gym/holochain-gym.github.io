@@ -4,7 +4,7 @@
 
 You need the nix-shell to build the exercises and run the tests. And to get the nix-shell you need to install the nix package manager.
 
-### Linux¶
+### Linux
 
 To install the package manager you run this command:
 
@@ -34,7 +34,7 @@ sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-v
 **macOS 10.14 Mojave and earlier**  
 
 ```bash
-sh <(curl -L https://nixos.org/nix/install)`
+sh <(curl -L https://nixos.org/nix/install)
 ```
 
 After installing Nix, run the following command so you do not have to log in and out again:

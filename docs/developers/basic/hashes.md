@@ -22,6 +22,7 @@ customElements.define("call-zome-fns", CallZomeFns);
 ## Recap
 
 Welcome back to our Holochain gym. In the previous exercise you learned how to create a entry in a zome. You compiled your zome to a dna, you asked the holochain conductor to turn that dna in a cell, you tested your zome code in that cell through a test script. And you learned that you needed the following things in your code:
+
 - import hdk library
 - a serializable struct for input
 - a public function with `#[hdk_extern]` to make calls from the outside into your zome
@@ -31,11 +32,10 @@ Welcome back to our Holochain gym. In the previous exercise you learned how to c
 You learned that there are 4 entry types: agent, app, claim cap, grant cap.
 And that an entry has a hash. Not bad for your first exercise!
 
-
 ## Hash function
 
 Hashes are one of the main ingredients in a holochain app. So let's find out what they are. And since we are a gym and not a library you are going to try it out.
-Select "say_greeting" in the CallZomeFns below, type **Hello World** in the input and click _EXECUTE_.
+Select "say*greeting" in the CallZomeFns below, type **Hello World** in the input and click _EXECUTE_.
 Click on the newly added object in the Entry Graph and look at the value of Entry hash of in Entry Contents.
 Now type something else, like Hello World in your own language, and execute again. Open the details of the new object and compare the hash values. What do you notice?
 
@@ -79,17 +79,19 @@ export const Simple = () => {
         style="height: 250px; margin-bottom: 20px;"
         hide-zome-selector
         hide-agent-pub-key
-        hide-results
       >
       </call-zome-fns>
-      <div style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;">
+      <div
+        style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
+      >
         <entry-graph
           hide-filter
           .excludedEntryTypes=${["Agent"]}
           style="flex: 1; margin-right: 20px; height: 500px;"
         >
         </entry-graph>
-        <entry-contents style="flex-basis: 600px; height: 500px;"> </entry-contents>
+        <entry-contents style="flex-basis: 600px; height: 500px;">
+        </entry-contents>
       </div>
     </holochain-playground-container>
   `;
@@ -97,11 +99,11 @@ export const Simple = () => {
 ```
 
 First thing you might notice is that each hash has the same length. No matter how small or how big the input is, the hash is always the same length. If you don't believe it, try it. Try a really long greeting.
-The second thing you will find is that hashes do not look very similar. In fact, even the smallest difference in the input will give a very different hash. Again, try it out! Create an entry for *hello world* all lowercase, or add a comma or even a space.
+The second thing you will find is that hashes do not look very similar. In fact, even the smallest difference in the input will give a very different hash. Again, try it out! Create an entry for _hello world_ all lowercase, or add a comma or even a space.
 The hashes will be very different.
-Finally for the grand finale: add *Hello world* as an entry and then add it again. What do you notice?
+Finally for the grand finale: add _Hello world_ as an entry and then add it again. What do you notice?
 
-Nothing happens. And that is a feature, not a bug. Because the same input, always returns the same hash. So when you add the *Hello World* entry a second and a third time the Entry Graph detects it already has an entry with this hash. And why save it again, if you already have it. It is a smart way to store data.
+Nothing happens. And that is a feature, not a bug. Because the same input, always returns the same hash. So when you add the _Hello World_ entry a second and a third time the Entry Graph detects it already has an entry with this hash. And why save it again, if you already have it. It is a smart way to store data.
 
 ## Hash table
 
@@ -110,16 +112,15 @@ When you combine all these properties of hashes you can do interesting stuff. If
 ## Getting ready
 
 So I hope you see that hashes play a big role in how data is stored and retrieved. You will see them poping up when we talk about headers, elements, the DHT, validations. They are everywhere.  
-Enough talking. It is time to get ready for the exercise. 
+Enough talking. It is time to get ready for the exercise.
 
 This time you are building a library zome. The zome will need 2 functions that can be called from the outside: `add_book` and `get_book`. You will add your favorite book and retrieve it from the library zome based on -you guessed it- the hash of its entry. In one of the next exercise we will see that there are other ways to retrieve your data: headers and elements. But it is good to know you can always find your entry again based on its entry hash.
 
 First let's practice a bit in the simulation gym.
-Select "add_book" in the CallZomeFns below, type the title of your favorite book in the input and click _EXECUTE_.
-Click on the newly added object in the Entry Graph and copy the value of Entry hash. 
-Select "get_book" in the CallZomeFns, put in the hash and click _EXECUTE_. Open the last item with the green check with the text `get_book in library zome, result: `, in the panel just right of the execute button. Inspect the details.  
+Select "add*book" in the CallZomeFns below, type the title of your favorite book in the input and click \_EXECUTE*.
+Click on the newly added object in the Entry Graph and copy the value of Entry hash.
+Select "get*book" in the CallZomeFns, put in the hash and click \_EXECUTE*. Open the last item with the green check with the text `get_book in library zome, result: `, in the panel just right of the execute button. Inspect the details.  
 We told you you would see hashes everywhere. Look for the entry_hash and check if it matches. If it does, it means you succesfully created and retrieved an entry from the holochain simulation app.
-
 
 ```js story
 const sampleZome2 = {
@@ -138,11 +139,9 @@ const sampleZome2 = {
           entry_def_id: "book",
         });
         const postHash = await hdk.hash_entry({ content });
-        return ""; 
+        return "";
       },
-      arguments: [
-        { name: "content", type: "String" },
-      ],
+      arguments: [{ name: "content", type: "String" }],
     },
     get_book: {
       call: ({ get }) => ({ hash }) => {
@@ -169,21 +168,32 @@ export const Exercise = () => {
         e.target.activeAgentPubKey = cellId[1];
       }}
     >
-      <call-zome-fns
-        id="call-zome2"
-        style="height: 500px; margin-bottom: 20px;"
-        hide-zome-selector
-        hide-agent-pub-key
+      <div
+        style="display: flex; flex-direction: row; height: 500px; margin-bottom: 20px;"
       >
-      </call-zome-fns>
-      <div style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;">
+        <call-zome-fns
+          id="call-zome2"
+          style="flex: 1; margin-right: 20px;"
+          hide-zome-selector
+          hide-agent-pub-key
+        >
+        </call-zome-fns>
+        <zome-fns-results
+          hide-agent-pub-key
+          style="flex: 1;"
+        ></zome-fns-results>
+      </div>
+      <div
+        style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
+      >
         <entry-graph
           hide-filter
           .excludedEntryTypes=${["Agent"]}
           style="flex: 1; margin-right: 20px; height: 500px;"
         >
         </entry-graph>
-        <entry-contents style="flex-basis: 600px; height: 500px;"> </entry-contents>
+        <entry-contents style="flex-basis: 600px; height: 500px;">
+        </entry-contents>
       </div>
     </holochain-playground-container>
   `;
@@ -220,26 +230,25 @@ There is one thing we didn't tell in the previous exercise: `create_entry` retur
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`  
    _you should run this in the folder containing the default.nix file_  
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_  
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
 3. Go to folder with the exercise `basic/1.hashes`
 4. Inside `zome/exercise/src/lib.rs`
-    - Define a new struct for your entry: 'Book'
-    - Implement the function `add_book`
+   - Define a new struct for your entry: 'Book'
+   - Implement the function `add_book`
 5. Compile your code: `./run_build.sh`.
 6. Run the test: `./run_tests.sh`
 7. Don't stop until the test runs green
 
-### Add test  
+### Add test
 
-If you really want to take your exercises seriously, you need to know how to add tests yourself. Until now, every time you ran `./run_tests` script, it would jump in the `tests` directory and run the typescript tests with `npm test`. The tests are real integration tests. They take the zome, as a compiled dna, and have a holochain conductor create a cell, for a specific user, with this dna. 
+If you really want to take your exercises seriously, you need to know how to add tests yourself. Until now, every time you ran `./run_tests` script, it would jump in the `tests` directory and run the typescript tests with `npm test`. The tests are real integration tests. They take the zome, as a compiled dna, and have a holochain conductor create a cell, for a specific user, with this dna.
 The tests are fairly straightforward. Take a look at the code in `tests\src\index.ts`. If you are done exploring, add the code here below, just behind this line `t.ok(entryHash, "test add book");`.
-
 
 ```typescript
 let book = await alice_common.cells[0].call(
-  "exercise",    // name of zome
-  "get_book",    // function to call
-  entryHash      // value to pass to the function
+  "exercise", // name of zome
+  "get_book", // function to call
+  entryHash // value to pass to the function
 );
 t.ok(book, "test get book"); // tape test assertion
 ```
@@ -249,12 +258,12 @@ Run the tests and verify that you have a second assertion in your test, and that
 ### Get book
 
 After you get a failing test, it is up to you to make it pass. Implement the `get_book` function.
-Run the tests. And if everything passes, then it is time to put your feet up, relax and rest. 
+Run the tests. And if everything passes, then it is time to put your feet up, relax and rest.
 
 <inline-notification type="tip" title="Exercise">
 1. Add the extra test
 2. Check if you are still inside the nix-shell
-  _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
+   _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises]$`
 3. Implement the function `get_book`
 4. Compile your code: `./run_build.sh`.
 5. Run the test: `./run_tests.sh`
@@ -262,6 +271,7 @@ Run the tests. And if everything passes, then it is time to put your feet up, re
 </inline-notification>
 
 ## Errors
+
 If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
 
 - The name of your property in the test (typescript) might not match the name in the zome (Rust)
@@ -279,13 +289,15 @@ not ok 2 Test threw an exception. See output for details.
 ```
 
 Verify that fieldname in typescript, match with the fieldnames in Rust
+
 ```
 // Rust
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct SomeExternalEntryHash{
-    value: String,  // has to match with 
+    value: String,  // has to match with
 }
 ```
+
 ```
 // Typescript
 let book = await alice_common.cells[0].call(
@@ -300,11 +312,7 @@ let book = await alice_common.cells[0].call(
 );
 ```
 
-
-
-
 For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15
-or 
+or
 your favorite search engine
-
