@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../6fb23e13.png">
+<meta property="og:image" content="../../../b6412cc3.png">
 <meta property="og:url" content="/developers/basic/hashes/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -182,10 +182,11 @@
   <li class="menu-item anchor">
     <a href="#exercise" class="anchor">Exercise</a>
   </li>
-  <li class="menu-item anchor">
-    <a href="#errors" class="anchor">Errors</a>
-  </li>
 </ul>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/headers/">Headers</a>
 
 </li>
 <li class="menu-item">
@@ -286,53 +287,62 @@ We told you you would see hashes everywhere. Look for the entry_hash and check i
     <span class="token function">unimplemented</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>It is up to you to add Book struct with two fields: title and content, to define your entry, add all the attributes and to register your entry definition.
-There is one thing we didn't tell in the previous exercise: <code>create_entry</code> returns a <code>ExternResult&lt;HeaderHash&gt;</code> and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look <a href="https://docs.rs/hdk/0.0.100/hdk/prelude/index.html">here</a> to see what function might be suited for that.</p>
-<ol>
-<li>Go to the <code>developer-exercises</code>.</li>
-<li>Enter the nix-shell: <code>nix-shell</code><br>
-<em>you should run this in the folder containing the default.nix file</em><br>
-<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em></li>
-<li>Go to folder with the exercise <code>basic/1.hashes</code></li>
-<li>Inside <code>zome/exercise/src/lib.rs</code>
-<ul>
-<li>Define a new struct for your entry: 'Book'</li>
-<li>Implement the function <code>add_book</code></li>
-</ul>
-</li>
-<li>Compile your code: <code>./run_build.sh</code>.</li>
-<li>Run the test: <code>./run_tests.sh</code></li>
-<li>Don't stop until the test runs green</li>
-</ol>
-<h3 id="add-test"><a class="anchor" href="#add-test"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Add test</h3>
-<p>If you really want to take your exercises seriously, you need to know how to add tests yourself. Until now, every time you ran <code>./run_tests</code> script, it would jump in the <code>tests</code> directory and run the typescript tests with <code>npm test</code>. The tests are real integration tests. They take the zome, as a compiled dna, and have a holochain conductor create a cell, for a specific user, with this dna.
-The tests are fairly straightforward. Take a look at the code in <code>tests\src\index.ts</code>. If you are done exploring, add the code here below, just behind this line <code>t.ok(entryHash, "test add book");</code>.</p>
-<pre class="language-typescript"><code class="language-typescript"><span class="token keyword">let</span> book <span class="token operator">=</span> <span class="token keyword">await</span> alice_common<span class="token punctuation">.</span><span class="token property-access">cells</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token method function property-access">call</span><span class="token punctuation">(</span>
-  <span class="token string">"exercise"</span><span class="token punctuation">,</span> <span class="token comment">// name of zome</span>
-  <span class="token string">"get_book"</span><span class="token punctuation">,</span> <span class="token comment">// function to call</span>
-  entryHash <span class="token comment">// value to pass to the function</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span>
-t<span class="token punctuation">.</span><span class="token method function property-access">ok</span><span class="token punctuation">(</span>book<span class="token punctuation">,</span> <span class="token string">"test get book"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// tape test assertion</span>
-</code></pre>
-<p>Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test, is the test that failed at least once. That way you know you are actually testing something real.</p>
-<h3 id="get-book"><a class="anchor" href="#get-book"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Get book</h3>
-<p>After you get a failing test, it is up to you to make it pass. Implement the <code>get_book</code> function.
-Run the tests. And if everything passes, then it is time to put your feet up, relax and rest.</p>
-<ol>
-<li>Add the extra test</li>
-<li>Check if you are still inside the nix-shell
-_Your terminal should similar to this <code>[nix-shell:~/path-to-workspace/developer-exercises]$</code></li>
-<li>Implement the function <code>get_book</code></li>
-<li>Compile your code: <code>./run_build.sh</code>.</li>
-<li>Run the test: <code>./run_tests.sh</code></li>
-<li>Don't stop until the test runs green</li>
-</ol>
-<h2 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h2>
-<p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
-<ul>
-<li>The name of your property in the test (typescript) might not match the name in the zome (Rust)</li>
-</ul>
-<pre><code>ok 1 should be truthy
+<!--- TODO add explanation for WasmError --->
+
+It is up to you to add Book struct with two fields: title and content, to define your entry, add all the attributes and to register your entry definition.
+There is one thing we didn't tell in the previous exercise: `create_entry` returns a `ExternResult<headerhash>` and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look [here](https://docs.rs/hdk/0.0.100/hdk/prelude/index.html) to see what function might be suited for that.
+
+1. Go to the `developer-exercises`.
+2. Enter the nix-shell: `nix-shell`  
+   _you should run this in the folder containing the default.nix file_  
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
+3. Go to folder with the exercise `basic/1.hashes`
+4. Inside `zome/exercise/src/lib.rs`
+   - Define a new struct for your entry: 'Book'
+   - Implement the function `add_book`
+5. Compile your code: `./run_build.sh`.
+6. Run the test: `./run_tests.sh`
+7. Don't stop until the test runs green
+
+### Add test
+
+If you really want to take your exercises seriously, you need to know how to add tests yourself. Until now, every time you ran `./run_tests` script, it would jump in the `tests` directory and run the typescript tests with `npm test`. The tests are real integration tests. They take the zome, as a compiled dna, and have a holochain conductor create a cell, for a specific user, with this dna.
+The tests are fairly straightforward. Take a look at the code in `tests\src\index.ts`. If you are done exploring, add the code here below, just behind this line `t.ok(entryHash, "test add book");`.
+
+```typescript
+let book = await alice_common.cells[0].call(
+  "exercise", // name of zome
+  "get_book", // function to call
+  entryHash // value to pass to the function
+);
+t.ok(book, "test get book"); // tape test assertion
+```
+
+Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test, is the test that failed at least once. That way you know you are actually testing something real.
+
+### Get book
+
+After you get a failing test, it is up to you to make it pass. Implement the `get_book` function.
+Run the tests. And if everything passes, then it is time to put your feet up, relax and rest.
+
+<inline-notification type="tip" title="Exercise">
+1. Add the extra test
+2. Check if you are still inside the nix-shell
+   _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises]$`
+3. Implement the function `get_book`
+4. Compile your code: `./run_build.sh`.
+5. Run the test: `./run_tests.sh`
+6. Don't stop until the test runs green
+</inline-notification>
+
+## Errors
+
+If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
+
+- The name of your property in the test (typescript) might not match the name in the zome (Rust)
+
+```
+ok 1 should be truthy
 07:29:31 [tryorama] error: Test error: {
   type: 'error',
   data: {
@@ -341,15 +351,20 @@ _Your terminal should similar to this <code>[nix-shell:~/path-to-workspace/devel
   }
 }
 not ok 2 Test threw an exception. See output for details.
-</code></pre>
-<p>Verify that fieldname in typescript, match with the fieldnames in Rust</p>
-<pre><code>// Rust
+```
+
+Verify that fieldname in typescript, match with the fieldnames in Rust
+
+```
+// Rust
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct SomeExternalEntryHash{
     value: String,  // has to match with
 }
-</code></pre>
-<pre><code>// Typescript
+```
+
+```
+// Typescript
 let book = await alice_common.cells[0].call(
   "exercise",
   "get_book",
@@ -360,11 +375,13 @@ let book = await alice_common.cells[0].call(
     differentfieldname: "SDJCZjlsjfldkjfzerezmdljfdsmoiezr",
   }
 );
-</code></pre>
-<p>For Rust specific questions:
-<a href="https://forum.holochain.org/c/technical/rust/15">https://forum.holochain.org/c/technical/rust/15</a>
+```
+
+For Rust specific questions:
+https://forum.holochain.org/c/technical/rust/15
 or
-your favorite search engine</p>
+your favorite search engine
+</headerhash>
         
       
 
