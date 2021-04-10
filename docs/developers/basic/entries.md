@@ -33,10 +33,8 @@ When you create an entry a few things will happen:
 
 1. Your data is validated locally _(we will learn how this works in later exercises)_
 2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) _(hence the 'chain' in 'Holochain')_
-3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp _(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)_
-4. The random people that received your data will validate your data using the same rules that were used in the first step. _(this is where the 'Holo', in Holochain comes from. To become an real entry, your entry has to be seen and validated by different people/agents. Just like a in a [hologram](http://www.displayhologram.co.uk/the-hologram/the-basics/), where different people can look at the same object from different angles and still agree on what they are seeing)_
-
-Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.
+3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp
+4. The random people that received your data will validate your data using the same rules that were used in the first step. _(this is where the 'Holo' in Holochain comes from. To become a real entry, your entry has to be seen and validated by different people/agents. Just like in a [hologram](http://www.displayhologram.co.uk/the-hologram/the-basics/), where different people can look at the same object from different angles and still agree on what they are seeing)_
 
 ## Try it!
 
@@ -126,7 +124,7 @@ In the `Entry Contents` you see three things:
 
 2. `entry_type` is specific to the Holochain technology underpinning our app. There are four types of entries: Agent, App, CapClaim, and CapGrant. For this exercise we limit our focus to [App entries](https://developer.holochain.org/docs/glossary/#app-entry).
 
-3. `greeting_text` is a custom field so you can give it a different name if you want to. You could add more fields as well, but for now one will do.
+3. `content` is the content of our custom field. You could add more fields as well, but for now one will do.
 
 ## Getting ready
 
