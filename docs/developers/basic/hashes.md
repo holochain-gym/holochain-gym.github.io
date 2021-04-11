@@ -117,10 +117,10 @@ Enough talking. It is time to get ready for the exercise.
 This time you are building a library zome. The zome will need 2 functions that can be called from the outside: `add_book` and `get_book`. You will add your favorite book and retrieve it from the library zome based on -you guessed it- the hash of its entry. In one of the next exercise we will see that there are other ways to retrieve your data: headers and elements. But it is good to know you can always find your entry again based on its entry hash.
 
 First let's practice a bit in the simulation gym.
-Select "add*book" in the CallZomeFns below, type the title of your favorite book in the input and click \_EXECUTE*.
+Select `add_book` in the CallZomeFns below, type the title of your favorite book in the input and click _EXECUTE_.
 Click on the newly added object in the Entry Graph and copy the value of Entry hash.
-Select "get*book" in the CallZomeFns, put in the hash and click \_EXECUTE*. Open the last item with the green check with the text `get_book in library zome, result: `, in the panel just right of the execute button. Inspect the details.  
-We told you you would see hashes everywhere. Look for the entry_hash and check if it matches. If it does, it means you succesfully created and retrieved an entry from the holochain simulation app.
+Select `get_book` in the CallZomeFns, put in the hash and click _EXECUTE_. Open the last item with the green check with the text `get_book in library zome, result: `, in the panel just right of the execute button. Inspect the details.  
+We told you you would see hashes everywhere. Look for the entry_hash and check if it matches. If it does, it means you successfully created and retrieved an entry from the holochain simulation app.
 
 ```js story
 const sampleZome2 = {
