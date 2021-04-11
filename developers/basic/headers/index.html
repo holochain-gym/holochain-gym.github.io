@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../fd5689ef.png">
+<meta property="og:image" content="../../../6ea79546.png">
 <meta property="og:url" content="/developers/basic/headers/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -168,6 +168,10 @@
 <a href="/developers/basic/hashes/">Hashes</a>
 
 </li>
+<li class="menu-item">
+<a href="/developers/basic/links/">Links</a>
+
+</li>
 <li class="menu-item current">
 <a href="/developers/basic/headers/">Headers</a>
 <ul>
@@ -190,10 +194,6 @@
     <a href="#extra" class="anchor">Extra</a>
   </li>
 </ul>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/links/">Links</a>
 
 </li>
 <li class="menu-item">
@@ -349,7 +349,7 @@ The function <code>register_snacking</code> requires some extra attention. You n
 <p>Returning stuff to the UI or tests is always done inside <a href="https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html">ExternResult</a></p>
 </li>
 <li>
-<p><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code></a> returns a <a href="https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html">ExternResult&lt;Option<element>&gt;</element></a>. So if you call <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code></a> at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the <code>Element</code> inside your function somehow, you need to unwrap the <code>ExternResult</code>. And in Rust that means you need to handle the error. For instance like this:</p>
+<p><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code></a> returns a <a href="https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html">ExternResult&lt;Option<element>&gt;</element></a>. So if you call <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code></a> at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the <code>Element</code> inside your function somehow, you need to unwrap the <code>Option</code>. And in Rust that means you need to handle the error. For instance like this:</p>
 </li>
 </ul>
 <pre><code>  .ok_or(WasmError::Guest(String::from("Could not find SnackingLog for entry hash")))?;
