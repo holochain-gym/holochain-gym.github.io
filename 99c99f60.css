@@ -46,4 +46,38 @@ html.dark {
   .content-area {
     max-width: 1600px !important;
   }
+
+p {
+  max-width: 50rem;
+  text-align: justify;
+}
+  
+pre {
+  max-width: 50rem;
+  text-align: justify;
+}
+  
+ul {
+  max-width: 50rem;
+  text-align: justify;
+}
+
+ol {
+  max-width: 50rem;
+  text-align: justify;
+}
+
+li {
+  max-width: 50rem;
+  text-align: justify;
+}
+  
+inline-notification {
+  max-width: 50rem;
+}
+
+.page-slogan{
+  max-width: 100%;
+}
+  
 }
