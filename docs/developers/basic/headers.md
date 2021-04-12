@@ -171,7 +171,7 @@ To start you will need to implement these functions: `register_snacking`, `get_b
 Let's do a dry run in the simulation gym.  
 
 - Select "register_snacking" in the CallZomeFns below, type `april 2: lemon pie` in the input and click _EXECUTE_.  
-- Next: add `april 4: chocolate` and `april 5: marshmellows`  
+- Next: add `april 4: chocolate` and `april 5: marshmallows`  
 - In the Entry Graph, click on one of the newly added snacking_log entries and copy the value of Entry hash. 
 - Select "get_by_entry_hash" in the CallZomeFns, put in the hash and click _EXECUTE_. And double check to see if you get the right snacking_log.  
 - Next copy one of the header hashes, select "get_by_header_hash" in the CallZomeFns, put in the hash and click _EXECUTE_. And double check to see if get the snacking_log you expected.
