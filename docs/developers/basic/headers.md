@@ -1,4 +1,4 @@
-# Basic >> Headers ||103
+# Basic >> Headers ||104
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -262,7 +262,7 @@ A few more tips:
 - Hashes are basic arrays with bytes. An easier way to send hashes back and forth between your UI, or, in our case, tests, and the zome code is to use encode the array as a Base64 string. You can use `holo_hash::HeaderHashB64` & `holo_hash::EntryHashB64`.
 - Returning stuff to the UI or tests is always done inside [ExternResult](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html)
 
-- [`get`](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) returns a [ExternResult<Option<Element>>](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html). So if you call [`get`](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the `Element` inside your function somehow, you need to unwrap the `ExternResult`. And in Rust that means you need to handle the error. For instance like this:
+- [`get`](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) returns a [ExternResult<Option<Element>>](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html). So if you call [`get`](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the `Element` inside your function somehow, you need to unwrap the `Option`. And in Rust that means you need to handle the error. For instance like this:
 ```
   .ok_or(WasmError::Guest(String::from("Could not find SnackingLog for entry hash")))?;
 ```

@@ -1,4 +1,4 @@
-# Basic >> Links ||104
+# Basic >> Links ||103
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -9,6 +9,7 @@ import {
   EntryGraph,
   CallZomeFns,
   SourceChain,
+  ZomeFnsResults
 } from "@holochain-playground/elements";
 
 customElements.define(
@@ -19,7 +20,7 @@ customElements.define("entry-graph", EntryGraph);
 customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 customElements.define("source-chain", SourceChain);
-
+customElements.define("zome-fns-results", ZomeFnsResults);
 ```
 
 ## What is a link?
@@ -104,16 +105,17 @@ export const Simple = () => {
         </call-zome-fns>
         <entry-contents style="flex-basis: 500px; height: 350px;">
         </entry-contents>
-      
-      <entry-graph
-        hide-filter
-        .excludedEntryTypes=${["Agent"]}
-        style="flex: 1; height: 500px; margin-bottom: 20px;"
+      </div>
+      <div
+        style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
-      </entry-graph>
-              <source-chain style="flex: 1; height: 600px;">
-        </source-chain>
-        </div>
+        <entry-graph
+          hide-filter
+          .excludedEntryTypes=${["Agent"]}
+          style="flex: 1; height: 500px;"
+        >
+        </entry-graph>
+      </div>
     </holochain-playground-container>
   `;
 };
@@ -123,7 +125,7 @@ Great! Now you might be thinking: what do we do with links? Links are useful to 
 
 Here we have some posts created, with a link from the author public key to all the posts they have created.
 
-Try creating some posts and see how the entries behave, and try to do a `get_links` with the public key of the author to get the links to all the posts that that agent has created.
+Try creating some posts and see how the entries behave, and try to do a `get_links` with the public key of the author to get the links to all the posts that that agent has created. You can get the public key of the author by clicking on the `Agent` entry and copying the hash of that entry. All agents create an initial `Agent` entry when they join the network, in order to be identified by other peers in that DHT.
 
 ```js story
 const sampleZome2 = {
@@ -216,11 +218,8 @@ export const Simple2 = () => {
           style="flex: 1; height: 500px; margin-right: 20px;"
         >
         </entry-graph>
-        <entry-contents style="flex-basis: 500px; height: 350px;">
+        <entry-contents style="flex-basis: 500px; height: 500px;">
         </entry-contents>
-
-              <source-chain style="flex: 1; height: 600px;">
-        </source-chain>
       </div>
     </holochain-playground-container>
   `;
