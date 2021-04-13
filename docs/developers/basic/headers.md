@@ -217,11 +217,11 @@ export const Sim1 = () => {
       .numberOfSimulatedConductors=${1}
       .simulatedDnaTemplate=${simulatedDna1}
       @ready=${(e) => {
-        const conductor = e.detail.conductors[0];
+        const conductor1 = e.detail.conductors[0];
 
-        const cell = conductor.getAllCells()[0];
+        const cell1 = conductor1.getAllCells()[0];
 
-        e.target.activeAgentPubKey = cell.cellId[1];
+        e.target.activeAgentPubKey = cell1.cellId[1];
       }}
     >
       <call-zome-fns
@@ -302,6 +302,7 @@ Implement a function `get_header_hash_by_content` that returns the header hash b
 
 If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
 
+_Nothing added for now_
 
 For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15

@@ -48,13 +48,14 @@ Essentially, the source-chain is a **hash-chain of all the actions that a partic
 Perhaps this does sounds like some weird form of magic.
 Head over to the simulation where you will see that, underneath, it is just a headers and entries.
 
-## Inside cell
+## Subconscious
 
-Even before you add your first entries, like you did in the [entries exercise](/basis/entries), 3 headers and 1 entry will be created automatically, or put differently, by the **subconscious** of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, _consciously_, triggered by you.
+Even before you add your first entries, like you did in the [entries exercise](/basis/entries), 3 headers and 1 entry will be created automatically your holochain app. These 4 elements, the [genesis events](https://developer.holochain.org/docs/glossary/#genesis-elements) are created by what you call the **subconscious** of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, _consciously_, triggered by you, the user.
 
 The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on headers and the entry below to learn more about them.
 
 ```js story
+
 const simulatedDna0 = {
   zomes: [
     {
@@ -103,7 +104,7 @@ export const Sim0 = () => {
 };
 ```
 
-- **DNA** is a special type of header that marks the beginning of your source chain. In contrast to other headers it doesn't have a `header_seq` or a `prev_header` field, because it is the very first header in your holochain app. If a 1000 people run the same DNA all of their holochain apps will have the same first header. And that is important, because that means you are, just like in real life, part of the same organism. In the world of holochain apps that means you share the same DHT through which you share data, through which you collaborate. **Same DNA, same DHT. Different DNA, different DHT**
+- **DNA** is a special type of header that marks the beginning of your source chain. In contrast to other headers it doesn't have a `header_seq` or a `prev_header` field, because it is the very first header in your holochain app. If a 1000 people run the same [DNA](https://developer.holochain.org/docs/glossary/#dna) all of their holochain apps will have the same first header. And that is important, because that means you are, just like in real life, part of the same organism. In the world of holochain apps that means you share the same DHT through which you share data, through which you collaborate. **Same DNA, same DHT. Different DNA, different DHT**
 
 - **AgentValidationPkg** is important in deciding who is allowed to become part of the organism. It could be open access, as in, everyone with the same DNA can participate. But you can construct a [membrane](https://developer.holochain.org/docs/glossary/#membrane) around your organism that controls who or under which conditions someone can participate. It is very interesting part of a holochain app, but also a more advanced topic.
 
@@ -111,13 +112,155 @@ export const Sim0 = () => {
 
 - **Agent entry** or the [agent ID entry](https://developer.holochain.org/docs/glossary/#agent-id-entry) this entry contains the [agent ID](), your public key. The agent ID is crucial in proving who you are to others cell in the organism, other people running the same DNA.
 
+You can think of the source chain as a blank notebook with page numbers. If you use it to record events, one event on one page, and you never skip a page, you are effectively using your notebook as a ledger. This give your notebook some interesting properties. If you open a page on a specific event, you can find out what happened right before. And if you hand your notebook to someone, that someone can inspect your notebook to see if you removed a page or not, just by looking at the page numbers. This is useful if that other person is trying to validate if your notebook is telling the _complete_ truth of what you wrote down in there. 
+
 ## Happened before
 
-Paged notebook
+_Let's put this in to practice_
+
+In the [headers exercise](/basic/headers) you built the zome for a simple snacking logger app. The simulation already contains your snacking logs. 
+
+- Click on all the entries (grey circles) to see what you snacked recently
+- Click on the headers (rounded blue squares) and look at `hash` in the header and at the `prev_header` value. Notice how they form a **flawless chain**, all the way down to the DNA header.
+- Select "register_snacking" in the CallZomeFns below, type `april 3: ice cream` in the input and click _EXECUTE_. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of a chain. That would break the chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always add it at the end. Your source chain is **append only**.
+- Select "say_greeting" in the CallZomeFns below, type `Hello world` in the input and click _EXECUTE_. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can **mix** entries of different type, the headers will always appear in your source chain in the same order as they were created.
+
+
+```js story
+const simulatedDna1 = {
+  zomes: [
+    {
+      name: "mixed",
+      entry_defs: [
+        {
+          id: "snacking_log",
+          visibility: "Public",
+        },
+        {
+          id: "greeting_text",
+          visibility: "Public",
+        },
+      ],
+      zome_functions: {
+        register_snacking: {
+          call: ({ create_entry, hash_entry }) => async ({ content }) => {
+            return create_entry({ content, entry_def_id: "snacking_log" });
+          },
+          arguments: [{ name: "content", type: "String" }],
+        },
+        say_greeting: {
+          call: ({ create_entry, hash_entry }) => async ({ content }) => {
+            return create_entry({ content, entry_def_id: "greeting_text" });
+          },
+          arguments: [{ name: "content", type: "String" }],
+        },
+      },
+    },
+  ],
+};
+export const Sim1 = () => {
+  return html`
+    <holochain-playground-container
+      .numberOfSimulatedConductors=${1}
+      .simulatedDnaTemplate=${simulatedDna1}
+      @ready=${(e) => {
+        const conductor1 = e.detail.conductors[0];
+
+        const cell1 = conductor1.getAllCells()[0];
+
+        e.target.activeAgentPubKey = cell1.cellId[1];
+
+        conductor1.callZomeFn({
+          cellId: cell1.cellId,
+          zome: "mixed",
+          fnName: "register_snacking",
+          payload: { content: "april 1: gummi bears" },
+          cap: null,
+        })
+        .then(() =>
+          conductor1.callZomeFn({
+            cellId: cell1.cellId,
+            zome: "mixed",
+            fnName: "register_snacking",
+            payload: { content: "april 2: lemon pie" },
+            cap: null,
+          })
+        )
+        .then(() =>
+          conductor1.callZomeFn({
+            cellId: cell1.cellId,
+            zome: "mixed",
+            fnName: "register_snacking",
+            payload: { content: "april 4: chocolat" },
+            cap: null,
+          })
+        )
+        .then(() =>
+          conductor1.callZomeFn({
+            cellId: cell1.cellId,
+            zome: "mixed",
+            fnName: "register_snacking",
+            payload: { content: "april 5: marsmallows" },
+            cap: null,
+          })
+        )
+          ;
+        
+        ;
+      }}
+    >
+      <call-zome-fns
+        id="call-zome"
+        style="height: 250px; margin-bottom: 20px;"
+        hide-agent-pub-key
+      >
+      </call-zome-fns>
+      <div
+        style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
+      >
+        <source-chain style="flex: 1; height: 600px;">
+        </source-chain>
+        <entry-contents style="flex-basis: 500px; height: 600px;">
+        </entry-contents>
+      </div>
+    </holochain-playground-container>
+  `;
+};
+```
+
+This time we will do some lightweight exercises, just to get a feel for the chain part of our source chain. You need to implement 3 functions.
+
+- `is_previous_header_hash` if you give your zome 2 hashes, it will answer is the second header hash is the previous, a direct parent, of the first header hash.
+- `happened_before` does the same as the above function, but it is not limited to the direct parent. I will determine is the second hash is an ancestor. So not limited to the direct parent.
+- `get_header_sequence_number` the header contains a field header_seq, which contains the sequence number of the header in the chain. The very first header, the DNA header, does not have this field. You could say it is implicitly zero. The next header starts counting at one. You imagine your UI is loading all the headers to show. In that case it can come in handy if you have an idea of where in the chain you are.
+
+<inline-notification type="tip" title="Exercise">
+
+1. Check if you are still inside the nix-shell  
+    _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`  
+3. Implement `is_previous_header_hash`, `happened_before`, `get_header_sequence_number`
+6. Compile your code: `./run_build.sh`
+7. Run the test: `./run_tests.sh`  
+8. Don't stop until the tests run green  
+
+</inline-notification>
+
+# Errors
+
+If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
+
+_Nothing added for now_
+
+For Rust specific questions:
+https://forum.holochain.org/c/technical/rust/15
+or 
+your favorite search engine
 
 ## Visibility
 
 
+# Elements
+## Query
 ## Entry graph
 With the help of headers you can build a graph
 
@@ -157,104 +300,4 @@ There are a few rules: you can only use one page for one day and you always use 
 
 ## Try it!
 
-```js story
-const simulatedDnaTemplate = {
-  zomes: [
-    {
-      name: "entries",
-      entry_defs: [
-        {
-          id: "sample",
-          visibility: "Public",
-        },
-      ],
-      zome_functions: {
-        create_entry: {
-          call: ({ create_entry, hash_entry }) => async ({ content }) => {
-            return create_entry({ content, entry_def_id: "sample" });
-          },
-          arguments: [{ name: "content", type: "String" }],
-        },
-        update_entry: {
-          call: ({ update_entry }) => ({
-            original_header_address,
-            new_content,
-          }) => {
-            return update_entry(original_header_address, {
-              content: new_content,
-              entry_def_id: "sample",
-            });
-          },
-          arguments: [
-            { name: "original_header_address", type: "HeaderHash" },
-            { name: "new_content", type: "String" },
-          ],
-        },
-        delete_entry: {
-          call: ({ delete_entry }) => ({ deletes_header_address }) => {
-            return delete_entry(deletes_header_address);
-          },
-          arguments: [{ name: "deletes_header_address", type: "HeaderHash" }],
-        },
-      },
-    },
-    {
-      name: "links",
-      entry_defs: [
-        {
-          id: "sample",
-          visibility: "Public",
-        },
-      ],
-      zome_functions: {
-        create_link: {
-          call: ({ create_link }) => ({ base, target, tag }) => {
-            return create_link({ base, target, tag });
-          },
-          arguments: [
-            { name: "base", type: "EntryHash" },
-            { name: "target", type: "EntryHash" },
-            { name: "tag", type: "any" },
-          ],
-        },
-        delete_link: {
-          call: ({ delete_link }) => ({ header_hash }) => {
-            return delete_link({ header_hash });
-          },
-          arguments: [{ name: "header_hash", type: "HeaderHash" }],
-        },
-      },
-    },
-  ],
-};
-export const Simple = () => {
-  return html`
-    <holochain-playground-container
-      .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate}
-      @ready=${(e) => {
-        const conductor = e.detail.conductors[0];
 
-        const cellId = conductor.getAllCells()[0].cellId;
-
-        e.target.activeAgentPubKey = cellId[1];
-      }}
-    >
-      <call-zome-fns
-        id="call-zome"
-        style="height: 400px; margin-bottom: 20px;"
-        hide-agent-pub-key
-      >
-      </call-zome-fns>
-      <div
-        style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
-      >
-        <source-chain style="flex: 1; height: 600px; margin-right: 20px;">
-        </source-chain>
-        <entry-contents style="flex-basis: 500px; height: 600px;">
-        </entry-contents>
-      </div>
-    </holochain-playground-container>
-  `;
-};
-```
