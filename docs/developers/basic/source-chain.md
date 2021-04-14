@@ -229,6 +229,8 @@ export const Sim1 = () => {
 };
 ```
 
+## Exercise
+
 This time we will do some lightweight exercises, just to get a feel for the chain part of our source chain. You need to implement 3 functions.
 
 - `is_previous_header_hash` if you give your zome 2 hashes, it will answer if the second header hash is the previous, a direct parent, of the first header hash.
