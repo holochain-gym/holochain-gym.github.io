@@ -7,6 +7,7 @@ import {
   HolochainPlaygroundContainer,
   EntryContents,
   EntryGraph,
+  ZomeFnsResults,
   CallZomeFns,
   SourceChain,
   DhtCells,
@@ -21,11 +22,12 @@ customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 customElements.define("source-chain", SourceChain);
 customElements.define("dht-cells", DhtCells);
+customElements.define("zome-fns-results", ZomeFnsResults);
 ```
 
 ## Recap
 
-You learned about entries and headers: two of the most basic building blocks in any holochain app. And experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/intermediate/DHT).
+You learned about entries and headers: two of the most basic building blocks in any holochain app. And experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/developers/intermediate/DHT).
 
 ## Source chain
 
@@ -41,9 +43,9 @@ When you download a compiled [DNA](https://developer.holochain.org/docs/glossary
 
 If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist out of one or more zomes. All our exercises so far only contained one zome. The one you compiled from `zomes/exercise/lib.rs`. For the sake of simplicity we will keep on pretending every DNA has just one [zome](https://developer.holochain.org/docs/glossary/#zome). For now.
 
-Now for the crucial part: "**stores all of the actions**". Every action, which in holochain speak means: every header and entry, that are produced by you, the agent, will become a part of the source chain, forever.
+Now for the crucial part: "**stores all of the actions**". Every action, which in holochain speak means: every header and entry, that are produced by you, the agent, will become a part of the source chain, for as long as that agent has that DNA installed.
 Whenever a new action is committed (creating entries or links, updating...) a new element is added to that chain, with its header referencing the previous one.
-Essentially, the source-chain is a **hash-chain of all the actions that a particular agent has committed in this DNA**. 
+Essentially, the source-chain is a **hash-chain of all the actions that a particular agent has committed in this DNA**.
 
 Perhaps this does sounds like some weird form of magic.
 Head over to the simulation where you will see that, underneath, it is just a headers and entries.
@@ -55,7 +57,6 @@ Even before you add your first entries, like you did in the [entries exercise](/
 The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them.
 
 ```js story
-
 const simulatedDna0 = {
   zomes: [
     {
@@ -90,11 +91,10 @@ export const Sim0 = () => {
         e.target.activeAgentPubKey = cell.cellId[1];
       }}
     >
-      
       <div
         style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
-        <source-chain style="flex: 1; height: 600px;">
+        <source-chain style="flex: 1; height: 600px; margin-right: 20px;">
         </source-chain>
         <entry-contents style="flex-basis: 500px; height: 600px;">
         </entry-contents>
@@ -112,20 +112,18 @@ export const Sim0 = () => {
 
 - **Agent entry** or the [agent ID entry](https://developer.holochain.org/docs/glossary/#agent-id-entry), this entry contains the [agent ID](https://developer.holochain.org/docs/glossary/#agent-id), your public key. The agent ID is crucial in proving who you are to others cell in the organism, other people running the same DNA.
 
-You can think of the source chain as a blank notebook with page numbers. If you use it to record events, one event on one page, and you never skip a page, you are effectively using your notebook as a ledger. This gives your notebook some interesting properties. If you open a page on a specific event, you can find out what happened right before. And if you hand your notebook to someone, that someone can inspect your notebook to see if you removed a page or not, just by looking at the page numbers. The `prev_header` field in the headers acts like a page number. This is useful if another person is trying to validate if your notebook is telling the _complete_ truth of what you wrote down in there. 
+You can think of the source chain as a blank notebook with page numbers. If you use it to record events, one event on one page, and you never skip a page, you are effectively using your notebook as a ledger. This gives your notebook some interesting properties. If you open a page on a specific event, you can find out what happened right before. And if you hand your notebook to someone, that someone can inspect your notebook to see if you removed a page or not, just by looking at the page numbers. The `prev_header` field in the headers acts like a page number. This is useful if another person is trying to validate if your notebook is telling the _complete_ truth of what you wrote down in there.
 
 ## Happened before
 
 _Let's put this in to practice_
 
-In the [headers exercise](/basic/headers) you built the zome for a simple snacking logger app. The simulation below already contains your snacking logs. 
+In the [headers exercise](/basic/headers) you built the zome for a simple snacking logger app. The simulation below already contains your snacking logs.
 
 - Click on all the entries (grey circles) to see what you snacked recently
 - Click on the headers (rounded blue squares) and look at `hash` in the header and at the `prev_header` value. Notice how they form a **flawless chain**, all the way down to the DNA header.
-- Select "register_snacking" in the CallZomeFns below, type `april 3: ice cream` in the input and click _EXECUTE_. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is **append only**. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged `april 3: ice cream` after you logged `april 5: marsmallows`.
-- Select "say_greeting" in the CallZomeFns below, type `Hello world` in the input and click _EXECUTE_. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can **mix entries of different types**, the headers will always appear in your source chain in the same order as they were created.
-
-
+- Select "register*snacking" in the CallZomeFns below, type `april 3: ice cream` in the input and click \_EXECUTE*. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is **append only**. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged `april 3: ice cream` after you logged `april 5: marsmallows`.
+- Select "say*greeting" in the CallZomeFns below, type `Hello world` in the input and click \_EXECUTE*. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can **mix entries of different types**, the headers will always appear in your source chain in the same order as they were created.
 
 ```js story
 const simulatedDna1 = {
@@ -171,55 +169,62 @@ export const Sim1 = () => {
 
         e.target.activeAgentPubKey = cell1.cellId[1];
 
-        conductor1.callZomeFn({
-          cellId: cell1.cellId,
-          zome: "mixed",
-          fnName: "register_snacking",
-          payload: { content: "april 1: gummi bears" },
-          cap: null,
-        })
-        .then(() =>
-          conductor1.callZomeFn({
+        conductor1
+          .callZomeFn({
             cellId: cell1.cellId,
             zome: "mixed",
             fnName: "register_snacking",
-            payload: { content: "april 2: lemon pie" },
+            payload: { content: "april 1: gummi bears" },
             cap: null,
           })
-        )
-        .then(() =>
-          conductor1.callZomeFn({
-            cellId: cell1.cellId,
-            zome: "mixed",
-            fnName: "register_snacking",
-            payload: { content: "april 4: chocolat" },
-            cap: null,
-          })
-        )
-        .then(() =>
-          conductor1.callZomeFn({
-            cellId: cell1.cellId,
-            zome: "mixed",
-            fnName: "register_snacking",
-            payload: { content: "april 5: marsmallows" },
-            cap: null,
-          })
-        )
-          ;
-        
-        ;
+          .then(() =>
+            conductor1.callZomeFn({
+              cellId: cell1.cellId,
+              zome: "mixed",
+              fnName: "register_snacking",
+              payload: { content: "april 2: lemon pie" },
+              cap: null,
+            })
+          )
+          .then(() =>
+            conductor1.callZomeFn({
+              cellId: cell1.cellId,
+              zome: "mixed",
+              fnName: "register_snacking",
+              payload: { content: "april 4: chocolat" },
+              cap: null,
+            })
+          )
+          .then(() =>
+            conductor1.callZomeFn({
+              cellId: cell1.cellId,
+              zome: "mixed",
+              fnName: "register_snacking",
+              payload: { content: "april 5: marsmallows" },
+              cap: null,
+            })
+          );
       }}
     >
-      <call-zome-fns
-        id="call-zome"
-        style="height: 250px; margin-bottom: 20px;"
-        hide-agent-pub-key
+      <div
+        style="display: flex; height: 300px; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
-      </call-zome-fns>
+        <call-zome-fns
+          id="call-zome"
+          style="flex: 1; margin-right: 20px; height: 100%;"
+          hide-agent-pub-key
+        >
+        </call-zome-fns>
+
+        <zome-fns-results
+          style="flex: 1; height: 100%;"
+          hide-agent-pub-key
+        ></zome-fns-results>
+      </div>
       <div
         style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
-        <source-chain style="flex: 1; height: 600px;">
+        <source-chain style="flex: 1; height: 600px; margin-right: 20px;">
         </source-chain>
         <entry-contents style="flex-basis: 500px; height: 600px;">
         </entry-contents>
@@ -240,11 +245,11 @@ This time we will do some lightweight exercises, just to get a feel for the chai
 <inline-notification type="tip" title="Exercise">
 
 1. Check if you are still inside the nix-shell  
-    _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`  
-3. Implement `is_previous_header_hash`, `happened_before`, `get_header_sequence_number`
-6. Compile your code: `./run_build.sh`
-7. Run the test: `./run_tests.sh`  
-8. Don't stop until the tests run green  
+   _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
+2. Implement `is_previous_header_hash`, `happened_before`, `get_header_sequence_number`
+3. Compile your code: `./run_build.sh`
+4. Run the test: `./run_tests.sh`
+5. Don't stop until the tests run green
 
 </inline-notification>
 
@@ -256,5 +261,5 @@ _Nothing added for now_
 
 For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15
-or 
+or
 your favorite search engine
