@@ -50,9 +50,9 @@ Head over to the simulation where you will see that, underneath, it is just a he
 
 ## Subconscious
 
-Even before you add your first entries, like you did in the [entries exercise](/basis/entries), 3 headers and 1 entry will be created automatically your holochain app. These 4 elements, the [genesis events](https://developer.holochain.org/docs/glossary/#genesis-elements) are created by what you call the **subconscious** of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, _consciously_, triggered by you, the user.
+Even before you add your first entries, like you did in the [entries exercise](/basis/entries), 3 headers and 1 entry will be created automatically in your holochain app. These 4 elements, the [genesis events](https://developer.holochain.org/docs/glossary/#genesis-elements) are created by what you call the **subconscious** of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, _consciously_, triggered by you, the user.
 
-The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on headers and the entry below to learn more about them.
+The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them.
 
 ```js story
 
@@ -106,24 +106,25 @@ export const Sim0 = () => {
 
 - **DNA** is a special type of header that marks the beginning of your source chain. In contrast to other headers it doesn't have a `header_seq` or a `prev_header` field, because it is the very first header in your holochain app. If a 1000 people run the same [DNA](https://developer.holochain.org/docs/glossary/#dna) all of their holochain apps will have the same first header. And that is important, because that means you are, just like in real life, part of the same organism. In the world of holochain apps that means you share the same DHT through which you share data, through which you collaborate. **Same DNA, same DHT. Different DNA, different DHT**
 
-- **AgentValidationPkg** is important in deciding who is allowed to become part of the organism. It could be open access, as in, everyone with the same DNA can participate. But you can construct a [membrane](https://developer.holochain.org/docs/glossary/#membrane) around your organism that controls who or under which conditions someone can participate. It is very interesting part of a holochain app, but also a more advanced topic.
+- **AgentValidationPkg** is important in deciding who is allowed to become part of the organism. It could be open access, as in, everyone with the same DNA can participate. But you can construct a [membrane](https://developer.holochain.org/docs/glossary/#membrane) around your organism that controls who or under which conditions someone can participate. It is a very interesting part of a holochain app, but also a more advanced topic.
 
-- **Create header** is just a run of the mill header of type CREATE. The only special thing is that it points to entry of type AGENT
+- **Create header** is just a simple header of type CREATE. The only special thing is that it points to an entry of type AGENT
 
-- **Agent entry** or the [agent ID entry](https://developer.holochain.org/docs/glossary/#agent-id-entry) this entry contains the [agent ID](), your public key. The agent ID is crucial in proving who you are to others cell in the organism, other people running the same DNA.
+- **Agent entry** or the [agent ID entry](https://developer.holochain.org/docs/glossary/#agent-id-entry), this entry contains the [agent ID](https://developer.holochain.org/docs/glossary/#agent-id), your public key. The agent ID is crucial in proving who you are to others cell in the organism, other people running the same DNA.
 
-You can think of the source chain as a blank notebook with page numbers. If you use it to record events, one event on one page, and you never skip a page, you are effectively using your notebook as a ledger. This give your notebook some interesting properties. If you open a page on a specific event, you can find out what happened right before. And if you hand your notebook to someone, that someone can inspect your notebook to see if you removed a page or not, just by looking at the page numbers. This is useful if that other person is trying to validate if your notebook is telling the _complete_ truth of what you wrote down in there. 
+You can think of the source chain as a blank notebook with page numbers. If you use it to record events, one event on one page, and you never skip a page, you are effectively using your notebook as a ledger. This gives your notebook some interesting properties. If you open a page on a specific event, you can find out what happened right before. And if you hand your notebook to someone, that someone can inspect your notebook to see if you removed a page or not, just by looking at the page numbers. The `prev_header` field in the headers acts like a page number. This is useful if another person is trying to validate if your notebook is telling the _complete_ truth of what you wrote down in there. 
 
 ## Happened before
 
 _Let's put this in to practice_
 
-In the [headers exercise](/basic/headers) you built the zome for a simple snacking logger app. The simulation already contains your snacking logs. 
+In the [headers exercise](/basic/headers) you built the zome for a simple snacking logger app. The simulation below already contains your snacking logs. 
 
 - Click on all the entries (grey circles) to see what you snacked recently
 - Click on the headers (rounded blue squares) and look at `hash` in the header and at the `prev_header` value. Notice how they form a **flawless chain**, all the way down to the DNA header.
-- Select "register_snacking" in the CallZomeFns below, type `april 3: ice cream` in the input and click _EXECUTE_. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of a chain. That would break the chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always add it at the end. Your source chain is **append only**.
-- Select "say_greeting" in the CallZomeFns below, type `Hello world` in the input and click _EXECUTE_. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can **mix** entries of different type, the headers will always appear in your source chain in the same order as they were created.
+- Select "register_snacking" in the CallZomeFns below, type `april 3: ice cream` in the input and click _EXECUTE_. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is **append only**. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged `april 3: ice cream` after you logged `april 5: marsmallows`.
+- Select "say_greeting" in the CallZomeFns below, type `Hello world` in the input and click _EXECUTE_. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can **mix entries of different types**, the headers will always appear in your source chain in the same order as they were created.
+
 
 
 ```js story
@@ -230,9 +231,9 @@ export const Sim1 = () => {
 
 This time we will do some lightweight exercises, just to get a feel for the chain part of our source chain. You need to implement 3 functions.
 
-- `is_previous_header_hash` if you give your zome 2 hashes, it will answer is the second header hash is the previous, a direct parent, of the first header hash.
-- `happened_before` does the same as the above function, but it is not limited to the direct parent. I will determine is the second hash is an ancestor. So not limited to the direct parent.
-- `get_header_sequence_number` the header contains a field header_seq, which contains the sequence number of the header in the chain. The very first header, the DNA header, does not have this field. You could say it is implicitly zero. The next header starts counting at one. You imagine your UI is loading all the headers to show. In that case it can come in handy if you have an idea of where in the chain you are.
+- `is_previous_header_hash` if you give your zome 2 hashes, it will answer if the second header hash is the previous, a direct parent, of the first header hash.
+- `happened_before` does the same as the above function, but it is not limited to the direct parent. I will determine is the second hash is an ancestor. So it is not limited to the direct parent.
+- `get_header_sequence_number` the header contains a field header_seq, which contains the sequence number of the header in the chain. The very first header, the DNA header, does not have this field. You could say it is implicitly zero. The next header starts counting at one. Umagine your UI is loading all the headers to show. In that case it can come in handy if you have an idea of where in the chain you are.
 
 <inline-notification type="tip" title="Exercise">
 
@@ -255,49 +256,3 @@ For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15
 or 
 your favorite search engine
-
-## Visibility
-
-
-# Elements
-## Query
-## Entry graph
-With the help of headers you can build a graph
-
-
-TOEVOEGEN source chain
-uitleggen 
-
-
-Now your DNA has instantiated and is finally a cell.
-
-Click in source chain sim
-
-Start adding stuff
-prev and next header
-- niet 1 type entry
-- alle entries/headers door elkaar/ zoals ze worden gecreeerd
-unforgeable - analogie blanco notebook met paginering
-
-
-
-visibility
-
-
-A holochain DNA has two places in which you can store data:
-
-- One global and shared public DHT (with which we have been playing in the previous exercises).
-- A private source-chain per each agent in the network.
-
-.
-You should think of the source chain a blank notebook, with numbered pages. 
-Each header on one page. rip out a page -> chain broken.
-Other can check your chain, because it's inside the DHT
-
-There are a few rules: you can only use one page for one day and you always use the next one. So you cannot leave any blank pages between entries.
-
-
-
-## Try it!
-
-
