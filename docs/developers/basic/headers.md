@@ -171,7 +171,7 @@ To start you will need to implement these functions: `register_snacking`, `get_b
 Let's do a dry run in the simulation gym.  
 
 - Select "register_snacking" in the CallZomeFns below, type `april 2: lemon pie` in the input and click _EXECUTE_.  
-- Next: add `april 4: chocolate` and `april 5: marshmellows`  
+- Next: add `april 4: chocolate` and `april 5: marshmallows`  
 - In the Entry Graph, click on one of the newly added snacking_log entries and copy the value of Entry hash. 
 - Select "get_by_entry_hash" in the CallZomeFns, put in the hash and click _EXECUTE_. And double check to see if you get the right snacking_log.  
 - Next copy one of the header hashes, select "get_by_header_hash" in the CallZomeFns, put in the hash and click _EXECUTE_. And double check to see if get the snacking_log you expected.
@@ -217,11 +217,11 @@ export const Sim1 = () => {
       .numberOfSimulatedConductors=${1}
       .simulatedDnaTemplate=${simulatedDna1}
       @ready=${(e) => {
-        const conductor = e.detail.conductors[0];
+        const conductor1 = e.detail.conductors[0];
 
-        const cell = conductor.getAllCells()[0];
+        const cell1 = conductor1.getAllCells()[0];
 
-        e.target.activeAgentPubKey = cell.cellId[1];
+        e.target.activeAgentPubKey = cell1.cellId[1];
       }}
     >
       <call-zome-fns
@@ -302,6 +302,7 @@ Implement a function `get_header_hash_by_content` that returns the header hash b
 
 If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
 
+_Nothing added for now_
 
 For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15
