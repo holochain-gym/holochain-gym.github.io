@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../cd9dea3f.png">
+<meta property="og:image" content="../../../ebeac984.png">
 <meta property="og:url" content="/developers/basic/source-chain/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -48,7 +48,7 @@
 
   
 
-<link rel="preload" href="../../../da0cf761.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../c5cb659b.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../17157e21.js" as="script" crossorigin="anonymous">
@@ -237,7 +237,7 @@
   
     <h1 id="basic-source-chain"><a class="anchor" href="#basic-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Source chain</h1>
 <h2 id="recap"><a class="anchor" href="#recap"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Recap</h2>
-<p>You learned about entries and headers: two of the most basic building blocks in any holochain app. And experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT <a href="/intermediate/DHT">here</a>.</p>
+<p>You learned about entries and headers: two of the most basic building blocks in any holochain app. And experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT <a href="/developers/intermediate/DHT">here</a>.</p>
 <h2 id="source-chain"><a class="anchor" href="#source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Source chain</h2>
 <p>The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what make holochain unique. It's where some of the magic happens.</p>
 <p>The <a href="https://developer.holochain.org/docs/glossary/#source-chain">glossary</a> explains it the following way:</p>
@@ -247,7 +247,7 @@
 <p><em>Let's unpack this</em></p>
 <p>When you download a compiled <a href="https://developer.holochain.org/docs/glossary/#dna">DNA</a>, a <a href="https://developer.holochain.org/docs/glossary/#webassembly-wasm">WASM</a> binary, from somewhere or when you compile it locally and you run this DNA in a holochain <a href="https://developer.holochain.org/docs/glossary/#conductor">conductor</a> that is running on your machine, then this DNA would be instantiated and linked to your <a href="https://developer.holochain.org/docs/glossary/#agent-id">agent ID</a>. That thing is a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>.</p>
 <p>If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist out of one or more zomes. All our exercises so far only contained one zome. The one you compiled from <code>zomes/exercise/lib.rs</code>. For the sake of simplicity we will keep on pretending every DNA has just one <a href="https://developer.holochain.org/docs/glossary/#zome">zome</a>. For now.</p>
-<p>Now for the crucial part: "<strong>stores all of the actions</strong>". Every action, which in holochain speak means: every header and entry, that are produced by you, the agent, will become a part of the source chain, forever.
+<p>Now for the crucial part: "<strong>stores all of the actions</strong>". Every action, which in holochain speak means: every header and entry, that are produced by you, the agent, will become a part of the source chain, for as long as that agent has that DNA installed.
 Whenever a new action is committed (creating entries or links, updating...) a new element is added to that chain, with its header referencing the previous one.
 Essentially, the source-chain is a <strong>hash-chain of all the actions that a particular agent has committed in this DNA</strong>.</p>
 <p>Perhaps this does sounds like some weird form of magic.
@@ -277,8 +277,8 @@ Head over to the simulation where you will see that, underneath, it is just a he
 <ul>
 <li>Click on all the entries (grey circles) to see what you snacked recently</li>
 <li>Click on the headers (rounded blue squares) and look at <code>hash</code> in the header and at the <code>prev_header</code> value. Notice how they form a <strong>flawless chain</strong>, all the way down to the DNA header.</li>
-<li>Select "register_snacking" in the CallZomeFns below, type <code>april 3: ice cream</code> in the input and click <em>EXECUTE</em>. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is <strong>append only</strong>. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged <code>april 3: ice cream</code> after you logged <code>april 5: marsmallows</code>.</li>
-<li>Select "say_greeting" in the CallZomeFns below, type <code>Hello world</code> in the input and click <em>EXECUTE</em>. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can <strong>mix entries of different types</strong>, the headers will always appear in your source chain in the same order as they were created.</li>
+<li>Select "register<em>snacking" in the CallZomeFns below, type <code>april 3: ice cream</code> in the input and click _EXECUTE</em>. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is <strong>append only</strong>. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged <code>april 3: ice cream</code> after you logged <code>april 5: marsmallows</code>.</li>
+<li>Select "say<em>greeting" in the CallZomeFns below, type <code>Hello world</code> in the input and click _EXECUTE</em>. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can <strong>mix entries of different types</strong>, the headers will always appear in your source chain in the same order as they were created.</li>
 </ul>
 <mdjs-story mdjs-story-name="Sim1"></mdjs-story>
 <h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
@@ -466,7 +466,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../da0cf761.js"></script>
+<script type="module" src="../../../c5cb659b.js"></script>
 <script type="module" src="../../../3290032f7.js"></script>
 
 </body></html>

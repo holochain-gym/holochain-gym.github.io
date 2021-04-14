@@ -32,7 +32,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../fd5689ef.png">
+<meta property="og:image" content="../../../6ea79546.png">
 <meta property="og:url" content="/developers/basic/headers/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -48,7 +48,7 @@
 
   
 
-<link rel="preload" href="../../../60e6b46a.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../8b945ee3.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../17157e21.js" as="script" crossorigin="anonymous">
@@ -247,7 +247,7 @@ In one of the previous exercises you already saw some header stuff passing by. S
 <p>In the simulation below we already added one entry.</p>
 <p>First click on the grey circle with the text <code>snacking_log</code>. This should look familiar. It is just an entry. Then click on the top most blue rectangle with the text 'Create' that points directly to the entry. And look at what you see on the righthand side in the Header Contents panel.</p>
 <mdjs-story mdjs-story-name="Sim0"></mdjs-story>
-<p>When you click on the blue square, you will see a blob of json data, similar to the one you see below. The response you get is something that is called an <strong>element</strong> in Holochain language. We will look at elements in more detail in another exercise, but basically an element is just the combination of an entry and a header.</p>
+<p>When you click on the blue square, you will see a blob of json data, similar to the one you see below. The response you get is something that is called an <strong>element</strong> in Holochain language.</p>
 <p>You will see that there are 2 top level objects: entry and signed_header. The signed_header consists of a header and a signature. You can ignore the latter for now. Before we talk about the header, take one more look at the entry. What do you notice?</p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"entry"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -276,7 +276,7 @@ In one of the previous exercises you already saw some header stuff passing by. S
       <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token property">"hash"</span><span class="token operator">:</span> <span class="token string">"uhCkkf9mOVrLftiyHHnXSpZ49l_JyMhi0Qw-SUosIMMBfmVo"</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    <span class="token property">"signature"</span><span class="token operator">:</span> 
+    <span class="token property">"signature"</span><span class="token operator">:</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
@@ -290,7 +290,7 @@ In one of the previous exercises you already saw some header stuff passing by. S
 <p>Let's take a look what we can decypher from the example above.</p>
 <ul>
 <li><strong>author</strong>: the public key of the agent (cell) that signed the entry. This is a crucial component to prove to others you are really the author of this entry. Luckily it is all added automatically.</li>
-<li><strong>timestamp</strong>: timestamp of when this entry was committed. It will state the time for when the entry was created. This the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is a combination of standard Linux Epoch Time e.g.<em>1616571211</em>  combined with elapsed nanoseconds, e.g.<em>293000</em>.  While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.</li>
+<li><strong>timestamp</strong>: timestamp of when this entry was committed. It will state the time for when the entry was created. This the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is a combination of standard Linux Epoch Time e.g.<em>1616571211</em> combined with elapsed nanoseconds, e.g.<em>293000</em>. While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.</li>
 <li><strong>header_seq</strong> &amp; <strong>prev_header</strong> are a better way to determine order. We will talk about them in another exercise.</li>
 <li><strong>type</strong> indicates what type of header this is. There are a number of header types:
 <ul>
@@ -323,11 +323,11 @@ In one of the previous exercises you already saw some header stuff passing by. S
 <p>To start you will need to implement these functions: <code>register_snacking</code>, <code>get_by_entry_hash</code> and <code>get_by_header_hash</code>. The first function is for making a note, a <code>snacking_log</code>, at the end of each day you failed to stay snack-free. The latter two are, admittingly rather technical ways, to retrieve a snacking_log.</p>
 <p>Let's do a dry run in the simulation gym.</p>
 <ul>
-<li>Select "register_snacking" in the CallZomeFns below, type <code>april 2: lemon pie</code> in the input and click <em>EXECUTE</em>.</li>
+<li>Select "register<em>snacking" in the CallZomeFns below, type <code>april 2: lemon pie</code> in the input and click _EXECUTE</em>.</li>
 <li>Next: add <code>april 4: chocolate</code> and <code>april 5: marshmallows</code></li>
 <li>In the Entry Graph, click on one of the newly added snacking_log entries and copy the value of Entry hash.</li>
-<li>Select "get_by_entry_hash" in the CallZomeFns, put in the hash and click <em>EXECUTE</em>. And double check to see if you get the right snacking_log.</li>
-<li>Next copy one of the header hashes, select "get_by_header_hash" in the CallZomeFns, put in the hash and click <em>EXECUTE</em>. And double check to see if get the snacking_log you expected.</li>
+<li>Select "get<em>by_entry_hash" in the CallZomeFns, put in the hash and click _EXECUTE</em>. And double check to see if you get the right snacking_log.</li>
+<li>Next copy one of the header hashes, select "get<em>by_header_hash" in the CallZomeFns, put in the hash and click _EXECUTE</em>. And double check to see if get the snacking_log you expected.</li>
 </ul>
 <mdjs-story mdjs-story-name="Sim1"></mdjs-story>
 <h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
@@ -335,7 +335,7 @@ In one of the previous exercises you already saw some header stuff passing by. S
 <p>It is up to you to implement the <code>register_snacking</code>, <code>get_by_entry_hash</code> and <code>get_by_header_hash</code> functions.
 The function <code>register_snacking</code> requires some extra attention. You need to return both the header hash and the entry hash. We need this so we have the right hashes to test <code>get_by_entry_hash</code> and <code>get_by_header_hash</code>. We added this struct for you to use to return both hashes to the calling code in the test.</p>
 <pre class="language-rust"><code class="language-Rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
-<span class="token keyword">pub</span> <span class="token keyword">struct</span> HeaderAndEntryHash<span class="token punctuation">{</span>
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> HeaderAndEntryHash <span class="token punctuation">{</span>
     entry_hash<span class="token punctuation">:</span> EntryHashB64<span class="token punctuation">,</span>
     header_hash<span class="token punctuation">:</span> HeaderHashB64
 <span class="token punctuation">}</span>
@@ -545,7 +545,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../60e6b46a.js"></script>
+<script type="module" src="../../../8b945ee3.js"></script>
 <script type="module" src="../../../3290032f4.js"></script>
 
 </body></html>
