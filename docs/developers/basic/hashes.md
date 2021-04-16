@@ -111,7 +111,7 @@ When you combine all these properties of hashes you can do interesting stuff. If
 
 ## Getting ready
 
-So I hope you see that hashes play a big role in how data is stored and retrieved. You will see them poping up when we talk about headers, elements, the DHT, validations. They are everywhere.  
+So I hope you see that hashes play a big role in how data is stored and retrieved. You will see them popping up when we talk about headers, elements, the DHT, validations. They are everywhere.  
 Enough talking. It is time to get ready for the exercise.
 
 This time you are building a library zome. The zome will need 2 functions that can be called from the outside: `add_book` and `get_book`. You will add your favorite book and retrieve it from the library zome based on -you guessed it- the hash of its entry. In one of the next exercise we will see that there are other ways to retrieve your data: headers and elements. But it is good to know you can always find your entry again based on its entry hash.
@@ -204,7 +204,7 @@ export const Exercise = () => {
 
 ### Add book
 
-Since the previous exercise went well, we will raise the bar a little and leave a bit more of the work to you. We will start you off with this:
+Since the previous exercise went well, we   will raise the bar a little and leave a bit more of the work to you. We will start you off with this:
 
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug)]
