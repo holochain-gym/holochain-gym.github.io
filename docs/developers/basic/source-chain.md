@@ -253,6 +253,12 @@ This time we will do some lightweight exercises, just to get a feel for the chai
 
 </inline-notification>
 
+### Relevant HDK documentation: 
+- [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
+- [hash_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html).
+- [get](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html)
+- [HeaderHash](https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html)
+
 # Errors
 
 If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
@@ -263,3 +269,7 @@ For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15
 or
 your favorite search engine
+
+## Solution
+
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/4.source-chain). 

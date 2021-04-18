@@ -109,6 +109,8 @@ You can play around with this functionality to see how holochain behaves to diff
 
 ## Getting elements
 
+It's really important to think about elements when getting content from the DHT via hashes.
+
 1. Create an entry with some arbitrary content.
     - You should see an entry with its `Create` header in the `Entry Graph` block.
 2. **Create the same entry** a second time. 

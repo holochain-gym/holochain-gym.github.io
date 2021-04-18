@@ -226,7 +226,14 @@ export const Simple2 = () => {
 };
 ```
 
-Relevant HDK documentation:
+## Relevant HDK documentation:
 
+- [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
+- [hash_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html).
 - [create_link](https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html).
 - [get_links](https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html).
+
+
+## Solution
+
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/2.links). 

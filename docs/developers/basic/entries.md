@@ -236,8 +236,6 @@ You only need to add a few lines in this first exercise, but know that when the 
 
 You will in fact have created your very first decentralized, agent centric, boundary pushing Holochain app. A real hApp!
 
-Relevant HDK documentation: [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
-
 <inline-notification type="tip" title="Exercise">
 
 1. Go to the `developer-exercises`.
@@ -254,7 +252,10 @@ Relevant HDK documentation: [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry
 
 </inline-notification>
 
-## Errors
+### Relevant HDK documentation: 
+- [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
+
+### Errors
 
 If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
 
@@ -277,3 +278,7 @@ thread 'holochain-tokio-thread' panicked at 'TODO: DnaError
 (ZomeNotFound("Zome \'exercise\' not found"))',
 /build/source/crates/holochain/src/core/ribosome.rs:336:14
 ```
+
+## Solution
+
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/0.entries). 
