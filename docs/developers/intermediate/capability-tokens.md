@@ -37,7 +37,9 @@ By default, all calls from other agent pub keys are **not authorized**. This mea
 First, we are going to demo how capabilities work at a high level:
 
 1. Click `Run` to start the simulation.
-  - At every step, you can see what is happening with the nodes on the right panel.
+
+- At every step, you can see what is happening with the nodes on the right panel.
+
 2. When you are ready, click the "Play" icon on the bottom of the right panel to advance the simulation.
 
 You can rerun it if needed.
@@ -207,8 +209,6 @@ const dna = {
     },
   ],
 };
-const workflowsToDisplay = [WorkflowType.CALL_ZOME];
-const newtorkRequestToDisplay = [NetworkRequestType.CALL_REMOTE];
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(), ms));
 
@@ -216,14 +216,6 @@ export const Demo = () => html` <holochain-playground-container
   id="container"
   .numberOfSimulatedConductors=${2}
   .simulatedDnaTemplate=${dna}
-  @ready=${(e) => {
-    e.target.querySelector(
-      "#alice-results"
-    ).forAgent = e.detail.conductors[0].getAllCells()[0].agentPubKey;
-    e.target.querySelector(
-      "#bob-results"
-    ).forAgent = e.detail.conductors[1].getAllCells()[0].agentPubKey;
-  }}
 >
   <div
     style="width: 100%; display: flex; flex-direction: row; margin-bottom: 20px;"
@@ -235,10 +227,10 @@ export const Demo = () => html` <holochain-playground-container
     <dht-cells
       step-by-step
       hide-filter
-      style="height: 600px;"
+      style="height: 600px; flex-basis: 700px;"
       show-zome-fn-success
-      .workflowsToDisplay=${workflowsToDisplay}
-      .networkRequestsToDisplay=${newtorkRequestToDisplay}
+      .workflowsToDisplay=${[WorkflowType.CALL_ZOME]}
+      .networkRequestsToDisplay=${[NetworkRequestType.CALL_REMOTE]}
     ></dht-cells>
   </div>
 </holochain-playground-container>`;

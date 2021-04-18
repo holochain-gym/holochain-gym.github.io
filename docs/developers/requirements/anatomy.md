@@ -52,7 +52,7 @@ hc app pack workdir/happ
 ```bash
 cd tests
 npm install
-npm test`
+npm test
 ```
 
 *Difference with holochain-gym*: In the gym we provide a simple test script `run_tests.sh` that checks you are running inside a nix-shell and if so, runs tests.
