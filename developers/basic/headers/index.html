@@ -48,12 +48,12 @@
 
   
 
-<link rel="preload" href="../../../8b945ee3.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../31b43087.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../17157e21.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6a33e11e.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../3290032f4.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../3290032f5.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../2b1864b5.js" as="script" crossorigin="anonymous">
 </head>
 
@@ -193,11 +193,18 @@
   <li class="menu-item anchor">
     <a href="#extra" class="anchor">Extra</a>
   </li>
+  <li class="menu-item anchor">
+    <a href="#solution" class="anchor">Solution</a>
+  </li>
 </ul>
 
 </li>
 <li class="menu-item">
 <a href="/developers/basic/source-chain/">Source chain</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/elements/">Elements</a>
 
 </li></ul>
 </li>
@@ -212,7 +219,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/remote-call/">Remote Call</a>
+<a href="/developers/intermediate/call-remote/">Remote Call</a>
 
 </li>
 <li class="menu-item">
@@ -305,7 +312,7 @@ In one of the previous exercises you already saw some header stuff passing by. S
 </ul>
 </li>
 </ul>
-<p>In this exercise you will only have to deal with Create. All headers have the above mentioned fields, with one small exception of the Dna header, which doesn't have a prev_header, for the very simple reason that it is always the first header to be created in a holochain app.</p>
+<p>In this exercise you will only have to deal with <code>Create</code>. All headers have the above mentioned fields, with one small exception of the Dna header, which doesn't have a prev_header, for the very simple reason that it is always the first header to be created in a holochain app.</p>
 <p>And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these fields tell something about entries. Because entries a very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header.</p>
 <ul>
 <li>
@@ -377,6 +384,14 @@ Implement a function <code>get_header_hash_by_content</code> that returns the he
 <li>Don't stop until the tests run green</li>
 </ol>
 </inline-notification>
+<h3 id="relevant-hdk-documentation"><a class="anchor" href="#relevant-hdk-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Relevant HDK documentation:</h3>
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">create_entry</a>.</li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">hash_entry</a>.</li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html">get</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/enum.Header.html">Header</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">HeaderHash</a></li>
+</ul>
 <h1 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h1>
 <p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
 <p><em>Nothing added for now</em></p>
@@ -384,6 +399,8 @@ Implement a function <code>get_header_hash_by_content</code> that returns the he
 <a href="https://forum.holochain.org/c/technical/rust/15">https://forum.holochain.org/c/technical/rust/15</a>
 or
 your favorite search engine</p>
+<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
+<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/basic/3.headers">solution</a>.</p>
         
       
 
@@ -545,7 +562,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../8b945ee3.js"></script>
-<script type="module" src="../../../3290032f4.js"></script>
+<script type="module" src="../../../31b43087.js"></script>
+<script type="module" src="../../../3290032f5.js"></script>
 
 </body></html>

@@ -48,12 +48,12 @@
 
   
 
-<link rel="preload" href="../../../24d60c66.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../74b58a40.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../17157e21.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6a33e11e.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../3290032f3.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../3290032f4.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../2b1864b5.js" as="script" crossorigin="anonymous">
 </head>
 
@@ -185,6 +185,9 @@
   <li class="menu-item anchor">
     <a href="#errors" class="anchor">Errors</a>
   </li>
+  <li class="menu-item anchor">
+    <a href="#solution" class="anchor">Solution</a>
+  </li>
 </ul>
 
 </li>
@@ -199,6 +202,10 @@
 <li class="menu-item">
 <a href="/developers/basic/source-chain/">Source chain</a>
 
+</li>
+<li class="menu-item">
+<a href="/developers/basic/elements/">Elements</a>
+
 </li></ul>
 </li>
 <li class="menu-item">
@@ -212,7 +219,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/remote-call/">Remote Call</a>
+<a href="/developers/intermediate/call-remote/">Remote Call</a>
 
 </li>
 <li class="menu-item">
@@ -264,7 +271,7 @@ Finally for the grand finale: add <em>Hello world</em> as an entry and then add 
 <h2 id="hash-table"><a class="anchor" href="#hash-table"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Hash table</h2>
 <p>When you combine all these properties of hashes you can do interesting stuff. If for every piece of data or content you have, you can calculate the hash value, then you could easily make a nice big list of all the hashes. No matter the size of the data you want to store, each piece will have it's own hash, which is unique but has the same size as all other hashes. And since all those hashes can be mapped to their content, you can use that list as an index. This type of list has a name, it's a <strong>hash table</strong>. The fancy name for this way of storing and retrieving your data this way is called <strong>content addressable storage</strong>. Because the content, well actually the hash of the content, is be used as a unique address for the content. It will really get interesting when we upgrade this hash table to a distributed hash table, a DHT.</p>
 <h2 id="getting-ready"><a class="anchor" href="#getting-ready"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting ready</h2>
-<p>So I hope you see that hashes play a big role in how data is stored and retrieved. You will see them poping up when we talk about headers, elements, the DHT, validations. They are everywhere.<br>
+<p>So I hope you see that hashes play a big role in how data is stored and retrieved. You will see them popping up when we talk about headers, elements, the DHT, validations. They are everywhere.<br>
 Enough talking. It is time to get ready for the exercise.</p>
 <p>This time you are building a library zome. The zome will need 2 functions that can be called from the outside: <code>add_book</code> and <code>get_book</code>. You will add your favorite book and retrieve it from the library zome based on -you guessed it- the hash of its entry. In one of the next exercise we will see that there are other ways to retrieve your data: headers and elements. But it is good to know you can always find your entry again based on its entry hash.</p>
 <p>First let's practice a bit in the simulation gym.
@@ -275,7 +282,7 @@ We told you you would see hashes everywhere. Look for the entry_hash and check i
 <mdjs-story mdjs-story-name="Exercise"></mdjs-story>
 <h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
 <h3 id="add-book"><a class="anchor" href="#add-book"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Add book</h3>
-<p>Since the previous exercise went well, we will raise the bar a little and leave a bit more of the work to you. We will start you off with this:</p>
+<p>Since the previous exercise went well, we   will raise the bar a little and leave a bit more of the work to you. We will start you off with this:</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
 <span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
     title<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
@@ -336,6 +343,12 @@ Run the tests. And if everything passes, then it is time to put your feet up, re
 <li>Don't stop until the test runs green</li>
 </ol>
 </inline-notification>
+<h3 id="relevant-hdk-documentation"><a class="anchor" href="#relevant-hdk-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Relevant HDK documentation:</h3>
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">create_entry</a>.</li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">hash_entry</a>.</li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html">get</a></li>
+</ul>
 <h2 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h2>
 <p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
 <ul>
@@ -374,6 +387,8 @@ let book = await alice_common.cells[0].call(
 <a href="https://forum.holochain.org/c/technical/rust/15">https://forum.holochain.org/c/technical/rust/15</a>
 or
 your favorite search engine</p>
+<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
+<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/basic/1.hashes">solution</a>.</p>
         
       
 
@@ -535,7 +550,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../24d60c66.js"></script>
-<script type="module" src="../../../3290032f3.js"></script>
+<script type="module" src="../../../74b58a40.js"></script>
+<script type="module" src="../../../3290032f4.js"></script>
 
 </body></html>

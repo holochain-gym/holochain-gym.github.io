@@ -8,11 +8,11 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intermediate: Remote Call: Holochain Gym</title>
-<meta property="og:title" content="Intermediate: Remote Call: Holochain Gym">
+<title>Basic: Elements: Holochain Gym</title>
+<meta property="og:title" content="Basic: Elements: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
-<link rel="canonical" href="/developers/intermediate/remote-call/">
+<link rel="canonical" href="/developers/basic/elements/">
 
 
 
@@ -32,8 +32,8 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../2274089f.png">
-<meta property="og:url" content="/developers/intermediate/remote-call/">
+<meta property="og:image" content="../../../22f1cc96.png">
+<meta property="og:url" content="/developers/basic/elements/">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -48,12 +48,14 @@
 
   
 
-<link rel="preload" href="../../../4952c3ac2.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../a18ed202.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../3290032f13.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../2b1864b5.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6a33e11e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../7dc09167.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../3290032f2.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../2b1864b5.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -157,7 +159,7 @@
 
 </li></ul>
 </li>
-<li class="menu-item">
+<li class="menu-item active">
 <a href="/developers/basic/">Basic</a>
 <ul><li class="menu-item">
 <a href="/developers/basic/entries/">Entries</a>
@@ -178,9 +180,21 @@
 <li class="menu-item">
 <a href="/developers/basic/source-chain/">Source chain</a>
 
+</li>
+<li class="menu-item current">
+<a href="/developers/basic/elements/">Elements</a>
+<ul>
+  <li class="menu-item anchor">
+    <a href="#demo" class="anchor">Demo</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#getting-elements" class="anchor">Getting elements</a>
+  </li>
+</ul>
+
 </li></ul>
 </li>
-<li class="menu-item active">
+<li class="menu-item">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item">
 <a href="/developers/intermediate/dht/">DHT</a>
@@ -190,16 +204,8 @@
 <a href="/developers/intermediate/paths/">Paths</a>
 
 </li>
-<li class="menu-item current">
-<a href="/developers/intermediate/remote-call/">Remote Call</a>
-<ul>
-  <li class="menu-item anchor">
-    <a href="#hdk-actions" class="anchor">HDK actions</a>
-  </li>
-  <li class="menu-item anchor">
-    <a href="#exercise" class="anchor">Exercise</a>
-  </li>
-</ul>
+<li class="menu-item">
+<a href="/developers/intermediate/call-remote/">Remote Call</a>
 
 </li>
 <li class="menu-item">
@@ -225,49 +231,63 @@
       
         <main class="markdown-body">
   
-    <h1 id="intermediate-remote-call"><a class="anchor" href="#intermediate-remote-call"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Remote Call</h1>
-<p><strong>Remote Calls</strong> are a method for calling a zome function of another agent in a Holochain DHT network. This remote function exection happens in p2p and relies heavily on capability tokens for the security model.
-Remote calls are useful for the purposes of allowing other agents to create entries in your chain (private or public) on your behalf. This has many applications and could be used in things such as: shared authoring of posts or synchronous p2p communication!</p>
-<p>Note the example of synchronous communication vs asynchronous. Remote calls require that the target be online in order to properly execute. If the target agent is not online then the call will fail with a network error.</p>
-<p>Remote calls have deep ties with Capability Tokens. Not only do you need a Capability Tokens secret to send a remote call, but agents should also receive these secrets via remote calls to their own conductor!</p>
-<h2 id="hdk-actions"><a class="anchor" href="#hdk-actions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>HDK actions</h2>
-<p>Lets take a look at the hdk function and detail each parameter of the function call, that will help give us a clearer picture of how it works and what is expected from us.</p>
-<pre class="language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">fn</span> call_remote<span class="token operator">&lt;</span>I<span class="token operator">&gt;</span><span class="token punctuation">(</span>
-    agent<span class="token punctuation">:</span> AgentPubKey<span class="token punctuation">,</span>
-    zome<span class="token punctuation">:</span> ZomeName<span class="token punctuation">,</span>
-    fn_name<span class="token punctuation">:</span> FunctionName<span class="token punctuation">,</span>
-    cap_secret<span class="token punctuation">:</span> Option<span class="token operator">&lt;</span>CapSecret<span class="token operator">&gt;</span><span class="token punctuation">,</span>
-    payload<span class="token punctuation">:</span> I
-<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>ZomeCallResponse<span class="token operator">&gt;</span>
-<span class="token keyword">where</span>
-    I<span class="token punctuation">:</span> Serialize <span class="token operator">+</span> Debug<span class="token punctuation">,</span>
-</code></pre>
+    <h1 id="basic-elements"><a class="anchor" href="#basic-elements"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Elements</h1>
+<p><code>Elements</code> are the combination of a header plus their accompanying entry, if they have one. As we learned in the <code>Headers</code> exercise, only two types of header really add an entry: <code>Create</code> and <code>Update</code>. So, examples of elements would be: the <code>Create</code> header plus it's entry, or a <code>CreateLink</code> header by itself. <code>Elements</code> are important because you will encounter them a lot while developing hApps.</p>
+<h2 id="demo"><a class="anchor" href="#demo"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Demo</h2>
+<p>But first, with all the concepts we already have in our belt, let's try to integrate them all together to form a clear picture of the basic things that are happening in holochain when adding elements.</p>
+<p>Below, look at the <code>DHT Cells</code> block, as it's the first time it appears. In that block, every node in the graph is a holochain agent participating in the DHT. Here, you can see a holochain network of 4 agents. When calling zome functions in the <code>Call Zome Fns</code> block, they will be called by the agent that is selected at that moment.</p>
+<ol>
+<li>Select one agent from the DHT Cells block.</li>
+<li>Call the <code>create_entry</code> function for that agent, with some arbitrary content.</li>
+<li>See that a new element has been added to the source chain, and also a new entry has been added to the entry graph.</li>
+<li>Now, see that little <code>Show Headers</code> checkbox on the bottom of the <code>Entry Graph</code> block? Enable it.
 <ul>
-<li><strong>agent</strong>: The first thing we need to pass is the <code>AgentPubKey</code>. This is the public key of the agent you wish to send the remote call to. You should already be familiar about the role of agent keys in holochain, but if not check out some of the previous exercises. <br></li>
-<li><strong>zome</strong>: Name of zome that contains the function that we want to remote execute. <br></li>
-<li><strong>fn_name</strong>: Name of the actual function that we want to evoke. <br></li>
-<li><strong>cap_secret</strong>: The secret from the cabability token that the target agent authored and shared. It is possible to send <code>None</code> here but that will result in a authentification error unless the target zome function has been marked by the target agent as having <code>Unrestricted</code> Capability Access. <br></li>
-<li><strong>payload</strong>: The data that will be passed into the zome function of the remote agent.</li>
-</ul>
-<h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
-<h3 id="problem-statement"><a class="anchor" href="#problem-statement"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Problem statement</h3>
-<p>We need to code a small zome that has the following abilities:</p>
-<ul>
-<li>Create and share a post with another agent; p2p</li>
-<li>Have the post persist so agent can read their incoming messages
-<ul>
-<li>Provide a method of getting posts an agent has received</li>
+<li>With this, you can see the <code>Create</code> header that is accompanying the entry in the DHT.</li>
 </ul>
 </li>
-<li>Allow the receiving of cap token secrets from other agents</li>
+<li>Switch to another agent.
+<ul>
+<li>See that that agent's source-chain is still in its original state: the only source-chain that has changed is the one for the agent that created the entry.</li>
 </ul>
-<inline-notification type="tip" title="Exercise">
-<ol>
-<li>Go to the <a href="https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/2.remote-call">source code for the exercise</a>.</li>
-<li>Implement all <code>unimplemented!()</code> functions in the exercise.</li>
-<li>Run <code>npm test</code> to test your implementation.</li>
+</li>
+<li>Create an entry for this new agent, <strong>with the same content as the first one</strong>.
+<ul>
+<li>If you look at the entry graph, you'll see still only one entry in the DHT, but it now has two headers accompanying it.</li>
+</ul>
+</li>
 </ol>
-</inline-notification>
+<mdjs-story mdjs-story-name="Simple1"></mdjs-story>
+<p>You can play around with this functionality to see how holochain behaves to different inputs.</p>
+<h2 id="getting-elements"><a class="anchor" href="#getting-elements"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting elements</h2>
+<p>It's really important to think about elements when getting content from the DHT via hashes.</p>
+<ol>
+<li>Create an entry with some arbitrary content.
+<ul>
+<li>You should see an entry with its <code>Create</code> header in the <code>Entry Graph</code> block.</li>
+</ul>
+</li>
+<li><strong>Create the same entry</strong> a second time.
+<ul>
+<li>You should see the two <code>Create</code> headers accompanying the entry.</li>
+</ul>
+</li>
+<li>Now, switch to the <code>get</code> zome fn. Click on the entry and copy its hash to the <code>hash</code> argument, and execute the <code>get</code>.
+<ul>
+<li>See that only the second header is returned with the <code>get</code>. This is because, as the <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code> documentation</a> explains, <code>get</code> is the simplified version for getting things from the DHT, that only returns the latest header when getting an entry.</li>
+</ul>
+</li>
+<li>Switch to the <code>get_details</code> zome fn, and execute it with the same <code>EntryHash</code>.
+<ul>
+<li>See that, in this case, all the headers are returned. This is because <code>get_details</code> returns all the metadata that is accompanying the entry.</li>
+</ul>
+</li>
+<li>Click on one of the headers, and copy its hash. Try to do a <code>get_details</code> with it.
+<ul>
+<li>See that it's only returning the header that we requested, along with its entry! This is because <code>get_details</code> returns all the metadata for the hash that we requested. When we do commit a <code>Create</code> element, the header gets attached to the entry's metadata, but not to every other <code>Create</code> header for that same entry.</li>
+</ul>
+</li>
+</ol>
+<mdjs-story mdjs-story-name="Simple2"></mdjs-story>
         
       
 
@@ -275,7 +295,7 @@ Remote calls are useful for the purposes of allowing other agents to create entr
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/remote-call.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/basic/elements.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -429,7 +449,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../4952c3ac2.js"></script>
-<script type="module" src="../../../3290032f13.js"></script>
+<script type="module" src="../../../a18ed202.js"></script>
+<script type="module" src="../../../3290032f2.js"></script>
 
 </body></html>

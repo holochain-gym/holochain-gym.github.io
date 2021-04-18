@@ -8,11 +8,11 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intermediate: DHT: Holochain Gym</title>
-<meta property="og:title" content="Intermediate: DHT: Holochain Gym">
+<title>Intermediate: Remote Call: Holochain Gym</title>
+<meta property="og:title" content="Intermediate: Remote Call: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
-<link rel="canonical" href="/developers/intermediate/dht/">
+<link rel="canonical" href="/developers/intermediate/call-remote/">
 
 
 
@@ -32,8 +32,8 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../6b8fa6a8.png">
-<meta property="og:url" content="/developers/intermediate/dht/">
+<meta property="og:image" content="../../../2274089f.png">
+<meta property="og:url" content="/developers/intermediate/call-remote/">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -48,14 +48,12 @@
 
   
 
-<link rel="preload" href="../../../05172580.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../4952c3ac2.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../6a33e11e.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../7dc09167.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../3290032f12.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../3290032f10.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../2b1864b5.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -188,24 +186,27 @@
 </li>
 <li class="menu-item active">
 <a href="/developers/intermediate/">Intermediate</a>
-<ul><li class="menu-item current">
+<ul><li class="menu-item">
 <a href="/developers/intermediate/dht/">DHT</a>
-<ul>
-  <li class="menu-item anchor">
-    <a href="#holochains-dht" class="anchor">Holochain's DHT</a>
-  </li>
-  <li class="menu-item anchor">
-    <a href="#try-it" class="anchor">Try it!</a>
-  </li>
-</ul>
 
 </li>
 <li class="menu-item">
 <a href="/developers/intermediate/paths/">Paths</a>
 
 </li>
-<li class="menu-item">
+<li class="menu-item current">
 <a href="/developers/intermediate/call-remote/">Remote Call</a>
+<ul>
+  <li class="menu-item anchor">
+    <a href="#hdk-actions" class="anchor">HDK actions</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#exercise" class="anchor">Exercise</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#solution" class="anchor">Solution</a>
+  </li>
+</ul>
 
 </li>
 <li class="menu-item">
@@ -231,35 +232,55 @@
       
         <main class="markdown-body">
   
-    <h1 id="intermediate-dht"><a class="anchor" href="#intermediate-dht"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: DHT</h1>
-<h2 id="holochains-dht"><a class="anchor" href="#holochains-dht"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Holochain's DHT</h2>
-<p>Before continuing, it is worth to stop for a bit and go deeper into how things work on holochain, before adding more concepts. We are going to focus on the way that holochain implements its DHT.</p>
-<p>Usually, DHTs are just key-value stores: you can create some piece of data, which gets hashed, and after that anyone can query its contents with that hash.</p>
-<p>Holochain security model based on validation rules enables attachment of metadata in the DHT: not only we can create entries, but we can add links to them, or update them. This way, we can build complex graph structures in our DHTs that allow for efficient navigation of the data.</p>
-<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
-<p>Here you have it! In this representation of the DHT, every node is a cell (an instance of the DNA running), and the connections between them indicate that they are neighbors which gossip regularly with each other.</p>
-<p>To try to visualize how DHT behaves:</p>
+    <h1 id="intermediate-remote-call"><a class="anchor" href="#intermediate-remote-call"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Remote Call</h1>
+<p><strong>Remote Calls</strong> are a method for calling a zome function of another agent in a Holochain DHT network. This remote function exection happens in p2p and relies heavily on capability tokens for the security model.
+Remote calls are useful for the purposes of allowing other agents to create entries in your chain (private or public) on your behalf. This has many applications and could be used in things such as: shared authoring of posts or synchronous p2p communication!</p>
+<p>Note the example of synchronous communication vs asynchronous. Remote calls require that the target be online in order to properly execute. If the target agent is not online then the call will fail with a network error.</p>
+<p>Remote calls have deep ties with Capability Tokens. Not only do you need a Capability Tokens secret to send a remote call, but agents should also receive these secrets via remote calls to their own conductor!</p>
+<h2 id="hdk-actions"><a class="anchor" href="#hdk-actions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>HDK actions</h2>
+<p>Lets take a look at the hdk function and detail each parameter of the function call, that will help give us a clearer picture of how it works and what is expected from us.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">fn</span> call_remote<span class="token operator">&lt;</span>I<span class="token operator">&gt;</span><span class="token punctuation">(</span>
+    agent<span class="token punctuation">:</span> AgentPubKey<span class="token punctuation">,</span>
+    zome<span class="token punctuation">:</span> ZomeName<span class="token punctuation">,</span>
+    fn_name<span class="token punctuation">:</span> FunctionName<span class="token punctuation">,</span>
+    cap_secret<span class="token punctuation">:</span> Option<span class="token operator">&lt;</span>CapSecret<span class="token operator">&gt;</span><span class="token punctuation">,</span>
+    payload<span class="token punctuation">:</span> I
+<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>ZomeCallResponse<span class="token operator">&gt;</span>
+<span class="token keyword">where</span>
+    I<span class="token punctuation">:</span> Serialize <span class="token operator">+</span> Debug<span class="token punctuation">,</span>
+</code></pre>
+<ul>
+<li><strong>agent</strong>: The first thing we need to pass is the <code>AgentPubKey</code>. This is the public key of the agent you wish to send the remote call to. You should already be familiar about the role of agent keys in holochain, but if not check out some of the previous exercises. <br></li>
+<li><strong>zome</strong>: Name of zome that contains the function that we want to remote execute. <br></li>
+<li><strong>fn_name</strong>: Name of the actual function that we want to evoke. <br></li>
+<li><strong>cap_secret</strong>: The secret from the cabability token that the target agent authored and shared. It is possible to send <code>None</code> here but that will result in a authentification error unless the target zome function has been marked by the target agent as having <code>Unrestricted</code> Capability Access. <br></li>
+<li><strong>payload</strong>: The data that will be passed into the zome function of the remote agent.</li>
+</ul>
+<h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
+<h3 id="problem-statement"><a class="anchor" href="#problem-statement"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Problem statement</h3>
+<p>We need to code a small zome that has the following abilities:</p>
+<ul>
+<li>Create and share a post with another agent; p2p</li>
+<li>Have the post persist so agent can read their incoming messages
+<ul>
+<li>Provide a method of getting posts an agent has received</li>
+</ul>
+</li>
+<li>Allow the receiving of cap token secrets from other agents</li>
+</ul>
+<inline-notification type="tip" title="Exercise">
 <ol>
-<li>Create a new entry.</li>
-<li>Select the new entry from the source chain.
-<ul>
-<li>See the yellow nodes? Those are the validator nodes that are holding our new entry.</li>
-</ul>
-</li>
-<li>Get the entry with its entry hash.
-<ul>
-<li>See the get request? It goes to the nodes which are holding the entry.</li>
-</ul>
-</li>
-<li>Create a link with that entry as a base (the target doesn't matter).
-<ul>
-<li>Watch closely! The agent making the request is going to publish the link to the same nodes as our entry!</li>
-<li>This is the link metadata attaching itself to the entry base hash.</li>
-</ul>
-</li>
+<li>Go to the <a href="https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/2.call-remote">source code for the exercise</a>.</li>
+<li>Implement all <code>unimplemented!()</code> functions in the exercise.</li>
+<li>Run <code>npm test</code> to test your implementation.</li>
 </ol>
-<p>If you need more time, you can active the step-by-step mode and click play whenever you are ready to continue. Have fun!</p>
-<mdjs-story mdjs-story-name="Simple"></mdjs-story>
+</inline-notification>
+<h3 id="relevant-hdk-documentation"><a class="anchor" href="#relevant-hdk-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Relevant HDK documentation:</h3>
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/p2p/fn.call_remote.html">call_remote</a>.</li>
+</ul>
+<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
+<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/intermediate/2.call-remote">solution</a>.</p>
         
       
 
@@ -267,7 +288,7 @@
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/dht.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/call-remote.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -421,7 +442,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../05172580.js"></script>
-<script type="module" src="../../../3290032f12.js"></script>
+<script type="module" src="../../../4952c3ac2.js"></script>
+<script type="module" src="../../../3290032f10.js"></script>
 
 </body></html>
