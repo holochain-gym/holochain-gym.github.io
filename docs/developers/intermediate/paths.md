@@ -45,7 +45,7 @@ const sampleZome = {
   zome_functions: {
     create_path: {
       call: (hdk) => ({ path }) => {
-        return hdk.path.ensure(path, hdk);
+        return hdk.path.ensure(path);
       },
       arguments: [{ name: "path", type: "String" }],
     },
@@ -67,23 +67,6 @@ export const Simple = () => {
 
         e.target.activeAgentPubKey = cellId[1];
 
-        conductor
-          .callZomeFn({
-            cellId,
-            zome: "sample",
-            fnName: "create_path",
-            payload: { path: "a.sample.path" },
-            cap: null,
-          })
-          .then(() =>
-            conductor.callZomeFn({
-              cellId,
-              zome: "sample",
-              fnName: "create_path",
-              payload: { path: "a.sample.path2" },
-              cap: null,
-            })
-          );
       }}
     >
       <div
@@ -171,7 +154,7 @@ const sampleZome1 = {
           date.getMonth() + 1
         }-${date.getUTCDate()}.${date.getHours()}`;
 
-        await hdk.path.ensure(pathStr, hdk);
+        await hdk.path.ensure(pathStr);
         const pathHash = await hdk.hash_entry({ content: pathStr });
 
         await hdk.create_link({ base: pathHash, target: postHash, tag: null });
@@ -179,7 +162,7 @@ const sampleZome1 = {
         for (const tag of [tag1, tag2]) {
           if (tag) {
             const pathContent = `all_tags.${tag}`;
-            await hdk.path.ensure(pathContent, hdk);
+            await hdk.path.ensure(pathContent);
 
             const tagPathHash = await hdk.hash_entry({ content: pathContent });
             await hdk.create_link({
@@ -215,13 +198,6 @@ export const Exercise = () => {
         const cellId = conductor.getAllCells()[0].cellId;
 
         e.target.activeAgentPubKey = cellId[1];
-        conductor.callZomeFn({
-          cellId,
-          zome: "sample",
-          fnName: "create_post",
-          payload: { content: "good morning", tag1: "nature", tag2: "giraffe" },
-          cap: null,
-        });
       }}
     >
       <div
