@@ -48,13 +48,13 @@
 
   
 
-<link rel="preload" href="../../../3f9ce36f.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../e47816b7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../ba1498b4.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../6f01cc0e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../87942128.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../3ecf4d48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../7b4e2b6a.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../97466b3b.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../3290032f8.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../2b1864b5.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../fc0b0e998.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../e08a64cd.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -244,21 +244,21 @@
   
     <h1 id="basic-source-chain"><a class="anchor" href="#basic-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Source chain</h1>
 <h2 id="recap"><a class="anchor" href="#recap"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Recap</h2>
-<p>You learned about entries and headers: two of the most basic building blocks in any holochain app. And experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT <a href="/developers/intermediate/DHT">here</a>.</p>
+<p>You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT <a href="/developers/intermediate/DHT">here</a>.</p>
 <h2 id="source-chain"><a class="anchor" href="#source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Source chain</h2>
-<p>The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what make holochain unique. It's where some of the magic happens.</p>
+<p>The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what makes holochain unique. It's where some of the magic happens.</p>
 <p>The <a href="https://developer.holochain.org/docs/glossary/#source-chain">glossary</a> explains it the following way:</p>
 <blockquote>
 <p>A hash chain of elements committed by an agent. Every agent has a separate source chain for each of the cells they’re running, which stores all of the actions they’ve taken in that cell.</p>
 </blockquote>
 <p><em>Let's unpack this</em></p>
 <p>When you download a compiled <a href="https://developer.holochain.org/docs/glossary/#dna">DNA</a>, a <a href="https://developer.holochain.org/docs/glossary/#webassembly-wasm">WASM</a> binary, from somewhere or when you compile it locally and you run this DNA in a holochain <a href="https://developer.holochain.org/docs/glossary/#conductor">conductor</a> that is running on your machine, then this DNA would be instantiated and linked to your <a href="https://developer.holochain.org/docs/glossary/#agent-id">agent ID</a>. That thing is a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>.</p>
-<p>If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist out of one or more zomes. All our exercises so far only contained one zome. The one you compiled from <code>zomes/exercise/lib.rs</code>. For the sake of simplicity we will keep on pretending every DNA has just one <a href="https://developer.holochain.org/docs/glossary/#zome">zome</a>. For now.</p>
+<p>If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist of one or more zomes. All our exercises so far only contained one zome, the one you compiled from <code>zomes/exercise/lib.rs</code>. For the sake of simplicity we will keep on pretending every DNA has just one <a href="https://developer.holochain.org/docs/glossary/#zome">zome</a>. For now.</p>
 <p>Now for the crucial part: "<strong>stores all of the actions</strong>". Every action, which in holochain speak means: every header and entry, that are produced by you, the agent, will become a part of the source chain, for as long as that agent has that DNA installed.
 Whenever a new action is committed (creating entries or links, updating...) a new element is added to that chain, with its header referencing the previous one.
 Essentially, the source-chain is a <strong>hash-chain of all the actions that a particular agent has committed in this DNA</strong>.</p>
 <p>Perhaps this does sounds like some weird form of magic.
-Head over to the simulation where you will see that, underneath, it is just a headers and entries.</p>
+Head over to the simulation where you will see that, underneath, it is just headers and entries.</p>
 <h2 id="subconscious"><a class="anchor" href="#subconscious"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Subconscious</h2>
 <p>Even before you add your first entries, like you did in the <a href="/basis/entries">entries exercise</a>, 3 headers and 1 entry will be created automatically in your holochain app. These 4 elements, the <a href="https://developer.holochain.org/docs/glossary/#genesis-elements">genesis events</a> are created by what you call the <strong>subconscious</strong> of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, <em>consciously</em>, triggered by you, the user.</p>
 <p>The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them.</p>
@@ -282,8 +282,8 @@ Head over to the simulation where you will see that, underneath, it is just a he
 <p><em>Let's put this in to practice</em></p>
 <p>In the <a href="/basic/headers">headers exercise</a> you built the zome for a simple snacking logger app. The simulation below already contains your snacking logs.</p>
 <ul>
-<li>Click on all the entries (grey circles) to see what you snacked recently</li>
-<li>Click on the headers (rounded blue squares) and look at <code>hash</code> in the header and at the <code>prev_header</code> value. Notice how they form a <strong>flawless chain</strong>, all the way down to the DNA header.</li>
+<li>Click on all the entries (grey rounded squares) to see what you snacked recently</li>
+<li>Click on the headers (blue circles) and look at <code>hash</code> in the header and at the <code>prev_header</code> value. Notice how they form a <strong>flawless chain</strong>, all the way down to the DNA header.</li>
 <li>Select "register<em>snacking" in the CallZomeFns below, type <code>april 3: ice cream</code> in the input and click _EXECUTE</em>. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is <strong>append only</strong>. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged <code>april 3: ice cream</code> after you logged <code>april 5: marsmallows</code>.</li>
 <li>Select "say<em>greeting" in the CallZomeFns below, type <code>Hello world</code> in the input and click _EXECUTE</em>. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can <strong>mix entries of different types</strong>, the headers will always appear in your source chain in the same order as they were created.</li>
 </ul>
@@ -293,12 +293,12 @@ Head over to the simulation where you will see that, underneath, it is just a he
 <ul>
 <li><code>is_previous_header_hash</code> if you give your zome 2 hashes, it will answer if the second header hash is the previous, a direct parent, of the first header hash.</li>
 <li><code>happened_before</code> does the same as the above function, but it is not limited to the direct parent. I will determine is the second hash is an ancestor. So it is not limited to the direct parent.</li>
-<li><code>get_header_sequence_number</code> the header contains a field header_seq, which contains the sequence number of the header in the chain. The very first header, the DNA header, does not have this field. You could say it is implicitly zero. The next header starts counting at one. Umagine your UI is loading all the headers to show. In that case it can come in handy if you have an idea of where in the chain you are.</li>
+<li><code>get_header_sequence_number</code> the header contains a field header_seq, which contains the sequence number of the header in the chain. The very first header, the DNA header, does not have this field. You could say it is implicitly zero. The next header starts counting at one. Imagine your UI is loading all the headers to show. In that case it can come in handy if you have an idea of where in the chain you are.</li>
 </ul>
 <inline-notification type="tip" title="Exercise">
 <ol>
 <li>Check if you are still inside the nix-shell<br>
-<em>Your terminal should similar to this</em> <code>[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$</code></li>
+<em>Your terminal should look similar to this</em> <code>[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$</code></li>
 <li>Implement <code>is_previous_header_hash</code>, <code>happened_before</code>, <code>get_header_sequence_number</code></li>
 <li>Compile your code: <code>./run_build.sh</code></li>
 <li>Run the test: <code>./run_tests.sh</code></li>
@@ -482,7 +482,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../3f9ce36f.js"></script>
-<script type="module" src="../../../3290032f8.js"></script>
+<script type="module" src="../../../87942128.js" mdjs-setup=""></script>
+<script type="module" src="../../../fc0b0e998.js"></script>
 
 </body></html>
