@@ -67,6 +67,7 @@ const simulatedDna0 = {
           visibility: "Public",
         },
       ],
+      validation_functions: {},
       zome_functions: {
         register_snacking: {
           call: ({ create_entry, hash_entry }) => async ({ content }) => {
@@ -140,6 +141,7 @@ const simulatedDna1 = {
           visibility: "Public",
         },
       ],
+      validation_functions: {},
       zome_functions: {
         register_snacking: {
           call: ({ create_entry, hash_entry }) => async ({ content }) => {
@@ -253,7 +255,8 @@ This time we will do some lightweight exercises, just to get a feel for the chai
 
 </inline-notification>
 
-### Relevant HDK documentation: 
+### Relevant HDK documentation:
+
 - [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
 - [hash_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html).
 - [get](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html)
@@ -272,4 +275,4 @@ your favorite search engine
 
 ## Solution
 
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/4.source-chain). 
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/4.source-chain).

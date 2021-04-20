@@ -49,6 +49,7 @@ const simulatedDna0 = {
           visibility: "Public",
         },
       ],
+      validation_functions: {},
       zome_functions: {
         register_snacking: {
           call: ({ create_entry, hash_entry }) => async ({ content }) => {
@@ -84,7 +85,8 @@ export const Sim0 = () => {
       <div
         style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
-        <source-chain style="flex: 1; height: 720px; margin-right: 20px;"> </source-chain>
+        <source-chain style="flex: 1; height: 720px; margin-right: 20px;">
+        </source-chain>
         <entry-contents style="flex-basis: 550px; height: 720px;">
         </entry-contents>
       </div>
@@ -188,6 +190,7 @@ const simulatedDna1 = {
           visibility: "Public",
         },
       ],
+      validation_functions: {},
       zome_functions: {
         register_snacking: {
           call: ({ create_entry, hash_entry }) => async ({ content }) => {
@@ -239,7 +242,8 @@ export const Sim1 = () => {
       <div
         style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
       >
-        <source-chain style="flex: 1; height: 600px; margin-right: 20px;"> </source-chain>
+        <source-chain style="flex: 1; height: 600px; margin-right: 20px;">
+        </source-chain>
         <entry-contents style="flex-basis: 500px; height: 600px;">
         </entry-contents>
       </div>
@@ -306,7 +310,8 @@ Implement a function `get_header_hash_by_content` that returns the header hash b
 
 </inline-notification>
 
-### Relevant HDK documentation: 
+### Relevant HDK documentation:
+
 - [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
 - [hash_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html).
 - [get](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html)
@@ -326,4 +331,4 @@ your favorite search engine
 
 ## Solution
 
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/3.headers). 
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/3.headers).

@@ -64,6 +64,7 @@ const simulatedDnaTemplate = {
           visibility: "Public",
         },
       ],
+      validation_functions: {},
       zome_functions: {
         create_entry: {
           call: ({ create_entry, hash_entry }) => async ({ content }) => {
@@ -88,6 +89,7 @@ const simulatedDnaTemplate = {
           visibility: "Public",
         },
       ],
+      validation_functions: {},
       zome_functions: {
         create_link: {
           call: ({ create_link }) => ({ base, target, tag }) => {

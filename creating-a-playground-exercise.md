@@ -38,6 +38,7 @@ const sampleZome = {
       visibility: "Public",
     },
   ],
+  validation_functions: {},
   zome_functions: {
     // Here you can code whatever functions you want your dna to have
     say_greeting: {

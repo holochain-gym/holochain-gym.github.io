@@ -42,6 +42,7 @@ const sampleZome = {
       visibility: "Public",
     },
   ],
+  validation_functions: {},
   zome_functions: {
     create_path: {
       call: (hdk) => ({ path }) => {
@@ -66,7 +67,6 @@ export const Simple = () => {
         const cellId = conductor.getAllCells()[0].cellId;
 
         e.target.activeAgentPubKey = cellId[1];
-
       }}
     >
       <div
@@ -79,7 +79,8 @@ export const Simple = () => {
           hide-agent-pub-key
         >
         </call-zome-fns>
-        <entry-contents style="flex-basis: 500px; height: 250px;"> </entry-contents>
+        <entry-contents style="flex-basis: 500px; height: 250px;">
+        </entry-contents>
       </div>
       <entry-graph
         hide-filter
@@ -140,6 +141,7 @@ const sampleZome1 = {
       visibility: "Public",
     },
   ],
+  validation_functions: {},
   zome_functions: {
     create_post: {
       call: (hdk) => async ({ content, tag1, tag2 }) => {
@@ -210,7 +212,8 @@ export const Exercise = () => {
           hide-agent-pub-key
         >
         </call-zome-fns>
-        <entry-contents style="flex-basis: 500px; height: 400px;"> </entry-contents>
+        <entry-contents style="flex-basis: 500px; height: 400px;">
+        </entry-contents>
       </div>
       <entry-graph
         hide-filter
@@ -229,21 +232,22 @@ export const Exercise = () => {
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`  
    _you should run this in the folder containing the default.nix file_  
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_  
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
 3. Go to folder with the exercise `intermediate/1.paths`
 4. Inside `zome/exercise/src/lib.rs`
-    - Implement all `unimplemented!()` functions
+   - Implement all `unimplemented!()` functions
 5. Compile your code: `./run_build.sh`.
 6. Run the test: `./run_tests.sh`
 7. Don't stop until the test runs green
 
 </inline-notification>
 
-### Relevant HDK documentation: 
+### Relevant HDK documentation:
+
 - [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
 - [Path](https://docs.rs/hdk/0.0.100/hdk/hash_path/path/struct.Path.html).
 - [get_links](https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html).
 
 ## Solution
 
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/intermediate/1.paths). 
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/intermediate/1.paths).

@@ -61,6 +61,7 @@ const sampleZome = {
       visibility: "Public",
     },
   ],
+  validation_functions: {},
   zome_functions: {
     say_greeting: {
       call: ({ create_entry }) => ({ greeting_text }) => {

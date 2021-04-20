@@ -50,6 +50,7 @@ const sampleZome = {
       visibility: "Public",
     },
   ],
+  validation_functions: {},
   zome_functions: {
     say_greeting: {
       call: ({ create_entry }) => ({ content }) => {
@@ -133,6 +134,7 @@ const sampleZome2 = {
       visibility: "Public",
     },
   ],
+  validation_functions: {},
   zome_functions: {
     add_book: {
       call: (hdk) => async ({ content }) => {

@@ -165,6 +165,7 @@ const dna = {
     {
       name: "sample",
       entry_defs: [],
+      validation_functions: {},
       zome_functions: {
         create_cap: {
           call: ({ create_cap_grant }) => ({ grantedAgent }) => {
@@ -329,10 +330,11 @@ We need to code a small zome that has the following abilities:
 
 </inline-notification>
 
-### Relevant HDK documentation: 
+### Relevant HDK documentation:
+
 - [call_remote](https://docs.rs/hdk/0.0.100/hdk/p2p/fn.call_remote.html).
 - [create_cap_grant](https://docs.rs/hdk/0.0.100/hdk/capability/fn.create_cap_grant.html)
 
 ## Solution
 
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/ntermediate/3.capability-tokens). 
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/ntermediate/3.capability-tokens).

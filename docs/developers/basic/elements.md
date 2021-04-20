@@ -53,6 +53,7 @@ const sampleZome1 = {
       visibility: "Public",
     },
   ],
+  validation_functions: {},
   zome_functions: {
     create_entry: {
       call: ({ create_entry }) => async ({ content }) => {
@@ -131,6 +132,7 @@ const sampleZome2 = {
       visibility: "Public",
     },
   ],
+  validation_functions: {},
   zome_functions: {
     create_entry: {
       call: ({ create_entry }) => async ({ content }) => {
