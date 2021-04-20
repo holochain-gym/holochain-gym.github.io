@@ -36,7 +36,7 @@ In one of the previous exercises you already saw some header stuff passing by. S
 
 In the simulation below we already added one entry.
 
-First click on the grey circle with the text `snacking_log`. This should look familiar. It is just an entry. Then click on the top most blue rectangle with the text 'Create' that points directly to the entry. And look at what you see on the righthand side in the Header Contents panel.
+First click on the grey rounded square with the text `snacking_log`. This should look familiar. It is just an entry. Then click on the top most blue circle with the text 'Create' that points directly to the entry. And look at what you see on the righthand side in the Header Contents panel.
 
 ```js story
 const simulatedDna0 = {

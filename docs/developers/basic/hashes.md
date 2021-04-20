@@ -8,6 +8,7 @@ import {
   EntryContents,
   EntryGraph,
   CallZomeFns,
+  ZomeFnsResults
 } from "@holochain-playground/elements";
 
 customElements.define(
@@ -16,6 +17,7 @@ customElements.define(
 );
 customElements.define("entry-graph", EntryGraph);
 customElements.define("entry-contents", EntryContents);
+customElements.define("zome-fns-results", ZomeFnsResults);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
@@ -119,7 +121,7 @@ This time you are building a library zome. The zome will need 2 functions that c
 First let's practice a bit in the simulation gym.
 Select `add_book` in the CallZomeFns below, type the title of your favorite book in the input and click _EXECUTE_.
 Click on the newly added object in the Entry Graph and copy the value of Entry hash.
-Select `get_book` in the CallZomeFns, put in the hash and click _EXECUTE_. Open the last item with the green check with the text `get_book in library zome, result: `, in the panel just right of the execute button. Inspect the details.  
+Select `get_book` in the CallZomeFns, put in the hash and click _EXECUTE_. Open the last item with the green check with the text `get_book in library zome, result: `, in the "Zome Fns Results" panel just right of the execute button. Inspect the details.  
 We told you you would see hashes everywhere. Look for the entry_hash and check if it matches. If it does, it means you successfully created and retrieved an entry from the holochain simulation app.
 
 ```js story
