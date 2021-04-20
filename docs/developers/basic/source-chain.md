@@ -27,11 +27,11 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 
 ## Recap
 
-You learned about entries and headers: two of the most basic building blocks in any holochain app. And experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/developers/intermediate/DHT).
+You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/developers/intermediate/DHT).
 
 ## Source chain
 
-The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what make holochain unique. It's where some of the magic happens.
+The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what makes holochain unique. It's where some of the magic happens.
 
 The [glossary](https://developer.holochain.org/docs/glossary/#source-chain) explains it the following way:
 
@@ -41,14 +41,14 @@ _Let's unpack this_
 
 When you download a compiled [DNA](https://developer.holochain.org/docs/glossary/#dna), a [WASM](https://developer.holochain.org/docs/glossary/#webassembly-wasm) binary, from somewhere or when you compile it locally and you run this DNA in a holochain [conductor](https://developer.holochain.org/docs/glossary/#conductor) that is running on your machine, then this DNA would be instantiated and linked to your [agent ID](https://developer.holochain.org/docs/glossary/#agent-id). That thing is a [cell](https://developer.holochain.org/docs/glossary/#cell).
 
-If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist out of one or more zomes. All our exercises so far only contained one zome. The one you compiled from `zomes/exercise/lib.rs`. For the sake of simplicity we will keep on pretending every DNA has just one [zome](https://developer.holochain.org/docs/glossary/#zome). For now.
+If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist of one or more zomes. All our exercises so far only contained one zome, the one you compiled from `zomes/exercise/lib.rs`. For the sake of simplicity we will keep on pretending every DNA has just one [zome](https://developer.holochain.org/docs/glossary/#zome). For now.
 
 Now for the crucial part: "**stores all of the actions**". Every action, which in holochain speak means: every header and entry, that are produced by you, the agent, will become a part of the source chain, for as long as that agent has that DNA installed.
 Whenever a new action is committed (creating entries or links, updating...) a new element is added to that chain, with its header referencing the previous one.
 Essentially, the source-chain is a **hash-chain of all the actions that a particular agent has committed in this DNA**.
 
 Perhaps this does sounds like some weird form of magic.
-Head over to the simulation where you will see that, underneath, it is just a headers and entries.
+Head over to the simulation where you will see that, underneath, it is just headers and entries.
 
 ## Subconscious
 
@@ -240,12 +240,12 @@ This time we will do some lightweight exercises, just to get a feel for the chai
 
 - `is_previous_header_hash` if you give your zome 2 hashes, it will answer if the second header hash is the previous, a direct parent, of the first header hash.
 - `happened_before` does the same as the above function, but it is not limited to the direct parent. I will determine is the second hash is an ancestor. So it is not limited to the direct parent.
-- `get_header_sequence_number` the header contains a field header_seq, which contains the sequence number of the header in the chain. The very first header, the DNA header, does not have this field. You could say it is implicitly zero. The next header starts counting at one. Umagine your UI is loading all the headers to show. In that case it can come in handy if you have an idea of where in the chain you are.
+- `get_header_sequence_number` the header contains a field header_seq, which contains the sequence number of the header in the chain. The very first header, the DNA header, does not have this field. You could say it is implicitly zero. The next header starts counting at one. Imagine your UI is loading all the headers to show. In that case it can come in handy if you have an idea of where in the chain you are.
 
 <inline-notification type="tip" title="Exercise">
 
 1. Check if you are still inside the nix-shell  
-   _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
+   _Your terminal should look similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
 2. Implement `is_previous_header_hash`, `happened_before`, `get_header_sequence_number`
 3. Compile your code: `./run_build.sh`
 4. Run the test: `./run_tests.sh`
