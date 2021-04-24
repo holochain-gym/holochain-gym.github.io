@@ -1,4 +1,4 @@
-# Basic >> Hashes ||102
+# Basic >> Hashes ||104
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";

@@ -1,4 +1,4 @@
-# Basic >> Links ||103
+# Basic >> Links ||105
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
