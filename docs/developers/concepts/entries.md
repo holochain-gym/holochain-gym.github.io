@@ -1,4 +1,4 @@
-# Basic >> Entries ||101
+# Concepts >> Entries ||11
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";

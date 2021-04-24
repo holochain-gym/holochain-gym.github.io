@@ -1,4 +1,4 @@
-# Developers ||10
+# Developers ||1
 
 Welcome! Here you can train yourself to be a holochain developer.
 
