@@ -2,9 +2,15 @@
 
 ## Anatomy of an exercise
 
-The structure of a Holochain-gym exercise is very similar to a real holochain application. So let us review what you see when you open the entries exercise.
+Each exercise will have two folders:
+* exercise
+* solution
 
-![](/_assets/top-folder-entries-exercise.png)
+The solution folder contains a complete and working version of the exercise folder. After you solved the exercise you can compare your solution with our solution. Or if you are really lost, you can take a quick look...
+
+The structure inside the exercise and solution folder very similar to a real holochain application. So let us review what you see when you open the entries exercise.
+
+![](/_assets/folder_gym_exercise.png)
 
 The best place to start if you are lost is to read the **README** file again. It briefly states what you need to do to compile and test the exercise.
 
@@ -25,7 +31,7 @@ For running the tests we also provided a simple script that checks if you are ru
 
 The folders **.cargo** & **target** will only show when you try to build the project. You usually exclude these when committing code to a repository.
 
-Now you know enough to start the [first exercise](/developers/basic/entries). Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
+Now you know enough to start the [first exercise](/developers/basic/entries) or better yet explore the main [concepts](/developers/concepts) of holochain in a hands-on way. Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
 If want to start working on your own holochain apps, separate from the holochain-gym, you can read the next section.
 
 ## Building your own Holochain app (optional)

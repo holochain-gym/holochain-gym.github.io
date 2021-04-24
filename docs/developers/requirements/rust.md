@@ -8,4 +8,14 @@ Learning rust is outside the scope of the gym by itself. However, here you can f
 
 We also will be providing some small rust tips along the way in some exercises to help you unblock yourself. We hope that you can overcome this obstacle and start having fun with holochain itself! Let us know if there is something that we could add to improve the experience.
 
-We highly recommend installing the `rust-analyzer` VSCode extension and opening your projects from a folder which has a `Cargo.toml` in it. The experience of writing Rust this way is much more pleasant and allows for a much faster learning curve.
+
+```js script
+import "@rocket/launch/inline-notification/inline-notification.js";
+```
+
+<inline-notification type="tip" title="Recommended">
+
+We highly recommend installing the `rust-analyzer` VSCode extension and opening your projects from a folder which has a `Cargo.toml` in it.  
+The experience of writing Rust this way is much more pleasant and allows for a much faster learning curve.
+
+</inline-notification>

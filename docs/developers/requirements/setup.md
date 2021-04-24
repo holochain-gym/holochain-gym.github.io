@@ -100,34 +100,7 @@ We recommend using [VSCode](https://code.visualstudio.com/) with the [rust-analy
 ## Start
 
 Next up you have 3 options:
-- If you don't know core concepts of Holochain, you can check out the [docs section](/developers/requirements/documentation) to start reading
+- If you don't know much about core concepts of Holochain, you can check out the [docs section](/developers/requirements/documentation) to start reading up. Or if you want a more hands-on approach start in the [Concepts](/developers/concepts) section of our gym.
 - If you are new to Rust you can look [here](/developers/requirements/rust) to find out what you need to learn and where you can learn it
-- If you are ready to start the first exercise, it is a good idea to read about the [anatomy of an exercise](/developers/requirements/anatomy), so you understand the folder structure and specific files. After that jump right in to [the first exercise](/developers/basic/entries).
+- If you are ready to start the first exercise, it is a good idea to read about the [anatomy of an exercise](/developers/requirements/anatomy), so you understand the folder structure and specific files. After that jump right in to [the first exercise](/developers/basic/entries). You can access all the exercises in the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions. Each exercise has its own README file. It will tell you how to build the exercises and run the tests.
 
-
-You can access all the exercises with the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions.
-
-To each exercise have it own README file, that tells you how to build the exercises and run the tests.
-
-```js script
-import "@rocket/launch/inline-notification/inline-notification.js";
-```
-
-<inline-notification type="warning" title="Order of exercises">
-
-It's better to be following the exercises from start to end, since earlier concepts are needed to understand the following ones.
-
-</inline-notification>
-
-<inline-notification type="tip" title="Solutions">
-
-If you get stuck with some exercise, the developer-exercises has a [solution branch](https://github.com/holochain-gym/developer-exercises/tree/solution) that you can look at for complete working solutions. Try not to use this too much though!
-
-To switch to this branch, run the following command in base folder of the developer-exercises repository:
-
-```bash
-git checkout solution
-```
-
-
-</inline-notification>

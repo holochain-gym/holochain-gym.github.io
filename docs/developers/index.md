@@ -6,7 +6,7 @@ We love that you decided to work on your holochain skills.
 This is the right place to train yourself to become a holochain developer.
 
 In our gym you will find interactive *simulations*, working example *code* and hands-on *exercises*.
-On the left, you have a list of exercises, ordered from easier to harder. 
+On the left, you have a list of exercises, ordered from easy to hard. 
 
 **First stop: Requirements**
 
@@ -22,7 +22,9 @@ Work through the simulations and read through the code examples in the [Concepts
 You can hit the gym and start your [first exercise](/developers/basic/entries).
 
 Practice, rest, eat healthy and repeat.
-Good luck!
+Good luck!  
+
+
 
 ```js script
 import '@rocket/launch/inline-notification/inline-notification.js';
