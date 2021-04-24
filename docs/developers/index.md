@@ -21,8 +21,8 @@ Work through the simulations and read through the code examples in the [Concepts
 
 You can hit the gym and start your [first exercise](/developers/basic/entries).
 
-Practice, rest, eat healthy and repeat.
-Good luck!  
+*Practice, rest, eat healthy and repeat.*  
+*Good luck!*  
 
 
 
