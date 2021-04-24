@@ -5,7 +5,7 @@ Welcome to our gym!
 We love that you decided to work on your holochain skills. 
 This is the right place to train yourself to become a holochain developer.
 
-In our gym you will find interactive *simulations*, working *example code* and hands-on *exercises*.
+In our gym you will find interactive *simulations*, working example *code* and hands-on *exercises*.
 On the left, you have a list of exercises, ordered from easier to harder. 
 
 **First stop: Requirements**
