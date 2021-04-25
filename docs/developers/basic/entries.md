@@ -21,6 +21,8 @@ customElements.define("call-zome-fns", CallZomeFns);
 
 ## What is an entry
 
+[entries](/developers/concept/entries)
+
 An entry is a basic unit of user data. As a Holochain developer one of the most basic things you can do is create an entry in a Zome.
 
 _Quick reminder - A [Zome](https://developer.holochain.org/docs/glossary/#zome) is a module in a [DNA](https://developer.holochain.org/docs/glossary/#dna); the base of any [Holochain application (hApp)](https://developer.holochain.org/docs/glossary/#holochain-application-happ)._

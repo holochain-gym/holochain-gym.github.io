@@ -142,7 +142,7 @@ export const Simple = () => {
 In the details in `Entry Contents` you see 3 things: the _entry hash_, the _entry type_ and _content_. 
 * **Content** contains the input you typed in. `Content` is not a holochain keyword, it is the name we choose for the input param in the `say_greeting` function. So you could choose a different name in your own functions. 
 * **Entry type** is something specific to the Holochain technology underpinning our app. There are 4 types of entries: Agent, App, CapClaim, CapGrant. For this exercise we limit our focus to App entries.  
-* **Entry hash** is the last of the three. You could think of the entry hash as the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.  
+* **Entry hash** is the last of the three. You could think of the entry hash as the unique address of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.  
 
 
 
