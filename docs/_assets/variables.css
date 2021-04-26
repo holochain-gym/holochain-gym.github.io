@@ -76,8 +76,11 @@ inline-notification {
   max-width: 50rem;
 }
 
-.page-slogan{
+.page-slogan {
   max-width: 100%;
 }
   
+.cli-error {
+  background-color:black !important;
+  color:white" !important;
 }
