@@ -1,4 +1,4 @@
-# Basic >> Elements ||103
+# Basic >> Getting Elements ||103
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";

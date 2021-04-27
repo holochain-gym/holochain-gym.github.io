@@ -41,7 +41,7 @@ Luckily you do not have to worry about all of this yet. Since we are skipping al
 
 The code below shows the most minimal holochain app you can build. The only thing it does, is it allows a user to store a greeting message in an entry. In this example, there is no way to retrieve any data yet. So it is not the most useful application, but it is a simple one.
 
-```
+```rust
 use hdk::prelude::*;
 
 entry_defs![Greeting::entry_def()];

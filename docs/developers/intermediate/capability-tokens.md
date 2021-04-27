@@ -48,7 +48,8 @@ You can rerun it if needed.
 let capGrantHash = undefined;
 const steps = [
   {
-    title: "Alice tries to do a remote call on Bob's 'sample' zome function",
+    title: (context) =>
+      `${context.conductors[0].name} tries to do a remote call on ${context.conductors[1].name}'s 'sample' zome function`,
     run: async (context) => {
       const aliceConductor = context.conductors[0];
       const aliceCellId = aliceConductor.getAllCells()[0].cellId;
@@ -70,7 +71,8 @@ const steps = [
     },
   },
   {
-    title: "Bob trusts her, so he creates a capability grant for Alice",
+    title: (context) =>
+      `${context.conductors[1].name} trusts her, so he creates a capability grant for ${context.conductors[0].name}`,
     run: async (context) => {
       const aliceConductor = context.conductors[0];
       const aliceCellId = aliceConductor.getAllCells()[0].cellId;
@@ -92,7 +94,8 @@ const steps = [
     },
   },
   {
-    title: "Alice tries to call the 'sample' function for Bob again",
+    title: (context) =>
+      `${context.conductors[0].name} tries to call the 'sample' function for ${context.conductors[1].name} again`,
     run: async (context) => {
       const aliceConductor = context.conductors[0];
       const aliceCellId = aliceConductor.getAllCells()[0].cellId;
@@ -114,8 +117,8 @@ const steps = [
     },
   },
   {
-    title:
-      "Bob doesn't trust Alice anymore, so he revokes her capability grant",
+    title: (context) =>
+      `${context.conductors[1].name} doesn't trust ${context.conductors[0].name} anymore, so he revokes her capability grant`,
     run: async (context) => {
       const aliceConductor = context.conductors[0];
       const aliceCellId = aliceConductor.getAllCells()[0].cellId;
@@ -137,7 +140,8 @@ const steps = [
     },
   },
   {
-    title: "Alice tries to call the 'sample' function for Bob again",
+    title: (context) =>
+      `${context.conductors[0].name} tries to call the 'sample' function for ${context.conductors[1].name} again`,
     run: async (context) => {
       const aliceConductor = context.conductors[0];
       const aliceCellId = aliceConductor.getAllCells()[0].cellId;

@@ -44,7 +44,7 @@ html.dark {
 
 @media screen and (min-width: 1024px) {
   .content-area {
-    max-width: 1600px !important;
+    max-width: 1800px !important;
   }
 
 p {
