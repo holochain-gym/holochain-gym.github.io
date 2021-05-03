@@ -9,7 +9,7 @@ import {
   EntryGraph,
   CallZomeFns,
   SourceChain,
-  ZomeFnsResults
+  ZomeFnsResults,
 } from "@holochain-playground/elements";
 
 customElements.define(
@@ -77,15 +77,23 @@ const sampleZome = {
     },
   },
 };
-
-const simulatedDnaTemplate = {
-  zomes: [sampleZome],
+const simulatedHapp = {
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome],
+      },
+      deferred: false,
+    },
+  },
 };
 export const Simple = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate}
+      .simulatedHapp=${simulatedHapp}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
@@ -171,15 +179,25 @@ const sampleZome2 = {
     },
   },
 };
-
-const simulatedDnaTemplate2 = {
-  zomes: [sampleZome2],
+const simulatedHapp2 = {
+    {
+      name: 'simulated-app',
+      description: '',
+      slots: {
+        default: {
+          dna: {
+            zomes: [sampleZome2],
+          },
+          deferred: false,
+        },
+      },
+    }
 };
 export const Simple2 = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate2}
+      .simulatedHapp=${simulatedHapp2}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
@@ -235,7 +253,6 @@ export const Simple2 = () => {
 - [create_link](https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html).
 - [get_links](https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html).
 
-
 ## Solution
 
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/2.links). 
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/2.links).

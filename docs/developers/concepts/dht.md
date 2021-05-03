@@ -30,13 +30,13 @@ customElements.define("dht-cells", DhtCells);
 
 ## Holochain's DHT
 
-The DHT is the main way in which agents share data in Holochain. 
+The DHT is the main way in which agents share data in Holochain.
 
 You can think of Holochain as the combination of a local and linear source-chain, and a public space to which you can publish data.
 
 Usually, DHTs are just key-value stores: you can create some piece of data, which gets hashed, and after that anyone can query its contents with that hash.
 
-One of the most important characteristics of the source-chain is that it's linear and ordered, representing all the actions an agent has taken in sequence. 
+One of the most important characteristics of the source-chain is that it's linear and ordered, representing all the actions an agent has taken in sequence.
 
 On the contrary, **the DHT is eventually consistent**: data takes some time to propagate throughout the network. This means that there is no guarantee about the order in which different pieces of data will arrive, or that you are seeing all the data that has been published.
 
@@ -60,7 +60,7 @@ To try to visualize how DHT behaves:
 If you need more time, you can active the step-by-step mode and click play whenever you are ready to continue. Have fun!
 
 ```js story
-const simulatedDnaTemplate = {
+const simulatedDna = {
   zomes: [
     {
       name: "entries",
@@ -111,11 +111,21 @@ const simulatedDnaTemplate = {
     },
   ],
 };
+const simulatedHapp = {
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: simulatedDna,
+      deferred: false,
+    },
+  },
+};
 export const Simple = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${20}
-      .simulatedDnaTemplate=${simulatedDnaTemplate}
+      .simulatedHapp=${simulatedHapp}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 

@@ -4,6 +4,7 @@
    - See which components are available and their options.
    - This list may grow soon, but the elements that are there should be quite stable.
 2. In the gym exercise, add this at the beginning of the markdown file:
+
 ````js
 ```js script
 import { html } from "lit-html";
@@ -21,10 +22,10 @@ customElements.define(
 customElements.define("entry-graph", EntryGraph);
 customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
-```
+```;
 ````
 
-  - Import the elements that you need from the documentation. If you'd need some other element, submit an issue in the playground repository.
+- Import the elements that you need from the documentation. If you'd need some other element, submit an issue in the playground repository.
 
 3. In the place that you want your interactive playground to appear, write the following:
 
@@ -50,14 +51,23 @@ const sampleZome = {
   },
 };
 
-const simulatedDnaTemplate = {
-  zomes: [sampleZome],
+const simulatedHapp = {
+  name: 'simulated-app',
+  description: '',
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome],
+      },
+      deferred: false,
+    },
+  },
 };
 export const Simple = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate}
+      .simulatedHapp=${simulatedHapp}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
@@ -89,6 +99,5 @@ export const Simple = () => {
 };
 ```
 ````
-
 
 You can also look at the numerous examples that you have available in this repository.

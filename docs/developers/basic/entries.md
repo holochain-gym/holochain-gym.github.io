@@ -33,10 +33,10 @@ _Quick reminder - A [Zome](https://developer.holochain.org/docs/glossary/#zome) 
 
 When you create an entry a few things will happen:
 
-1. Your data is validated locally *(we will learn how this works in later exercises)*
-2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) *(hence the 'chain' in 'Holochain')*
-3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp *(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)*
-4. The random people that received your data will validate your data using the same rules that were used in the first step. *(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)*
+1. Your data is validated locally _(we will learn how this works in later exercises)_
+2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) _(hence the 'chain' in 'Holochain')_
+3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp _(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)_
+4. The random people that received your data will validate your data using the same rules that were used in the first step. _(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)_
 
 Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.
 
@@ -76,14 +76,23 @@ const sampleZome = {
   },
 };
 
-const simulatedDnaTemplate = {
-  zomes: [sampleZome],
+const simulatedHapp = {
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome],
+      },
+      deferred: false,
+    },
+  },
 };
 export const Simple = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate}
+      .simulatedHapp=${simulatedHapp}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
@@ -120,10 +129,10 @@ export const Simple = () => {
 <br>  
 <br>
 
-In the details you see 3 things: the _entry hash_, the _entry type_ and _content_. 
- **Content** is a custom field, meaning you can give it a different name if you want to. You could add more fields as well, but for now one will do.  
+In the details you see 3 things: the _entry hash_, the _entry type_ and _content_.
+**Content** is a custom field, meaning you can give it a different name if you want to. You could add more fields as well, but for now one will do.  
 The **Entry type** is something specific to the Holochain technology underpinning our app. There are 4 types of entries: Agent, App, CapClaim, CapGrant. For this exercise we limit our focus to App entries.  
-The **Entry hash** is the last of the three. You could think of the entry hash as the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.  
+The **Entry hash** is the last of the three. You could think of the entry hash as the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.
 
 ## Getting ready
 
@@ -251,7 +260,8 @@ You will in fact have created your very first decentralized, agent centric, boun
 
 </inline-notification>
 
-### Relevant HDK documentation: 
+### Relevant HDK documentation:
+
 - [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
 
 ### Errors
@@ -280,4 +290,4 @@ thread 'holochain-tokio-thread' panicked at 'TODO: DnaError
 
 ## Solution
 
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/0.entries). 
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/0.entries).

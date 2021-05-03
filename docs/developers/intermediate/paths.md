@@ -53,14 +53,24 @@ const sampleZome = {
   },
 };
 
-const simulatedDnaTemplate = {
-  zomes: [sampleZome],
+const simulatedHapp = {
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome],
+      },
+      deferred: false,
+    },
+  },
 };
+
 export const Simple = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate}
+      .simulatedHapp=${simulatedHapp}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
@@ -186,14 +196,25 @@ const sampleZome1 = {
   },
 };
 
-const simulatedDnaTemplate1 = {
-  zomes: [sampleZome1],
+const simulatedHapp1 = {
+    {
+      name: 'simulated-app',
+      description: '',
+      slots: {
+        default: {
+          dna: {
+            zomes: [sampleZome1],
+          },
+          deferred: false,
+        },
+      },
+    }
 };
 export const Exercise = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate1}
+      .simulatedHapp=${simulatedHapp1}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 

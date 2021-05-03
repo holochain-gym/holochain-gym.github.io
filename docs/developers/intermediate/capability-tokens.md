@@ -215,12 +215,22 @@ const dna = {
   ],
 };
 
+const simulatedHapp = {
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna,
+      deferred: false,
+    },
+  },
+};
 const sleep = (ms) => new Promise((resolve) => setTimeout(() => resolve(), ms));
 
 export const Demo = () => html` <holochain-playground-container
   id="container"
   .numberOfSimulatedConductors=${2}
-  .simulatedDnaTemplate=${dna}
+  .simulatedHapp=${simulatedHapp}
 >
   <div
     style="width: 100%; display: flex; flex-direction: row; margin-bottom: 20px;"

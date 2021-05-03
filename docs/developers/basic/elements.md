@@ -64,14 +64,25 @@ const sampleZome1 = {
   },
 };
 
-const simulatedDnaTemplate1 = {
-  zomes: [sampleZome1],
+const simulatedHapp1 = {
+    {
+      name: 'simulated-app',
+      description: '',
+      slots: {
+        default: {
+          dna: {
+            zomes: [sampleZome1],
+          },
+          deferred: false,
+        },
+      },
+    }
 };
 export const Simple1 = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${4}
-      .simulatedDnaTemplate=${simulatedDnaTemplate1}
+      .simulatedHapp=${simulatedHapp1}
     >
       <div
         style="display: flex; flex-direction: row; height: 400px; margin-bottom: 20px;"
@@ -113,15 +124,15 @@ You can play around with this functionality to see how holochain behaves to diff
 It's really important to think about elements when getting content from the DHT via hashes.
 
 1. Create an entry with some arbitrary content.
-    - You should see an entry with its `Create` header in the `Entry Graph` block.
-2. **Create the same entry** a second time. 
-    - You should see the two `Create` headers accompanying the entry. 
+   - You should see an entry with its `Create` header in the `Entry Graph` block.
+2. **Create the same entry** a second time.
+   - You should see the two `Create` headers accompanying the entry.
 3. Now, switch to the `get` zome fn. Click on the entry and copy its hash to the `hash` argument, and execute the `get`.
-    - See that only the second header is returned with the `get`. This is because, as the [`get` documentation](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) explains, `get` is the simplified version for getting things from the DHT, that only returns the latest header when getting an entry.
-4. Switch to the `get_details` zome fn, and execute it with the same `EntryHash`. 
-    - See that, in this case, all the headers are returned. This is because `get_details` returns all the metadata that is accompanying the entry.
+   - See that only the second header is returned with the `get`. This is because, as the [`get` documentation](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) explains, `get` is the simplified version for getting things from the DHT, that only returns the latest header when getting an entry.
+4. Switch to the `get_details` zome fn, and execute it with the same `EntryHash`.
+   - See that, in this case, all the headers are returned. This is because `get_details` returns all the metadata that is accompanying the entry.
 5. Click on one of the headers, and copy its hash. Try to do a `get_details` with it.
-    - See that it's only returning the header that we requested, along with its entry! This is because `get_details` returns all the metadata for the hash that we requested. When we do commit a `Create` element, the header gets attached to the entry's metadata, but not to every other `Create` header for that same entry.
+   - See that it's only returning the header that we requested, along with its entry! This is because `get_details` returns all the metadata for the hash that we requested. When we do commit a `Create` element, the header gets attached to the entry's metadata, but not to every other `Create` header for that same entry.
 
 ```js story
 const sampleZome2 = {
@@ -155,14 +166,25 @@ const sampleZome2 = {
   },
 };
 
-const simulatedDnaTemplate2 = {
-  zomes: [sampleZome2],
+const simulatedHapp2 = {
+    {
+      name: 'simulated-app',
+      description: '',
+      slots: {
+        default: {
+          dna: {
+            zomes: [sampleZome2],
+          },
+          deferred: false,
+        },
+      },
+    }
 };
 export const Simple2 = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate2}
+      .simulatedHapp=${simulatedHapp2}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 

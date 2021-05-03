@@ -8,7 +8,7 @@ import {
   EntryContents,
   EntryGraph,
   CallZomeFns,
-  ZomeFnsResults
+  ZomeFnsResults,
 } from "@holochain-playground/elements";
 
 customElements.define(
@@ -37,7 +37,7 @@ And that an entry has a hash. Not bad for your first exercise!
 ## Hash function
 
 Hashes are one of the main ingredients in a holochain app. So let's find out what they are. And since we are a gym and not a library you are going to try it out.
-Select "say*greeting" in the CallZomeFns below, type **Hello World** in the input and click _EXECUTE_.
+Select "say\*greeting" in the CallZomeFns below, type **Hello World** in the input and click _EXECUTE_.
 Click on the newly added object in the Entry Graph and look at the value of Entry hash of in Entry Contents.
 Now type something else, like Hello World in your own language, and execute again. Open the details of the new object and compare the hash values. What do you notice?
 
@@ -61,14 +61,23 @@ const sampleZome = {
   },
 };
 
-const simulatedDnaTemplate = {
-  zomes: [sampleZome],
+const simulatedHapp = {
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome],
+      },
+      deferred: false,
+    },
+  },
 };
 export const Simple = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate}
+      .simulatedHapp=${simulatedHapp}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
@@ -156,14 +165,23 @@ const sampleZome2 = {
   },
 };
 
-const simulatedDnaTemplate2 = {
-  zomes: [sampleZome2],
+const simulatedHapp2 = {
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome2],
+      },
+      deferred: false,
+    },
+  },
 };
 export const Exercise = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedDnaTemplate=${simulatedDnaTemplate2}
+      .simulatedHapp=${simulatedHapp2}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
@@ -208,7 +226,7 @@ export const Exercise = () => {
 
 ### Add book
 
-Since the previous exercise went well, we   will raise the bar a little and leave a bit more of the work to you. We will start you off with this:
+Since the previous exercise went well, we will raise the bar a little and leave a bit more of the work to you. We will start you off with this:
 
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -226,17 +244,16 @@ pub fn get_book(hash: String) -> ExternResult<Book> {
 }
 ```
 
-
 It is up to you to add Book struct with two fields: title and content, to define your entry, add all the attributes and to register your entry definition.
 There is one thing we didn't tell in the previous exercise: `create_entry` returns a `ExternResult<HeaderHash>` and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look [here](https://docs.rs/hdk/0.0.100/hdk/prelude/index.html) to see what function might be suited for that.
 
-<inline-notification type="tip" title="Exercise">  
+<inline-notification type="tip" title="Exercise">
 
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`  
-    _You should run this in the folder containing the default.nix file_  
-    _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
-    _When it is done your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
+   _You should run this in the folder containing the default.nix file_  
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
+   _When it is done your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
 3. Go to folder with the exercise `basic/1.hashes`
 4. Inside `zome/exercise/src/lib.rs`
    - Define a new struct for your entry: 'Book'
@@ -245,7 +262,7 @@ There is one thing we didn't tell in the previous exercise: `create_entry` retur
 6. Run the test: `./run_tests.sh`
 7. Don't stop until the test runs green
 
-</inline-notification> 
+</inline-notification>
 
 ### Add test
 
@@ -268,7 +285,7 @@ Run the tests and verify that you have a second assertion in your test, and that
 After you get a failing test, it is up to you to make it pass. Implement the `get_book` function.
 Run the tests. And if everything passes, then it is time to put your feet up, relax and rest.
 
-<inline-notification type="tip" title="Exercise">  
+<inline-notification type="tip" title="Exercise">
 
 1. Add the extra test
 2. Check if you are still inside the nix-shell  
@@ -280,7 +297,8 @@ Run the tests. And if everything passes, then it is time to put your feet up, re
 
 </inline-notification>
 
-### Relevant HDK documentation: 
+### Relevant HDK documentation:
+
 - [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
 - [hash_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html).
 - [get](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html)
@@ -332,7 +350,6 @@ https://forum.holochain.org/c/technical/rust/15
 or
 your favorite search engine
 
-
 ## Solution
 
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/1.hashes). 
+If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/1.hashes).
