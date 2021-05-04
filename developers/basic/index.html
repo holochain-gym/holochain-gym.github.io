@@ -20,6 +20,8 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
+    <script src="../../37b22479.js"></script>
+  
     <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
@@ -38,7 +40,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
   
-    <link rel="stylesheet" href="../../99c99f60.css">
+    <link rel="stylesheet" href="../../be94ee0c.css">
 <link rel="stylesheet" href="../../490f016e.css">
 <link rel="stylesheet" href="../../a0513237.css">
 <link rel="stylesheet" href="../../b8c01bc2.css">
@@ -48,9 +50,9 @@
 
   
 
-<link rel="preload" href="../../fc0b0e996.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../e08a64cd.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../7b4e2b6a.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../41f79f1e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../0fafd573.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../962426a7.js" as="script" crossorigin="anonymous">
 </head>
 
@@ -83,10 +85,10 @@
 
     
       
-  <a href="/architects/" class="
+  <a href="/concepts/" class="
           
           
-        "></a>
+        ">Concepts</a>
   <a href="/developers/" class="
           
            active 
@@ -94,6 +96,7 @@
 
     
       <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
+
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
@@ -159,7 +162,15 @@
 <a href="/developers/basic/">Basic</a>
 
 <ul><li class="menu-item">
-<a href="/developers/basic/entries/">Entries</a>
+<a href="/developers/basic/zome-functions/">Zome functions</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/entries/">Creating Entries</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
 
 </li>
 <li class="menu-item">
@@ -169,24 +180,20 @@
 <li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
 
-</li>
-<li class="menu-item">
-<a href="/developers/basic/headers/">Headers</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/source-chain/">Source chain</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/elements/">Elements</a>
-
 </li></ul>
 </li>
 <li class="menu-item">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item">
-<a href="/developers/intermediate/dht/">DHT</a>
+<a href="/developers/intermediate/query/">Query</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/update/">Update</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/delete/">Delete</a>
 
 </li>
 <li class="menu-item">
@@ -200,7 +207,15 @@
 <li class="menu-item">
 <a href="/developers/intermediate/capability-tokens/">Capability Tokens</a>
 
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/private-entry/">Private entry</a>
+
 </li></ul>
+</li>
+<li class="menu-item">
+<a href="/developers/advanced/">Advanced</a>
+
 </li></ul>
   <div class="sidebar-bottom">
   <hr>
@@ -221,7 +236,6 @@
 	<main class="markdown-body">
   
     <h1 id="basic"><a class="anchor" href="#basic"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic</h1>
-<p>These exercises assume that you know all the concepts covered in the requirements exercises.</p>
 
   
     <button id="layout-index-open-navigation" class="call-to-action" data-action="trigger-mobile-menu">
@@ -326,7 +340,6 @@ Commons Attribution 4.0</a>
   
 
 
-
   <script>
   async function serviceWorkerUpdate() {
   if ('serviceWorker' in navigator) {
@@ -382,6 +395,6 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../fc0b0e996.js"></script>
+<script type="module" src="../../41f79f1e.js"></script>
 
 </body></html>

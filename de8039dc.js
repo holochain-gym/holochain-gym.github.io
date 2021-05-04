@@ -1,1 +1,0 @@
-import{L as t,h as s}from"./7b4e2b6a.js";let r,e=t=>t;customElements.define("mdjs-story",class extends t{static get properties(){return{story:{attribute:!1}}}constructor(){super(),this.story=()=>s(r||(r=e`<p>Loading...</p>`))}render(){return this.story({shadowRoot:this.shadowRoot})}});

@@ -20,6 +20,8 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
+    <script src="../../../37b22479.js"></script>
+  
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
@@ -38,7 +40,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
   
-    <link rel="stylesheet" href="../../../99c99f60.css">
+    <link rel="stylesheet" href="../../../be94ee0c.css">
 <link rel="stylesheet" href="../../../490f016e.css">
 <link rel="stylesheet" href="../../../a0513237.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
@@ -48,11 +50,9 @@
 
   
 
-<link rel="preload" href="../../../2072c8363.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../3ecf4d48.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../7b4e2b6a.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../fc0b0e9919.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../e08a64cd.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../41f79f1e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../0fafd573.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 </head>
 
@@ -85,10 +85,10 @@
 
     
       
-  <a href="/architects/" class="
+  <a href="/concepts/" class="
           
           
-        "></a>
+        ">Concepts</a>
   <a href="/developers/" class="
           
            active 
@@ -96,6 +96,7 @@
 
     
       <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
+
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
@@ -180,7 +181,15 @@
 <li class="menu-item">
 <a href="/developers/basic/">Basic</a>
 <ul><li class="menu-item">
-<a href="/developers/basic/entries/">Entries</a>
+<a href="/developers/basic/zome-functions/">Zome functions</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/entries/">Creating Entries</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
 
 </li>
 <li class="menu-item">
@@ -190,24 +199,20 @@
 <li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
 
-</li>
-<li class="menu-item">
-<a href="/developers/basic/headers/">Headers</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/source-chain/">Source chain</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/elements/">Elements</a>
-
 </li></ul>
 </li>
 <li class="menu-item">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item">
-<a href="/developers/intermediate/dht/">DHT</a>
+<a href="/developers/intermediate/query/">Query</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/update/">Update</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/delete/">Delete</a>
 
 </li>
 <li class="menu-item">
@@ -221,7 +226,15 @@
 <li class="menu-item">
 <a href="/developers/intermediate/capability-tokens/">Capability Tokens</a>
 
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/private-entry/">Private entry</a>
+
 </li></ul>
+</li>
+<li class="menu-item">
+<a href="/developers/advanced/">Advanced</a>
+
 </li></ul>
   <div class="sidebar-bottom">
   <hr>
@@ -299,23 +312,10 @@ It only takes this long the very first time or when we upgrade the Holochain ver
 <h2 id="start"><a class="anchor" href="#start"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Start</h2>
 <p>Next up you have 3 options:</p>
 <ul>
-<li>If you don't know core concepts of Holochain, you can check out the <a href="/developers/requirements/documentation">docs section</a> to start reading</li>
+<li>If you don't know much about core concepts of Holochain, you can check out the <a href="/developers/requirements/documentation">docs section</a> to start reading up. Or if you want a more hands-on approach start in the <a href="/developers/concepts">Concepts</a> section of our gym.</li>
 <li>If you are new to Rust you can look <a href="/developers/requirements/rust">here</a> to find out what you need to learn and where you can learn it</li>
-<li>If you are ready to start the first exercise, it is a good idea to read about the <a href="/developers/requirements/anatomy">anatomy of an exercise</a>, so you understand the folder structure and specific files. After that jump right in to <a href="/developers/basic/entries">the first exercise</a>.</li>
+<li>If you are ready to start the first exercise, it is a good idea to read about the <a href="/developers/requirements/anatomy">anatomy of an exercise</a>, so you understand the folder structure and specific files. After that jump right in to <a href="/developers/basic/entries">the first exercise</a>. You can access all the exercises in the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions. Each exercise has its own README file. It will tell you how to build the exercises and run the tests.</li>
 </ul>
-<p>You can access all the exercises with the menu at the left. Every exercise will have some kind of interactive playground, some documentation or sample code and instructions.</p>
-<p>To each exercise have it own README file, that tells you how to build the exercises and run the tests.</p>
-<inline-notification type="warning" title="Order of exercises">
-<p>It's better to be following the exercises from start to end, since earlier concepts are needed to understand the following ones.</p>
-</inline-notification>
-<inline-notification type="tip" title="Solutions">
-<p>If you get stuck with some exercise, the developer-exercises has a <a href="https://github.com/holochain-gym/developer-exercises/tree/solution">solution branch</a> that you can look at for complete working solutions. Try not to use this too much though!</p>
-<p>To switch to this branch, run the following command in base folder of the developer-exercises repository:</p>
-<pre class="language-bash"><code class="language-bash"><span class="token function">git</span> checkout solution
-</code></pre>
-</inline-notification>
-        
-      
 
   
     <div class="content-footer">
@@ -419,7 +419,6 @@ Commons Attribution 4.0</a>
   
 
 
-
   <script>
   async function serviceWorkerUpdate() {
   if ('serviceWorker' in navigator) {
@@ -475,7 +474,6 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../2072c8363.js" mdjs-setup=""></script>
-<script type="module" src="../../../fc0b0e9919.js"></script>
+<script type="module" src="../../../41f79f1e.js"></script>
 
 </body></html>

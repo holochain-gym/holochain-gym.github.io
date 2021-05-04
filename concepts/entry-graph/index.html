@@ -1,0 +1,401 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+  
+    
+
+  
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concepts: Entry Graph: Holochain Gym</title>
+<meta property="og:title" content="Concepts: Entry Graph: Holochain Gym">
+
+<meta name="generator" content="rocket 0.1">
+<link rel="canonical" href="/concepts/entry-graph/">
+
+
+
+<meta name="description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
+<meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
+
+  
+    <script src="../../37b22479.js"></script>
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png">
+<link rel="manifest" href="../../assets/webmanifest.json">
+<link rel="mask-icon" href="../../assets/safari-pinned-tab.svg" color="#3f93ce">
+<meta name="msapplication-TileColor" content="#1d3557">
+<meta name="theme-color" content="#1d3557">
+
+  
+    <meta property="og:site_name" content="Holochain Gym">
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="../../bbc3f7e2.png">
+<meta property="og:url" content="/concepts/entry-graph/">
+
+<meta name="twitter:card" content="summary_large_image">
+
+  
+    <link rel="stylesheet" href="../../be94ee0c.css">
+<link rel="stylesheet" href="../../490f016e.css">
+<link rel="stylesheet" href="../../a0513237.css">
+<link rel="stylesheet" href="../../b8c01bc2.css">
+
+  
+    <noscript><link rel="stylesheet" href="/_merged_assets/_static/noscript.css"/></noscript>
+
+  
+
+<link rel="preload" href="../../41f79f1e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../0fafd573.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../de191b48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../962426a7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../29d2da3e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../70dd2230.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../393087b4.js" as="script" crossorigin="anonymous">
+</head>
+
+  
+
+  
+  <body layout="layout-sidebar">
+  
+
+    
+      <header id="main-header">
+  <div class="content-area">
+    
+      <button id="mobile-menu-trigger" data-action="trigger-mobile-menu">
+	<span class="sr-only">Show Menu</span>
+	      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon">
+        <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path>
+      </svg>
+
+</button>
+
+    
+      
+	<a class="logo-link" href="/">
+  <img src="../../a9d80dbb.svg" alt="A gym tool">
+  <span>Holochain Gym</span>
+</a>
+
+
+
+    
+      
+  <a href="/concepts/" class="
+          
+           active 
+        ">Concepts</a>
+  <a href="/developers/" class="
+          
+          
+        ">Developers</a>
+
+    
+      <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
+
+    
+      <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+
+
+    
+      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
+    
+      <a href="https://forum.holochain.org/c/learning-library/gym/133" class="">Give us Feedback!</a>
+    
+      
+	<a class="social-link" href="https://github.com/holochain-gym/" aria-label="Holochain Gym on GitHub" rel="noopener noreferrer" target="_blank">
+		<span class="sr-only">GitHub</span>
+		
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16" fill="none">
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8.18391.249268C3.82241.249268.253906 3.81777.253906 8.17927c0 3.46933 2.279874 6.44313 5.451874 7.53353.3965.0991.49563-.1983.49563-.3965v-1.3878c-2.18075.4956-2.67638-.9912-2.67638-.9912-.3965-.8922-.89212-1.1895-.89212-1.1895-.69388-.4957.09912-.4957.09912-.4957.793.0992 1.1895.793 1.1895.793.69388 1.2887 1.88338.8922 2.27988.6939.09912-.4956.29737-.8921.49562-1.0904-1.78425-.1982-3.5685-.8921-3.5685-3.96496 0-.89212.29738-1.586.793-2.08162-.09912-.19825-.3965-.99125.09913-2.08163 0 0 .69387-.19825 2.18075.793.59475-.19825 1.28862-.29737 1.9825-.29737.69387 0 1.38775.09912 1.98249.29737 1.4869-.99125 2.1808-.793 2.1808-.793.3965 1.09038.1982 1.88338.0991 2.08163.4956.59475.793 1.28862.793 2.08162 0 3.07286-1.8834 3.66766-3.66764 3.86586.29737.3965.59474.8921.59474 1.586v2.1808c0 .1982.0991.4956.5948.3965 3.172-1.0904 5.4518-4.0642 5.4518-7.53353-.0991-4.3615-3.6676-7.930002-8.02909-7.930002z" clip-rule="evenodd"></path>
+</svg>
+
+		
+	</a>
+
+    
+  </div>
+</header>
+
+    
+
+    
+  <div id="content-wrapper">
+    <div class="content-area">
+      
+        <rocket-drawer id="sidebar">
+  <nav slot="content" id="sidebar-nav">
+    
+      <a class="logo-link" href="/">
+  <img src="../../a9d80dbb.svg" alt="A gym tool">
+  <span>Holochain Gym</span>
+</a>
+
+
+    
+      <rocket-navigation>
+  <ul><li class="menu-item active">
+<a href="/concepts/concepts/">Concepts</a>
+<ul><li class="menu-item">
+<a href="/concepts/dht/">DHT</a>
+
+</li>
+<li class="menu-item">
+<a href="/concepts/source-chain/">Source-Chain</a>
+
+</li>
+<li class="menu-item current">
+<a href="/concepts/entry-graph/">Entry Graph</a>
+<ul>
+  <li class="menu-item anchor">
+    <a href="#thinking-about-data-in-your-happ" class="anchor">Thinking about data in your hApp</a>
+  </li>
+</ul>
+
+</li>
+<li class="menu-item">
+<a href="/concepts/dna-zomes/">Dna and Zomes</a>
+
+</li>
+<li class="menu-item">
+<a href="/concepts/validation-rules/">Validation Rules</a>
+
+</li>
+<li class="menu-item">
+<a href="/concepts/membranes-happs/">Membranes and hApps</a>
+
+</li></ul>
+</li></ul>
+  <div class="sidebar-bottom">
+  <hr>
+  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+
+
+  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+</div>
+
+</rocket-navigation>
+
+    
+  </nav>
+</rocket-drawer>
+
+      
+      
+        <main class="markdown-body">
+  
+    <h1 id="concepts-entry-graph"><a class="anchor" href="#concepts-entry-graph"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Concepts: Entry Graph</h1>
+<p>How does shared data in the DHT look like?</p>
+<p>The easiest way you can think about how data is structured in a Holochain application is like a graph database.</p>
+<p>From all the actions taken from all the Source-Chains, each neighbor in the DHT aggregates them distributely to form an <code>Entry Graph</code>.</p>
+<p>There are two main primitives that build this graph:</p>
+<ul>
+<li>Entries: an entry is a node in the graph.</li>
+<li>Links: a link connects two entries together. They are directed: they go from a base entry hash to a target entry hash.</li>
+</ul>
+<p>There are more modifiers and metadata that you can use to model state in your hApp, like updates or deletes...</p>
+<h3 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h3>
+<p>You can try creating some entries:</p>
+<ol>
+<li>Select the <code>create_entry</code> function, set a parameter and click execute.
+<ul>
+<li>See how an entry gets created in the entry graph.</li>
+</ul>
+</li>
+<li>Click on the entry.
+<ul>
+<li>See how the entry's contents are displayed.</li>
+</ul>
+</li>
+<li>Create a second entry.
+<ul>
+<li>Watch out! The content for the second entry has to be different than the first one if you want the entries to be different - entries are hashed!</li>
+</ul>
+</li>
+<li>Select the <code>create_link</code> function.</li>
+<li>Copy the hash of one of the entries from the <code>Entry Contents</code> panel, and paste it as the <code>base</code> parameter of the <code>create_link</code> function.</li>
+<li>Select the other entry, and copy the hash its hash to the <code>target</code> parameter of the <code>create_link</code> function.</li>
+<li>Click <code>Execute</code>.
+<ul>
+<li>See how the two entries are now linked together.</li>
+</ul>
+</li>
+</ol>
+<mdjs-story mdjs-story-name="Simple"></mdjs-story>
+<h2 id="thinking-about-data-in-your-happ"><a class="anchor" href="#thinking-about-data-in-your-happ"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Thinking about data in your hApp</h2>
+<p>One of the most important steps that you have to take when designing your hApp is think about your entry relationship graph. Normally, you would expose zome functions that do multiple things, instead of creating just one entry.</p>
+<p>This is an example design for a forum app. In this case, we have chosen to have a <code>create_post</code> function, that creates the post entry, creates a global "all_posts" entry, and creates a link from that global entry to the post entry.</p>
+<p>Try to create some posts and look at how the graph of entries is created and grows with each post.</p>
+<mdjs-story mdjs-story-name="Exercise"></mdjs-story>
+        
+      
+
+  
+    <div class="content-footer">
+  <p>
+    Caught a mistake or want to contribute to the documentation?
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/concepts/entry-graph.md">Edit this page on GitHub!</a>
+  </p>
+</div>
+
+  
+</main>
+
+      
+    </div>
+  </div>
+
+
+    
+      <footer id="main-footer">
+  
+    
+
+  
+    <div id="footer-menu">
+  <div class="content-area">
+    
+      <nav>
+        <h3>Holochain</h3>
+        <ul>
+          
+            <li>
+              <a href="https://developer.holochain.org/docs/references/">Documentation</a>
+            </li>
+          
+            <li>
+              <a href="https://forum.holochain.org">Forum</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+      <nav>
+        <h3>Gym</h3>
+        <ul>
+          
+            <li>
+              <a href="https://forum.holochain.org/c/learning-library/gym/133">Help and Feedback</a>
+            </li>
+          
+            <li>
+              <a href="https://github.com/holochain-gym/holochain.github.io/issues">Tasks for Contributors to the Gym</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+      <nav>
+        <h3>Discover</h3>
+        <ul>
+          
+            <li>
+              <a href="https://holochain-open-dev.github.io/blog">Holochain Open Dev Blog</a>
+            </li>
+          
+            <li>
+              <a href="https://github.com/holochain-open-dev">Open Source Modules</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+      <nav>
+        <h3>License</h3>
+        <ul>
+          
+            <li>
+              <a href="http://creativecommons.org/licenses/by/4.0/">This work is licensed under</a>
+            </li>
+          
+            <li>
+              <a href="http://creativecommons.org/licenses/by/4.0/">a Creative 
+Commons Attribution 4.0</a>
+            </li>
+          
+            <li>
+              <a href="http://creativecommons.org/licenses/by/4.0/">International License</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+  </div>
+</div>
+
+  
+</footer>
+
+    
+
+    
+  
+
+
+  <script>
+  async function serviceWorkerUpdate() {
+  if ('serviceWorker' in navigator) {
+    const oldReg = await navigator.serviceWorker.getRegistration();
+    let oldSwState;
+    if (oldReg && oldReg.active) {
+      oldSwState = oldReg.active.state;
+    }
+
+    let refreshing;
+
+    navigator.serviceWorker.addEventListener('controllerchange', async () => {
+      if (refreshing) {
+        return;
+      }
+
+      const newReg = await navigator.serviceWorker.getRegistration();
+      let newSwState;
+      if (newReg && newReg.active) {
+        newSwState = newReg.active.state;
+      }
+
+      if (oldSwState === 'activated' && newSwState === 'activating') {
+        refreshing = true;
+        window.location.reload();
+      }
+    });
+  }
+}
+
+serviceWorkerUpdate();
+
+</script>
+
+
+  
+
+
+
+  
+
+<script inject-service-worker="">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker
+          .register('../../service-worker.js')
+          .then(function() {
+            console.log('ServiceWorker registered from "../../service-worker.js".');
+          })
+          .catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
+<script type="module" src="../../41f79f1e.js"></script>
+<script type="module" src="../../29d2da3e.js" mdjs-setup=""></script>
+
+</body></html>

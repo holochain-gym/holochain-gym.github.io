@@ -8,8 +8,8 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basic: Entries: Holochain Gym</title>
-<meta property="og:title" content="Basic: Entries: Holochain Gym">
+<title>Basic: Creating Entries: Holochain Gym</title>
+<meta property="og:title" content="Basic: Creating Entries: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
 <link rel="canonical" href="/developers/basic/entries/">
@@ -19,6 +19,8 @@
 <meta name="description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
+  
+    <script src="../../../37b22479.js"></script>
   
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
@@ -32,13 +34,13 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../7c51fc7d.png">
+<meta property="og:image" content="../../../90730651.png">
 <meta property="og:url" content="/developers/basic/entries/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
-    <link rel="stylesheet" href="../../../99c99f60.css">
+    <link rel="stylesheet" href="../../../be94ee0c.css">
 <link rel="stylesheet" href="../../../490f016e.css">
 <link rel="stylesheet" href="../../../a0513237.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
@@ -48,13 +50,13 @@
 
   
 
-<link rel="preload" href="../../../2b9b3bac.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../3ecf4d48.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../7b4e2b6a.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../97466b3b.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../41f79f1e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../0fafd573.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../fc0b0e993.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../e08a64cd.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../cf29d5c4.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../70dd2230.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../393087b4.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -86,10 +88,10 @@
 
     
       
-  <a href="/architects/" class="
+  <a href="/concepts/" class="
           
           
-        "></a>
+        ">Concepts</a>
   <a href="/developers/" class="
           
            active 
@@ -97,6 +99,7 @@
 
     
       <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
+
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
@@ -160,8 +163,12 @@
 </li>
 <li class="menu-item active">
 <a href="/developers/basic/">Basic</a>
-<ul><li class="menu-item current">
-<a href="/developers/basic/entries/">Entries</a>
+<ul><li class="menu-item">
+<a href="/developers/basic/zome-functions/">Zome functions</a>
+
+</li>
+<li class="menu-item current">
+<a href="/developers/basic/entries/">Creating Entries</a>
 <ul>
   <li class="menu-item anchor">
     <a href="#what-is-an-entry" class="anchor">What is an entry</a>
@@ -185,30 +192,30 @@
 
 </li>
 <li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
+
+</li>
+<li class="menu-item">
 <a href="/developers/basic/hashes/">Hashes</a>
 
 </li>
 <li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
 
-</li>
-<li class="menu-item">
-<a href="/developers/basic/headers/">Headers</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/source-chain/">Source chain</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/elements/">Elements</a>
-
 </li></ul>
 </li>
 <li class="menu-item">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item">
-<a href="/developers/intermediate/dht/">DHT</a>
+<a href="/developers/intermediate/query/">Query</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/update/">Update</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/delete/">Delete</a>
 
 </li>
 <li class="menu-item">
@@ -222,7 +229,15 @@
 <li class="menu-item">
 <a href="/developers/intermediate/capability-tokens/">Capability Tokens</a>
 
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/private-entry/">Private entry</a>
+
 </li></ul>
+</li>
+<li class="menu-item">
+<a href="/developers/advanced/">Advanced</a>
+
 </li></ul>
   <div class="sidebar-bottom">
   <hr>
@@ -242,8 +257,9 @@
       
         <main class="markdown-body">
   
-    <h1 id="basic-entries"><a class="anchor" href="#basic-entries"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Entries</h1>
+    <h1 id="basic-creating-entries"><a class="anchor" href="#basic-creating-entries"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Creating Entries</h1>
 <h2 id="what-is-an-entry"><a class="anchor" href="#what-is-an-entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>What is an entry</h2>
+<p><a href="/developers/concept/entries">entries</a></p>
 <p>An entry is a basic unit of user data. As a Holochain developer one of the most basic things you can do is create an entry in a Zome.</p>
 <p><em>Quick reminder - A <a href="https://developer.holochain.org/docs/glossary/#zome">Zome</a> is a module in a <a href="https://developer.holochain.org/docs/glossary/#dna">DNA</a>; the base of any <a href="https://developer.holochain.org/docs/glossary/#holochain-application-happ">Holochain application (hApp)</a>.</em></p>
 <blockquote>
@@ -254,9 +270,10 @@
 <ol>
 <li>Your data is validated locally <em>(we will learn how this works in later exercises)</em></li>
 <li>The entry is written to your local <a href="https://developer.holochain.org/docs/glossary/#source-chain">source chain</a> <em>(hence the 'chain' in 'Holochain')</em></li>
-<li>If your <a href="https://developer.holochain.org/docs/glossary/#entry-type">entry type</a> is marked as <a href="https://developer.holochain.org/docs/glossary/#public-entry">public</a> like the one in this first exercise, your hApp will send it to some random people who are running the same hApp</li>
-<li>The random people that received your data will validate your data using the same rules that were used in the first step. <em>(this is where the 'Holo' in Holochain comes from. To become a real entry, your entry has to be seen and validated by different people/agents. Just like in a <a href="http://www.displayhologram.co.uk/the-hologram/the-basics/">hologram</a>, where different people can look at the same object from different angles and still agree on what they are seeing)</em></li>
+<li>If your <a href="https://developer.holochain.org/docs/glossary/#entry-type">entry type</a> is marked as <a href="https://developer.holochain.org/docs/glossary/#public-entry">public</a> like the one in this first exercise, your hApp will send it to some random people who are running the same hApp <em>(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)</em></li>
+<li>The random people that received your data will validate your data using the same rules that were used in the first step. <em>(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)</em></li>
 </ol>
+<p>Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.</p>
 <h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
 <p>Your first exercise will be <a href="https://en.wikipedia.org/wiki/%22Hello,_World!%22_program">a traditional "Hello, World!" program</a>.</p>
 <p>The challenge is to create an entry in your hApp which will contain the text "Hello, World!".</p>
@@ -271,18 +288,10 @@
 <mdjs-story mdjs-story-name="Simple"></mdjs-story>
 <br>  
 <br>
-<p>In the <code>Entry Contents</code> you see three things:</p>
-<ol>
-<li>
-<p><code>Entry Hash</code> - the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. <a href="https://developer.holochain.org/docs/glossary/#hash">Hashes</a> have some interesting properties and benefits which we will learn more about in the next exercise.</p>
-</li>
-<li>
-<p><code>entry_type</code> is specific to the Holochain technology underpinning our app. There are four types of entries: Agent, App, CapClaim, and CapGrant. For this exercise we limit our focus to <a href="https://developer.holochain.org/docs/glossary/#app-entry">App entries</a>.</p>
-</li>
-<li>
-<p><code>content</code> is the content of our custom field. You could add more fields as well, but for now one will do.</p>
-</li>
-</ol>
+<p>In the details you see 3 things: the <em>entry hash</em>, the <em>entry type</em> and <em>content</em>.
+<strong>Content</strong> is a custom field, meaning you can give it a different name if you want to. You could add more fields as well, but for now one will do.<br>
+The <strong>Entry type</strong> is something specific to the Holochain technology underpinning our app. There are 4 types of entries: Agent, App, CapClaim, CapGrant. For this exercise we limit our focus to App entries.<br>
+The <strong>Entry hash</strong> is the last of the three. You could think of the entry hash as the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.</p>
 <h2 id="getting-ready"><a class="anchor" href="#getting-ready"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting ready</h2>
 <p><em>So, lets get to the real work!</em></p>
 <p>In case you forgot, Zomes are written in <a href="https://www.rust-lang.org/">Rust</a>. Don't worry if you are new to the language, we will gladly help you grow comfortable with it - join us over at the <a href="https://forum.holochain.org/">Holochain forum</a>.</p>
@@ -503,7 +512,6 @@ Commons Attribution 4.0</a>
   
 
 
-
   <script>
   async function serviceWorkerUpdate() {
   if ('serviceWorker' in navigator) {
@@ -559,7 +567,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../2b9b3bac.js" mdjs-setup=""></script>
-<script type="module" src="../../../fc0b0e993.js"></script>
+<script type="module" src="../../../41f79f1e.js"></script>
+<script type="module" src="../../../cf29d5c4.js" mdjs-setup=""></script>
 
 </body></html>

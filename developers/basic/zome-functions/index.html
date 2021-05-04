@@ -1,0 +1,645 @@
+<!DOCTYPE html><html lang="en" dir="ltr"><head>
+  
+    
+
+  
+
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basic: Zome functions: Holochain Gym</title>
+<meta property="og:title" content="Basic: Zome functions: Holochain Gym">
+
+<meta name="generator" content="rocket 0.1">
+<link rel="canonical" href="/developers/basic/zome-functions/">
+
+
+
+<meta name="description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
+<meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
+
+  
+    <script src="../../../37b22479.js"></script>
+  
+    <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
+<link rel="manifest" href="../../../assets/webmanifest.json">
+<link rel="mask-icon" href="../../../assets/safari-pinned-tab.svg" color="#3f93ce">
+<meta name="msapplication-TileColor" content="#1d3557">
+<meta name="theme-color" content="#1d3557">
+
+  
+    <meta property="og:site_name" content="Holochain Gym">
+<meta property="og:type" content="website">
+
+<meta property="og:image" content="../../../443a7530.png">
+<meta property="og:url" content="/developers/basic/zome-functions/">
+
+<meta name="twitter:card" content="summary_large_image">
+
+  
+    <link rel="stylesheet" href="../../../be94ee0c.css">
+<link rel="stylesheet" href="../../../490f016e.css">
+<link rel="stylesheet" href="../../../a0513237.css">
+<link rel="stylesheet" href="../../../b8c01bc2.css">
+
+  
+    <noscript><link rel="stylesheet" href="/_merged_assets/_static/noscript.css"/></noscript>
+
+  
+
+<link rel="preload" href="../../../41f79f1e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../0fafd573.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../5f2a95ce.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../70dd2230.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../393087b4.js" as="script" crossorigin="anonymous">
+</head>
+
+  
+
+  
+  <body layout="layout-sidebar">
+  
+
+    
+      <header id="main-header">
+  <div class="content-area">
+    
+      <button id="mobile-menu-trigger" data-action="trigger-mobile-menu">
+	<span class="sr-only">Show Menu</span>
+	      <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon">
+        <path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path>
+      </svg>
+
+</button>
+
+    
+      
+	<a class="logo-link" href="/">
+  <img src="../../../a9d80dbb.svg" alt="A gym tool">
+  <span>Holochain Gym</span>
+</a>
+
+
+
+    
+      
+  <a href="/concepts/" class="
+          
+          
+        ">Concepts</a>
+  <a href="/developers/" class="
+          
+           active 
+        ">Developers</a>
+
+    
+      <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
+
+    
+      <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+
+
+    
+      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
+    
+      <a href="https://forum.holochain.org/c/learning-library/gym/133" class="">Give us Feedback!</a>
+    
+      
+	<a class="social-link" href="https://github.com/holochain-gym/" aria-label="Holochain Gym on GitHub" rel="noopener noreferrer" target="_blank">
+		<span class="sr-only">GitHub</span>
+		
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16" fill="none">
+  <title>GitHub</title>
+  <path fill="currentColor" fill-rule="evenodd" d="M8.18391.249268C3.82241.249268.253906 3.81777.253906 8.17927c0 3.46933 2.279874 6.44313 5.451874 7.53353.3965.0991.49563-.1983.49563-.3965v-1.3878c-2.18075.4956-2.67638-.9912-2.67638-.9912-.3965-.8922-.89212-1.1895-.89212-1.1895-.69388-.4957.09912-.4957.09912-.4957.793.0992 1.1895.793 1.1895.793.69388 1.2887 1.88338.8922 2.27988.6939.09912-.4956.29737-.8921.49562-1.0904-1.78425-.1982-3.5685-.8921-3.5685-3.96496 0-.89212.29738-1.586.793-2.08162-.09912-.19825-.3965-.99125.09913-2.08163 0 0 .69387-.19825 2.18075.793.59475-.19825 1.28862-.29737 1.9825-.29737.69387 0 1.38775.09912 1.98249.29737 1.4869-.99125 2.1808-.793 2.1808-.793.3965 1.09038.1982 1.88338.0991 2.08163.4956.59475.793 1.28862.793 2.08162 0 3.07286-1.8834 3.66766-3.66764 3.86586.29737.3965.59474.8921.59474 1.586v2.1808c0 .1982.0991.4956.5948.3965 3.172-1.0904 5.4518-4.0642 5.4518-7.53353-.0991-4.3615-3.6676-7.930002-8.02909-7.930002z" clip-rule="evenodd"></path>
+</svg>
+
+		
+	</a>
+
+    
+  </div>
+</header>
+
+    
+
+    
+  <div id="content-wrapper">
+    <div class="content-area">
+      
+        <rocket-drawer id="sidebar">
+  <nav slot="content" id="sidebar-nav">
+    
+      <a class="logo-link" href="/">
+  <img src="../../../a9d80dbb.svg" alt="A gym tool">
+  <span>Holochain Gym</span>
+</a>
+
+
+    
+      <rocket-navigation>
+  <ul><li class="menu-item">
+<a href="/developers/requirements/">Requirements</a>
+<ul><li class="menu-item">
+<a href="/developers/requirements/setup/">Setup</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/requirements/documentation/">Documentation</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/requirements/rust/">Rust</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/requirements/anatomy/">Anatomy</a>
+
+</li></ul>
+</li>
+<li class="menu-item active">
+<a href="/developers/basic/">Basic</a>
+<ul><li class="menu-item current">
+<a href="/developers/basic/zome-functions/">Zome functions</a>
+<ul>
+  <li class="menu-item anchor">
+    <a href="#zome-functions" class="anchor">Zome functions</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#exercise" class="anchor">Exercise</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#agent-info" class="anchor">Agent info</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#solution" class="anchor">Solution</a>
+  </li>
+</ul>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/entries/">Creating Entries</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/hashes/">Hashes</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/links/">Links</a>
+
+</li></ul>
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/">Intermediate</a>
+<ul><li class="menu-item">
+<a href="/developers/intermediate/query/">Query</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/update/">Update</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/delete/">Delete</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/paths/">Paths</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/call-remote/">Remote Call</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/capability-tokens/">Capability Tokens</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/private-entry/">Private entry</a>
+
+</li></ul>
+</li>
+<li class="menu-item">
+<a href="/developers/advanced/">Advanced</a>
+
+</li></ul>
+  <div class="sidebar-bottom">
+  <hr>
+  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+
+
+  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+</div>
+
+</rocket-navigation>
+
+    
+  </nav>
+</rocket-drawer>
+
+      
+      
+        <main class="markdown-body">
+  
+    <h1 id="basic-zome-functions"><a class="anchor" href="#basic-zome-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Zome functions</h1>
+<p>In this chapter you will learn</p>
+<ul>
+<li>what zome functions are</li>
+<li>how you create a zome function</li>
+<li>how to get data in and out of your zome</li>
+<li>about some commons errors you encounter while coding</li>
+</ul>
+<h2 id="zome-functions"><a class="anchor" href="#zome-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Zome functions</h2>
+<p>Before you talk about a <a href="https://developer.holochain.org/docs/glossary/#zome-function">zome function</a> you need to understand what a <a href="https://developer.holochain.org/docs/glossary/#zome">zome</a> is. A zome is a "basic unit of modularity inside a DNA". You can think of it as a package inside your codebase. Let's take a look.</p>
+<p>Open the zomes folder <code>developers/1.basic/0.entries/zomes</code> in the developers-exercise git repo you <a href="http://localhost:8000/developers/requirements/setup/#clone-repo">cloned</a>.</p>
+<p>It contains just one folder: <code>exercise</code>. But you can rename the folder or add more zomes folders, so you can separate different concerns in different folders. Most exercises in the gym will have only one zome, named 'exercise'. This is just to keep things simple.</p>
+<h3 id="dna"><a class="anchor" href="#dna"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>DNA</h3>
+<p>All your zome(s) together form a DNA. Just like the chromosomes in a cell in your body form one DNA. This DNA is compiled into a
+WASM binary. This means that when you want call a function in your zome from your UI or your integration test, you are calling an actual program. This is the point where you need zome functions.</p>
+<h3 id="zome-function"><a class="anchor" href="#zome-function"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Zome function</h3>
+<p>A zome function is the bridge between the inside and the outside world. The inside world is your Rust code your zomes, entries in the DHT, ... The outside world is your UI or integration test that calls your code with the help of the <a href="https://developer.holochain.org/docs/glossary/#conductor">conductor</a>. So basically a zome function is a <strong>function</strong> that can be called <strong>from the outside</strong>.</p>
+<h3 id="getting-ready"><a class="anchor" href="#getting-ready"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting ready</h3>
+<p>You need to figure out</p>
+<ul>
+<li>how to mark a function so it can be called from the outside</li>
+<li>how data can be send in and out the zome</li>
+</ul>
+<p>In case you forgot, Zomes are written in <a href="https://www.rust-lang.org/">Rust</a>. Don't worry if you are new to the language, we will gladly help you grow comfortable with it. Look in the <a href="/developers/requirements/rust">Rust section</a> or join us at the <a href="https://forum.holochain.org/">Holochain forum</a>.</p>
+<p>We went ahead and added some standard Rust code for you in the <code>zomes/exercise/src/lib.rs</code> file:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
+    first_name<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+    last_name<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token function">SomeExternalOutput</span><span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">hello_world</span><span class="token punctuation">(</span>_<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>SomeExternalOutput<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> message<span class="token punctuation">:</span> String <span class="token operator">=</span> String<span class="token punctuation">::</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">"Hello world"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> output<span class="token punctuation">:</span> SomeExternalOutput <span class="token operator">=</span> <span class="token function">SomeExternalOutput</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token function">Ok</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">say_my_name</span><span class="token punctuation">(</span>external_input<span class="token punctuation">:</span>SomeExternalInput<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>SomeExternalOutput<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> message<span class="token punctuation">:</span> String <span class="token operator">=</span> <span class="token function">format!</span><span class="token punctuation">(</span><span class="token string">"Your name is {} {}"</span><span class="token punctuation">,</span> 
+                                    external_input<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> 
+                                    external_input<span class="token punctuation">.</span>last_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> output<span class="token punctuation">:</span> SomeExternalOutput <span class="token operator">=</span> <span class="token function">SomeExternalOutput</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token function">Ok</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">get_agent_id</span><span class="token punctuation">(</span>_<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>AgentInfo<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">Ok</span><span class="token punctuation">(</span><span class="token function">agent_info</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<p><code>SomeExternalInput</code> and <code>SomeExternalOutput</code> are just simple <strong>structs</strong>. A <a href="https://doc.rust-lang.org/std/keyword.struct.html">struct</a> in Rust is similar to classes in other languages. <code>SomeExternalInput</code> has 2 fields: first_name and last_name. <code>SomeExternalOutput</code> is a struct wrapped around a simple String. <em>You will soon see why you need to wrap a String in a struct when you want to use them as input/output. And why you cannot send simple Strings in and outside of your zome.</em></p>
+<p>Next you have 3 <strong>public functions</strong>. If you are new to Rust, then <code>_:()</code> might seem weird. The input parameter has a name <code>_</code> and the type is an Object <code>()</code>. But it just means: "I accept anything, because I will not be using it".</p>
+<p>Finally you see the <strong>return type</strong> of each function.
+Functions that return a <code>Result</code> are very <a href="https://learning-rust.github.io/docs/e3.option_and_result.html">common</a> in Rust. <code>ExternResult</code> is an enhanced Result type, specially adapted for use in zomes. In stead of a standard <code>Err</code>, you need a <code>WasmError</code> as the error type in your result. Because, as we mentioned above, your zome is compiled into a WASM binary. So every error you want to report to the outside world is in fact a <a href="https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html">WasmError</a>.</p>
+<h3 id="import-hdk"><a class="anchor" href="#import-hdk"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Import HDK</h3>
+<p>Becoming an expert starts by making every possible error. So go ahead and make some errors.</p>
+<inline-notification type="tip" title="Exercise">
+<ol>
+<li>Open a terminal in <code>developer-exercises</code> folder.</li>
+<li>Enter the nix-shell by running: <code>nix-shell</code><br>
+<em>You should run this in the folder containing the default.nix file</em></li>
+<li>Go to folder with the exercise <code>1.basic/0.zome-functions/exercise</code></li>
+<li>Compile your code by running the following script: <code>./run_build.sh</code>.</li>
+<li>Inspect the Rust compiler error</li>
+</ol>
+</inline-notification>
+<p>You should see the following error:</p>
+<pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error[E0412]</b></span><b>: cannot find type `ExternResult` in this scope</b>
+  <span style="color:#729FCF"><b>--&gt; </b></span>zomes/exercise/src/lib.rs:10:29
+   <span style="color:#729FCF"><b>|</b></span>
+<span style="color:#729FCF"><b>10</b></span> <span style="color:#729FCF"><b>| </b></span>pub fn hello_world(_:()) -&gt; ExternResult&lt;SomeExternalOutput&gt; {
+   <span style="color:#729FCF"><b>| </b></span>                            <span style="color:#EF2929"><b>^^^^^^^^^^^^</b></span> <span style="color:#EF2929"><b>not found in this scope</b></span>
+   <span style="color:#729FCF"><b>|</b></span>
+<span style="color:#34E2E2"><b>help</b></span>: consider importing this type alias
+   <span style="color:#729FCF"><b>|</b></span>
+<span style="color:#729FCF"><b>3</b></span>  <span style="color:#729FCF"><b>| </b></span>use hdk::prelude::ExternResult;
+   <span style="color:#729FCF"><b>|</b></span>
+</pre>
+<p>The compiler tells you:</p>
+<ol>
+<li>it cannot find ExternResult</li>
+<li>suggests you might want to import it using: <code>use hdk::prelude::ExternResult;</code> <em>The Rust compiler makes this lovely suggestion because we added <code>hdk</code> as a dependency in <code>cargo.toml</code></em></li>
+</ol>
+<p>The Holochain team built a Rust library <code>hdk</code>, which stands for <em>Holochain Development Kit</em> and contains all important Holochain functions, types and attributes you will want to use in your zome. Since you will be using more than one HDK function or type, it is best to add the following statement to the top of the <code>lib.rs</code> file.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> hdk<span class="token punctuation">::</span>prelude<span class="token punctuation">::</span><span class="token operator">*</span><span class="token punctuation">;</span>
+
+</code></pre>
+<p>Go ahead and take a quick look at that <a href="https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs">prelude</a> file to get a taste of what the HDK provides.</p>
+<h3 id="external-inputs"><a class="anchor" href="#external-inputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External inputs</h3>
+<p>Now that you have fixed the import statement, you will discover that building your zome succeeds. Let's see if we can break something else.<br>
+We wrote an integration test for you, to test if everything works correctly. The best way to write integration/scenario tests in typescript is to use <a href="https://developer.holochain.org/docs/glossary/#tryorama">Tryorama</a>, a holochain typescript library, to write these tests. Take a look in the <code>1.basic/0.zome-functions/exercise/tests/src/index.ts</code> file. Run the test to see what fails.</p>
+<inline-notification type="tip" title="Exercise">
+<ol>
+<li>Check that your are still in a <code>nix-shell</code><br>
+<em>The beginning of the command line will have nix-shell in it</em></li>
+<li>Check that your are still in the folder <code>1.basic/0.zome-functions/exercise</code></li>
+<li>Compile your code: <code>./run_build.sh</code>.</li>
+<li>Run the tests by running our the following script: <code>./run_test.sh</code>.</li>
+<li>Inspect the error</li>
+</ol>
+</inline-notification>
+<p>You should see the following error:</p>
+<pre style="background-color:black;color:white">tryorama] <strong><span style="color:#CC0000">error</span></strong>: Test error: {
+  type: 'error',
+  data: {
+    type: 'ribosome_error',
+    data: "Attempted to call a zome function that doesn't exist: Zome: exercise Fn hello_world"
+  }
+}
+not ok 1 Test threw an exception. See output for details.</pre>
+<p>It simply means that our test code <code>.call("exercise", "hello_world", null);</code>, which calls the <code>hello_world</code> function in the zome <code>exercise</code>, cannot find that function. So making a function public in your zome is <em>not</em> enough. You need to add an attribute on the top of a public function to make it possible for this function to be called from outside the zome. The attribute you need to add is <code>#[hdk_extern]</code>. Only public functions with this attribute can be called from outside a zome. Adding the attribute makes it a <strong>zome function</strong>.</p>
+<inline-notification type="tip" title="Exercise">
+<ol>
+<li>Add <code>#[hkd_extern]</code> on top of the 3 public functions</li>
+<li>Compile: <code>./run_build.sh</code></li>
+<li>Test: <code>./run_test.sh</code>.</li>
+<li>Inspect the error</li>
+</ol>
+</inline-notification>
+<pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error[E0277]</b></span><b>: the trait bound `SomeExternalOutput: hdk::prelude::Serialize` is not satisfied</b>
+  <span style="color:#729FCF"><b>--&gt; </b></span>zomes/exercise/src/lib.rs:11:1
+   <span style="color:#729FCF"><b>|</b></span>
+<span style="color:#729FCF"><b>11</b></span> <span style="color:#729FCF"><b>| </b></span>#[hdk_extern]
+   <span style="color:#729FCF"><b>| </b></span><span style="color:#EF2929"><b>^^^^^^^^^^^^^</b></span> <span style="color:#EF2929"><b>the trait `hdk::prelude::Serialize` is not implemented for `SomeExternalOutput`</b></span>
+   <span style="color:#729FCF"><b>| </b></span>
+</pre>
+<p>The compiler is complaining that our <code>SomeExternalOutput</code> struct is not implementing the trait <code>hdk::prelude::Serialize</code>. You will also see <code>#[hdk_extern]</code> mentioned. <code>#[hdk_extern]</code> is a Rust macro and it requires that the function it is added to, has one input parameter and that this parameter can be serialized. Because zome functions live on the boundary of your WASM binary, they need to be able to serialize and deserialize all data structs that go in or out the zome.<br>
+Luckily this is all standard Rust stuff. Annotate the 2 structs <code>SomeExternalInput</code> and <code>SomeExternalOutput</code> with the following attribute <strong>#[derive(Serialize, Deserialize, Debug)]</strong>. This attribute makes sure the data in the structs can be sent to this zome over a network, from a GUI, or – like in our case – from a test script.<br>
+It is also the reason why you cannot use a simple String as the input or output for a zome function. You cannot add <code>#[derive(Serialize, Deserialize, Debug)]</code> to a String, only to a struct.</p>
+<p><strong>Side note</strong><br>
+Requirements for a zome function:</p>
+<ul>
+<li>needs to be a public function</li>
+<li>needs to return a <code>ExternResult&lt;T&gt;</code></li>
+<li>needs to be decorated with <code>#[hdk_extern]</code></li>
+<li>takes exactly 1 input param</li>
+</ul>
+<p>To test this last requirement remove the input param <code>external_input</code> or <code>_:()</code> in one of the functions. Or add a second param. And look at what the Rust compiler tells you.</p>
+<h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
+<p>To finish this exercise add the attributes to the structs.</p>
+<inline-notification type="tip" title="Exercise">
+<ol>
+<li>Add <code>#[derive(Serialize, Deserialize, Debug)]</code> on top of the 2 structs</li>
+<li>Compile: <code>./run_build.sh</code></li>
+<li>Test: <code>./run_test.sh</code>.</li>
+<li>Inspect the error</li>
+</ol>
+</inline-notification>
+<h2 id="agent-info"><a class="anchor" href="#agent-info"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Agent info</h2>
+<p>The <code>hello_world</code> and <code>say_my_name</code> are very simple toy functions. In <code>get_agent_info</code> on the other hand you call a real hdk function <a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html"><code>agent_info()</code></a>. AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or <a href="https://developer.holochain.org/docs/glossary/#agent-id">Agent ID</a> is one of the four genesis events that are created add the beginning of your <a href="/developers/concepts/source-chain">source-chain</a> by the <a href="/developers/concepts/source-chain">subconscious</a> part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>. Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and comsumes to much power, does not survive ...</p>
+<p><strong><a href="/developers/basic/entries">Next &gt;</a></strong></p>
+<p>So now it is up to you to finish this exercise. Add all the things we just explained to your code and finish by implementing the <code>say_greeting</code> function, building your zome and running the test.
+You only need to add a few lines in this first exercise, but know that when the test succeeds, you:</p>
+<ul>
+<li>made your first zome module in Rust</li>
+<li>compiled your zome into a DNA in WASM, a state of the art binary format</li>
+<li>ran a test script, written in Typescript, executed in Nodejs</li>
+<li>initiated an actual real holochain conductor</li>
+<li>which instantiated your DNA into a real, actual Holochain cell</li>
+<li>and executed a test script that asked your cell to make a real entry with the words "Hello, World!"</li>
+</ul>
+<p>You will in fact have created your very first decentralized, agent centric, boundary pushing Holochain app. A real hApp!</p>
+<inline-notification type="tip" title="Exercise">
+<ol>
+<li>Go to the <code>developer-exercises</code>.</li>
+<li>Enter the nix-shell: <code>nix-shell</code><br>
+<em>you should run this in the folder containing the default.nix file</em><br>
+<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em></li>
+<li>Go to folder with the exercise <code>basic/0.entries</code></li>
+<li>Inside <code>zome/exercise/src/lib.rs</code>
+<ul>
+<li>Define a new struct for your entry: 'Greeting'</li>
+<li>Implement the function with <code>unimplemented!()</code></li>
+</ul>
+</li>
+<li>Compile your code: <code>./run_build.sh</code>.</li>
+<li>Run the test: <code>./run_tests.sh</code></li>
+<li>Don't stop until the test runs green</li>
+</ol>
+</inline-notification>
+<h3 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h3>
+<p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
+<ul>
+<li>You forgot to add the <code>#[hdk_extern]</code> attribute on the <code>say_greeting</code> function.</li>
+</ul>
+<pre class="language-js"><code class="language-js">got an error <span class="token keyword">for</span> test <span class="token string">'say a greeting'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+  type<span class="token punctuation">:</span> <span class="token string">'error'</span><span class="token punctuation">,</span>
+  data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    type<span class="token punctuation">:</span> <span class="token string">'ribosome_error'</span><span class="token punctuation">,</span>
+    data<span class="token punctuation">:</span> <span class="token string">"Attempted to call a zome function that doesn't exist: Zome: exercise Fn say_greeting"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<ul>
+<li>You forgot to compile the zome. Run <code>CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown</code> in the <em>developer-exercises/basic/0.entries</em> folder.</li>
+</ul>
+<pre><code>thread 'holochain-tokio-thread' panicked at 'TODO: DnaError
+(ZomeNotFound("Zome \'exercise\' not found"))',
+/build/source/crates/holochain/src/core/ribosome.rs:336:14
+</code></pre>
+<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
+<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/basic/0.entries">solution</a>.</p>
+<p>This is the error you see when you call a zome function that has no params</p>
+<pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error</b></span><b>: custom attribute panicked</b>
+  <span style="color:#729FCF"><b>--&gt; </b></span>zomes/exercise/src/lib.rs:12:1
+   <span style="color:#729FCF"><b>|</b></span>
+<span style="color:#729FCF"><b>12</b></span> <span style="color:#729FCF"><b>| </b></span>#[hdk_extern]
+   <span style="color:#729FCF"><b>| </b></span><span style="color:#EF2929"><b>^^^^^^^^^^^^^</b></span>
+   <span style="color:#729FCF"><b>|</b></span>
+   <span style="color:#729FCF"><b>= </b></span><b>help</b>: message: internal error: entered unreachable code
+</pre>
+<p>This is the error you see when you call a zome function that has more than one params</p>
+<pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error[E0061]</b></span><b>: this function takes 2 arguments but 1 argument was supplied</b>
+  <span style="color:#729FCF"><b>--&gt; </b></span>zomes/exercise/src/lib.rs:20:1
+   <span style="color:#729FCF"><b>|</b></span>
+<span style="color:#729FCF"><b>20</b></span> <span style="color:#729FCF"><b>| </b></span>#[hdk_extern]
+   <span style="color:#729FCF"><b>| </b></span><span style="color:#EF2929"><b>^^^^^^^^^^^^^</b></span>
+   <span style="color:#729FCF"><b>| </b></span><span style="color:#EF2929"><b>|</b></span>
+   <span style="color:#729FCF"><b>| </b></span><span style="color:#EF2929"><b>supplied 1 argument</b></span>
+   <span style="color:#729FCF"><b>| </b></span><span style="color:#EF2929"><b>expected 2 arguments</b></span>
+<span style="color:#729FCF"><b>21</b></span> <span style="color:#729FCF"><b>| </b></span>pub fn say_my_name(a:SomeExternalInput, b:SomeExternalInput) -&gt; ExternResult&lt;SomeExternalOutput&gt; {
+   <span style="color:#729FCF"><b>| ------------------------------------------------------------------------------------------------</b></span> <span style="color:#729FCF"><b>defined here</b></span>
+   <span style="color:#729FCF"><b>|</b></span>
+   <span style="color:#729FCF"><b>= </b></span><b>note</b>: this error originates in a macro (in Nightly builds, run with -Z macro-backtrace for more info)
+</pre>
+        
+      
+
+  
+    <div class="content-footer">
+  <p>
+    Caught a mistake or want to contribute to the documentation?
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/basic/zome-functions.md">Edit this page on GitHub!</a>
+  </p>
+</div>
+
+  
+</main>
+
+      
+    </div>
+  </div>
+
+
+    
+      <footer id="main-footer">
+  
+    
+
+  
+    <div id="footer-menu">
+  <div class="content-area">
+    
+      <nav>
+        <h3>Holochain</h3>
+        <ul>
+          
+            <li>
+              <a href="https://developer.holochain.org/docs/references/">Documentation</a>
+            </li>
+          
+            <li>
+              <a href="https://forum.holochain.org">Forum</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+      <nav>
+        <h3>Gym</h3>
+        <ul>
+          
+            <li>
+              <a href="https://forum.holochain.org/c/learning-library/gym/133">Help and Feedback</a>
+            </li>
+          
+            <li>
+              <a href="https://github.com/holochain-gym/holochain.github.io/issues">Tasks for Contributors to the Gym</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+      <nav>
+        <h3>Discover</h3>
+        <ul>
+          
+            <li>
+              <a href="https://holochain-open-dev.github.io/blog">Holochain Open Dev Blog</a>
+            </li>
+          
+            <li>
+              <a href="https://github.com/holochain-open-dev">Open Source Modules</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+      <nav>
+        <h3>License</h3>
+        <ul>
+          
+            <li>
+              <a href="http://creativecommons.org/licenses/by/4.0/">This work is licensed under</a>
+            </li>
+          
+            <li>
+              <a href="http://creativecommons.org/licenses/by/4.0/">a Creative 
+Commons Attribution 4.0</a>
+            </li>
+          
+            <li>
+              <a href="http://creativecommons.org/licenses/by/4.0/">International License</a>
+            </li>
+          
+        </ul>
+      </nav>
+    
+  </div>
+</div>
+
+  
+</footer>
+
+    
+
+    
+  
+
+
+  <script>
+  async function serviceWorkerUpdate() {
+  if ('serviceWorker' in navigator) {
+    const oldReg = await navigator.serviceWorker.getRegistration();
+    let oldSwState;
+    if (oldReg && oldReg.active) {
+      oldSwState = oldReg.active.state;
+    }
+
+    let refreshing;
+
+    navigator.serviceWorker.addEventListener('controllerchange', async () => {
+      if (refreshing) {
+        return;
+      }
+
+      const newReg = await navigator.serviceWorker.getRegistration();
+      let newSwState;
+      if (newReg && newReg.active) {
+        newSwState = newReg.active.state;
+      }
+
+      if (oldSwState === 'activated' && newSwState === 'activating') {
+        refreshing = true;
+        window.location.reload();
+      }
+    });
+  }
+}
+
+serviceWorkerUpdate();
+
+</script>
+
+
+  
+
+
+
+  
+
+<script inject-service-worker="">
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker
+          .register('../../../service-worker.js')
+          .then(function() {
+            console.log('ServiceWorker registered from "../../../service-worker.js".');
+          })
+          .catch(function(err) {
+            console.log('ServiceWorker registration failed: ', err);
+          });
+      });
+    }
+  </script>
+<script type="module" src="../../../41f79f1e.js"></script>
+<script type="module" src="../../../5f2a95ce.js" mdjs-setup=""></script>
+
+</body></html>

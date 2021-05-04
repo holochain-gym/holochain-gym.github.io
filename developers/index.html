@@ -20,6 +20,8 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
+    <script src="../37b22479.js"></script>
+  
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
@@ -38,7 +40,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
   
-    <link rel="stylesheet" href="../99c99f60.css">
+    <link rel="stylesheet" href="../be94ee0c.css">
 <link rel="stylesheet" href="../490f016e.css">
 <link rel="stylesheet" href="../a0513237.css">
 <link rel="stylesheet" href="../b8c01bc2.css">
@@ -48,12 +50,12 @@
 
   
 
-<link rel="preload" href="../2072c836.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../3ecf4d48.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../7b4e2b6a.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../fc0b0e999.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../e08a64cd.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../41f79f1e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../0fafd573.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../962426a7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../61a908a7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../70dd2230.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -85,10 +87,10 @@
 
     
       
-  <a href="/architects/" class="
+  <a href="/concepts/" class="
           
           
-        "></a>
+        ">Concepts</a>
   <a href="/developers/" class="
            current 
            active 
@@ -96,6 +98,7 @@
 
     
       <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
+
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
@@ -160,7 +163,15 @@
 <li class="menu-item">
 <a href="/developers/basic/">Basic</a>
 <ul><li class="menu-item">
-<a href="/developers/basic/entries/">Entries</a>
+<a href="/developers/basic/zome-functions/">Zome functions</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/entries/">Creating Entries</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
 
 </li>
 <li class="menu-item">
@@ -170,24 +181,20 @@
 <li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
 
-</li>
-<li class="menu-item">
-<a href="/developers/basic/headers/">Headers</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/source-chain/">Source chain</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/elements/">Elements</a>
-
 </li></ul>
 </li>
 <li class="menu-item">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item">
-<a href="/developers/intermediate/dht/">DHT</a>
+<a href="/developers/intermediate/query/">Query</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/update/">Update</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/delete/">Delete</a>
 
 </li>
 <li class="menu-item">
@@ -201,7 +208,15 @@
 <li class="menu-item">
 <a href="/developers/intermediate/capability-tokens/">Capability Tokens</a>
 
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/private-entry/">Private entry</a>
+
 </li></ul>
+</li>
+<li class="menu-item">
+<a href="/developers/advanced/">Advanced</a>
+
 </li></ul>
   <div class="sidebar-bottom">
   <hr>
@@ -222,13 +237,24 @@
 	<main class="markdown-body">
   
     <h1 id="developers"><a class="anchor" href="#developers"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Developers</h1>
-<p>Welcome! Here you can train yourself to be a holochain developer.</p>
-<p>On the left, you have a list of exercises, ordered from easier to harder.
-Start with the <a href="/developers/requirements/setup">setup</a> and the <a href="/developers/requirements/anatomy">anatomy</a> lesson to get ready.
-Then start your <a href="/developers/basic/entries">first exercise</a>.</p>
-<p>Good luck!</p>
+<p>Welcome to our gym!</p>
+<p>We love that you decided to work on your holochain skills.
+This is the right place to train yourself to become a holochain developer.</p>
+<p>In our gym you will find interactive <em>simulations</em>, working example <em>code</em> and hands-on <em>exercises</em>.
+On the left, you have a list of exercises, ordered from easy to hard.</p>
+<p><strong>First stop: Requirements</strong></p>
+<ul>
+<li>Make sure your <a href="/developers/requirements/setup">setup</a> is correct.</li>
+<li>Take the <a href="/developers/requirements/anatomy">anatomy</a> lesson to understand the file and folder structure of an exercise.</li>
+</ul>
+<p><strong>Next up: Concepts</strong></p>
+<p>Work through the simulations and read through the code examples in the <a href="/developers/concepts">Concepts</a> section, so you understand the main ideas underpinning every holochain app. It will give you time to get used to the Rust syntax and see some <a href="https://developer.holochain.org/docs/glossary/#holochain-development-kit-hdk">HDK</a> functions in action.</p>
+<p><strong>Finally</strong></p>
+<p>You can hit the gym and start your <a href="/developers/basic/entries">first exercise</a>.</p>
+<p><em>Practice, rest, eat healthy and repeat.</em><br>
+<em>Good luck!</em></p>
 <inline-notification type="warning" title="UNDER CONSTRUCTION">
-<p>Notice that this site is in its early stages and under heavy construction. More exercises will be added progressively, existing exercises might break, but all feedback and contributions are welcome, ping us in the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622">holochain forum</a>!</p>
+<p>Notice that this site is in its early stages and under heavy construction. More exercises will be added progressively, existing exercises might break. All feedback and contributions are welcome. Just ping us in the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622">holochain forum</a>!</p>
 </inline-notification>
 <inline-notification type="tip" title="COMMUNITY PROJECT">
 <p>The holochain-gym is a project from the holochain community for the holochain community. It is not part of the official documentation, though we seek to be as correct as possible and align our content as much as possible with the official holochain documentation.
@@ -339,7 +365,6 @@ Commons Attribution 4.0</a>
   
 
 
-
   <script>
   async function serviceWorkerUpdate() {
   if ('serviceWorker' in navigator) {
@@ -395,7 +420,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../2072c836.js" mdjs-setup=""></script>
-<script type="module" src="../fc0b0e999.js"></script>
+<script type="module" src="../41f79f1e.js"></script>
+<script type="module" src="../61a908a7.js" mdjs-setup=""></script>
 
 </body></html>

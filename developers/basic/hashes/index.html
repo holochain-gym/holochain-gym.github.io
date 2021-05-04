@@ -20,6 +20,8 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
+    <script src="../../../37b22479.js"></script>
+  
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
@@ -38,7 +40,7 @@
 <meta name="twitter:card" content="summary_large_image">
 
   
-    <link rel="stylesheet" href="../../../99c99f60.css">
+    <link rel="stylesheet" href="../../../be94ee0c.css">
 <link rel="stylesheet" href="../../../490f016e.css">
 <link rel="stylesheet" href="../../../a0513237.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
@@ -48,13 +50,13 @@
 
   
 
-<link rel="preload" href="../../../8ebb5875.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../3ecf4d48.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../7b4e2b6a.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../97466b3b.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../41f79f1e.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../0fafd573.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../fc0b0e994.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../e08a64cd.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../672ff09d.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../70dd2230.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../393087b4.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -86,10 +88,10 @@
 
     
       
-  <a href="/architects/" class="
+  <a href="/concepts/" class="
           
           
-        "></a>
+        ">Concepts</a>
   <a href="/developers/" class="
           
            active 
@@ -97,6 +99,7 @@
 
     
       <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
+
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
@@ -161,7 +164,15 @@
 <li class="menu-item active">
 <a href="/developers/basic/">Basic</a>
 <ul><li class="menu-item">
-<a href="/developers/basic/entries/">Entries</a>
+<a href="/developers/basic/zome-functions/">Zome functions</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/entries/">Creating Entries</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
 
 </li>
 <li class="menu-item current">
@@ -194,24 +205,20 @@
 <li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
 
-</li>
-<li class="menu-item">
-<a href="/developers/basic/headers/">Headers</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/source-chain/">Source chain</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/elements/">Elements</a>
-
 </li></ul>
 </li>
 <li class="menu-item">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item">
-<a href="/developers/intermediate/dht/">DHT</a>
+<a href="/developers/intermediate/query/">Query</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/update/">Update</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/delete/">Delete</a>
 
 </li>
 <li class="menu-item">
@@ -225,7 +232,15 @@
 <li class="menu-item">
 <a href="/developers/intermediate/capability-tokens/">Capability Tokens</a>
 
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/private-entry/">Private entry</a>
+
 </li></ul>
+</li>
+<li class="menu-item">
+<a href="/developers/advanced/">Advanced</a>
+
 </li></ul>
   <div class="sidebar-bottom">
   <hr>
@@ -282,7 +297,7 @@ We told you you would see hashes everywhere. Look for the entry_hash and check i
 <mdjs-story mdjs-story-name="Exercise"></mdjs-story>
 <h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
 <h3 id="add-book"><a class="anchor" href="#add-book"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Add book</h3>
-<p>Since the previous exercise went well, we   will raise the bar a little and leave a bit more of the work to you. We will start you off with this:</p>
+<p>Since the previous exercise went well, we will raise the bar a little and leave a bit more of the work to you. We will start you off with this:</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
 <span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
     title<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
@@ -299,7 +314,7 @@ We told you you would see hashes everywhere. Look for the entry_hash and check i
 </code></pre>
 <p>It is up to you to add Book struct with two fields: title and content, to define your entry, add all the attributes and to register your entry definition.
 There is one thing we didn't tell in the previous exercise: <code>create_entry</code> returns a <code>ExternResult&lt;HeaderHash&gt;</code> and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look <a href="https://docs.rs/hdk/0.0.100/hdk/prelude/index.html">here</a> to see what function might be suited for that.</p>
-<inline-notification type="tip" title="Exercise">  
+<inline-notification type="tip" title="Exercise">
 <ol>
 <li>Go to the <code>developer-exercises</code>.</li>
 <li>Enter the nix-shell: <code>nix-shell</code><br>
@@ -317,7 +332,7 @@ There is one thing we didn't tell in the previous exercise: <code>create_entry</
 <li>Run the test: <code>./run_tests.sh</code></li>
 <li>Don't stop until the test runs green</li>
 </ol>
-</inline-notification> 
+</inline-notification>
 <h3 id="add-test"><a class="anchor" href="#add-test"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Add test</h3>
 <p>If you really want to take your exercises seriously, you need to know how to add tests yourself. Until now, every time you ran <code>./run_tests</code> script, it would jump in the <code>tests</code> directory and run the typescript tests with <code>npm test</code>. The tests are real integration tests. They take the zome, as a compiled dna, and have a holochain conductor create a cell, for a specific user, with this dna.
 The tests are fairly straightforward. Take a look at the code in <code>tests\src\index.ts</code>. If you are done exploring, add the code here below, just behind this line <code>t.ok(entryHash, "test add book");</code>.</p>
@@ -332,7 +347,7 @@ t<span class="token punctuation">.</span><span class="token method function prop
 <h3 id="get-book"><a class="anchor" href="#get-book"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Get book</h3>
 <p>After you get a failing test, it is up to you to make it pass. Implement the <code>get_book</code> function.
 Run the tests. And if everything passes, then it is time to put your feet up, relax and rest.</p>
-<inline-notification type="tip" title="Exercise">  
+<inline-notification type="tip" title="Exercise">
 <ol>
 <li>Add the extra test</li>
 <li>Check if you are still inside the nix-shell<br>
@@ -494,7 +509,6 @@ Commons Attribution 4.0</a>
   
 
 
-
   <script>
   async function serviceWorkerUpdate() {
   if ('serviceWorker' in navigator) {
@@ -550,7 +564,7 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../8ebb5875.js" mdjs-setup=""></script>
-<script type="module" src="../../../fc0b0e994.js"></script>
+<script type="module" src="../../../41f79f1e.js"></script>
+<script type="module" src="../../../672ff09d.js" mdjs-setup=""></script>
 
 </body></html>
