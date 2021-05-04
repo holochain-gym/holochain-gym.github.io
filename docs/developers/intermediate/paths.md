@@ -197,18 +197,16 @@ const sampleZome1 = {
 };
 
 const simulatedHapp1 = {
-    {
-      name: 'simulated-app',
-      description: '',
-      slots: {
-        default: {
-          dna: {
-            zomes: [sampleZome1],
-          },
-          deferred: false,
-        },
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome1],
       },
-    }
+      deferred: false,
+    },
+  },
 };
 export const Exercise = () => {
   return html`

@@ -44,7 +44,7 @@ html.dark {
 
 @media screen and (min-width: 1024px) {
   .content-area {
-    max-width: 1800px !important;
+    max-width: 100vw !important;
   }
 
 p {
@@ -83,4 +83,5 @@ inline-notification {
 .cli-error {
   background-color:black !important;
   color:white" !important;
+}
 }

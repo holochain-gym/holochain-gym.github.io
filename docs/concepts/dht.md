@@ -1,4 +1,4 @@
-# Concepts >> DHT ||15
+# Concepts >> DHT ||10
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -42,7 +42,7 @@ On the contrary, **the DHT is eventually consistent**: data takes some time to p
 
 Holochain security model based on validation rules enables attachment of metadata in the DHT: not only we can create entries, but we can add links to them, or update them. This way, we can build complex graph structures in our DHTs that allow for efficient navigation of the data.
 
-## Try it!
+### Try it!
 
 Here you have it! In this representation of the DHT, every node is a cell (an instance of the DNA running), and the connections between them indicate that they are neighbors which gossip regularly with each other.
 
@@ -144,22 +144,15 @@ export const Simple = () => {
         }, 4000);
       }}
     >
-      <div style="display: flex; flex-direction: row; align-items: start;">
+      <div style="display: flex; flex-direction: row; height: 700px;">
         <dht-cells
           id="dht-cells"
           .workflowsToDisplay=${[]}
           .networkRequestsToDisplay=${[]}
-          style="height: 700px; flex:1; margin-bottom: 20px;margin-right: 20px;"
+          style="flex:1; margin-right: 20px;"
         ></dht-cells>
-        <div style="display: flex; flex-direction: column; flex-basis: 500px;">
-          <source-chain
-            style="height: 400px; margin-bottom: 20px"
-          ></source-chain>
-          <entry-contents style="height: 280px;"></entry-contents>
-        </div>
-      </div>
-      <div style="display: flex; flex-direction: row; align-items: start;">
-        <call-zome-fns id="call-zome" style="height: 400px;"> </call-zome-fns>
+        <call-zome-fns id="call-zome" style="flex-basis: 500px; flex-grow: 0;">
+        </call-zome-fns>
       </div>
     </holochain-playground-container>
   `;

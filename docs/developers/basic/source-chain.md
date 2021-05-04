@@ -1,4 +1,4 @@
-# Concepts >> Source chain ||14
+# Concepts >> Querying your Source-Chain ||20
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -171,7 +171,7 @@ const simulatedDna1 = {
   ],
 };
 
-const simulatedHapp = {
+const simulatedHapp1 = {
   name: "simulated-app",
   description: "",
   slots: {
