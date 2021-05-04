@@ -28,6 +28,7 @@
     "doc": "docs"
   },
   "dependencies": {
+    "@holochain-playground/blockly": "git+https://github.com/holochain-playground/blockly.git#build",
     "@holochain-playground/core": "git+https://github.com/holochain-playground/core.git#build",
     "@holochain-playground/elements": "git+https://github.com/holochain-playground/elements.git#build",
     "@webcomponents/scoped-custom-element-registry": "0.0.1",
