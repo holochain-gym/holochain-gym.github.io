@@ -1,4 +1,3 @@
 # Concepts ||1
 
-
-Hiii
+Start exploring how holochain works by moving on to the [DHT](/concepts/DHT) page.

@@ -28,8 +28,6 @@ customElements.define("source-chain", SourceChain);
 customElements.define("dht-cells", DhtCells);
 ```
 
-## Holochain's DHT
-
 The DHT is the main way in which agents share data in Holochain.
 
 You can think of Holochain as the combination of a local and linear source-chain, and a public space to which you can publish data.

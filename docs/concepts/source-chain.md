@@ -25,12 +25,6 @@ customElements.define("dht-cells", DhtCells);
 customElements.define("zome-fns-results", ZomeFnsResults);
 ```
 
-## Recap
-
-You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/developers/intermediate/DHT).
-
-## Source-Chain
-
 The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what makes holochain unique. It's where some of the magic happens.
 
 The [glossary](https://developer.holochain.org/docs/glossary/#source-chain) explains it the following way:
@@ -41,7 +35,7 @@ _Let's unpack this_
 
 When you download a compiled [DNA](https://developer.holochain.org/docs/glossary/#dna), a [WASM](https://developer.holochain.org/docs/glossary/#webassembly-wasm) binary, from somewhere or when you compile it locally and you run this DNA in a holochain [conductor](https://developer.holochain.org/docs/glossary/#conductor) that is running on your machine, then this DNA would be instantiated and linked to your [agent ID](https://developer.holochain.org/docs/glossary/#agent-id). That thing is a [cell](https://developer.holochain.org/docs/glossary/#cell).
 
-If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist of one or more zomes. All our exercises so far only contained one zome, the one you compiled from `zomes/exercise/lib.rs`. For the sake of simplicity we will keep on pretending every DNA has just one [zome](https://developer.holochain.org/docs/glossary/#zome). For now.
+If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist of one or more zomes.
 
 Now for the crucial part: "**stores all of the actions**". Every action, which in holochain speak means: every header and entry, that are produced by you, the agent, will become a part of the source chain, for as long as that agent has that DNA installed.
 Whenever a new action is committed (creating entries or links, updating...) a new element is added to that chain, with its header referencing the previous one.
@@ -50,11 +44,11 @@ Essentially, the source-chain is a **hash-chain of all the actions that a partic
 Perhaps this does sounds like some weird form of magic.
 Head over to the simulation where you will see that, underneath, it is just headers and entries.
 
-## Subconscious
+### Try it!
 
-Even before you add your first entries, like you did in the [entries exercise](/basis/entries), 3 headers and 1 entry will be created automatically in your holochain app. These 4 elements, the [genesis events](https://developer.holochain.org/docs/glossary/#genesis-elements) are created by what you call the **subconscious** of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, _consciously_, triggered by you, the user.
+Even before you add your first entries, 3 headers and 1 entry will be created automatically in your holochain app. These 4 elements, the [genesis events](https://developer.holochain.org/docs/glossary/#genesis-elements) are created by what you call the **subconscious** of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, _consciously_, triggered by you, the user.
 
-The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them.
+The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them. You can also call the "register_snacking" function to add new elements to the Source-Chain.
 
 ```js story
 const simulatedDna0 = {
@@ -140,17 +134,10 @@ export const Sim1 = () => {
         <div
           style="display: flex; flex-direction: column; flex-basis: 500px; margin-right: 20px;"
         >
-          <source-chain
-            style="flex: 1; margin-bottom: 20px"
-          ></source-chain>
+          <source-chain style="flex: 1; margin-bottom: 20px"></source-chain>
           <call-zome-fns id="call-zome" style="flex: 1;"> </call-zome-fns>
         </div>
-        <dht-cells
-          id="dht-cells"
-          .workflowsToDisplay=${[]}
-          .networkRequestsToDisplay=${[]}
-          style="flex:1;"
-        ></dht-cells>
+        <dht-cells id="dht-cells" style="flex:1;"></dht-cells>
       </div>
     </holochain-playground-container>
   `;

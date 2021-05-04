@@ -1,4 +1,4 @@
-# Concepts >> Querying your Source-Chain ||20
+# Concepts >> Querying your Source-Chain ||106
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -27,7 +27,7 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 
 ## Recap
 
-You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/developers/intermediate/DHT).
+You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/concepts/DHT).
 
 ## Source chain
 

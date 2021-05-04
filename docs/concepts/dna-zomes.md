@@ -35,6 +35,26 @@ customElements.define("dna-code", DnaCode);
 customElements.define("select-active-dna", SelectActiveDna);
 ```
 
+`Dnas` are one of the most important building blocks in Holochain. Simply put, a `Dna` is the source-code for the game you are playing with your peers in Holochain.
+
+And here is the twist: in Holochain, **every Dna creates its own peer-to-peer network**. This makes it so that you are agreeing to the rules of the game before actually joining the network and beginning to play with peers. This is going to be key for validation rules.
+
+One of the most important characteristics of a `Dna` is that **it's identified by the hash of the source-code**. And that makes it so that, if you change something from that code and install that `Dna` again, you are literally creating a new network.
+
+### Try it!
+
+1. Edit the current `Dna` by clicking `Edit` in the `Dna Code` block.
+2. Change something: it can be as simple as renaming a function, or removing a block.
+3. Click `Compile`!
+   - You have just created a new `Dna`, and installed it in your node.
+   - But! You are the only one playing that game, so you are in a network of only one node.
+4. Try to start playing with other people: select the initial `Dna` in the `Select Active Dna` block.
+5. Select another agent.
+6. Edit the `Dna`, with only the exact same modifications that you did in step 2.
+7. Click `Compile`!
+   - You should now see a network of 2 nodes! 
+   - What has happened is that you both made the same modifications to the code, and as the ID of the `Dna` is the hash of the source-code, that means that you are playing the same game, and hence you are in the same network.
+
 ```js story
 export const Simple = () => {
   return html`
@@ -112,3 +132,5 @@ export const Simple = () => {
   `;
 };
 ```
+
+You can also create some entries in one `Dna` and switch back and forth `Dnas` to realise that when you create a new network, none of the data is ported.
