@@ -46,14 +46,9 @@ Here you have it! In this representation of the DHT, every node is a cell (an in
 
 To try to visualize how DHT behaves:
 
-1. Create a new entry.
-2. Select the new entry from the source chain.
-   - See the yellow nodes? Those are the validator nodes that are holding our new entry.
-3. Get the entry with its entry hash.
-   - See the get request? It goes to the nodes which are holding the entry.
-4. Create a link with that entry as a base (the target doesn't matter).
-   - Watch closely! The agent making the request is going to publish the link to the same nodes as our entry!
-   - This is the link metadata attaching itself to the entry base hash.
+1. Input some arbitrary content for the entry in the "Call Zome Fns" panel.
+2. Click "Execute".
+3. See how the data gets published to the DHT and validated there.
 
 If you need more time, you can active the step-by-step mode and click play whenever you are ready to continue. Have fun!
 
@@ -76,34 +71,6 @@ const simulatedDna = {
             return hash_entry({ content });
           },
           arguments: [{ name: "content", type: "String" }],
-        },
-        get: {
-          call: ({ get }) => ({ hash }) => {
-            return get(hash, { strategy: GetStrategy.Latest });
-          },
-          arguments: [{ name: "hash", type: "Hash" }],
-        },
-      },
-    },
-    {
-      name: "links",
-      entry_defs: [
-        {
-          id: "sample",
-          visibility: "Public",
-        },
-      ],
-      validation_functions: {},
-      zome_functions: {
-        create_link: {
-          call: ({ create_link }) => ({ base, target, tag }) => {
-            return create_link({ base, target, tag });
-          },
-          arguments: [
-            { name: "base", type: "EntryHash" },
-            { name: "target", type: "EntryHash" },
-            { name: "tag", type: "any" },
-          ],
         },
       },
     },

@@ -65,18 +65,16 @@ const sampleZome1 = {
 };
 
 const simulatedHapp1 = {
-    {
-      name: 'simulated-app',
-      description: '',
-      slots: {
-        default: {
-          dna: {
-            zomes: [sampleZome1],
-          },
-          deferred: false,
-        },
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome1],
       },
-    }
+      deferred: false,
+    },
+  },
 };
 export const Simple1 = () => {
   return html`
@@ -167,18 +165,16 @@ const sampleZome2 = {
 };
 
 const simulatedHapp2 = {
-    {
-      name: 'simulated-app',
-      description: '',
-      slots: {
-        default: {
-          dna: {
-            zomes: [sampleZome2],
-          },
-          deferred: false,
-        },
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome2],
       },
-    }
+      deferred: false,
+    },
+  },
 };
 export const Simple2 = () => {
   return html`
@@ -218,8 +214,7 @@ export const Simple2 = () => {
           show-headers
         >
         </entry-graph>
-        <entry-contents style="flex-basis: 500px;">
-        </entry-contents>
+        <entry-contents style="flex-basis: 500px;"> </entry-contents>
       </div>
     </holochain-playground-container>
   `;

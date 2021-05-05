@@ -180,18 +180,16 @@ const sampleZome2 = {
   },
 };
 const simulatedHapp2 = {
-    {
-      name: 'simulated-app',
-      description: '',
-      slots: {
-        default: {
-          dna: {
-            zomes: [sampleZome2],
-          },
-          deferred: false,
-        },
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: {
+        zomes: [sampleZome2],
       },
-    }
+      deferred: false,
+    },
+  },
 };
 export const Simple2 = () => {
   return html`

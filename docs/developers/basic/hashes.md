@@ -165,7 +165,7 @@ const sampleZome2 = {
   },
 };
 
-const simulatedHapp = {
+const simulatedHapp2 = {
   name: "simulated-app",
   description: "",
   slots: {
