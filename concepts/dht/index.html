@@ -54,10 +54,10 @@
 <link rel="preload" href="../../0fafd573.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../35d6ac4d.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../2197c331.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../70dd2230.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../393087b4.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../677de7e9.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../78a9ee0d.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -200,23 +200,9 @@
 <p>Here you have it! In this representation of the DHT, every node is a cell (an instance of the DNA running), and the connections between them indicate that they are neighbors which gossip regularly with each other.</p>
 <p>To try to visualize how DHT behaves:</p>
 <ol>
-<li>Create a new entry.</li>
-<li>Select the new entry from the source chain.
-<ul>
-<li>See the yellow nodes? Those are the validator nodes that are holding our new entry.</li>
-</ul>
-</li>
-<li>Get the entry with its entry hash.
-<ul>
-<li>See the get request? It goes to the nodes which are holding the entry.</li>
-</ul>
-</li>
-<li>Create a link with that entry as a base (the target doesn't matter).
-<ul>
-<li>Watch closely! The agent making the request is going to publish the link to the same nodes as our entry!</li>
-<li>This is the link metadata attaching itself to the entry base hash.</li>
-</ul>
-</li>
+<li>Input some arbitrary content for the entry in the "Call Zome Fns" panel.</li>
+<li>Click "Execute".</li>
+<li>See how the data gets published to the DHT and validated there.</li>
 </ol>
 <p>If you need more time, you can active the step-by-step mode and click play whenever you are ready to continue. Have fun!</p>
 <mdjs-story mdjs-story-name="Simple"></mdjs-story>
@@ -381,6 +367,6 @@ serviceWorkerUpdate();
     }
   </script>
 <script type="module" src="../../41f79f1e.js"></script>
-<script type="module" src="../../35d6ac4d.js" mdjs-setup=""></script>
+<script type="module" src="../../2197c331.js" mdjs-setup=""></script>
 
 </body></html>
