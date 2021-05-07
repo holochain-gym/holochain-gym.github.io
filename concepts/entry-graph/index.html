@@ -156,6 +156,9 @@
 <a href="/concepts/entry-graph/">Entry Graph</a>
 <ul>
   <li class="menu-item anchor">
+    <a href="#try-it" class="anchor">Try it!</a>
+  </li>
+  <li class="menu-item anchor">
     <a href="#thinking-about-data-in-your-happ" class="anchor">Thinking about data in your hApp</a>
   </li>
 </ul>
@@ -193,16 +196,23 @@
         <main class="markdown-body">
   
     <h1 id="concepts-entry-graph"><a class="anchor" href="#concepts-entry-graph"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Concepts: Entry Graph</h1>
+<p><strong>TLDR: you can think of data stored in the DHT as a graph database, with entries as nodes and links defining relationships between entries</strong>.</p>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://developer.holochain.org/concepts/5_links_anchors/">Core Concepts: Links and anchors</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Graph_database">Graph database</a></li>
+</ul>
+</inline-notification>
+<h1 id="entry-graph"><a class="anchor" href="#entry-graph"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Entry Graph</h1>
 <p>How does shared data in the DHT look like?</p>
-<p>The easiest way you can think about how data is structured in a Holochain application is like a graph database.</p>
+<p>The easiest way you can think about how data is structured in a Holochain <strong>application is like a graph database</strong>.</p>
 <p>From all the actions taken from all the Source-Chains, each neighbor in the DHT aggregates them distributely to form an <code>Entry Graph</code>.</p>
 <p>There are two main primitives that build this graph:</p>
 <ul>
 <li>Entries: an entry is a node in the graph.</li>
 <li>Links: a link connects two entries together. They are directed: they go from a base entry hash to a target entry hash.</li>
 </ul>
-<p>There are more modifiers and metadata that you can use to model state in your hApp, like updates or deletes...</p>
-<h3 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h3>
+<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
 <p>You can try creating some entries:</p>
 <ol>
 <li>Select the <code>create_entry</code> function, set a parameter and click execute.

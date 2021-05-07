@@ -8,8 +8,8 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concepts: Querying your Source-Chain: Holochain Gym</title>
-<meta property="og:title" content="Concepts: Querying your Source-Chain: Holochain Gym">
+<title>Basic: Querying your Source Chain: Holochain Gym</title>
+<meta property="og:title" content="Basic: Querying your Source Chain: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
 <link rel="canonical" href="/developers/basic/source-chain/">
@@ -34,7 +34,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../1e55608f.png">
+<meta property="og:image" content="../../../da073e31.png">
 <meta property="og:url" content="/developers/basic/source-chain/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -161,7 +161,7 @@
 
 </li></ul>
 </li>
-<li class="menu-item">
+<li class="menu-item active">
 <a href="/developers/basic/">Basic</a>
 <ul><li class="menu-item">
 <a href="/developers/basic/zome-functions/">Zome functions</a>
@@ -172,15 +172,39 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/basic/elements/">Getting Elements</a>
-
-</li>
-<li class="menu-item">
 <a href="/developers/basic/hashes/">Hashes</a>
 
 </li>
 <li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
+
+</li>
+<li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
+
+</li>
+<li class="menu-item current">
+<a href="/developers/basic/source-chain/">Querying your Source Chain</a>
+<ul>
+  <li class="menu-item anchor">
+    <a href="#recap" class="anchor">Recap</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#source-chain" class="anchor">Source Chain</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#subconscious" class="anchor">Subconscious</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#happened-before" class="anchor">Happened before</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#exercise" class="anchor">Exercise</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#solution" class="anchor">Solution</a>
+  </li>
+</ul>
 
 </li></ul>
 </li>
@@ -237,10 +261,10 @@
       
         <main class="markdown-body">
   
-    <h1 id="concepts-querying-your-source-chain"><a class="anchor" href="#concepts-querying-your-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Concepts: Querying your Source-Chain</h1>
+    <h1 id="basic-querying-your-source-chain"><a class="anchor" href="#basic-querying-your-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Querying your Source Chain</h1>
 <h2 id="recap"><a class="anchor" href="#recap"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Recap</h2>
 <p>You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT <a href="/concepts/DHT">here</a>.</p>
-<h2 id="source-chain"><a class="anchor" href="#source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Source chain</h2>
+<h2 id="source-chain"><a class="anchor" href="#source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Source Chain</h2>
 <p>The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what makes holochain unique. It's where some of the magic happens.</p>
 <p>The <a href="https://developer.holochain.org/docs/glossary/#source-chain">glossary</a> explains it the following way:</p>
 <blockquote>

@@ -171,10 +171,6 @@
 <a href="/developers/basic/entries/">Creating Entries</a>
 
 </li>
-<li class="menu-item">
-<a href="/developers/basic/elements/">Getting Elements</a>
-
-</li>
 <li class="menu-item current">
 <a href="/developers/basic/hashes/">Hashes</a>
 <ul>
@@ -196,14 +192,19 @@
   <li class="menu-item anchor">
     <a href="#errors" class="anchor">Errors</a>
   </li>
-  <li class="menu-item anchor">
-    <a href="#solution" class="anchor">Solution</a>
-  </li>
 </ul>
 
 </li>
 <li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
+
+</li>
+<li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/source-chain/">Querying your Source Chain</a>
 
 </li></ul>
 </li>
@@ -317,20 +318,20 @@ There is one thing we didn't tell in the previous exercise: <code>create_entry</
 <inline-notification type="tip" title="Exercise">
 <ol>
 <li>Go to the <code>developer-exercises</code>.</li>
-<li>Enter the nix-shell: <code>nix-shell</code><br>
-<em>You should run this in the folder containing the default.nix file</em><br>
-<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em>
-<em>When it is done your terminal should similar to this</em> <code>[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$</code></li>
-<li>Go to folder with the exercise <code>basic/1.hashes</code></li>
-<li>Inside <code>zome/exercise/src/lib.rs</code>
+<li>Enter the nix-shell: <code>nix-shell</code>  .
+<em>You should run this in the folder containing the default.nix file</em>  .
+<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em>.
+<em>When it is done your terminal should similar to this</em> <code>[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$</code>.</li>
+<li>Go to folder with the exercise <code>1.basic/2.hashes</code>.</li>
+<li>Inside <code>zomes/exercise/src/lib.rs</code>:
 <ul>
-<li>Define a new struct for your entry: 'Book'</li>
-<li>Implement the function <code>add_book</code></li>
+<li>Define a new struct for your entry: 'Book'.</li>
+<li>Implement the function <code>add_book</code>.</li>
 </ul>
 </li>
-<li>Compile your code: <code>./run_build.sh</code></li>
-<li>Run the test: <code>./run_tests.sh</code></li>
-<li>Don't stop until the test runs green</li>
+<li>Compile your code: <code>./run_build.sh</code>.</li>
+<li>Run the test: <code>./run_tests.sh</code>.</li>
+<li>Don't stop until the test runs green.</li>
 </ol>
 </inline-notification>
 <h3 id="add-test"><a class="anchor" href="#add-test"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Add test</h3>
@@ -349,21 +350,22 @@ t<span class="token punctuation">.</span><span class="token method function prop
 Run the tests. And if everything passes, then it is time to put your feet up, relax and rest.</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
-<li>Add the extra test</li>
-<li>Check if you are still inside the nix-shell<br>
-<em>Your terminal should similar to this</em> <code>[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$</code></li>
-<li>Implement the function <code>get_book</code></li>
+<li>Add the extra test.</li>
+<li>Check if you are still inside the nix-shell.
+<em>Your terminal should similar to this</em> <code>[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$</code>.</li>
+<li>Implement the function <code>get_book</code>.</li>
 <li>Compile your code: <code>./run_build.sh</code>.</li>
-<li>Run the test: <code>./run_tests.sh</code></li>
-<li>Don't stop until the test runs green</li>
+<li>Run the test: <code>./run_tests.sh</code>.</li>
+<li>Don't stop until the test runs green.</li>
 </ol>
 </inline-notification>
-<h3 id="relevant-hdk-documentation"><a class="anchor" href="#relevant-hdk-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Relevant HDK documentation:</h3>
+<inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">create_entry</a>.</li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">hash_entry</a>.</li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html">get</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html">`get`</a></li>
 </ul>
+</inline-notification>
 <h2 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h2>
 <p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
 <ul>
@@ -402,8 +404,6 @@ let book = await alice_common.cells[0].call(
 <a href="https://forum.holochain.org/c/technical/rust/15">https://forum.holochain.org/c/technical/rust/15</a>
 or
 your favorite search engine</p>
-<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
-<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/basic/1.hashes">solution</a>.</p>
         
       
 

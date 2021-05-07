@@ -197,6 +197,14 @@
         <main class="markdown-body">
   
     <h1 id="concepts-validation-rules"><a class="anchor" href="#concepts-validation-rules"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Concepts: Validation Rules</h1>
+<p><strong>TLDR: the most important part of a DNA is the Validation Rules (rules of the game), which determine which actions are valid and which aren't. If someone tries to break them, an immune response is triggered.</strong></p>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://developer.holochain.org/concepts/7_validation/">Core Concepts: Validation Rules</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Deterministic_algorithm">Deterministic algorithms</a></li>
+</ul>
+</inline-notification>
+<h1 id="validation-rules"><a class="anchor" href="#validation-rules"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Validation Rules</h1>
 <p><code>Validation Rules</code> are probably the most important mechanism in holochain. They are encoded in the <code>Dna</code>, and define <strong>what is valid and what is not valid in the context of it</strong>.</p>
 <p>You can think of it this way: if we all agree that we are playing soccer, then when someone touches the ball with your hand, we all know that that's invalid in the context of this game. But, if we are playing basketball, that's obviously allowed.</p>
 <p><strong>Validation Rules need to be deterministic</strong>. In short, this means that they need to give back the same result (valid or invalid) for one given element, no matter when they are run, by whom, or in what circumstances.</p>
@@ -204,7 +212,7 @@
 <p>But! What happens if someone breaks the rules? How does Holochain keep data integrity if some malicious agent publishes bad data to the network?</p>
 <h3 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h3>
 <p>Here you can see a network of 10 agents with 1 malicious node (marked with 😈).</p>
-<p>In this <code>Dna</code> there is one validation rule: anyone can create posts, but only the author can update their own posts.</p>
+<p>In this <code>Dna</code> there is only one validation rule: <strong>anyone can create posts, but only the author can update their own posts</strong>.</p>
 <p>In this scenario our malicious agent will try to update a post created by another agent, which is not allowed. Let's see what happens when you click "Run".</p>
 <blockquote>
 <p>You can refresh the page and run it however many times you want, and you can also enable the "Step by Step" mode to get a closer look.</p>

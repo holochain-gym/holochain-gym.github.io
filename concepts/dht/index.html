@@ -147,7 +147,11 @@
 <a href="/concepts/concepts/">Concepts</a>
 <ul><li class="menu-item current">
 <a href="/concepts/dht/">DHT</a>
-
+<ul>
+  <li class="menu-item anchor">
+    <a href="#try-it" class="anchor">Try it!</a>
+  </li>
+</ul>
 
 </li>
 <li class="menu-item">
@@ -190,14 +194,22 @@
         <main class="markdown-body">
   
     <h1 id="concepts-dht"><a class="anchor" href="#concepts-dht"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Concepts: DHT</h1>
-<p>The DHT is the main way in which agents share data in Holochain.</p>
-<p>You can think of Holochain as the combination of a local and linear source-chain, and a public space to which you can publish data.</p>
+<p><strong>TLDR: in Holochain, every person runs their own node participating fully in a DHT network</strong>.</p>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://developer.holochain.org/concepts/4_dht">Core Concepts: DHT</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Distributed_hash_table">DHTs</a></li>
+</ul>
+</inline-notification>
+<h1 id="holochains-dht"><a class="anchor" href="#holochains-dht"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Holochain's DHT</h1>
+<p>A Holochain network is a DHT (Distributed Hash Table) of peers, playing together by the same rules. The DHT is the main way in which agents share data in Holochain. Every agent runs its own node: if you want to participate in the DHT, you have to run your own instance and join the network.</p>
 <p>Usually, DHTs are just key-value stores: you can create some piece of data, which gets hashed, and after that anyone can query its contents with that hash.</p>
-<p>One of the most important characteristics of the source-chain is that it's linear and ordered, representing all the actions an agent has taken in sequence.</p>
-<p>On the contrary, <strong>the DHT is eventually consistent</strong>: data takes some time to propagate throughout the network. This means that there is no guarantee about the order in which different pieces of data will arrive, or that you are seeing all the data that has been published.</p>
+<p><strong>Holochain's DHT is eventually consistent</strong>: data takes some time to propagate throughout the network. This means that there is no guarantee about the order in which different pieces of data will arrive, or that you are seeing all the data that has been published.</p>
+<p>However, since the internal data structures are <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">CRDTs</a>, no matter the order of arrival of each piece of data, the end state will always be the same.</p>
 <p>Holochain security model based on validation rules enables attachment of metadata in the DHT: not only we can create entries, but we can add links to them, or update them. This way, we can build complex graph structures in our DHTs that allow for efficient navigation of the data.</p>
-<h3 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h3>
+<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
 <p>Here you have it! In this representation of the DHT, every node is a cell (an instance of the DNA running), and the connections between them indicate that they are neighbors which gossip regularly with each other.</p>
+<p>Every node belongs to a person running it. You can see the name of the person to which the node belongs.</p>
 <p>To try to visualize how DHT behaves:</p>
 <ol>
 <li>Input some arbitrary content for the entry in the "Call Zome Fns" panel.</li>

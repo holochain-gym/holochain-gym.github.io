@@ -54,7 +54,7 @@
 <link rel="preload" href="../../0fafd573.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../09c73465.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../a87bf491.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../70dd2230.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../393087b4.js" as="script" crossorigin="anonymous">
 </head>
@@ -150,7 +150,14 @@
 </li>
 <li class="menu-item current">
 <a href="/concepts/source-chain/">Source-Chain</a>
-
+<ul>
+  <li class="menu-item anchor">
+    <a href="#try-it" class="anchor">Try it!</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#source-chain--dht" class="anchor">Source Chain + DHT</a>
+  </li>
+</ul>
 
 </li>
 <li class="menu-item">
@@ -189,24 +196,70 @@
         <main class="markdown-body">
   
     <h1 id="concepts-source-chain"><a class="anchor" href="#concepts-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Concepts: Source-Chain</h1>
-<p>The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what makes holochain unique. It's where some of the magic happens.</p>
-<p>The <a href="https://developer.holochain.org/docs/glossary/#source-chain">glossary</a> explains it the following way:</p>
-<blockquote>
-<p>A hash chain of elements committed by an agent. Every agent has a separate source chain for each of the cells they’re running, which stores all of the actions they’ve taken in that cell.</p>
-</blockquote>
-<p><em>Let's unpack this</em></p>
-<p>When you download a compiled <a href="https://developer.holochain.org/docs/glossary/#dna">DNA</a>, a <a href="https://developer.holochain.org/docs/glossary/#webassembly-wasm">WASM</a> binary, from somewhere or when you compile it locally and you run this DNA in a holochain <a href="https://developer.holochain.org/docs/glossary/#conductor">conductor</a> that is running on your machine, then this DNA would be instantiated and linked to your <a href="https://developer.holochain.org/docs/glossary/#agent-id">agent ID</a>. That thing is a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>.</p>
-<p>If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist of one or more zomes.</p>
-<p>Now for the crucial part: "<strong>stores all of the actions</strong>". Every action, which in holochain speak means: every header and entry, that are produced by you, the agent, will become a part of the source chain, for as long as that agent has that DNA installed.
-Whenever a new action is committed (creating entries or links, updating...) a new element is added to that chain, with its header referencing the previous one.
-Essentially, the source-chain is a <strong>hash-chain of all the actions that a particular agent has committed in this DNA</strong>.</p>
-<p>Perhaps this does sounds like some weird form of magic.
-Head over to the simulation where you will see that, underneath, it is just headers and entries.</p>
-<h3 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h3>
-<p>Even before you add your first entries, 3 headers and 1 entry will be created automatically in your holochain app. These 4 elements, the <a href="https://developer.holochain.org/docs/glossary/#genesis-elements">genesis events</a> are created by what you call the <strong>subconscious</strong> of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, <em>consciously</em>, triggered by you, the user.</p>
-<p>The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them. You can also call the "register_snacking" function to add new elements to the Source-Chain.</p>
+<p><strong>TLDR: every agent maintains an append-only linear hash-chain which contains all the actions that agent has taken.</strong></p>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://developer.holochain.org/concepts/3_source_chain/">Core Concepts: Source Chain</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hash_chain">Hash chains</a></li>
+</ul>
+</inline-notification>
+<h1 id="source-chain"><a class="anchor" href="#source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Source Chain</h1>
+<p>We already know that in a Holochain DHT, every agent is running its own node. In addition to storing their appropriate shard of the DHT, <strong>each agent is also maintaining a linear history of each action that that agent has taken</strong>.</p>
+<p>This is stored in the agent's node in the form of a hash-chain, with one element referencing the previous one. After that, that action gets published into the DHT, in which it will propagate and eventually made available for other agents to see.</p>
+<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
+<p>Here you can see a source chain for an agent, in its initial state after installing the hApp.</p>
+<p>Every piece of data added to the source chain is called an <strong>element</strong>. An element consists of:</p>
+<ul>
+<li>A header: contains the metadata of that action (author, timestamp, signature...).</li>
+<li>Maybe an entry: some actions create entries in the DHT, so the element also contains the entry.</li>
+</ul>
+<p>Let's try to add more elements to it:</p>
+<ol>
+<li>Select the <code>create_entry</code> function in the "Call Zome Fns" block.</li>
+<li>Input some random content for the entry and click "Execute".
+<ul>
+<li>See that the source chain has a new element.</li>
+<li>Click on the new blue circle.
+<ul>
+<li>You can see in the "Header Contents" block the content of the header.</li>
+<li>See the <code>prev_header</code> property in the header, referencing the previous header hash: this is what creates the chain of headers.</li>
+</ul>
+</li>
+<li>Click on the new grey rounded rectangle.
+<ul>
+<li>You can see in the "Entry Contents" block the content of the entry.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Play around with all the actions available, add new elements and inspect their contents.</li>
+</ol>
 <mdjs-story mdjs-story-name="Sim0"></mdjs-story>
-<p>How does the Source-Chain combine with the DHT?</p>
+<h2 id="source-chain--dht"><a class="anchor" href="#source-chain--dht"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Source Chain + DHT</h2>
+<p>So, how does the source chain combine with the DHT?</p>
+<p>You can think of Holochain as the combination of a local and linear source chain, and a public DHT space to which you can publish data.</p>
+<p>One of the most important characteristics of the source chain is that it's linear and ordered, representing all the actions an agent has taken in sequence.</p>
+<p>All the events that happen linearly in each of these hash chains are the ones that get aggregated and modify the public DHT data, in a CRDT manner.</p>
+<h3 id="try-it-1"><a class="anchor" href="#try-it-1"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h3>
+<p>Here you have an interactive representation of the DHT on the right side, and the source-chain of the selected agent on the left side.</p>
+<ol>
+<li>Select one of the agents in the "DHT Cells" block.
+<ul>
+<li>See that its source-chain already contains the initial 3 elements chained together.</li>
+</ul>
+</li>
+<li>Create an entry with arbitrary content.
+<ul>
+<li>See that the source chain has a new element added to it: this is the entry we just created.</li>
+</ul>
+</li>
+<li>Switch to another agent by selecting it in the "DHT Cells" block.
+<ul>
+<li>See that the source chain for that agent has still only the 3 first elements.</li>
+</ul>
+</li>
+</ol>
+<p>You can switch through different agents and do different actions and see how holochain behaves.</p>
 <mdjs-story mdjs-story-name="Sim1"></mdjs-story>
         
       
@@ -369,6 +422,6 @@ serviceWorkerUpdate();
     }
   </script>
 <script type="module" src="../../41f79f1e.js"></script>
-<script type="module" src="../../09c73465.js" mdjs-setup=""></script>
+<script type="module" src="../../a87bf491.js" mdjs-setup=""></script>
 
 </body></html>

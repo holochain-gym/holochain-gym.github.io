@@ -153,7 +153,11 @@
 </li>
 <li class="menu-item current">
 <a href="/developers/requirements/rust/">Rust</a>
-
+<ul>
+  <li class="menu-item anchor">
+    <a href="#rust-analyzer" class="anchor">Rust analyzer</a>
+  </li>
+</ul>
 
 </li>
 <li class="menu-item">
@@ -172,15 +176,19 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/basic/elements/">Getting Elements</a>
-
-</li>
-<li class="menu-item">
 <a href="/developers/basic/hashes/">Hashes</a>
 
 </li>
 <li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
+
+</li>
+<li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/source-chain/">Querying your Source Chain</a>
 
 </li></ul>
 </li>
@@ -244,10 +252,19 @@
 <li><a href="https://forum.holochain.org/t/learning-rust/3820">Learning Rust Resources</a></li>
 </ul>
 <p>We also will be providing some small rust tips along the way in some exercises to help you unblock yourself. We hope that you can overcome this obstacle and start having fun with holochain itself! Let us know if there is something that we could add to improve the experience.</p>
+<h2 id="rust-analyzer"><a class="anchor" href="#rust-analyzer"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Rust analyzer</h2>
 <inline-notification type="tip" title="Recommended">
 <p>We highly recommend installing the <code>rust-analyzer</code> VSCode extension and opening your projects from a folder which has a <code>Cargo.toml</code> in it.<br>
 The experience of writing Rust this way is much more pleasant and allows for a much faster learning curve.</p>
 </inline-notification>
+<h3 id="gotchas"><a class="anchor" href="#gotchas"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Gotcha's</h3>
+<ul>
+<li>For rust-analyzer to work, you need to have rust installed on outside the nix-shell, on your host system. You can follow <a href="https://www.rust-lang.org/tools/install">these instructions</a>.
+<ul>
+<li>If you are using WSL, you should install rust inside the linux subsystem, and not the Windows host.</li>
+</ul>
+</li>
+</ul>
         
       
 

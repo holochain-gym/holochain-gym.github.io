@@ -175,9 +175,6 @@
   <li class="menu-item anchor">
     <a href="#agent-info" class="anchor">Agent info</a>
   </li>
-  <li class="menu-item anchor">
-    <a href="#solution" class="anchor">Solution</a>
-  </li>
 </ul>
 
 </li>
@@ -186,15 +183,19 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/basic/elements/">Getting Elements</a>
-
-</li>
-<li class="menu-item">
 <a href="/developers/basic/hashes/">Hashes</a>
 
 </li>
 <li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
+
+</li>
+<li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/source-chain/">Querying your Source Chain</a>
 
 </li></ul>
 </li>
@@ -252,6 +253,11 @@
         <main class="markdown-body">
   
     <h1 id="basic-zome-functions"><a class="anchor" href="#basic-zome-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Zome functions</h1>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/concepts/dna-zomes">Gym: Dnas and zomes</a></li>
+</ul>
+</inline-notification>
 <p>In this chapter you will learn</p>
 <ul>
 <li>what zome functions are</li>
@@ -261,7 +267,7 @@
 </ul>
 <h2 id="zome-functions"><a class="anchor" href="#zome-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Zome functions</h2>
 <p>Before you talk about a <a href="https://developer.holochain.org/docs/glossary/#zome-function">zome function</a> you need to understand what a <a href="https://developer.holochain.org/docs/glossary/#zome">zome</a> is. A zome is a "basic unit of modularity inside a DNA". You can think of it as a package inside your codebase. Let's take a look.</p>
-<p>Open the zomes folder <code>developers/1.basic/0.entries/zomes</code> in the developers-exercise git repo you <a href="http://localhost:8000/developers/requirements/setup/#clone-repo">cloned</a>.</p>
+<p>Open the zomes folder <code>developers/1.basic/0.zome-functions/exercise/zomes</code> in the developers-exercise git repo you <a href="/developers/requirements/setup/#clone-repo">cloned</a>.</p>
 <p>It contains just one folder: <code>exercise</code>. But you can rename the folder or add more zomes folders, so you can separate different concerns in different folders. Most exercises in the gym will have only one zome, named 'exercise'. This is just to keep things simple.</p>
 <h3 id="dna"><a class="anchor" href="#dna"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>DNA</h3>
 <p>All your zome(s) together form a DNA. Just like the chromosomes in a cell in your body form one DNA. This DNA is compiled into a
@@ -347,12 +353,12 @@ Functions that return a <code>Result</code> are very <a href="https://learning-r
 We wrote an integration test for you, to test if everything works correctly. The best way to write integration/scenario tests in typescript is to use <a href="https://developer.holochain.org/docs/glossary/#tryorama">Tryorama</a>, a holochain typescript library, to write these tests. Take a look in the <code>1.basic/0.zome-functions/exercise/tests/src/index.ts</code> file. Run the test to see what fails.</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
-<li>Check that your are still in a <code>nix-shell</code><br>
-<em>The beginning of the command line will have nix-shell in it</em></li>
-<li>Check that your are still in the folder <code>1.basic/0.zome-functions/exercise</code></li>
+<li>Check that your are still in a <code>nix-shell</code>.
+<em>The beginning of the command line should have nix-shell in it</em></li>
+<li>Check that your are still in the folder <code>1.basic/0.zome-functions/exercise</code>.</li>
 <li>Compile your code: <code>./run_build.sh</code>.</li>
 <li>Run the tests by running our the following script: <code>./run_test.sh</code>.</li>
-<li>Inspect the error</li>
+<li>Inspect the error.</li>
 </ol>
 </inline-notification>
 <p>You should see the following error:</p>
@@ -367,10 +373,10 @@ not ok 1 Test threw an exception. See output for details.</pre>
 <p>It simply means that our test code <code>.call("exercise", "hello_world", null);</code>, which calls the <code>hello_world</code> function in the zome <code>exercise</code>, cannot find that function. So making a function public in your zome is <em>not</em> enough. You need to add an attribute on the top of a public function to make it possible for this function to be called from outside the zome. The attribute you need to add is <code>#[hdk_extern]</code>. Only public functions with this attribute can be called from outside a zome. Adding the attribute makes it a <strong>zome function</strong>.</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
-<li>Add <code>#[hkd_extern]</code> on top of the 3 public functions</li>
-<li>Compile: <code>./run_build.sh</code></li>
+<li>Add <code>#[hkd_extern]</code> on top of the 3 public functions.</li>
+<li>Compile: <code>./run_build.sh</code>.</li>
 <li>Test: <code>./run_test.sh</code>.</li>
-<li>Inspect the error</li>
+<li>Inspect the error.</li>
 </ol>
 </inline-notification>
 <pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error[E0277]</b></span><b>: the trait bound `SomeExternalOutput: hdk::prelude::Serialize` is not satisfied</b>
@@ -396,15 +402,14 @@ Requirements for a zome function:</p>
 <p>To finish this exercise add the attributes to the structs.</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
-<li>Add <code>#[derive(Serialize, Deserialize, Debug)]</code> on top of the 2 structs</li>
-<li>Compile: <code>./run_build.sh</code></li>
+<li>Add <code>#[derive(Serialize, Deserialize, Debug)]</code> on top of the 2 structs.</li>
+<li>Compile: <code>./run_build.sh</code>.</li>
 <li>Test: <code>./run_test.sh</code>.</li>
-<li>Inspect the error</li>
+<li>Inspect the error.</li>
 </ol>
 </inline-notification>
 <h2 id="agent-info"><a class="anchor" href="#agent-info"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Agent info</h2>
-<p>The <code>hello_world</code> and <code>say_my_name</code> are very simple toy functions. In <code>get_agent_info</code> on the other hand you call a real hdk function <a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html"><code>agent_info()</code></a>. AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or <a href="https://developer.holochain.org/docs/glossary/#agent-id">Agent ID</a> is one of the four genesis events that are created add the beginning of your <a href="/developers/concepts/source-chain">source-chain</a> by the <a href="/developers/concepts/source-chain">subconscious</a> part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>. Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and comsumes to much power, does not survive ...</p>
-<p><strong><a href="/developers/basic/entries">Next &gt;</a></strong></p>
+<p>The <code>hello_world</code> and <code>say_my_name</code> are very simple toy functions. In <code>get_agent_info</code> on the other hand you call a real hdk function <a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html"><code>agent_info()</code></a>. AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or <a href="https://developer.holochain.org/docs/glossary/#agent-id">Agent ID</a> is one of the four genesis events that are created add the beginning of your <a href="/concepts/source-chain">source-chain</a> by the <a href="/developers/basic/source-chain/#subconscious">subconscious</a> part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>. Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and comsumes to much power, does not survive ...</p>
 <p>So now it is up to you to finish this exercise. Add all the things we just explained to your code and finish by implementing the <code>say_greeting</code> function, building your zome and running the test.
 You only need to add a few lines in this first exercise, but know that when the test succeeds, you:</p>
 <ul>
@@ -419,20 +424,25 @@ You only need to add a few lines in this first exercise, but know that when the 
 <inline-notification type="tip" title="Exercise">
 <ol>
 <li>Go to the <code>developer-exercises</code>.</li>
-<li>Enter the nix-shell: <code>nix-shell</code><br>
+<li>Enter the nix-shell: <code>nix-shell</code>.
 <em>you should run this in the folder containing the default.nix file</em><br>
 <em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em></li>
-<li>Go to folder with the exercise <code>basic/0.entries</code></li>
-<li>Inside <code>zome/exercise/src/lib.rs</code>
+<li>Go to folder with the exercise <code>basic/0.zome-functions/exercise</code>.</li>
+<li>Inside <code>zome/exercise/src/lib.rs</code>:
 <ul>
-<li>Define a new struct for your entry: 'Greeting'</li>
-<li>Implement the function with <code>unimplemented!()</code></li>
+<li>Define a new struct for your entry: 'Greeting'.</li>
+<li>Implement the function with <code>unimplemented!()</code>.</li>
 </ul>
 </li>
 <li>Compile your code: <code>./run_build.sh</code>.</li>
-<li>Run the test: <code>./run_tests.sh</code></li>
-<li>Don't stop until the test runs green</li>
+<li>Run the test: <code>./run_tests.sh</code>.</li>
+<li>Don't stop until the test runs green.</li>
 </ol>
+</inline-notification>
+<inline-notification type="tip" title="Relevant HDK documentation">
+<ul>
+<li><a href="[/concepts/dna-zomes](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html)">`create_entry`</a></li>
+</ul>
 </inline-notification>
 <h3 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h3>
 <p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
@@ -448,14 +458,12 @@ You only need to add a few lines in this first exercise, but know that when the 
 <span class="token punctuation">}</span>
 </code></pre>
 <ul>
-<li>You forgot to compile the zome. Run <code>CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown</code> in the <em>developer-exercises/basic/0.entries</em> folder.</li>
+<li>You forgot to compile the zome. Run <code>CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown</code> in the <em>developer-exercises/basic/0.zome-functions/exercise</em> folder.</li>
 </ul>
 <pre><code>thread 'holochain-tokio-thread' panicked at 'TODO: DnaError
 (ZomeNotFound("Zome \'exercise\' not found"))',
 /build/source/crates/holochain/src/core/ribosome.rs:336:14
 </code></pre>
-<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
-<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/basic/0.entries">solution</a>.</p>
 <p>This is the error you see when you call a zome function that has no params</p>
 <pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error</b></span><b>: custom attribute panicked</b>
   <span style="color:#729FCF"><b>--&gt; </b></span>zomes/exercise/src/lib.rs:12:1
@@ -479,6 +487,7 @@ You only need to add a few lines in this first exercise, but know that when the 
    <span style="color:#729FCF"><b>|</b></span>
    <span style="color:#729FCF"><b>= </b></span><b>note</b>: this error originates in a macro (in Nightly builds, run with -Z macro-backtrace for more info)
 </pre>
+<p><strong><a href="/developers/basic/entries">Next &gt;</a></strong></p>
         
       
 

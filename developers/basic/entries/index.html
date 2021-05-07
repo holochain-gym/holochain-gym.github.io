@@ -185,14 +185,7 @@
   <li class="menu-item anchor">
     <a href="#exercise" class="anchor">Exercise</a>
   </li>
-  <li class="menu-item anchor">
-    <a href="#solution" class="anchor">Solution</a>
-  </li>
 </ul>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/elements/">Getting Elements</a>
 
 </li>
 <li class="menu-item">
@@ -200,7 +193,15 @@
 
 </li>
 <li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
+
+</li>
+<li class="menu-item">
 <a href="/developers/basic/links/">Links</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/source-chain/">Querying your Source Chain</a>
 
 </li></ul>
 </li>
@@ -258,8 +259,12 @@
         <main class="markdown-body">
   
     <h1 id="basic-creating-entries"><a class="anchor" href="#basic-creating-entries"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Creating Entries</h1>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/concepts/entry-graph">Gym: Entry Graph</a></li>
+</ul>
+</inline-notification>
 <h2 id="what-is-an-entry"><a class="anchor" href="#what-is-an-entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>What is an entry</h2>
-<p><a href="/developers/concept/entries">entries</a></p>
 <p>An entry is a basic unit of user data. As a Holochain developer one of the most basic things you can do is create an entry in a Zome.</p>
 <p><em>Quick reminder - A <a href="https://developer.holochain.org/docs/glossary/#zome">Zome</a> is a module in a <a href="https://developer.holochain.org/docs/glossary/#dna">DNA</a>; the base of any <a href="https://developer.holochain.org/docs/glossary/#holochain-application-happ">Holochain application (hApp)</a>.</em></p>
 <blockquote>
@@ -268,10 +273,10 @@
 <h2 id="creating-an-entry"><a class="anchor" href="#creating-an-entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Creating an entry</h2>
 <p>When you create an entry a few things will happen:</p>
 <ol>
-<li>Your data is validated locally <em>(we will learn how this works in later exercises)</em></li>
-<li>The entry is written to your local <a href="https://developer.holochain.org/docs/glossary/#source-chain">source chain</a> <em>(hence the 'chain' in 'Holochain')</em></li>
-<li>If your <a href="https://developer.holochain.org/docs/glossary/#entry-type">entry type</a> is marked as <a href="https://developer.holochain.org/docs/glossary/#public-entry">public</a> like the one in this first exercise, your hApp will send it to some random people who are running the same hApp <em>(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)</em></li>
-<li>The random people that received your data will validate your data using the same rules that were used in the first step. <em>(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)</em></li>
+<li>Your data is validated locally <em>(we will learn how this works in later exercises)</em>.</li>
+<li>The entry is written to your local <a href="https://developer.holochain.org/docs/glossary/#source-chain">source chain</a> <em>(hence the 'chain' in 'Holochain')</em>.</li>
+<li>If your <a href="https://developer.holochain.org/docs/glossary/#entry-type">entry type</a> is marked as <a href="https://developer.holochain.org/docs/glossary/#public-entry">public</a> like the one in this first exercise, your hApp will send it to some random people who are running the same hApp <em>(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)</em>.</li>
+<li>The random people that received your data will validate your data using the same rules that were used in the first step. <em>(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)</em>.</li>
 </ol>
 <p>Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.</p>
 <h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
@@ -295,7 +300,7 @@ The <strong>Entry hash</strong> is the last of the three. You could think of the
 <h2 id="getting-ready"><a class="anchor" href="#getting-ready"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting ready</h2>
 <p><em>So, lets get to the real work!</em></p>
 <p>In case you forgot, Zomes are written in <a href="https://www.rust-lang.org/">Rust</a>. Don't worry if you are new to the language, we will gladly help you grow comfortable with it - join us over at the <a href="https://forum.holochain.org/">Holochain forum</a>.</p>
-<p>We went ahead and added some code already for you in the <code>zomes/exercise/src/lib.rs</code> file:</p>
+<p>We went ahead and added some code already for you in the <code>1.basic/1.entries/zomes/exercise/src/lib.rs</code> file:</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
 <span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
     greeting_text<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
@@ -366,25 +371,26 @@ You only need to add a few lines in this first exercise, but know that when the 
 <inline-notification type="tip" title="Exercise">
 <ol>
 <li>Go to the <code>developer-exercises</code>.</li>
-<li>Enter the nix-shell: <code>nix-shell</code><br>
-<em>you should run this in the folder containing the default.nix file</em><br>
-<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em></li>
-<li>Go to folder with the exercise <code>basic/0.entries</code></li>
-<li>Inside <code>zome/exercise/src/lib.rs</code>
+<li>Enter the nix-shell: <code>nix-shell</code>.
+<em>you should run this in the folder containing the default.nix file</em>.
+<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em>.</li>
+<li>Go to folder with the exercise <code>1.basic/1.entries/exercise</code>.</li>
+<li>Inside <code>zomes/exercise/src/lib.rs</code>
 <ul>
-<li>Define a new struct for your entry: 'Greeting'</li>
-<li>Implement the function with <code>unimplemented!()</code></li>
+<li>Define a new struct for your entry: 'Greeting'.</li>
+<li>Implement the function with <code>unimplemented!()</code>.</li>
 </ul>
 </li>
 <li>Compile your code: <code>./run_build.sh</code>.</li>
-<li>Run the test: <code>./run_tests.sh</code></li>
-<li>Don't stop until the test runs green</li>
+<li>Run the test: <code>./run_tests.sh</code>.</li>
+<li>Don't stop until the test runs green.</li>
 </ol>
 </inline-notification>
-<h3 id="relevant-hdk-documentation"><a class="anchor" href="#relevant-hdk-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Relevant HDK documentation:</h3>
+<inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">create_entry</a>.</li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
 </ul>
+</inline-notification>
 <h3 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h3>
 <p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
 <ul>
@@ -399,14 +405,12 @@ You only need to add a few lines in this first exercise, but know that when the 
 <span class="token punctuation">}</span>
 </code></pre>
 <ul>
-<li>You forgot to compile the zome. Run <code>CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown</code> in the <em>developer-exercises/basic/0.entries</em> folder.</li>
+<li>You forgot to compile the zome. Run <code>CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown</code> in the <em>developer-exercises/basic/1.entries/exercise</em> folder.</li>
 </ul>
 <pre><code>thread 'holochain-tokio-thread' panicked at 'TODO: DnaError
 (ZomeNotFound("Zome \'exercise\' not found"))',
 /build/source/crates/holochain/src/core/ribosome.rs:336:14
 </code></pre>
-<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
-<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/basic/0.entries">solution</a>.</p>
         
       
 
