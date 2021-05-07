@@ -19,9 +19,13 @@ customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
-## What is an entry
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/concepts/entry-graph">Gym: Entry Graph</a></li>
+</ul>
+</inline-notification>
 
-[entries](/developers/concept/entries)
+## What is an entry
 
 An entry is a basic unit of user data. As a Holochain developer one of the most basic things you can do is create an entry in a Zome.
 
@@ -33,10 +37,10 @@ _Quick reminder - A [Zome](https://developer.holochain.org/docs/glossary/#zome) 
 
 When you create an entry a few things will happen:
 
-1. Your data is validated locally _(we will learn how this works in later exercises)_
-2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) _(hence the 'chain' in 'Holochain')_
-3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp _(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)_
-4. The random people that received your data will validate your data using the same rules that were used in the first step. _(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)_
+1. Your data is validated locally _(we will learn how this works in later exercises)_.
+2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) _(hence the 'chain' in 'Holochain')_.
+3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp _(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)_.
+4. The random people that received your data will validate your data using the same rules that were used in the first step. _(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)_.
 
 Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.
 
@@ -140,7 +144,7 @@ _So, lets get to the real work!_
 
 In case you forgot, Zomes are written in [Rust](https://www.rust-lang.org/). Don't worry if you are new to the language, we will gladly help you grow comfortable with it - join us over at the [Holochain forum](https://forum.holochain.org/).
 
-We went ahead and added some code already for you in the `zomes/exercise/src/lib.rs` file:
+We went ahead and added some code already for you in the `1.basic/1.entries/zomes/exercise/src/lib.rs` file:
 
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -247,22 +251,24 @@ You will in fact have created your very first decentralized, agent centric, boun
 <inline-notification type="tip" title="Exercise">
 
 1. Go to the `developer-exercises`.
-2. Enter the nix-shell: `nix-shell`  
-   _you should run this in the folder containing the default.nix file_  
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
-3. Go to folder with the exercise `basic/0.entries`
-4. Inside `zome/exercise/src/lib.rs`
-   - Define a new struct for your entry: 'Greeting'
-   - Implement the function with `unimplemented!()`
+2. Enter the nix-shell: `nix-shell`.
+   _you should run this in the folder containing the default.nix file_.
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_.
+3. Go to folder with the exercise `1.basic/1.entries/exercise`.
+4. Inside `zomes/exercise/src/lib.rs`
+   - Define a new struct for your entry: 'Greeting'.
+   - Implement the function with `unimplemented!()`.
 5. Compile your code: `./run_build.sh`.
-6. Run the test: `./run_tests.sh`
-7. Don't stop until the test runs green
+6. Run the test: `./run_tests.sh`.
+7. Don't stop until the test runs green.
 
 </inline-notification>
 
-### Relevant HDK documentation:
-
-- [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
+<inline-notification type="tip" title="Relevant HDK documentation">
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
+</ul>
+</inline-notification>
 
 ### Errors
 
@@ -280,14 +286,10 @@ got an error for test 'say a greeting': {
 }
 ```
 
-- You forgot to compile the zome. Run `CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown` in the _developer-exercises/basic/0.entries_ folder.
+- You forgot to compile the zome. Run `CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown` in the _developer-exercises/basic/1.entries/exercise_ folder.
 
 ```
 thread 'holochain-tokio-thread' panicked at 'TODO: DnaError
 (ZomeNotFound("Zome \'exercise\' not found"))',
 /build/source/crates/holochain/src/core/ribosome.rs:336:14
 ```
-
-## Solution
-
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/0.entries).

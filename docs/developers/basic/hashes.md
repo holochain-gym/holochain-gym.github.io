@@ -1,4 +1,4 @@
-# Basic >> Hashes ||104
+# Basic >> Hashes ||103
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -251,17 +251,17 @@ There is one thing we didn't tell in the previous exercise: `create_entry` retur
 <inline-notification type="tip" title="Exercise">
 
 1. Go to the `developer-exercises`.
-2. Enter the nix-shell: `nix-shell`  
-   _You should run this in the folder containing the default.nix file_  
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
-   _When it is done your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
-3. Go to folder with the exercise `basic/1.hashes`
-4. Inside `zome/exercise/src/lib.rs`
-   - Define a new struct for your entry: 'Book'
-   - Implement the function `add_book`
-5. Compile your code: `./run_build.sh`
-6. Run the test: `./run_tests.sh`
-7. Don't stop until the test runs green
+2. Enter the nix-shell: `nix-shell`  .
+   _You should run this in the folder containing the default.nix file_  .
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_.
+   _When it is done your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`.
+3. Go to folder with the exercise `1.basic/2.hashes`.
+4. Inside `zomes/exercise/src/lib.rs`:
+   - Define a new struct for your entry: 'Book'.
+   - Implement the function `add_book`.
+5. Compile your code: `./run_build.sh`.
+6. Run the test: `./run_tests.sh`.
+7. Don't stop until the test runs green.
 
 </inline-notification>
 
@@ -288,21 +288,23 @@ Run the tests. And if everything passes, then it is time to put your feet up, re
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add the extra test
-2. Check if you are still inside the nix-shell  
-   _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
-3. Implement the function `get_book`
+1. Add the extra test.
+2. Check if you are still inside the nix-shell.
+   _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`.
+3. Implement the function `get_book`.
 4. Compile your code: `./run_build.sh`.
-5. Run the test: `./run_tests.sh`
-6. Don't stop until the test runs green
+5. Run the test: `./run_tests.sh`.
+6. Don't stop until the test runs green.
 
 </inline-notification>
 
-### Relevant HDK documentation:
-
-- [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
-- [hash_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html).
-- [get](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html)
+<inline-notification type="tip" title="Relevant HDK documentation">
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html">`get`</a></li>
+</ul>
+</inline-notification>
 
 ## Errors
 
@@ -351,6 +353,3 @@ https://forum.holochain.org/c/technical/rust/15
 or
 your favorite search engine
 
-## Solution
-
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/1.hashes).

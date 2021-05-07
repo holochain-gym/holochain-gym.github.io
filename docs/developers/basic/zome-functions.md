@@ -19,6 +19,12 @@ customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/concepts/dna-zomes">Gym: Dnas and zomes</a></li>
+</ul>
+</inline-notification>
+
 In this chapter you will learn
 * what zome functions are
 * how you create a zome function
@@ -28,7 +34,7 @@ In this chapter you will learn
 ## Zome functions
 Before you talk about a [zome function](https://developer.holochain.org/docs/glossary/#zome-function) you need to understand what a [zome](https://developer.holochain.org/docs/glossary/#zome) is. A zome is a "basic unit of modularity inside a DNA". You can think of it as a package inside your codebase. Let's take a look. 
 
-Open the zomes folder `developers/1.basic/0.entries/zomes` in the developers-exercise git repo you [cloned](http://localhost:8000/developers/requirements/setup/#clone-repo).
+Open the zomes folder `developers/1.basic/0.zome-functions/exercise/zomes` in the developers-exercise git repo you [cloned](/developers/requirements/setup/#clone-repo).
 
 It contains just one folder: `exercise`. But you can rename the folder or add more zomes folders, so you can separate different concerns in different folders. Most exercises in the gym will have only one zome, named 'exercise'. This is just to keep things simple. 
 
@@ -137,12 +143,12 @@ We wrote an integration test for you, to test if everything works correctly. The
 
 <inline-notification type="tip" title="Exercise">
 
-1. Check that your are still in a `nix-shell`  
-   _The beginning of the command line will have nix-shell in it_
-2. Check that your are still in the folder `1.basic/0.zome-functions/exercise`
+1. Check that your are still in a `nix-shell`.
+   _The beginning of the command line should have nix-shell in it_
+2. Check that your are still in the folder `1.basic/0.zome-functions/exercise`.
 3. Compile your code: `./run_build.sh`.
 4. Run the tests by running our the following script: `./run_test.sh`.
-5. Inspect the error
+5. Inspect the error.
 
 </inline-notification>
 
@@ -161,10 +167,10 @@ It simply means that our test code `.call("exercise", "hello_world", null);`, wh
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add `#[hkd_extern]` on top of the 3 public functions
-2. Compile: `./run_build.sh`
+1. Add `#[hkd_extern]` on top of the 3 public functions.
+2. Compile: `./run_build.sh`.
 3. Test: `./run_test.sh`.
-4. Inspect the error
+4. Inspect the error.
 </inline-notification>
 
 <pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error[E0277]</b></span><b>: the trait bound `SomeExternalOutput: hdk::prelude::Serialize` is not satisfied</b>
@@ -194,27 +200,15 @@ To finish this exercise add the attributes to the structs.
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of the 2 structs
-2. Compile: `./run_build.sh`
+1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of the 2 structs.
+2. Compile: `./run_build.sh`.
 3. Test: `./run_test.sh`.
-4. Inspect the error
+4. Inspect the error.
 </inline-notification>
 
 ## Agent info
 
-The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_info` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created add the beginning of your [source-chain](/developers/concepts/source-chain) by the [subconscious](/developers/concepts/source-chain) part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and comsumes to much power, does not survive ...
-
-**[Next >](/developers/basic/entries)**
-
-
-
-
-
-
-
-
-
-
+The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_info` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created add the beginning of your [source-chain](/concepts/source-chain) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and comsumes to much power, does not survive ...
 
 
 So now it is up to you to finish this exercise. Add all the things we just explained to your code and finish by implementing the `say_greeting` function, building your zome and running the test.
@@ -232,19 +226,24 @@ You will in fact have created your very first decentralized, agent centric, boun
 <inline-notification type="tip" title="Exercise">
 
 1. Go to the `developer-exercises`.
-2. Enter the nix-shell: `nix-shell`  
+2. Enter the nix-shell: `nix-shell`.
    _you should run this in the folder containing the default.nix file_  
    _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
-3. Go to folder with the exercise `basic/0.entries`
-4. Inside `zome/exercise/src/lib.rs`
-   - Define a new struct for your entry: 'Greeting'
-   - Implement the function with `unimplemented!()`
+3. Go to folder with the exercise `basic/0.zome-functions/exercise`.
+4. Inside `zome/exercise/src/lib.rs`:
+   - Define a new struct for your entry: 'Greeting'.
+   - Implement the function with `unimplemented!()`.
 5. Compile your code: `./run_build.sh`.
-6. Run the test: `./run_tests.sh`
-7. Don't stop until the test runs green
+6. Run the test: `./run_tests.sh`.
+7. Don't stop until the test runs green.
 
 </inline-notification>
 
+<inline-notification type="tip" title="Relevant HDK documentation">
+<ul>
+<li><a href="[/concepts/dna-zomes](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html)">`create_entry`</a></li>
+</ul>
+</inline-notification>
 
 ### Errors
 
@@ -262,19 +261,13 @@ got an error for test 'say a greeting': {
 }
 ```
 
-- You forgot to compile the zome. Run `CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown` in the _developer-exercises/basic/0.entries_ folder.
+- You forgot to compile the zome. Run `CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown` in the _developer-exercises/basic/0.zome-functions/exercise_ folder.
 
 ```
 thread 'holochain-tokio-thread' panicked at 'TODO: DnaError
 (ZomeNotFound("Zome \'exercise\' not found"))',
 /build/source/crates/holochain/src/core/ribosome.rs:336:14
 ```
-
-## Solution
-
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/0.entries). 
-
-
 
 
 This is the error you see when you call a zome function that has no params
@@ -301,3 +294,5 @@ This is the error you see when you call a zome function that has more than one p
    <span style="color:#729FCF"><b>|</b></span>
    <span style="color:#729FCF"><b>= </b></span><b>note</b>: this error originates in a macro (in Nightly builds, run with -Z macro-backtrace for more info)
 </pre>
+
+**[Next >](/developers/basic/entries)**

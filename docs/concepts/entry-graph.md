@@ -21,9 +21,20 @@ customElements.define("call-zome-fns", CallZomeFns);
 customElements.define("zome-fns-results", ZomeFnsResults);
 ```
 
+**TLDR: you can think of data stored in the DHT as a graph database, with entries as nodes and links defining relationships between entries**.
+
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://developer.holochain.org/concepts/5_links_anchors/">Core Concepts: Links and anchors</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Graph_database">Graph database</a></li>
+</ul>
+</inline-notification>
+
+# Entry Graph
+
 How does shared data in the DHT look like?
 
-The easiest way you can think about how data is structured in a Holochain application is like a graph database.
+The easiest way you can think about how data is structured in a Holochain **application is like a graph database**.
 
 From all the actions taken from all the Source-Chains, each neighbor in the DHT aggregates them distributely to form an `Entry Graph`.
 
@@ -32,9 +43,7 @@ There are two main primitives that build this graph:
 - Entries: an entry is a node in the graph.
 - Links: a link connects two entries together. They are directed: they go from a base entry hash to a target entry hash.
 
-There are more modifiers and metadata that you can use to model state in your hApp, like updates or deletes...
-
-### Try it!
+## Try it!
 
 You can try creating some entries:
 

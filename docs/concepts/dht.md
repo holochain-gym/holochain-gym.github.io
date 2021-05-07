@@ -28,21 +28,32 @@ customElements.define("source-chain", SourceChain);
 customElements.define("dht-cells", DhtCells);
 ```
 
-The DHT is the main way in which agents share data in Holochain.
+**TLDR: in Holochain, every person runs their own node participating fully in a DHT network**.
 
-You can think of Holochain as the combination of a local and linear source-chain, and a public space to which you can publish data.
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://developer.holochain.org/concepts/4_dht">Core Concepts: DHT</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Distributed_hash_table">DHTs</a></li>
+</ul>
+</inline-notification>
+
+# Holochain's DHT
+
+A Holochain network is a DHT (Distributed Hash Table) of peers, playing together by the same rules. The DHT is the main way in which agents share data in Holochain. Every agent runs its own node: if you want to participate in the DHT, you have to run your own instance and join the network.
 
 Usually, DHTs are just key-value stores: you can create some piece of data, which gets hashed, and after that anyone can query its contents with that hash.
 
-One of the most important characteristics of the source-chain is that it's linear and ordered, representing all the actions an agent has taken in sequence.
+**Holochain's DHT is eventually consistent**: data takes some time to propagate throughout the network. This means that there is no guarantee about the order in which different pieces of data will arrive, or that you are seeing all the data that has been published.
 
-On the contrary, **the DHT is eventually consistent**: data takes some time to propagate throughout the network. This means that there is no guarantee about the order in which different pieces of data will arrive, or that you are seeing all the data that has been published.
+However, since the internal data structures are [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type), no matter the order of arrival of each piece of data, the end state will always be the same.
 
 Holochain security model based on validation rules enables attachment of metadata in the DHT: not only we can create entries, but we can add links to them, or update them. This way, we can build complex graph structures in our DHTs that allow for efficient navigation of the data.
 
-### Try it!
+## Try it!
 
 Here you have it! In this representation of the DHT, every node is a cell (an instance of the DNA running), and the connections between them indicate that they are neighbors which gossip regularly with each other.
+
+Every node belongs to a person running it. You can see the name of the person to which the node belongs.
 
 To try to visualize how DHT behaves:
 

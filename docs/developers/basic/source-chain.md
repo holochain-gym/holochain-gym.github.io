@@ -1,4 +1,4 @@
-# Concepts >> Querying your Source-Chain ||106
+# Basic >> Querying your Source Chain ||106
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -29,7 +29,7 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 
 You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/concepts/DHT).
 
-## Source chain
+## Source Chain
 
 The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what makes holochain unique. It's where some of the magic happens.
 

@@ -46,7 +46,7 @@ We need to code a small zome that has the following abilities:
 
 <inline-notification type="tip" title="Exercise">
 
-1. Go to the [source code for the exercise](https://github.com/holochain-gym/developer-exercises/tree/master/intermediate/2.call-remote).
+1. Go to the [source code for the exercise](2.intermediate/2.call-remote).
 2. Implement all `unimplemented!()` functions in the exercise.
 3. Run `npm test` to test your implementation.
 
@@ -57,4 +57,4 @@ We need to code a small zome that has the following abilities:
 
 ## Solution
 
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/intermediate/2.call-remote). 
+If you get stuck implementing this exercise, you can always look at its [solution](2.intermediate/2.call-remote). 

@@ -25,70 +25,48 @@ customElements.define("dht-cells", DhtCells);
 customElements.define("zome-fns-results", ZomeFnsResults);
 ```
 
-The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what makes holochain unique. It's where some of the magic happens.
+**TLDR: every agent maintains an append-only linear hash-chain which contains all the actions that agent has taken.**
 
-The [glossary](https://developer.holochain.org/docs/glossary/#source-chain) explains it the following way:
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://developer.holochain.org/concepts/3_source_chain/">Core Concepts: Source Chain</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Hash_chain">Hash chains</a></li>
+</ul>
+</inline-notification>
 
-> A hash chain of elements committed by an agent. Every agent has a separate source chain for each of the cells they’re running, which stores all of the actions they’ve taken in that cell.
+# Source Chain
 
-_Let's unpack this_
+We already know that in a Holochain DHT, every agent is running its own node. In addition to storing their appropriate shard of the DHT, **each agent is also maintaining a linear history of each action that that agent has taken**.
 
-When you download a compiled [DNA](https://developer.holochain.org/docs/glossary/#dna), a [WASM](https://developer.holochain.org/docs/glossary/#webassembly-wasm) binary, from somewhere or when you compile it locally and you run this DNA in a holochain [conductor](https://developer.holochain.org/docs/glossary/#conductor) that is running on your machine, then this DNA would be instantiated and linked to your [agent ID](https://developer.holochain.org/docs/glossary/#agent-id). That thing is a [cell](https://developer.holochain.org/docs/glossary/#cell).
+This is stored in the agent's node in the form of a hash-chain, with one element referencing the previous one. After that, that action gets published into the DHT, in which it will propagate and eventually made available for other agents to see.
 
-If you want to keep things simple in your head, you can just say "when you run a DNA". A DNA can consist of one or more zomes.
+## Try it!
 
-Now for the crucial part: "**stores all of the actions**". Every action, which in holochain speak means: every header and entry, that are produced by you, the agent, will become a part of the source chain, for as long as that agent has that DNA installed.
-Whenever a new action is committed (creating entries or links, updating...) a new element is added to that chain, with its header referencing the previous one.
-Essentially, the source-chain is a **hash-chain of all the actions that a particular agent has committed in this DNA**.
+Here you can see a source chain for an agent, in its initial state after installing the hApp. 
 
-Perhaps this does sounds like some weird form of magic.
-Head over to the simulation where you will see that, underneath, it is just headers and entries.
+Every piece of data added to the source chain is called an **element**. An element consists of:
 
-### Try it!
+- A header: contains the metadata of that action (author, timestamp, signature...).
+- Maybe an entry: some actions create entries in the DHT, so the element also contains the entry.
 
-Even before you add your first entries, 3 headers and 1 entry will be created automatically in your holochain app. These 4 elements, the [genesis events](https://developer.holochain.org/docs/glossary/#genesis-elements) are created by what you call the **subconscious** of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, _consciously_, triggered by you, the user.
+Let's try to add more elements to it:
 
-The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them. You can also call the "register_snacking" function to add new elements to the Source-Chain.
+
+1. Select the `create_entry` function in the "Call Zome Fns" block.
+2. Input some random content for the entry and click "Execute".
+   - See that the source chain has a new element. 
+   - Click on the new blue circle. 
+     - You can see in the "Header Contents" block the content of the header. 
+     - See the `prev_header` property in the header, referencing the previous header hash: this is what creates the chain of headers. 
+   - Click on the new grey rounded rectangle. 
+     - You can see in the "Entry Contents" block the content of the entry.
+3. Play around with all the actions available, add new elements and inspect their contents.
 
 ```js story
-const simulatedDna0 = {
-  zomes: [
-    {
-      name: "snacking_journal",
-      entry_defs: [
-        {
-          id: "snacking_log",
-          visibility: "Public",
-        },
-      ],
-      validation_functions: {},
-      zome_functions: {
-        register_snacking: {
-          call: ({ create_entry, hash_entry }) => async ({ content }) => {
-            return create_entry({ content, entry_def_id: "snacking_log" });
-          },
-          arguments: [{ name: "content", type: "String" }],
-        },
-      },
-    },
-  ],
-};
-
-const simulatedHapp0 = {
-  name: "simulated-app",
-  description: "",
-  slots: {
-    default: {
-      dna: simulatedDna0,
-      deferred: false,
-    },
-  },
-};
 export const Sim0 = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${10}
-      .simulatedHapp=${simulatedHapp0}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
@@ -114,14 +92,34 @@ export const Sim0 = () => {
 };
 ```
 
-How does the Source-Chain combine with the DHT?
+## Source Chain + DHT
+
+So, how does the source chain combine with the DHT?
+
+You can think of Holochain as the combination of a local and linear source chain, and a public DHT space to which you can publish data.
+
+One of the most important characteristics of the source chain is that it's linear and ordered, representing all the actions an agent has taken in sequence.
+
+All the events that happen linearly in each of these hash chains are the ones that get aggregated and modify the public DHT data, in a CRDT manner.
+
+### Try it!
+
+Here you have an interactive representation of the DHT on the right side, and the source-chain of the selected agent on the left side.
+
+1. Select one of the agents in the "DHT Cells" block.
+   - See that its source-chain already contains the initial 3 elements chained together.
+2. Create an entry with arbitrary content.
+   - See that the source chain has a new element added to it: this is the entry we just created.
+3. Switch to another agent by selecting it in the "DHT Cells" block.
+   - See that the source chain for that agent has still only the 3 first elements.
+
+You can switch through different agents and do different actions and see how holochain behaves.
 
 ```js story
 export const Sim1 = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${10}
-      .simulatedHapp=${simulatedHapp0}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 

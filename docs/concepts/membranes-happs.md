@@ -25,13 +25,22 @@ customElements.define("conductor-admin", ConductorAdmin);
 customElements.define("dht-cells", DhtCells);
 ```
 
+**TLDR: one special case for validation rules are membrane rules: they dictate who is allowed to enter one network and who isn't. Also, Dnas can be composed together into hApps.**
+
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://developer.holochain.org/concepts/2_application_architecture/">Core Concepts: Application Architecture</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Semipermeable_membrane">Semipermeable membrane</a></li>
+</ul>
+</inline-notification>
+
 ## Membranes
 
 We have already seen that each `Dna` creates its own network, and that can leave out agents based on their actions inside the network.
 
-Using the same mechanism of validation rules, we can define a special kind of validation rules in our `Dna`: validation for an agent trying to join the network.
+Using the same mechanism of validation rules, we can define a special kind of validation rules in our `Dna`: **validation for an agent trying to join the network**.
 
-When the agents install the `Dna`, they can pass a `MembraneProof` in the process: a piece of data that is going to be used to validate whether this agent is valid or not in this network.
+When the agents install the `Dna`, they can pass a **`MembraneProof` in the process: a piece of data that is going to be used to validate whether this agent is valid or not in this network**.
 
 This allows Holochain to have private and decentralized networks, with a lot of flexibility around the mechanisms by which one agent is allowed into a network. For example, a membrane proof could be a verifyable claim from some authority, a ticket for an event, or the signature of one agent that's already inside the network.
 
@@ -43,9 +52,9 @@ And what about hApps? They are really important, because at the end of the day t
 
 When you define a hApp, you are defining a collection of `Dnas` that should be installed when that hApp is installed. Not only you can define new `Dnas` that the conductor didn't know about, you also can rely on existing `Dnas` being already present and running.
 
-One of the most important mechanisms that we have available when designing hApps is **cloning `Dnas`**. When you clone a `Dna`, you are using the exact same source-code for that `Dna`, but overriding some configuration (its `uid` field or its `properties` field). These configurations change the hash for that `Dna`, so you are effectively creating a new network with the same functionality than the initial one, but with different configuration, and as a result different rules.
+One of the most important mechanisms that we have available when designing hApps is **cloning `Dnas`**. When you clone a `Dna`, you are using the exact same source code for that `Dna`, but overriding some configuration (its `uid` field or its `properties` field). These configurations change the hash for that `Dna`, so you are effectively creating a new network with the same functionality than the initial one, but with different configuration, and as a result different rules.
 
-In this way, a hApp can define complex interactions between agents: you can have one `Dna` for every functionality for your app, or have different communities 
+In this way, a hApp can define complex interactions between agents: you can have one `Dna` for every functionality for your app, or have different communities
 
 ## Try it!
 
@@ -72,7 +81,7 @@ We are going to try to create 2 different private group chats with this hApp:
    - You can see the 2 `Dnas` that are running in this node: the "lobby" one, and the "privateChat" one.
 8. Select the lobby `Dna`.
 9. Select another agent, and confirm that they only one cell running in their conductor.
-10. Clone the "privateChat" `Dna` with exactly the same `uid` as in step 4. 
+10. Clone the "privateChat" `Dna` with exactly the same `uid` as in step 4.
     - You should now see that the newly created network has two agents now: we have joined the first agent that cloned the `Dna`!
 
 Repeat the process with other agents and with other `uid` to create multiple networks with multiple private chats. Have fun!

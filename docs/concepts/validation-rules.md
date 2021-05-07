@@ -28,6 +28,17 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 customElements.define("run-steps", RunSteps);
 ```
 
+**TLDR: the most important part of a DNA is the Validation Rules (rules of the game), which determine which actions are valid and which aren't. If someone tries to break them, an immune response is triggered.**
+
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://developer.holochain.org/concepts/7_validation/">Core Concepts: Validation Rules</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Deterministic_algorithm">Deterministic algorithms</a></li>
+</ul>
+</inline-notification>
+
+# Validation Rules
+
 `Validation Rules` are probably the most important mechanism in holochain. They are encoded in the `Dna`, and define **what is valid and what is not valid in the context of it**. 
 
 You can think of it this way: if we all agree that we are playing soccer, then when someone touches the ball with your hand, we all know that that's invalid in the context of this game. But, if we are playing basketball, that's obviously allowed. 
@@ -42,7 +53,7 @@ But! What happens if someone breaks the rules? How does Holochain keep data inte
 
 Here you can see a network of 10 agents with 1 malicious node (marked with 😈). 
 
-In this `Dna` there is one validation rule: anyone can create posts, but only the author can update their own posts.
+In this `Dna` there is only one validation rule: **anyone can create posts, but only the author can update their own posts**.
 
 In this scenario our malicious agent will try to update a post created by another agent, which is not allowed. Let's see what happens when you click "Run".
 
