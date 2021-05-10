@@ -1,4 +1,4 @@
-# Basic >> Hashes ||103
+# Basic >> Playing with Hashes ||103
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -20,6 +20,12 @@ customElements.define("entry-contents", EntryContents);
 customElements.define("zome-fns-results", ZomeFnsResults);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
+
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Hash_function">Hash function</a></li>
+</ul>
+</inline-notification>
 
 ## Recap
 
@@ -351,5 +357,5 @@ let book = await alice_common.cells[0].call(
 For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15
 or
-your favorite search engine
+your favorite search engine.
 

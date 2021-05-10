@@ -1,4 +1,4 @@
-# Basic >> Getting Elements ||104
+# Basic >> Getting Elements ||106
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -25,6 +25,12 @@ customElements.define("source-chain", SourceChain);
 customElements.define("dht-cells", DhtCells);
 customElements.define("zome-fns-results", ZomeFnsResults);
 ```
+
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/concepts/source-chain/">Gym: Source Chain</a></li>
+</ul>
+</inline-notification>
 
 `Elements` are the combination of a header plus their accompanying entry, if they have one. As we learned in the `Headers` exercise, only two types of header really add an entry: `Create` and `Update`. So, examples of elements would be: the `Create` header plus it's entry, or a `CreateLink` header by itself. `Elements` are important because you will encounter them a lot while developing hApps.
 
@@ -220,3 +226,81 @@ export const Simple2 = () => {
   `;
 };
 ```
+
+## Exercise
+
+_Ok, it is time to start stretching._
+
+It is up to you to implement the `register_snacking`, `get_by_entry_hash` and `get_by_header_hash` functions.
+The function `register_snacking` requires some extra attention. You need to return both the header hash and the entry hash. We need this so we have the right hashes to test `get_by_entry_hash` and `get_by_header_hash`. We added this struct for you to use to return both hashes to the calling code in the test.
+
+```Rust
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct HeaderAndEntryHash {
+    entry_hash: EntryHashB64,
+    header_hash: HeaderHashB64
+}
+```
+
+A few more tips:
+
+- Hashes are basic arrays with bytes. An easier way to send hashes back and forth between your UI, or, in our case, tests, and the zome code is to use encode the array as a Base64 string. You can use `holo_hash::HeaderHashB64` & `holo_hash::EntryHashB64`.
+- Returning stuff to the UI or tests is always done inside [ExternResult](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html)
+
+- [`get`](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) returns a [ExternResult<Option<Element>>](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html). So if you call [`get`](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the `Element` inside your function somehow, you need to unwrap the `Option`. And in Rust that means you need to handle the error. For instance like this:
+
+```
+  .ok_or(WasmError::Guest(String::from("Could not find SnackingLog for entry hash")))?;
+```
+
+Why **WasmError::Guest**?
+
+The Rust code in our zome is compiled to a WASM binary. The holochain conductor runs this binary in a sort of virtual machine. The conductor is the host and your zome is the guest. That is why you need to handle possible errors in this way.
+
+Look at the tests or in previous exercises if you need some inspiration. And if you really get lost, you can always take a look at the solution branch in git.
+
+## Experiment
+
+After you are done implementing the 3 functions, you can, by way of experiment, change the tests so that you use a header hash in the `get_by_entry_hash` function instead of a entry hash and see what happens.
+
+_Spoiler_  
+Although the HDK uses the same function to get an element with an entry based on an entry hash or a header hash: [get](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) it won't work if you try to change the test. But it is interesting to see how it fails.
+
+## Extra
+
+You have to tackle one extra challenge which we didn't cover in the simulation. `get_by_entry_hash` and `get_by_header_hash` are good ways to retrieve a snacking log. But what happens if you know the content of the entry but not the header hash?
+Implement a function `get_all_headers_from_content` that returns the array of headers that have committed the entry with the given contents. The last test in the exercise passes in "april 2: lemon pie" as a String and you need to return the all the headers that have committed that same String. Hint: use `get_details`, and return an empty vector if `Details` is `None`.
+
+<inline-notification type="tip" title="Exercise">
+
+1. Add the right imports.
+2. Check if you are still inside the nix-shell.
+   _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
+3. Add a struct `SnackingLog`.
+4. Implement `register_snacking`, `get_by_entry_hash` and `get_by_header_hash`.
+5. Implement `get_all_headers_from_content`.
+6. Compile your code: `./run_build.sh`.
+7. Run the test: `./run_tests.sh`.
+8. Don't stop until the tests run green.
+
+</inline-notification>
+
+<inline-notification type="tip" title="Relevant HDK documentation">
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/enum.Header.html">`Header`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get_details.html">`get_details`</a></li>
+</ul>
+</inline-notification>
+
+
+# Errors
+
+If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
+
+For Rust specific questions:
+https://forum.holochain.org/c/technical/rust/15
+or
+your favorite search engine.

@@ -8,14 +8,16 @@ This is the right place to train yourself to become a holochain developer.
 In our gym you will find interactive *simulations*, working example *code* and hands-on *exercises*.
 On the left, you have a list of exercises, ordered from easy to hard. 
 
-**First stop: Requirements**
+**First stop: Concepts**
+
+Work through the simulations in the [Concepts](/concepts) section, so you understand the main ideas underpinning every holochain app. 
+
+**Next up: Requirements**
 
 * Make sure your [setup](/developers/requirements/setup) is correct. 
 * Take the [anatomy](/developers/requirements/anatomy) lesson to understand the file and folder structure of an exercise.
-
-**Next up: Concepts**
-
-Work through the simulations and read through the code examples in the [Concepts](/developers/concepts) section, so you understand the main ideas underpinning every holochain app. It will give you time to get used to the Rust syntax and see some [HDK](https://developer.holochain.org/docs/glossary/#holochain-development-kit-hdk) functions in action.
+ 
+This will give you time to get used to the Rust syntax and see some [HDK](https://developer.holochain.org/docs/glossary/#holochain-development-kit-hdk) functions in action.
 
 **Finally**
 

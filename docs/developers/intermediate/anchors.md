@@ -1,4 +1,4 @@
-# Basic >> Attaching Links ||104
+# Intermediate >> Anchors ||201
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";

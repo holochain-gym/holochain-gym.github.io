@@ -1,4 +1,4 @@
-# Basic >> Querying your Source Chain ||106
+# Basic >> Querying the Source Chain ||105
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -25,9 +25,148 @@ customElements.define("dht-cells", DhtCells);
 customElements.define("zome-fns-results", ZomeFnsResults);
 ```
 
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/concepts/dna-zomes/">Gym: Dnas and Zomes</a></li>
+<li><a href="/concepts/source-chain/">Gym: Source Chain</a></li>
+</ul>
+</inline-notification>
+
 ## Recap
 
 You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/concepts/DHT).
+
+## Headers
+
+Headers are a delightful topic. Knowing how to work with headers will give you great flexibility! And what is strength without flexibility...  
+In one of the previous exercises you already saw some header stuff passing by. So let's take a look at them again.
+
+In the simulation below we already added one entry.
+
+First click on the grey rounded square with the text `snacking_log`. This should look familiar. It is just an entry. Then click on the top most blue circle with the text 'Create' that points directly to the entry. And look at what you see on the righthand side in the Header Contents panel.
+
+```js story
+const simulatedDna0 = {
+  zomes: [
+    {
+      name: "snacking_journal",
+      entry_defs: [
+        {
+          id: "snacking_log",
+          visibility: "Public",
+        },
+      ],
+      validation_functions: {},
+      zome_functions: {
+        register_snacking: {
+          call: ({ create_entry, hash_entry }) => async ({ content }) => {
+            return create_entry({ content, entry_def_id: "snacking_log" });
+          },
+          arguments: [{ name: "content", type: "String" }],
+        },
+      },
+    },
+  ],
+};
+
+const simulatedHapp = {
+  name: "simulated-app",
+  description: "",
+  slots: {
+    default: {
+      dna: simulatedDna0,
+      deferred: false,
+    },
+  },
+};
+export const Sim0 = () => {
+  return html`
+    <holochain-playground-container
+      .numberOfSimulatedConductors=${1}
+      .simulatedHapp=${simulatedHapp}
+      @ready=${(e) => {
+        const conductor = e.detail.conductors[0];
+
+        const cell = conductor.getAllCells()[0];
+
+        e.target.activeAgentPubKey = cell.cellId[1];
+
+        conductor.callZomeFn({
+          cellId: cell.cellId,
+          zome: "snacking_journal",
+          fnName: "register_snacking",
+          payload: { content: "april 1: gummi bears" },
+          cap: null,
+        });
+      }}
+    >
+      <div
+        style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
+      >
+        <source-chain style="flex: 1; height: 720px; margin-right: 20px;">
+        </source-chain>
+        <entry-contents style="flex-basis: 550px; height: 720px;">
+        </entry-contents>
+      </div>
+    </holochain-playground-container>
+  `;
+};
+```
+
+When you click on the blue square, you will see a blob of json data, similar to the one you see below. The response you get is something that is called a **header** in Holochain language.
+
+```json
+{
+  "header": {
+    "content": {
+      "author": "uhCAk4EP68467-xI_YMR4wO6jYjr3spY5Dvw165WF_aD2Ng8",
+      "header_seq": 3,
+      "prev_header": "uhCkkK6ag489p016T64YVrN2SyjdM6bY41Kt4RNEM3AKY7_w",
+      "timestamp": [
+        1616571211,
+        293000
+      ],
+      "entry_hash": "uhCEkEPwEe57YM0PFD1Iy3m0eDD1iHPOcesa-ktpjULuImfE",
+      "entry_type": {
+        "App": {
+          "id": 0,
+          "zome_id": 0,
+          "visibility": "Public"
+        }
+      },
+      "type": "Create"
+    },
+    "hash": "uhCkkf9mOVrLftiyHHnXSpZ49l_JyMhi0Qw-SUosIMMBfmVo"
+  },
+  "signature":
+}
+```
+
+An entry does not tell you who created the entry, when it was created or any other useful information. This is where the header comes in. You could think of an header as a kind of metadata.
+
+Let's take a look what we can decypher from the example above.
+
+- **author**: the public key of the agent (cell) that signed the entry. This is a crucial component to prove to others you are really the author of this entry. Luckily it is all added automatically.
+- **timestamp**: timestamp of when this entry was committed. It will state the time for when the entry was created. This the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is a combination of standard Linux Epoch Time e.g._1616571211_ combined with elapsed nanoseconds, e.g._293000_. While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.
+- **header_seq** & **prev_header** are a better way to determine order. We will talk about them in another exercise.
+- **type** indicates what type of header this is. There are a number of header types:
+  - Dna
+  - AgentValidationPkg
+  - InitZomesComplete
+  - CreateLink
+  - DeleteLink
+  - Create
+  - Update
+  - Delete
+
+In this exercise you will only have to deal with `Create`. All headers have the above mentioned fields, with one small exception of the Dna header, which doesn't have a prev_header, for the very simple reason that it is always the first header to be created in a holochain app.
+
+And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these fields tell something about entries. Because entries a very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header.
+
+- **entry_hash** is the hash of the entry. It is exactly the same hash you worked with in the previous exercise. And since you can get the entry based on its hash, it is enough to store the entry hash inside the header. This makes a header a lightweight data structure. Whether your entry contains a 25000 page document or just a single "Hello world" string, the size of the header will be roughly the same size. That is why entries and headers make such a good team: _**entries are simple, headers are light**_.
+- **entry_type**: contains some additional information on about the entry itself, like the id of the hApp, the id of the zome, it's visibility. We touch on this in a future exercise.
+
+- **hash** And last but not least a header has is own hash. Just like entry, the hash of the header is completely determined by its content. Change one letter in the header and the headerhash will be completely different.
 
 ## Source Chain
 
@@ -57,44 +196,11 @@ Even before you add your first entries, like you did in the [entries exercise](/
 The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them.
 
 ```js story
-const simulatedDna0 = {
-  zomes: [
-    {
-      name: "snacking_journal",
-      entry_defs: [
-        {
-          id: "snacking_log",
-          visibility: "Public",
-        },
-      ],
-      validation_functions: {},
-      zome_functions: {
-        register_snacking: {
-          call: ({ create_entry, hash_entry }) => async ({ content }) => {
-            return create_entry({ content, entry_def_id: "snacking_log" });
-          },
-          arguments: [{ name: "content", type: "String" }],
-        },
-      },
-    },
-  ],
-};
-
-const simulatedHapp0 = {
-  name: "simulated-app",
-  description: "",
-  slots: {
-    default: {
-      dna: simulatedDna0,
-      deferred: false,
-    },
-  },
-};
-export const Sim0 = () => {
+export const Sim1 = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
-      .simulatedHapp=${simulatedHapp0}
+      .simulatedHapp=${simulatedHapp}
       @ready=${(e) => {
         const conductor = e.detail.conductors[0];
 
@@ -134,8 +240,8 @@ In the [headers exercise](/basic/headers) you built the zome for a simple snacki
 
 - Click on all the entries (grey rounded squares) to see what you snacked recently
 - Click on the headers (blue circles) and look at `hash` in the header and at the `prev_header` value. Notice how they form a **flawless chain**, all the way down to the DNA header.
-- Select "register*snacking" in the CallZomeFns below, type `april 3: ice cream` in the input and click \_EXECUTE*. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is **append only**. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged `april 3: ice cream` after you logged `april 5: marsmallows`.
-- Select "say*greeting" in the CallZomeFns below, type `Hello world` in the input and click \_EXECUTE*. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can **mix entries of different types**, the headers will always appear in your source chain in the same order as they were created.
+- Select "register_snacking" in the CallZomeFns below, type `april 3: ice cream` in the input and click \_EXECUTE*. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is **append only**. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged `april 3: ice cream` after you logged `april 5: marsmallows`.
+- Select "say_greeting" in the CallZomeFns below, type `Hello world` in the input and click \_EXECUTE*. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can **mix entries of different types**, the headers will always appear in your source chain in the same order as they were created.
 
 ```js story
 const simulatedDna1 = {
@@ -176,14 +282,12 @@ const simulatedHapp1 = {
   description: "",
   slots: {
     default: {
-      dna: {
-        zomes: [simulatedDna1],
-      },
+      dna: simulatedDna1,
       deferred: false,
     },
   },
 };
-export const Sim1 = () => {
+export const Sim2 = () => {
   return html`
     <holochain-playground-container
       .numberOfSimulatedConductors=${1}
@@ -264,39 +368,35 @@ export const Sim1 = () => {
 
 This time we will do some lightweight exercises, just to get a feel for the chain part of our source chain. You need to implement 3 functions.
 
-- `is_previous_header_hash` if you give your zome 2 hashes, it will answer if the second header hash is the previous, a direct parent, of the first header hash.
-- `happened_before` does the same as the above function, but it is not limited to the direct parent. I will determine is the second hash is an ancestor. So it is not limited to the direct parent.
-- `get_header_sequence_number` the header contains a field header_seq, which contains the sequence number of the header in the chain. The very first header, the DNA header, does not have this field. You could say it is implicitly zero. The next header starts counting at one. Imagine your UI is loading all the headers to show. In that case it can come in handy if you have an idea of where in the chain you are.
+- `query_all_elements` returns the full array of elements contained in the source chain of the agent.
+- `query_snackings` queries the source chain and returns only the elements that contain a `Snacking` entry. WARNING! This query should also [return the entries themselves](https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html#method.include_entries).
+- `query_by_time` queries the source chain and filters it by a time range of when the element was committed.
 
 <inline-notification type="tip" title="Exercise">
 
 1. Check if you are still inside the nix-shell  
    _Your terminal should look similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
-2. Implement `is_previous_header_hash`, `happened_before`, `get_header_sequence_number`
+2. Implement `query_all_elements`, `query_snackings`, `query_by_time`
 3. Compile your code: `./run_build.sh`
 4. Run the test: `./run_tests.sh`
 5. Don't stop until the tests run green
 
 </inline-notification>
 
-### Relevant HDK documentation:
-
-- [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
-- [hash_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html).
-- [get](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html)
-- [HeaderHash](https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html)
+<inline-notification type="tip" title="Relevant HDK documentation">
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/chain/fn.query.html">`query`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html">`ChainQueryFilter`</a></li>
+</ul>
+</inline-notification>
 
 # Errors
 
 If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
 
-_Nothing added for now_
-
 For Rust specific questions:
 https://forum.holochain.org/c/technical/rust/15
 or
-your favorite search engine
-
-## Solution
-
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/4.source-chain).
+your favorite search engine.

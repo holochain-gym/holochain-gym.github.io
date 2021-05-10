@@ -267,6 +267,8 @@ You will in fact have created your very first decentralized, agent centric, boun
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
 <li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_def.html">`entry_def`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_defs.html">`entry_defs`</a></li>
 </ul>
 </inline-notification>
 

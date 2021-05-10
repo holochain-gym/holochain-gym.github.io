@@ -31,7 +31,7 @@ In this chapter you will learn
 * how to get data in and out of your zome
 * about some commons errors you encounter while coding
 
-## Zome functions
+## Zome Functions
 Before you talk about a [zome function](https://developer.holochain.org/docs/glossary/#zome-function) you need to understand what a [zome](https://developer.holochain.org/docs/glossary/#zome) is. A zome is a "basic unit of modularity inside a DNA". You can think of it as a package inside your codebase. Let's take a look. 
 
 Open the zomes folder `developers/1.basic/0.zome-functions/exercise/zomes` in the developers-exercise git repo you [cloned](/developers/requirements/setup/#clone-repo).
