@@ -240,8 +240,9 @@ In the [headers exercise](/basic/headers) you built the zome for a simple snacki
 
 - Click on all the entries (grey rounded squares) to see what you snacked recently
 - Click on the headers (blue circles) and look at `hash` in the header and at the `prev_header` value. Notice how they form a **flawless chain**, all the way down to the DNA header.
-- Select "register_snacking" in the CallZomeFns below, type `april 3: ice cream` in the input and click \_EXECUTE*. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is **append only**. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged `april 3: ice cream` after you logged `april 5: marsmallows`.
-- Select "say_greeting" in the CallZomeFns below, type `Hello world` in the input and click \_EXECUTE*. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can **mix entries of different types**, the headers will always appear in your source chain in the same order as they were created.
+- Select "register_snacking" in the CallZomeFns below, type `april 3: ice cream` in the input and click \_EXECUTE\*. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is **append only**. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged `april 3: ice cream` after you logged `april 5: marsmallows`.
+- Select "say_greeting" in the CallZomeFns below, type `Hello world` in the input and click \_EXECUTE\*. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can **mix entries of different types**, the headers will always appear in your source chain in the same order as they were created.
+- Select "query_all" in the CallZomeFns, and execute it. See that the result for the function is the list of all the elements that are committed in your source chain.
 
 ```js story
 const simulatedDna1 = {
@@ -271,6 +272,12 @@ const simulatedDna1 = {
             return create_entry({ content, entry_def_id: "greeting_text" });
           },
           arguments: [{ name: "content", type: "String" }],
+        },
+        query_all: {
+          call: ({ query }) => async () => {
+            return query({});
+          },
+          arguments: [],
         },
       },
     },
