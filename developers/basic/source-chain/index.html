@@ -54,7 +54,7 @@
 <link rel="preload" href="../../../0fafd573.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../45949a62.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../9cc24ffb.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../70dd2230.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../393087b4.js" as="script" crossorigin="anonymous">
 </head>
@@ -375,6 +375,7 @@ Head over to the simulation where you will see that, underneath, it is just head
 <li>Click on the headers (blue circles) and look at <code>hash</code> in the header and at the <code>prev_header</code> value. Notice how they form a <strong>flawless chain</strong>, all the way down to the DNA header.</li>
 <li>Select "register_snacking" in the CallZomeFns below, type <code>april 3: ice cream</code> in the input and click _EXECUTE*. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is <strong>append only</strong>. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged <code>april 3: ice cream</code> after you logged <code>april 5: marsmallows</code>.</li>
 <li>Select "say_greeting" in the CallZomeFns below, type <code>Hello world</code> in the input and click _EXECUTE*. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can <strong>mix entries of different types</strong>, the headers will always appear in your source chain in the same order as they were created.</li>
+<li>Select "query_all" in the CallZomeFns, and execute it. See that the result for the function is the list of all the elements that are committed in your source chain.</li>
 </ul>
 <mdjs-story mdjs-story-name="Sim2"></mdjs-story>
 <h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
@@ -569,6 +570,6 @@ serviceWorkerUpdate();
     }
   </script>
 <script type="module" src="../../../41f79f1e.js"></script>
-<script type="module" src="../../../45949a62.js" mdjs-setup=""></script>
+<script type="module" src="../../../9cc24ffb.js" mdjs-setup=""></script>
 
 </body></html>
