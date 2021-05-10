@@ -8,8 +8,8 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basic: Hashes: Holochain Gym</title>
-<meta property="og:title" content="Basic: Hashes: Holochain Gym">
+<title>Basic: Playing with Hashes: Holochain Gym</title>
+<meta property="og:title" content="Basic: Playing with Hashes: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
 <link rel="canonical" href="/developers/basic/hashes/">
@@ -34,7 +34,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../6fb23e13.png">
+<meta property="og:image" content="../../../649ce81c.png">
 <meta property="og:url" content="/developers/basic/hashes/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -172,7 +172,7 @@
 
 </li>
 <li class="menu-item current">
-<a href="/developers/basic/hashes/">Hashes</a>
+<a href="/developers/basic/hashes/">Playing with Hashes</a>
 <ul>
   <li class="menu-item anchor">
     <a href="#recap" class="anchor">Recap</a>
@@ -196,26 +196,26 @@
 
 </li>
 <li class="menu-item">
+<a href="/developers/basic/links/">Attaching Links</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/source-chain/">Querying the Source Chain</a>
+
+</li>
+<li class="menu-item">
 <a href="/developers/basic/elements/">Getting Elements</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/links/">Links</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/source-chain/">Querying your Source Chain</a>
 
 </li></ul>
 </li>
 <li class="menu-item">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item">
-<a href="/developers/intermediate/query/">Query</a>
+<a href="/developers/intermediate/anchors/">Anchors</a>
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/update/">Update</a>
+<a href="/developers/intermediate/paths/">Paths</a>
 
 </li>
 <li class="menu-item">
@@ -223,7 +223,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/paths/">Paths</a>
+<a href="/developers/intermediate/update/">Update</a>
 
 </li>
 <li class="menu-item">
@@ -261,7 +261,12 @@
       
         <main class="markdown-body">
   
-    <h1 id="basic-hashes"><a class="anchor" href="#basic-hashes"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Hashes</h1>
+    <h1 id="basic-playing-with-hashes"><a class="anchor" href="#basic-playing-with-hashes"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Playing with Hashes</h1>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Hash_function">Hash function</a></li>
+</ul>
+</inline-notification>
 <h2 id="recap"><a class="anchor" href="#recap"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Recap</h2>
 <p>Welcome back to our Holochain gym. In the previous exercise you learned how to create a entry in a zome. You compiled your zome to a dna, you asked the holochain conductor to turn that dna in a cell, you tested your zome code in that cell through a test script. And you learned that you needed the following things in your code:</p>
 <ul>
@@ -403,7 +408,7 @@ let book = await alice_common.cells[0].call(
 <p>For Rust specific questions:
 <a href="https://forum.holochain.org/c/technical/rust/15">https://forum.holochain.org/c/technical/rust/15</a>
 or
-your favorite search engine</p>
+your favorite search engine.</p>
         
       
 

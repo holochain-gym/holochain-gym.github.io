@@ -173,7 +173,15 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/basic/hashes/">Hashes</a>
+<a href="/developers/basic/hashes/">Playing with Hashes</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/links/">Attaching Links</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/source-chain/">Querying the Source Chain</a>
 
 </li>
 <li class="menu-item current">
@@ -185,26 +193,27 @@
   <li class="menu-item anchor">
     <a href="#getting-elements" class="anchor">Getting elements</a>
   </li>
+  <li class="menu-item anchor">
+    <a href="#exercise" class="anchor">Exercise</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#experiment" class="anchor">Experiment</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#extra" class="anchor">Extra</a>
+  </li>
 </ul>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/links/">Links</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/source-chain/">Querying your Source Chain</a>
 
 </li></ul>
 </li>
 <li class="menu-item">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item">
-<a href="/developers/intermediate/query/">Query</a>
+<a href="/developers/intermediate/anchors/">Anchors</a>
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/update/">Update</a>
+<a href="/developers/intermediate/paths/">Paths</a>
 
 </li>
 <li class="menu-item">
@@ -212,7 +221,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/paths/">Paths</a>
+<a href="/developers/intermediate/update/">Update</a>
 
 </li>
 <li class="menu-item">
@@ -251,6 +260,11 @@
         <main class="markdown-body">
   
     <h1 id="basic-getting-elements"><a class="anchor" href="#basic-getting-elements"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Getting Elements</h1>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/concepts/source-chain/">Gym: Source Chain</a></li>
+</ul>
+</inline-notification>
 <p><code>Elements</code> are the combination of a header plus their accompanying entry, if they have one. As we learned in the <code>Headers</code> exercise, only two types of header really add an entry: <code>Create</code> and <code>Update</code>. So, examples of elements would be: the <code>Create</code> header plus it's entry, or a <code>CreateLink</code> header by itself. <code>Elements</code> are important because you will encounter them a lot while developing hApps.</p>
 <h2 id="demo"><a class="anchor" href="#demo"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Demo</h2>
 <p>But first, with all the concepts we already have in our belt, let's try to integrate them all together to form a clear picture of the basic things that are happening in holochain when adding elements.</p>
@@ -307,6 +321,68 @@
 </li>
 </ol>
 <mdjs-story mdjs-story-name="Simple2"></mdjs-story>
+<h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
+<p><em>Ok, it is time to start stretching.</em></p>
+<p>It is up to you to implement the <code>register_snacking</code>, <code>get_by_entry_hash</code> and <code>get_by_header_hash</code> functions.
+The function <code>register_snacking</code> requires some extra attention. You need to return both the header hash and the entry hash. We need this so we have the right hashes to test <code>get_by_entry_hash</code> and <code>get_by_header_hash</code>. We added this struct for you to use to return both hashes to the calling code in the test.</p>
+<pre class="language-rust"><code class="language-Rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> HeaderAndEntryHash <span class="token punctuation">{</span>
+    entry_hash<span class="token punctuation">:</span> EntryHashB64<span class="token punctuation">,</span>
+    header_hash<span class="token punctuation">:</span> HeaderHashB64
+<span class="token punctuation">}</span>
+</code></pre>
+<p>A few more tips:</p>
+<ul>
+<li>
+<p>Hashes are basic arrays with bytes. An easier way to send hashes back and forth between your UI, or, in our case, tests, and the zome code is to use encode the array as a Base64 string. You can use <code>holo_hash::HeaderHashB64</code> &amp; <code>holo_hash::EntryHashB64</code>.</p>
+</li>
+<li>
+<p>Returning stuff to the UI or tests is always done inside <a href="https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html">ExternResult</a></p>
+</li>
+<li>
+<p><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code></a> returns a <a href="https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html">ExternResult&lt;Option<element>&gt;</element></a>. So if you call <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code></a> at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the <code>Element</code> inside your function somehow, you need to unwrap the <code>Option</code>. And in Rust that means you need to handle the error. For instance like this:</p>
+</li>
+</ul>
+<pre><code>  .ok_or(WasmError::Guest(String::from("Could not find SnackingLog for entry hash")))?;
+</code></pre>
+<p>Why <strong>WasmError::Guest</strong>?</p>
+<p>The Rust code in our zome is compiled to a WASM binary. The holochain conductor runs this binary in a sort of virtual machine. The conductor is the host and your zome is the guest. That is why you need to handle possible errors in this way.</p>
+<p>Look at the tests or in previous exercises if you need some inspiration. And if you really get lost, you can always take a look at the solution branch in git.</p>
+<h2 id="experiment"><a class="anchor" href="#experiment"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Experiment</h2>
+<p>After you are done implementing the 3 functions, you can, by way of experiment, change the tests so that you use a header hash in the <code>get_by_entry_hash</code> function instead of a entry hash and see what happens.</p>
+<p><em>Spoiler</em><br>
+Although the HDK uses the same function to get an element with an entry based on an entry hash or a header hash: <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html">get</a> it won't work if you try to change the test. But it is interesting to see how it fails.</p>
+<h2 id="extra"><a class="anchor" href="#extra"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Extra</h2>
+<p>You have to tackle one extra challenge which we didn't cover in the simulation. <code>get_by_entry_hash</code> and <code>get_by_header_hash</code> are good ways to retrieve a snacking log. But what happens if you know the content of the entry but not the header hash?
+Implement a function <code>get_all_headers_from_content</code> that returns the array of headers that have committed the entry with the given contents. The last test in the exercise passes in "april 2: lemon pie" as a String and you need to return the all the headers that have committed that same String. Hint: use <code>get_details</code>, and return an empty vector if <code>Details</code> is <code>None</code>.</p>
+<inline-notification type="tip" title="Exercise">
+<ol>
+<li>Add the right imports.</li>
+<li>Check if you are still inside the nix-shell.
+<em>Your terminal should similar to this</em> <code>[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$</code></li>
+<li>Add a struct <code>SnackingLog</code>.</li>
+<li>Implement <code>register_snacking</code>, <code>get_by_entry_hash</code> and <code>get_by_header_hash</code>.</li>
+<li>Implement <code>get_all_headers_from_content</code>.</li>
+<li>Compile your code: <code>./run_build.sh</code>.</li>
+<li>Run the test: <code>./run_tests.sh</code>.</li>
+<li>Don't stop until the tests run green.</li>
+</ol>
+</inline-notification>
+<inline-notification type="tip" title="Relevant HDK documentation">
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/enum.Header.html">`Header`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get_details.html">`get_details`</a></li>
+</ul>
+</inline-notification>
+<h1 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h1>
+<p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
+<p>For Rust specific questions:
+<a href="https://forum.holochain.org/c/technical/rust/15">https://forum.holochain.org/c/technical/rust/15</a>
+or
+your favorite search engine.</p>
         
       
 

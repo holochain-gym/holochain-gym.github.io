@@ -8,8 +8,8 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basic: Querying your Source Chain: Holochain Gym</title>
-<meta property="og:title" content="Basic: Querying your Source Chain: Holochain Gym">
+<title>Basic: Querying the Source Chain: Holochain Gym</title>
+<meta property="og:title" content="Basic: Querying the Source Chain: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
 <link rel="canonical" href="/developers/basic/source-chain/">
@@ -34,7 +34,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../da073e31.png">
+<meta property="og:image" content="../../../de7a938e.png">
 <meta property="og:url" content="/developers/basic/source-chain/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -54,7 +54,7 @@
 <link rel="preload" href="../../../0fafd573.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../6c0adf17.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../45949a62.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../70dd2230.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../393087b4.js" as="script" crossorigin="anonymous">
 </head>
@@ -172,22 +172,21 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/basic/hashes/">Hashes</a>
+<a href="/developers/basic/hashes/">Playing with Hashes</a>
 
 </li>
 <li class="menu-item">
-<a href="/developers/basic/elements/">Getting Elements</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/links/">Links</a>
+<a href="/developers/basic/links/">Attaching Links</a>
 
 </li>
 <li class="menu-item current">
-<a href="/developers/basic/source-chain/">Querying your Source Chain</a>
+<a href="/developers/basic/source-chain/">Querying the Source Chain</a>
 <ul>
   <li class="menu-item anchor">
     <a href="#recap" class="anchor">Recap</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#headers" class="anchor">Headers</a>
   </li>
   <li class="menu-item anchor">
     <a href="#source-chain" class="anchor">Source Chain</a>
@@ -201,21 +200,22 @@
   <li class="menu-item anchor">
     <a href="#exercise" class="anchor">Exercise</a>
   </li>
-  <li class="menu-item anchor">
-    <a href="#solution" class="anchor">Solution</a>
-  </li>
 </ul>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/elements/">Getting Elements</a>
 
 </li></ul>
 </li>
 <li class="menu-item">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item">
-<a href="/developers/intermediate/query/">Query</a>
+<a href="/developers/intermediate/anchors/">Anchors</a>
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/update/">Update</a>
+<a href="/developers/intermediate/paths/">Paths</a>
 
 </li>
 <li class="menu-item">
@@ -223,7 +223,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/paths/">Paths</a>
+<a href="/developers/intermediate/update/">Update</a>
 
 </li>
 <li class="menu-item">
@@ -261,9 +261,79 @@
       
         <main class="markdown-body">
   
-    <h1 id="basic-querying-your-source-chain"><a class="anchor" href="#basic-querying-your-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Querying your Source Chain</h1>
+    <h1 id="basic-querying-the-source-chain"><a class="anchor" href="#basic-querying-the-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Querying the Source Chain</h1>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/concepts/dna-zomes/">Gym: Dnas and Zomes</a></li>
+<li><a href="/concepts/source-chain/">Gym: Source Chain</a></li>
+</ul>
+</inline-notification>
 <h2 id="recap"><a class="anchor" href="#recap"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Recap</h2>
 <p>You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT <a href="/concepts/DHT">here</a>.</p>
+<h2 id="headers"><a class="anchor" href="#headers"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Headers</h2>
+<p>Headers are a delightful topic. Knowing how to work with headers will give you great flexibility! And what is strength without flexibility...<br>
+In one of the previous exercises you already saw some header stuff passing by. So let's take a look at them again.</p>
+<p>In the simulation below we already added one entry.</p>
+<p>First click on the grey rounded square with the text <code>snacking_log</code>. This should look familiar. It is just an entry. Then click on the top most blue circle with the text 'Create' that points directly to the entry. And look at what you see on the righthand side in the Header Contents panel.</p>
+<mdjs-story mdjs-story-name="Sim0"></mdjs-story>
+<p>When you click on the blue square, you will see a blob of json data, similar to the one you see below. The response you get is something that is called a <strong>header</strong> in Holochain language.</p>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"header"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"content"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"uhCAk4EP68467-xI_YMR4wO6jYjr3spY5Dvw165WF_aD2Ng8"</span><span class="token punctuation">,</span>
+      <span class="token property">"header_seq"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+      <span class="token property">"prev_header"</span><span class="token operator">:</span> <span class="token string">"uhCkkK6ag489p016T64YVrN2SyjdM6bY41Kt4RNEM3AKY7_w"</span><span class="token punctuation">,</span>
+      <span class="token property">"timestamp"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token number">1616571211</span><span class="token punctuation">,</span>
+        <span class="token number">293000</span>
+      <span class="token punctuation">]</span><span class="token punctuation">,</span>
+      <span class="token property">"entry_hash"</span><span class="token operator">:</span> <span class="token string">"uhCEkEPwEe57YM0PFD1Iy3m0eDD1iHPOcesa-ktpjULuImfE"</span><span class="token punctuation">,</span>
+      <span class="token property">"entry_type"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"App"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+          <span class="token property">"id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+          <span class="token property">"zome_id"</span><span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+          <span class="token property">"visibility"</span><span class="token operator">:</span> <span class="token string">"Public"</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"Create"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"hash"</span><span class="token operator">:</span> <span class="token string">"uhCkkf9mOVrLftiyHHnXSpZ49l_JyMhi0Qw-SUosIMMBfmVo"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"signature"</span><span class="token operator">:</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>An entry does not tell you who created the entry, when it was created or any other useful information. This is where the header comes in. You could think of an header as a kind of metadata.</p>
+<p>Let's take a look what we can decypher from the example above.</p>
+<ul>
+<li><strong>author</strong>: the public key of the agent (cell) that signed the entry. This is a crucial component to prove to others you are really the author of this entry. Luckily it is all added automatically.</li>
+<li><strong>timestamp</strong>: timestamp of when this entry was committed. It will state the time for when the entry was created. This the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is a combination of standard Linux Epoch Time e.g.<em>1616571211</em> combined with elapsed nanoseconds, e.g.<em>293000</em>. While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.</li>
+<li><strong>header_seq</strong> &amp; <strong>prev_header</strong> are a better way to determine order. We will talk about them in another exercise.</li>
+<li><strong>type</strong> indicates what type of header this is. There are a number of header types:
+<ul>
+<li>Dna</li>
+<li>AgentValidationPkg</li>
+<li>InitZomesComplete</li>
+<li>CreateLink</li>
+<li>DeleteLink</li>
+<li>Create</li>
+<li>Update</li>
+<li>Delete</li>
+</ul>
+</li>
+</ul>
+<p>In this exercise you will only have to deal with <code>Create</code>. All headers have the above mentioned fields, with one small exception of the Dna header, which doesn't have a prev_header, for the very simple reason that it is always the first header to be created in a holochain app.</p>
+<p>And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these fields tell something about entries. Because entries a very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header.</p>
+<ul>
+<li>
+<p><strong>entry_hash</strong> is the hash of the entry. It is exactly the same hash you worked with in the previous exercise. And since you can get the entry based on its hash, it is enough to store the entry hash inside the header. This makes a header a lightweight data structure. Whether your entry contains a 25000 page document or just a single "Hello world" string, the size of the header will be roughly the same size. That is why entries and headers make such a good team: <em><strong>entries are simple, headers are light</strong></em>.</p>
+</li>
+<li>
+<p><strong>entry_type</strong>: contains some additional information on about the entry itself, like the id of the hApp, the id of the zome, it's visibility. We touch on this in a future exercise.</p>
+</li>
+<li>
+<p><strong>hash</strong> And last but not least a header has is own hash. Just like entry, the hash of the header is completely determined by its content. Change one letter in the header and the headerhash will be completely different.</p>
+</li>
+</ul>
 <h2 id="source-chain"><a class="anchor" href="#source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Source Chain</h2>
 <p>The Source chain. It sounds like something out of a scifi movie or a fantasy novel. And it is in fact a large part of what makes holochain unique. It's where some of the magic happens.</p>
 <p>The <a href="https://developer.holochain.org/docs/glossary/#source-chain">glossary</a> explains it the following way:</p>
@@ -281,7 +351,7 @@ Head over to the simulation where you will see that, underneath, it is just head
 <h2 id="subconscious"><a class="anchor" href="#subconscious"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Subconscious</h2>
 <p>Even before you add your first entries, like you did in the <a href="/basis/entries">entries exercise</a>, 3 headers and 1 entry will be created automatically in your holochain app. These 4 elements, the <a href="https://developer.holochain.org/docs/glossary/#genesis-elements">genesis events</a> are created by what you call the <strong>subconscious</strong> of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, <em>consciously</em>, triggered by you, the user.</p>
 <p>The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them.</p>
-<mdjs-story mdjs-story-name="Sim0"></mdjs-story>
+<mdjs-story mdjs-story-name="Sim1"></mdjs-story>
 <ul>
 <li>
 <p><strong>DNA</strong> is a special type of header that marks the beginning of your source chain. In contrast to other headers it doesn't have a <code>header_seq</code> or a <code>prev_header</code> field, because it is the very first header in your holochain app. If a 1000 people run the same <a href="https://developer.holochain.org/docs/glossary/#dna">DNA</a> all of their holochain apps will have the same first header. And that is important, because that means you are, just like in real life, part of the same organism. In the world of holochain apps that means you share the same DHT through which you share data, through which you collaborate. <strong>Same DNA, same DHT. Different DNA, different DHT</strong></p>
@@ -303,43 +373,41 @@ Head over to the simulation where you will see that, underneath, it is just head
 <ul>
 <li>Click on all the entries (grey rounded squares) to see what you snacked recently</li>
 <li>Click on the headers (blue circles) and look at <code>hash</code> in the header and at the <code>prev_header</code> value. Notice how they form a <strong>flawless chain</strong>, all the way down to the DNA header.</li>
-<li>Select "register<em>snacking" in the CallZomeFns below, type <code>april 3: ice cream</code> in the input and click _EXECUTE</em>. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is <strong>append only</strong>. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged <code>april 3: ice cream</code> after you logged <code>april 5: marsmallows</code>.</li>
-<li>Select "say<em>greeting" in the CallZomeFns below, type <code>Hello world</code> in the input and click _EXECUTE</em>. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can <strong>mix entries of different types</strong>, the headers will always appear in your source chain in the same order as they were created.</li>
+<li>Select "register_snacking" in the CallZomeFns below, type <code>april 3: ice cream</code> in the input and click _EXECUTE*. You will see that the new header is added at the end of the chain. It is impossible to insert something in the middle of your chain. That would break your chain and make it invalid. So regardless of any dates or timestamp in the entry or header, a new header will always added at the end. Your source chain is <strong>append only</strong>. You can never hide the fact that you ate lemon pie on april 2nd. And you cannot deny that you logged <code>april 3: ice cream</code> after you logged <code>april 5: marsmallows</code>.</li>
+<li>Select "say_greeting" in the CallZomeFns below, type <code>Hello world</code> in the input and click _EXECUTE*. Your source chain can contain any entry type that you defined in your zomes. It does not matter if your entries are a snacking_log, a greeting_text or anything else. You can <strong>mix entries of different types</strong>, the headers will always appear in your source chain in the same order as they were created.</li>
 </ul>
-<mdjs-story mdjs-story-name="Sim1"></mdjs-story>
+<mdjs-story mdjs-story-name="Sim2"></mdjs-story>
 <h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
 <p>This time we will do some lightweight exercises, just to get a feel for the chain part of our source chain. You need to implement 3 functions.</p>
 <ul>
-<li><code>is_previous_header_hash</code> if you give your zome 2 hashes, it will answer if the second header hash is the previous, a direct parent, of the first header hash.</li>
-<li><code>happened_before</code> does the same as the above function, but it is not limited to the direct parent. I will determine is the second hash is an ancestor. So it is not limited to the direct parent.</li>
-<li><code>get_header_sequence_number</code> the header contains a field header_seq, which contains the sequence number of the header in the chain. The very first header, the DNA header, does not have this field. You could say it is implicitly zero. The next header starts counting at one. Imagine your UI is loading all the headers to show. In that case it can come in handy if you have an idea of where in the chain you are.</li>
+<li><code>query_all_elements</code> returns the full array of elements contained in the source chain of the agent.</li>
+<li><code>query_snackings</code> queries the source chain and returns only the elements that contain a <code>Snacking</code> entry. WARNING! This query should also <a href="https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html#method.include_entries">return the entries themselves</a>.</li>
+<li><code>query_by_time</code> queries the source chain and filters it by a time range of when the element was committed.</li>
 </ul>
 <inline-notification type="tip" title="Exercise">
 <ol>
 <li>Check if you are still inside the nix-shell<br>
 <em>Your terminal should look similar to this</em> <code>[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$</code></li>
-<li>Implement <code>is_previous_header_hash</code>, <code>happened_before</code>, <code>get_header_sequence_number</code></li>
+<li>Implement <code>query_all_elements</code>, <code>query_snackings</code>, <code>query_by_time</code></li>
 <li>Compile your code: <code>./run_build.sh</code></li>
 <li>Run the test: <code>./run_tests.sh</code></li>
 <li>Don't stop until the tests run green</li>
 </ol>
 </inline-notification>
-<h3 id="relevant-hdk-documentation"><a class="anchor" href="#relevant-hdk-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Relevant HDK documentation:</h3>
+<inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">create_entry</a>.</li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">hash_entry</a>.</li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html">get</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">HeaderHash</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/chain/fn.query.html">`query`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html">`ChainQueryFilter`</a></li>
 </ul>
+</inline-notification>
 <h1 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h1>
 <p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
-<p><em>Nothing added for now</em></p>
 <p>For Rust specific questions:
 <a href="https://forum.holochain.org/c/technical/rust/15">https://forum.holochain.org/c/technical/rust/15</a>
 or
-your favorite search engine</p>
-<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
-<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/basic/4.source-chain">solution</a>.</p>
+your favorite search engine.</p>
         
       
 
@@ -501,6 +569,6 @@ serviceWorkerUpdate();
     }
   </script>
 <script type="module" src="../../../41f79f1e.js"></script>
-<script type="module" src="../../../6c0adf17.js" mdjs-setup=""></script>
+<script type="module" src="../../../45949a62.js" mdjs-setup=""></script>
 
 </body></html>

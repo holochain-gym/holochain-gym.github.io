@@ -8,11 +8,11 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intermediate: Query: Holochain Gym</title>
-<meta property="og:title" content="Intermediate: Query: Holochain Gym">
+<title>Intermediate: Anchors: Holochain Gym</title>
+<meta property="og:title" content="Intermediate: Anchors: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
-<link rel="canonical" href="/developers/intermediate/query/">
+<link rel="canonical" href="/developers/intermediate/anchors/">
 
 
 
@@ -34,8 +34,8 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../22bd89c0.png">
-<meta property="og:url" content="/developers/intermediate/query/">
+<meta property="og:image" content="../../../8812800d.png">
+<meta property="og:url" content="/developers/intermediate/anchors/">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -54,6 +54,9 @@
 <link rel="preload" href="../../../0fafd573.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../4913aed5.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../70dd2230.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../393087b4.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -169,31 +172,44 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/basic/hashes/">Hashes</a>
+<a href="/developers/basic/hashes/">Playing with Hashes</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/links/">Attaching Links</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/basic/source-chain/">Querying the Source Chain</a>
 
 </li>
 <li class="menu-item">
 <a href="/developers/basic/elements/">Getting Elements</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/links/">Links</a>
-
-</li>
-<li class="menu-item">
-<a href="/developers/basic/source-chain/">Querying your Source Chain</a>
 
 </li></ul>
 </li>
 <li class="menu-item active">
 <a href="/developers/intermediate/">Intermediate</a>
 <ul><li class="menu-item current">
-<a href="/developers/intermediate/query/">Query</a>
-
+<a href="/developers/intermediate/anchors/">Anchors</a>
+<ul>
+  <li class="menu-item anchor">
+    <a href="#what-is-a-link" class="anchor">What is a link?</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#try-it" class="anchor">Try it!</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#relevant-hdk-documentation" class="anchor">Relevant HDK documentation:</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#solution" class="anchor">Solution</a>
+  </li>
+</ul>
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/update/">Update</a>
+<a href="/developers/intermediate/paths/">Paths</a>
 
 </li>
 <li class="menu-item">
@@ -201,7 +217,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/developers/intermediate/paths/">Paths</a>
+<a href="/developers/intermediate/update/">Update</a>
 
 </li>
 <li class="menu-item">
@@ -239,13 +255,54 @@
       
         <main class="markdown-body">
   
-    <h1 id="intermediate-query"><a class="anchor" href="#intermediate-query"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Query</h1>
+    <h1 id="intermediate-anchors"><a class="anchor" href="#intermediate-anchors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Anchors</h1>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/concepts/entry-graph">Gym: Entry Graph</a></li>
+</ul>
+</inline-notification>
+<h2 id="what-is-a-link"><a class="anchor" href="#what-is-a-link"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>What is a link?</h2>
+<p>A good way to think about the public DHT holochain data is like a graph: entries are nodes, and links are the edges that connect the entries.</p>
+<p>A link has 3 basic properties:</p>
+<ul>
+<li>A base entry</li>
+<li>A target entry</li>
+<li>A tag with arbitrary content</li>
+</ul>
+<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
+<p>To get a better sense of links, try creating a link between two entries:</p>
+<ol>
+<li>Create an entry with some content with the <code>create_entry</code> function.</li>
+<li>Create a different entry with the same function (remember, if you create an entry with the same content, it won't be a different entry).</li>
+<li>Switch to the <code>create_link</code> function.</li>
+<li>Click one of the entries from the graph. Copy the "Entry Hash" you see in "Entry Detail" and paste it in the <code>base</code> field.</li>
+<li>Click on the other entry, and copy its hash to the <code>target</code> field.</li>
+<li>If you want, input some example tag.</li>
+<li>Click execute!</li>
+</ol>
+<p>Now you should see the two entries linked together.</p>
+<mdjs-story mdjs-story-name="Simple"></mdjs-story>
+<p>Great! Now you might be thinking: what do we do with links? Links are useful to attach metadata to entries, without having to change its content (and if we don't change the content, the hash doesn't change either).</p>
+<p>Here we have some posts created, with a link from the author public key to all the posts they have created.</p>
+<p>Try creating some posts and see how the entries behave, and try to do a <code>get_links</code> with the public key of the author to get the links to all the posts that that agent has created. You can get the public key of the author by clicking on the <code>Agent</code> entry and copying the hash of that entry. All agents create an initial <code>Agent</code> entry when they join the network, in order to be identified by other peers in that DHT.</p>
+<mdjs-story mdjs-story-name="Simple2"></mdjs-story>
+<h2 id="relevant-hdk-documentation"><a class="anchor" href="#relevant-hdk-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Relevant HDK documentation:</h2>
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">create_entry</a>.</li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">hash_entry</a>.</li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html">create_link</a>.</li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html">get_links</a>.</li>
+</ul>
+<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
+<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/basic/2.links">solution</a>.</p>
+        
+      
 
   
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/query.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/anchors.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -399,5 +456,6 @@ serviceWorkerUpdate();
     }
   </script>
 <script type="module" src="../../../41f79f1e.js"></script>
+<script type="module" src="../../../4913aed5.js" mdjs-setup=""></script>
 
 </body></html>
