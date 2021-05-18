@@ -19,7 +19,7 @@ Our gym exercise only contain one member, but holochain app will typically have 
 
 **Cargo.lock** contains a snapshot of all the rust dependencies. It works much like `package-lock.json` in node projects. You should commit this file to the git repository if you are working with several people on the same project.
 
-The hart of the exercise lies withing **zomes/exercise**. This is a pure and simple Rust project and contains its own `Cargo.toml` and `Cargo.lock` file. You start adding Rust code in `src/lib.rs`
+The heart of the exercise lies withing **zomes/exercise**. This is a pure and simple Rust project and contains its own `Cargo.toml` and `Cargo.lock` file. You start adding Rust code in `src/lib.rs`
 
 Once you are done adding code you need to compile your Rust code to a [WASM](https://webassembly.org/) binary and package it in a DNA, a holochain specific format. The result will be stored in **workdir**.
 
