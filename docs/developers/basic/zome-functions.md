@@ -228,7 +228,7 @@ You will in fact have created your very first decentralized, agent centric, boun
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`.
    _you should run this in the folder containing the default.nix file_  
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_
 3. Go to folder with the exercise `basic/0.zome-functions/exercise`.
 4. Inside `zome/exercise/src/lib.rs`:
    - Define a new struct for your entry: 'Greeting'.
