@@ -1,4 +1,4 @@
-import{L as t,c as r,h as o}from"./0fafd573.js";let i,n,e=t=>t;customElements.define("inline-notification",class extends t{static get properties(){return{type:{type:String,reflect:!0},title:{type:String}}}constructor(){super(),this.title="",this.type="tip"}static get styles(){return r(i||(i=e`
+import{L as t,c as r,h as o}from"./178f3cd5.js";let i,n,e=t=>t;customElements.define("inline-notification",class extends t{static get properties(){return{type:{type:String,reflect:!0},title:{type:String}}}constructor(){super(),this.title="",this.type="tip"}static get styles(){return r(i||(i=e`
       :host {
         padding: 0.1rem 1.5rem;
         border-left-width: 0.5rem;

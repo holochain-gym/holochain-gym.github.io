@@ -50,8 +50,8 @@
 
   
 
-<link rel="preload" href="../../../41f79f1e.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../0fafd573.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../6938c105.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 </head>
@@ -260,7 +260,7 @@
 <p>The exercise is a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">Cargo workspace</a>. Cargo, is the build system for Rust. And a workspace is place in which you can define one or more Rust projects. <strong>Cargo.toml</strong> contains the configuration of the workspace. Open the file and you will see that is has one member <code>zomes/exercise</code>.
 Our gym exercise only contain one member, but holochain app will typically have multiple members.</p>
 <p><strong>Cargo.lock</strong> contains a snapshot of all the rust dependencies. It works much like <code>package-lock.json</code> in node projects. You should commit this file to the git repository if you are working with several people on the same project.</p>
-<p>The hart of the exercise lies withing <strong>zomes/exercise</strong>. This is a pure and simple Rust project and contains its own <code>Cargo.toml</code> and <code>Cargo.lock</code> file. You start adding Rust code in <code>src/lib.rs</code></p>
+<p>The heart of the exercise lies withing <strong>zomes/exercise</strong>. This is a pure and simple Rust project and contains its own <code>Cargo.toml</code> and <code>Cargo.lock</code> file. You start adding Rust code in <code>src/lib.rs</code></p>
 <p>Once you are done adding code you need to compile your Rust code to a <a href="https://webassembly.org/">WASM</a> binary and package it in a DNA, a holochain specific format. The result will be stored in <strong>workdir</strong>.</p>
 <p>To make your live easy we put together a simple script that checks if you are running in the nix-shell and builds the code. To build your zome you only need to run <strong>./run_build.sh</strong>.</p>
 <p>The <strong>tests</strong> folder contains a full node/typescript project, complete with <code>package.json</code>,<code>package-lock.json</code>,<code>tsconfig.json</code> and a <code>src</code> folder. These tests can be viewed as integration tests. They actually run your compiled DNA in a real holochain <a href="https://developer.holochain.org/docs/glossary/#conductor">conductor</a>. The tests call your code, just like a regular web app would do.</p>
@@ -454,6 +454,6 @@ serviceWorkerUpdate();
       });
     }
   </script>
-<script type="module" src="../../../41f79f1e.js"></script>
+<script type="module" src="../../../6938c105.js"></script>
 
 </body></html>
