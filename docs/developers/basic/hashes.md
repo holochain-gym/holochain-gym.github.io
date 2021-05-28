@@ -259,7 +259,7 @@ There is one thing we didn't tell in the previous exercise: `create_entry` retur
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`  .
    _You should run this in the folder containing the default.nix file_  .
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_.
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_.
    _When it is done your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`.
 3. Go to folder with the exercise `1.basic/2.hashes`.
 4. Inside `zomes/exercise/src/lib.rs`:

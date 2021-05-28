@@ -19,7 +19,7 @@ customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
-Paths are the replacement of anchors in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allow you to create complex indexes to query faster the DHT very easily.
+Paths are the replacement of anchors in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allows you to create complex indexes to quickly query the DHT easily.
 
 The content of each path is a string with segments separated by a dot, for example: `all_tasks.project1.finished`. This path will create these entries:
 
@@ -27,7 +27,7 @@ The content of each path is a string with segments separated by a dot, for examp
 - `all_tasks.project1`
 - `all_tasks.project1.finished`
 
-Here, you can see that the root parent of the path is `all_tasks`, which has `all_tasks.project1` as child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.
+Here, you can see that the root parent of the path is `all_tasks`, which has `all_tasks.project1` as a child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.
 
 ## Try it!
 
@@ -251,7 +251,7 @@ export const Exercise = () => {
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`  
    _you should run this in the folder containing the default.nix file_  
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds_
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_
 3. Go to folder with the exercise `intermediate/1.paths`
 4. Inside `zome/exercise/src/lib.rs`
    - Implement all `unimplemented!()` functions
