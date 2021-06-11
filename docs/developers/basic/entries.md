@@ -73,7 +73,7 @@ const sampleZome = {
   zome_functions: {
     say_greeting: {
       call: ({ create_entry }) => ({ greeting_text }) => {
-        return create_entry({ content, entry_def_id: "greeting" });
+        return create_entry({ content: greeting_text, entry_def_id: "greeting" });
       },
       arguments: [{ name: "greeting_text", type: "String" }],
     },
