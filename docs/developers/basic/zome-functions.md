@@ -202,7 +202,7 @@ To finish this exercise add the attributes to the structs.
 
 1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of the 2 structs.
 2. Compile: `./run_build.sh`.
-3. Test: `./run_test.sh`.
+3. Test: `./run_tests.sh`.
 4. Inspect the error.
 </inline-notification>
 
