@@ -34,15 +34,15 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../767c18d2.png">
+<meta property="og:image" content="../1b5e7638.png">
 <meta property="og:url" content="/developers/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
     <link rel="stylesheet" href="../be94ee0c.css">
-<link rel="stylesheet" href="../490f016e.css">
-<link rel="stylesheet" href="../a0513237.css">
+<link rel="stylesheet" href="../58e8f57f.css">
+<link rel="stylesheet" href="../1eb700f2.css">
 <link rel="stylesheet" href="../b8c01bc2.css">
 
   
@@ -54,6 +54,7 @@
 <link rel="preload" href="../178f3cd5.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../962426a7.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../d67d4614.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../6a98e2b3.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../099c0a8b.js" as="script" crossorigin="anonymous">
 </head>
@@ -95,16 +96,17 @@
            current 
            active 
         ">Developers</a>
+  <a href="/whatsnext/" class="
+          
+          
+        ">What's next</a>
 
     
-      <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
-
+      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
 
-    
-      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
     
       <a href="https://forum.holochain.org/c/learning-library/gym/133" class="">Give us Feedback!</a>
     
@@ -120,6 +122,8 @@
 		
 	</a>
 
+    
+      <a href="/whatsnext/" class="">I'm ready! What's next?</a>
     
   </div>
 </header>
@@ -247,15 +251,15 @@ This is the right place to train yourself to become a holochain developer.</p>
 <p>In our gym you will find interactive <em>simulations</em>, working example <em>code</em> and hands-on <em>exercises</em>.
 On the left, you have a list of exercises, ordered from easy to hard.</p>
 <p><strong>First stop: Concepts</strong></p>
-<p>Work through the simulations in the <a href="/concepts">Concepts</a> section, so you understand the main ideas underpinning every holochain app.</p>
+<p>Work through the simulations in the <a href="/concepts/">Concepts</a> section, so you understand the main ideas underpinning every holochain app.</p>
 <p><strong>Next up: Requirements</strong></p>
 <ul>
-<li>Make sure your <a href="/developers/requirements/setup">setup</a> is correct.</li>
-<li>Take the <a href="/developers/requirements/anatomy">anatomy</a> lesson to understand the file and folder structure of an exercise.</li>
+<li>Make sure your <a href="/developers/requirements/setup/">setup</a> is correct.</li>
+<li>Take the <a href="/developers/requirements/anatomy/">anatomy</a> lesson to understand the file and folder structure of an exercise.</li>
 </ul>
 <p>This will give you time to get used to the Rust syntax and see some <a href="https://developer.holochain.org/docs/glossary/#holochain-development-kit-hdk">HDK</a> functions in action.</p>
 <p><strong>Finally</strong></p>
-<p>You can hit the gym and start your <a href="/developers/basic/entries">first exercise</a>.</p>
+<p>You can hit the gym and start your <a href="/developers/basic/entries/">first exercise</a>.</p>
 <p><em>Practice, rest, eat healthy and repeat.</em><br>
 <em>Good luck!</em></p>
 <inline-notification type="warning" title="UNDER CONSTRUCTION">
@@ -370,62 +374,24 @@ Commons Attribution 4.0</a>
   
 
 
-  <script>
-  async function serviceWorkerUpdate() {
-  if ('serviceWorker' in navigator) {
-    const oldReg = await navigator.serviceWorker.getRegistration();
-    let oldSwState;
-    if (oldReg && oldReg.active) {
-      oldSwState = oldReg.active.state;
-    }
+  
 
-    let refreshing;
-
-    navigator.serviceWorker.addEventListener('controllerchange', async () => {
-      if (refreshing) {
-        return;
-      }
-
-      const newReg = await navigator.serviceWorker.getRegistration();
-      let newSwState;
-      if (newReg && newReg.active) {
-        newSwState = newReg.active.state;
-      }
-
-      if (oldSwState === 'activated' && newSwState === 'activating') {
-        refreshing = true;
-        window.location.reload();
-      }
-    });
-  }
-}
-
-serviceWorkerUpdate();
-
+<script>
+  window.__rocketServiceWorkerUrl = '/service-worker.js';
 </script>
 
 
+
+
   
 
 
 
   
 
-<script inject-service-worker="">
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker
-          .register('../service-worker.js')
-          .then(function() {
-            console.log('ServiceWorker registered from "../service-worker.js".');
-          })
-          .catch(function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-    }
-  </script>
+
 <script type="module" src="../6938c105.js"></script>
+<script type="module" src="../d67d4614.js" inject-service-worker=""></script>
 <script type="module" src="../6a98e2b3.js" mdjs-setup=""></script>
 
 </body></html>

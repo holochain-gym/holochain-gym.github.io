@@ -34,15 +34,15 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../446f8f22.png">
+<meta property="og:image" content="../../../b5872107.png">
 <meta property="og:url" content="/developers/intermediate/paths/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
     <link rel="stylesheet" href="../../../be94ee0c.css">
-<link rel="stylesheet" href="../../../490f016e.css">
-<link rel="stylesheet" href="../../../a0513237.css">
+<link rel="stylesheet" href="../../../58e8f57f.css">
+<link rel="stylesheet" href="../../../1eb700f2.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
 
   
@@ -54,9 +54,10 @@
 <link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../84768308.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d67d4614.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../db9205bb.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../099c0a8b.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../44f92166.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d12199c0.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -96,16 +97,17 @@
           
            active 
         ">Developers</a>
+  <a href="/whatsnext/" class="
+          
+          
+        ">What's next</a>
 
     
-      <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
-
+      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
 
-    
-      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
     
       <a href="https://forum.holochain.org/c/learning-library/gym/133" class="">Give us Feedback!</a>
     
@@ -121,6 +123,8 @@
 		
 	</a>
 
+    
+      <a href="/whatsnext/" class="">I'm ready! What's next?</a>
     
   </div>
 </header>
@@ -203,9 +207,6 @@
   <li class="menu-item anchor">
     <a href="#exercise" class="anchor">Exercise</a>
   </li>
-  <li class="menu-item anchor">
-    <a href="#solution" class="anchor">Solution</a>
-  </li>
 </ul>
 
 </li>
@@ -253,14 +254,30 @@
         <main class="markdown-body">
   
     <h1 id="intermediate-paths"><a class="anchor" href="#intermediate-paths"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Paths</h1>
-<p>Paths are the replacement of anchors in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allow you to create complex indexes to query faster the DHT very easily.</p>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/developers/intermediate/anchors/">Gym: Anchors</a></li>
+<li><a href="https://developer.holochain.org/concepts/5_links_anchors/">Core Concepts: links and anchors</a></li>
+</ul>
+</inline-notification>
+<p>Paths are an extension of <strong>anchors</strong> that have been introduced in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allows you to create complex indexes to quickly query the DHT easily.</p>
+<p>You can think of paths like <strong>anchor trees</strong>, in which we don't only create one anchor entry to hold all the links to a particular type of entry, but rather create more than one, to distribute those links much more homogeneously in the DHT. If you haven't done the anchors exercise, do it now before doing the paths one.</p>
 <p>The content of each path is a string with segments separated by a dot, for example: <code>all_tasks.project1.finished</code>. This path will create these entries:</p>
 <ul>
 <li><code>all_tasks</code></li>
 <li><code>all_tasks.project1</code></li>
 <li><code>all_tasks.project1.finished</code></li>
 </ul>
-<p>Here, you can see that the root parent of the path is <code>all_tasks</code>, which has <code>all_tasks.project1</code> as child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.</p>
+<p>Here, you can see that the root parent of the path is <code>all_tasks</code>, which has <code>all_tasks.project1</code> as a child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.</p>
+<p>There are two goals we have in mind when using paths:</p>
+<ul>
+<li><strong>Reducing DHT hotspots</strong></li>
+</ul>
+<p>If we only create one anchor entry and attach all the links to posts from that entry, the poor nodes that will be holding that entry will end up holding all those links as well - this can get big in terms of storage. Creating multiple entries makes it so that the links get distributed around in the DHT much more evenly.</p>
+<ul>
+<li><strong>Read performance</strong></li>
+</ul>
+<p>Usually we don't want to query "all the posts that have been ever created". Imagine that you want to get the posts for the last day. If we only have one anchor entry, this can get really slow, because we need to do a <code>get</code> for every post to check whether it has been made in the last day, and then return the ones that have been. Instead, if we are a bit smart in the way we create the paths, we can just query the appropriate anchors that will only hold the posts for that day.</p>
 <h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
 <p>Here you can create paths yourself, and see which entries and links are created.</p>
 <mdjs-story mdjs-story-name="Simple"></mdjs-story>
@@ -300,26 +317,26 @@ Keep in mind that paths are already incorporated in the core hdk, so you don't n
 <li>Go to the <code>developer-exercises</code>.</li>
 <li>Enter the nix-shell: <code>nix-shell</code><br>
 <em>you should run this in the folder containing the default.nix file</em><br>
-<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em></li>
+<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds</em></li>
 <li>Go to folder with the exercise <code>intermediate/1.paths</code></li>
 <li>Inside <code>zome/exercise/src/lib.rs</code>
 <ul>
 <li>Implement all <code>unimplemented!()</code> functions</li>
 </ul>
 </li>
-<li>Compile your code: <code>./run_build.sh</code>.</li>
-<li>Run the test: <code>./run_tests.sh</code></li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
 <li>Don't stop until the test runs green</li>
 </ol>
 </inline-notification>
-<h3 id="relevant-hdk-documentation"><a class="anchor" href="#relevant-hdk-documentation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Relevant HDK documentation:</h3>
+<inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">create_entry</a>.</li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/hash_path/path/struct.Path.html">Path</a>.</li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html">get_links</a>.</li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html">`create_link`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html">`get_links`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/hash_path/path/struct.Path.html">`Path`</a></li>
 </ul>
-<h2 id="solution"><a class="anchor" href="#solution"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Solution</h2>
-<p>If you get stuck implementing this exercise, you can always look at its <a href="https://github.com/holochain-gym/developer-exercises/tree/solution/intermediate/1.paths">solution</a>.</p>
+</inline-notification>
         
       
 
@@ -425,62 +442,24 @@ Commons Attribution 4.0</a>
   
 
 
-  <script>
-  async function serviceWorkerUpdate() {
-  if ('serviceWorker' in navigator) {
-    const oldReg = await navigator.serviceWorker.getRegistration();
-    let oldSwState;
-    if (oldReg && oldReg.active) {
-      oldSwState = oldReg.active.state;
-    }
+  
 
-    let refreshing;
-
-    navigator.serviceWorker.addEventListener('controllerchange', async () => {
-      if (refreshing) {
-        return;
-      }
-
-      const newReg = await navigator.serviceWorker.getRegistration();
-      let newSwState;
-      if (newReg && newReg.active) {
-        newSwState = newReg.active.state;
-      }
-
-      if (oldSwState === 'activated' && newSwState === 'activating') {
-        refreshing = true;
-        window.location.reload();
-      }
-    });
-  }
-}
-
-serviceWorkerUpdate();
-
+<script>
+  window.__rocketServiceWorkerUrl = '/service-worker.js';
 </script>
 
 
+
+
   
 
 
 
   
 
-<script inject-service-worker="">
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker
-          .register('../../../service-worker.js')
-          .then(function() {
-            console.log('ServiceWorker registered from "../../../service-worker.js".');
-          })
-          .catch(function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-    }
-  </script>
+
 <script type="module" src="../../../6938c105.js"></script>
-<script type="module" src="../../../84768308.js" mdjs-setup=""></script>
+<script type="module" src="../../../d67d4614.js" inject-service-worker=""></script>
+<script type="module" src="../../../db9205bb.js" mdjs-setup=""></script>
 
 </body></html>

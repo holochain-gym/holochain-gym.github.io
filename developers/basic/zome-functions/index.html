@@ -34,15 +34,15 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../443a7530.png">
+<meta property="og:image" content="../../../05d289de.png">
 <meta property="og:url" content="/developers/basic/zome-functions/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
     <link rel="stylesheet" href="../../../be94ee0c.css">
-<link rel="stylesheet" href="../../../490f016e.css">
-<link rel="stylesheet" href="../../../a0513237.css">
+<link rel="stylesheet" href="../../../58e8f57f.css">
+<link rel="stylesheet" href="../../../1eb700f2.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
 
   
@@ -54,9 +54,10 @@
 <link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../f9713ab5.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d67d4614.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../f58016ad.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../099c0a8b.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../44f92166.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d12199c0.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -96,16 +97,17 @@
           
            active 
         ">Developers</a>
+  <a href="/whatsnext/" class="
+          
+          
+        ">What's next</a>
 
     
-      <a href="https://developer.holochain.org/docs/concepts/" class="">Core Concepts</a>
-
+      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
     
       <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
 
-    
-      <a href="https://developer.holochain.org/docs/glossary/" class="">Glossary of Terms</a>
     
       <a href="https://forum.holochain.org/c/learning-library/gym/133" class="">Give us Feedback!</a>
     
@@ -121,6 +123,8 @@
 		
 	</a>
 
+    
+      <a href="/whatsnext/" class="">I'm ready! What's next?</a>
     
   </div>
 </header>
@@ -255,7 +259,7 @@
     <h1 id="basic-zome-functions"><a class="anchor" href="#basic-zome-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Zome functions</h1>
 <inline-notification type="tip" title="Useful reads">
 <ul>
-<li><a href="/concepts/dna-zomes">Gym: Dnas and zomes</a></li>
+<li><a href="/concepts/dna-zomes/">Gym: Dnas and zomes</a></li>
 </ul>
 </inline-notification>
 <p>In this chapter you will learn</p>
@@ -280,7 +284,7 @@ WASM binary. This means that when you want call a function in your zome from you
 <li>how to mark a function so it can be called from the outside</li>
 <li>how data can be send in and out the zome</li>
 </ul>
-<p>In case you forgot, Zomes are written in <a href="https://www.rust-lang.org/">Rust</a>. Don't worry if you are new to the language, we will gladly help you grow comfortable with it. Look in the <a href="/developers/requirements/rust">Rust section</a> or join us at the <a href="https://forum.holochain.org/">Holochain forum</a>.</p>
+<p>In case you forgot, Zomes are written in <a href="https://www.rust-lang.org/">Rust</a>. Don't worry if you are new to the language, we will gladly help you grow comfortable with it. Look in the <a href="/developers/requirements/rust/">Rust section</a> or join us at the <a href="https://forum.holochain.org/">Holochain forum</a>.</p>
 <p>We went ahead and added some standard Rust code for you in the <code>zomes/exercise/src/lib.rs</code> file:</p>
 <pre class="language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
     first_name<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
@@ -322,7 +326,7 @@ Functions that return a <code>Result</code> are very <a href="https://learning-r
 <li>Enter the nix-shell by running: <code>nix-shell</code><br>
 <em>You should run this in the folder containing the default.nix file</em></li>
 <li>Go to folder with the exercise <code>1.basic/0.zome-functions/exercise</code></li>
-<li>Compile your code by running the following script: <code>./run_build.sh</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm run build</code>.</li>
 <li>Inspect the Rust compiler error</li>
 </ol>
 </inline-notification>
@@ -356,8 +360,7 @@ We wrote an integration test for you, to test if everything works correctly. The
 <li>Check that your are still in a <code>nix-shell</code>.
 <em>The beginning of the command line should have nix-shell in it</em></li>
 <li>Check that your are still in the folder <code>1.basic/0.zome-functions/exercise</code>.</li>
-<li>Compile your code: <code>./run_build.sh</code>.</li>
-<li>Run the tests by running our the following script: <code>./run_test.sh</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
 <li>Inspect the error.</li>
 </ol>
 </inline-notification>
@@ -373,9 +376,8 @@ not ok 1 Test threw an exception. See output for details.</pre>
 <p>It simply means that our test code <code>.call("exercise", "hello_world", null);</code>, which calls the <code>hello_world</code> function in the zome <code>exercise</code>, cannot find that function. So making a function public in your zome is <em>not</em> enough. You need to add an attribute on the top of a public function to make it possible for this function to be called from outside the zome. The attribute you need to add is <code>#[hdk_extern]</code>. Only public functions with this attribute can be called from outside a zome. Adding the attribute makes it a <strong>zome function</strong>.</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
-<li>Add <code>#[hkd_extern]</code> on top of the 3 public functions.</li>
-<li>Compile: <code>./run_build.sh</code>.</li>
-<li>Test: <code>./run_test.sh</code>.</li>
+<li>Add <code>#[hdk_extern]</code> on top of the 3 public functions.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
 <li>Inspect the error.</li>
 </ol>
 </inline-notification>
@@ -403,13 +405,12 @@ Requirements for a zome function:</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
 <li>Add <code>#[derive(Serialize, Deserialize, Debug)]</code> on top of the 2 structs.</li>
-<li>Compile: <code>./run_build.sh</code>.</li>
-<li>Test: <code>./run_test.sh</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
 <li>Inspect the error.</li>
 </ol>
 </inline-notification>
 <h2 id="agent-info"><a class="anchor" href="#agent-info"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Agent info</h2>
-<p>The <code>hello_world</code> and <code>say_my_name</code> are very simple toy functions. In <code>get_agent_info</code> on the other hand you call a real hdk function <a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html"><code>agent_info()</code></a>. AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or <a href="https://developer.holochain.org/docs/glossary/#agent-id">Agent ID</a> is one of the four genesis events that are created add the beginning of your <a href="/concepts/source-chain">source-chain</a> by the <a href="/developers/basic/source-chain/#subconscious">subconscious</a> part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>. Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...</p>
+<p>The <code>hello_world</code> and <code>say_my_name</code> are very simple toy functions. In <code>get_agent_info</code> on the other hand you call a real hdk function <a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html"><code>agent_info()</code></a>. AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or <a href="https://developer.holochain.org/docs/glossary/#agent-id">Agent ID</a> is one of the four genesis events that are created add the beginning of your <a href="/concepts/source-chain/">source-chain</a> by the <a href="/developers/basic/source-chain/#subconscious">subconscious</a> part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>. Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...</p>
 <p>So now it is up to you to finish this exercise. Add all the things we just explained to your code and finish by implementing the <code>say_greeting</code> function, building your zome and running the test.
 You only need to add a few lines in this first exercise, but know that when the test succeeds, you:</p>
 <ul>
@@ -426,7 +427,7 @@ You only need to add a few lines in this first exercise, but know that when the 
 <li>Go to the <code>developer-exercises</code>.</li>
 <li>Enter the nix-shell: <code>nix-shell</code>.
 <em>you should run this in the folder containing the default.nix file</em><br>
-<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that I will take just a few seconds</em></li>
+<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds</em></li>
 <li>Go to folder with the exercise <code>basic/0.zome-functions/exercise</code>.</li>
 <li>Inside <code>zome/exercise/src/lib.rs</code>:
 <ul>
@@ -434,14 +435,13 @@ You only need to add a few lines in this first exercise, but know that when the 
 <li>Implement the function with <code>unimplemented!()</code>.</li>
 </ul>
 </li>
-<li>Compile your code: <code>./run_build.sh</code>.</li>
-<li>Run the test: <code>./run_tests.sh</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
 <li>Don't stop until the test runs green.</li>
 </ol>
 </inline-notification>
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="[/concepts/dna-zomes](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html)">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
 </ul>
 </inline-notification>
 <h3 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h3>
@@ -487,7 +487,7 @@ You only need to add a few lines in this first exercise, but know that when the 
    <span style="color:#729FCF"><b>|</b></span>
    <span style="color:#729FCF"><b>= </b></span><b>note</b>: this error originates in a macro (in Nightly builds, run with -Z macro-backtrace for more info)
 </pre>
-<p><strong><a href="/developers/basic/entries">Next &gt;</a></strong></p>
+<p><strong><a href="/developers/basic/entries/">Next &gt;</a></strong></p>
         
       
 
@@ -593,62 +593,24 @@ Commons Attribution 4.0</a>
   
 
 
-  <script>
-  async function serviceWorkerUpdate() {
-  if ('serviceWorker' in navigator) {
-    const oldReg = await navigator.serviceWorker.getRegistration();
-    let oldSwState;
-    if (oldReg && oldReg.active) {
-      oldSwState = oldReg.active.state;
-    }
+  
 
-    let refreshing;
-
-    navigator.serviceWorker.addEventListener('controllerchange', async () => {
-      if (refreshing) {
-        return;
-      }
-
-      const newReg = await navigator.serviceWorker.getRegistration();
-      let newSwState;
-      if (newReg && newReg.active) {
-        newSwState = newReg.active.state;
-      }
-
-      if (oldSwState === 'activated' && newSwState === 'activating') {
-        refreshing = true;
-        window.location.reload();
-      }
-    });
-  }
-}
-
-serviceWorkerUpdate();
-
+<script>
+  window.__rocketServiceWorkerUrl = '/service-worker.js';
 </script>
 
 
+
+
   
 
 
 
   
 
-<script inject-service-worker="">
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker
-          .register('../../../service-worker.js')
-          .then(function() {
-            console.log('ServiceWorker registered from "../../../service-worker.js".');
-          })
-          .catch(function(err) {
-            console.log('ServiceWorker registration failed: ', err);
-          });
-      });
-    }
-  </script>
+
 <script type="module" src="../../../6938c105.js"></script>
-<script type="module" src="../../../f9713ab5.js" mdjs-setup=""></script>
+<script type="module" src="../../../d67d4614.js" inject-service-worker=""></script>
+<script type="module" src="../../../f58016ad.js" mdjs-setup=""></script>
 
 </body></html>
