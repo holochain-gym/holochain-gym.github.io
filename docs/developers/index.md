@@ -14,8 +14,8 @@ Work through the simulations in the [Concepts](/concepts/) section, so you under
 
 **Next up: Requirements**
 
-* Make sure your [setup](/developers/requirements/setup) is correct. 
-* Take the [anatomy](/developers/requirements/anatomy) lesson to understand the file and folder structure of an exercise.
+* Make sure your [setup](/developers/requirements/setup/) is correct. 
+* Take the [anatomy](/developers/requirements/anatomy/) lesson to understand the file and folder structure of an exercise.
  
 This will give you time to get used to the Rust syntax and see some [HDK](https://developer.holochain.org/docs/glossary/#holochain-development-kit-hdk) functions in action.
 

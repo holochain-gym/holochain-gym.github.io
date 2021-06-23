@@ -31,7 +31,7 @@ For running the tests we also provided another npm script that checks if you are
 
 The folders **.cargo** & **target** will only show when you try to build the project. You usually exclude these when committing code to a repository.
 
-Now you know enough to start the [first exercise](/developers/basic/entries/) or better yet explore the main [concepts](/developers/concepts/) of holochain in a hands-on way. Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
+Now you know enough to start the [first exercise](/developers/basic/entries/) or better yet explore the main [concepts](/concepts/) of holochain in a hands-on way. Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
 If want to start working on your own holochain apps, separate from the holochain-gym, you can read the next section.
 
 ## Building your own Holochain app (optional)

@@ -236,7 +236,7 @@ You can think of the source chain as a blank notebook with page numbers. If you 
 
 _Let's put this in to practice_
 
-In the [headers exercise](/developers/basic/headers/) you built the zome for a simple snacking logger app. The simulation below already contains your snacking logs.
+In the [elements exercise](/developers/basic/elements/) you built the zome for a simple snacking logger app. The simulation below already contains your snacking logs.
 
 - Click on all the entries (grey rounded squares) to see what you snacked recently
 - Click on the headers (blue circles) and look at `hash` in the header and at the `prev_header` value. Notice how they form a **flawless chain**, all the way down to the DNA header.
