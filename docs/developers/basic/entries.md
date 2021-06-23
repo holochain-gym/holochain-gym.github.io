@@ -31,7 +31,7 @@ An entry is a basic unit of user data. As a Holochain developer one of the most 
 
 _Quick reminder - A [Zome](https://developer.holochain.org/docs/glossary/#zome) is a module in a [DNA](https://developer.holochain.org/docs/glossary/#dna); the base of any [Holochain application (hApp)](https://developer.holochain.org/docs/glossary/#holochain-application-happ)._
 
-> You can always click `Core Concepts` and `Glossary` in the menu above to review the terms that you don't understand yet.
+> You can always click `Glossary of Terms` in the menu above to review the terms that you don't understand yet.
 
 ## Creating an entry
 
@@ -258,9 +258,8 @@ You will in fact have created your very first decentralized, agent centric, boun
 4. Inside `zomes/exercise/src/lib.rs`
    - Define a new struct for your entry: 'Greeting'.
    - Implement the function with `unimplemented!()`.
-5. Compile your code: `./run_build.sh`.
-6. Run the test: `./run_tests.sh`.
-7. Don't stop until the test runs green.
+5. Compile and test your code: `cd tests && npm install && npm test`.
+6. Don't stop until the test runs green.
 
 </inline-notification>
 

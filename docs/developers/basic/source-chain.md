@@ -384,9 +384,8 @@ This time we will do some lightweight exercises, just to get a feel for the chai
 1. Check if you are still inside the nix-shell  
    _Your terminal should look similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
 2. Implement `query_all_elements`, `query_snackings`, `query_by_time`
-3. Compile your code: `./run_build.sh`
-4. Run the test: `./run_tests.sh`
-5. Don't stop until the tests run green
+3. Compile and test your code: `cd tests && npm install && npm test`
+4. Don't stop until the tests run green
 
 </inline-notification>
 

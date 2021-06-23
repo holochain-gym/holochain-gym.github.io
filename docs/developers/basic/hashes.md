@@ -265,9 +265,8 @@ There is one thing we didn't tell in the previous exercise: `create_entry` retur
 4. Inside `zomes/exercise/src/lib.rs`:
    - Define a new struct for your entry: 'Book'.
    - Implement the function `add_book`.
-5. Compile your code: `./run_build.sh`.
-6. Run the test: `./run_tests.sh`.
-7. Don't stop until the test runs green.
+5. Compile and test your code: `cd tests && npm install && npm test`.
+6. Don't stop until the test runs green.
 
 </inline-notification>
 
@@ -298,9 +297,8 @@ Run the tests. And if everything passes, then it is time to put your feet up, re
 2. Check if you are still inside the nix-shell.
    _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`.
 3. Implement the function `get_book`.
-4. Compile your code: `./run_build.sh`.
-5. Run the test: `./run_tests.sh`.
-6. Don't stop until the test runs green.
+4. Compile and test your code: `cd tests && npm install && npm test`.
+5. Don't stop until the test runs green.
 
 </inline-notification>
 

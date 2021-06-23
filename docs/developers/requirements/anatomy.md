@@ -23,11 +23,11 @@ The heart of the exercise lies withing **zomes/exercise**. This is a pure and si
 
 Once you are done adding code you need to compile your Rust code to a [WASM](https://webassembly.org/) binary and package it in a DNA, a holochain specific format. The result will be stored in **workdir**.
 
-To make your live easy we put together a simple script that checks if you are running in the nix-shell and builds the code. To build your zome you only need to run **./run_build.sh**.
+To make your live easy we put together a npm script in the `tests/package.json` that checks if you are running in the nix-shell and builds the code. To build your zome you only need to run **npm run build** inside the `tests` folder.
 
 The **tests** folder contains a full node/typescript project, complete with `package.json`,`package-lock.json`,`tsconfig.json` and a `src` folder. These tests can be viewed as integration tests. They actually run your compiled DNA in a real holochain [conductor](https://developer.holochain.org/docs/glossary/#conductor). The tests call your code, just like a regular web app would do.
 
-For running the tests we also provided a simple script that checks if you are running in the nix-shell and runs the tests. You only need to call **./run_tests.sh**.
+For running the tests we also provided another npm script that checks if you are running in the nix-shell and runs the tests. You only need to call **npm test** inside the `tests` folder.
 
 The folders **.cargo** & **target** will only show when you try to build the project. You usually exclude these when committing code to a repository.
 

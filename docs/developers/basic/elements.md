@@ -279,9 +279,8 @@ Implement a function `get_all_headers_from_content` that returns the array of he
 3. Add a struct `SnackingLog`.
 4. Implement `register_snacking`, `get_by_entry_hash` and `get_by_header_hash`.
 5. Implement `get_all_headers_from_content`.
-6. Compile your code: `./run_build.sh`.
-7. Run the test: `./run_tests.sh`.
-8. Don't stop until the tests run green.
+6. Compile and test your code: `cd tests && npm install && npm test`.
+7. Don't stop until the tests run green.
 
 </inline-notification>
 

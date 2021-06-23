@@ -19,7 +19,16 @@ customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
 ```
 
-Paths are the replacement of anchors in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allows you to create complex indexes to quickly query the DHT easily.
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/developers/intermediate/anchors/">Gym: Anchors</a></li>
+<li><a href="https://developer.holochain.org/concepts/5_links_anchors/">Core Concepts: links and anchors</a></li>
+</ul>
+</inline-notification>
+
+Paths are an extension of **anchors** that have been introduced in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allows you to create complex indexes to quickly query the DHT easily.
+
+You can think of paths like **anchor trees**, in which we don't only create one anchor entry to hold all the links to a particular type of entry, but rather create more than one, to distribute those links much more homogeneously in the DHT. If you haven't done the anchors exercise, do it now before doing the paths one.
 
 The content of each path is a string with segments separated by a dot, for example: `all_tasks.project1.finished`. This path will create these entries:
 
@@ -28,6 +37,16 @@ The content of each path is a string with segments separated by a dot, for examp
 - `all_tasks.project1.finished`
 
 Here, you can see that the root parent of the path is `all_tasks`, which has `all_tasks.project1` as a child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.
+
+There are two goals we have in mind when using paths:
+
+- **Reducing DHT hotspots**
+
+If we only create one anchor entry and attach all the links to posts from that entry, the poor nodes that will be holding that entry will end up holding all those links as well - this can get big in terms of storage. Creating multiple entries makes it so that the links get distributed around in the DHT much more evenly.
+
+- **Read performance**
+
+Usually we don't want to query "all the posts that have been ever created". Imagine that you want to get the posts for the last day. If we only have one anchor entry, this can get really slow, because we need to do a `get` for every post to check whether it has been made in the last day, and then return the ones that have been. Instead, if we are a bit smart in the way we create the paths, we can just query the appropriate anchors that will only hold the posts for that day.
 
 ## Try it!
 
@@ -255,18 +274,19 @@ export const Exercise = () => {
 3. Go to folder with the exercise `intermediate/1.paths`
 4. Inside `zome/exercise/src/lib.rs`
    - Implement all `unimplemented!()` functions
-5. Compile your code: `./run_build.sh`.
-6. Run the test: `./run_tests.sh`
-7. Don't stop until the test runs green
+5. Compile and test your code: `cd tests && npm install && npm test`.
+6. Don't stop until the test runs green
 
 </inline-notification>
 
-### Relevant HDK documentation:
 
-- [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
-- [Path](https://docs.rs/hdk/0.0.100/hdk/hash_path/path/struct.Path.html).
-- [get_links](https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html).
+<inline-notification type="tip" title="Relevant HDK documentation">
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html">`create_link`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html">`get_links`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/hash_path/path/struct.Path.html">`Path`</a></li>
+</ul>
+</inline-notification>
 
-## Solution
-
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/intermediate/1.paths).

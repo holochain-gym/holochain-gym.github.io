@@ -26,6 +26,7 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 <inline-notification type="tip" title="Useful reads">
 <ul>
 <li><a href="/concepts/entry-graph">Gym: Entry Graph</a></li>
+<li><a href="https://developer.holochain.org/concepts/5_links_anchors/">Core Concepts: links and anchors</a></li>
 </ul>
 </inline-notification>
 
@@ -65,16 +66,20 @@ const sampleZome = {
   validation_functions: {},
   zome_functions: {
     create_entry: {
-      call: ({ create_entry, hash_entry }) => async ({ content }) => {
-        await create_entry({ content, entry_def_id: "sample" });
-        return hash_entry({ content });
-      },
+      call:
+        ({ create_entry, hash_entry }) =>
+        async ({ content }) => {
+          await create_entry({ content, entry_def_id: "sample" });
+          return hash_entry({ content });
+        },
       arguments: [{ name: "content", type: "String" }],
     },
     create_link: {
-      call: ({ create_link }) => ({ base, target, tag }) => {
-        return create_link({ base, target, tag });
-      },
+      call:
+        ({ create_link }) =>
+        ({ base, target, tag }) => {
+          return create_link({ base, target, tag });
+        },
       arguments: [
         { name: "base", type: "EntryHash" },
         { name: "target", type: "EntryHash" },
@@ -158,29 +163,31 @@ const sampleZome2 = {
   validation_functions: {},
   zome_functions: {
     create_post: {
-      call: ({ create_entry, hash_entry, create_link, agent_info }) => async ({
-        content,
-      }) => {
-        await create_entry({ content, entry_def_id: "post" });
+      call:
+        ({ create_entry, hash_entry, create_link, agent_info }) =>
+        async ({ content }) => {
+          await create_entry({ content, entry_def_id: "post" });
 
-        const hash = await hash_entry({ content });
+          const hash = await hash_entry({ content });
 
-        const { agent_latest_pubkey } = await agent_info();
+          const { agent_latest_pubkey } = await agent_info();
 
-        await create_link({
-          base: agent_latest_pubkey,
-          target: hash,
-          tag: "author",
-        });
+          await create_link({
+            base: agent_latest_pubkey,
+            target: hash,
+            tag: "author",
+          });
 
-        return hash;
-      },
+          return hash;
+        },
       arguments: [{ name: "content", type: "String" }],
     },
     get_links: {
-      call: ({ get_links }) => ({ base }) => {
-        return get_links(base);
-      },
+      call:
+        ({ get_links }) =>
+        ({ base }) => {
+          return get_links(base);
+        },
       arguments: [{ name: "base", type: "EntryHash" }],
     },
   },
@@ -250,13 +257,23 @@ export const Simple2 = () => {
 };
 ```
 
-## Relevant HDK documentation:
+<inline-notification type="tip" title="Exercise">
 
-- [create_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html).
-- [hash_entry](https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html).
-- [create_link](https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html).
-- [get_links](https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html).
+1. Go to the `developer-exercises`.
+2. Enter the nix-shell: `nix-shell`.
+   _you should run this in the folder containing the default.nix file_.
+   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_.
+3. Implement the functions `create_post` and `get_posts_for_agent`.
+4. Compile and test your code: `cd tests && npm install && npm test`.
+5. Don't stop until the test runs green.
 
-## Solution
+</inline-notification>
 
-If you get stuck implementing this exercise, you can always look at its [solution](https://github.com/holochain-gym/developer-exercises/tree/solution/basic/2.links).
+<inline-notification type="tip" title="Relevant HDK documentation">
+<ul>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html">`create_link`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html">`get_links`</a></li>
+</ul>
+</inline-notification>

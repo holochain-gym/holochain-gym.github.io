@@ -103,7 +103,7 @@ Becoming an expert starts by making every possible error. So go ahead and make s
 2. Enter the nix-shell by running: `nix-shell`  
    _You should run this in the folder containing the default.nix file_
 3. Go to folder with the exercise `1.basic/0.zome-functions/exercise`
-4. Compile your code by running the following script: `./run_build.sh`.
+4. Compile and test your code: `cd tests && npm install && npm run build`.
 5. Inspect the Rust compiler error
 
 </inline-notification>
@@ -146,9 +146,8 @@ We wrote an integration test for you, to test if everything works correctly. The
 1. Check that your are still in a `nix-shell`.
    _The beginning of the command line should have nix-shell in it_
 2. Check that your are still in the folder `1.basic/0.zome-functions/exercise`.
-3. Compile your code: `./run_build.sh`.
-4. Run the tests by running our the following script: `./run_test.sh`.
-5. Inspect the error.
+3. Compile and test your code: `cd tests && npm install && npm test`.
+4. Inspect the error.
 
 </inline-notification>
 
@@ -167,10 +166,9 @@ It simply means that our test code `.call("exercise", "hello_world", null);`, wh
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add `#[hkd_extern]` on top of the 3 public functions.
-2. Compile: `./run_build.sh`.
-3. Test: `./run_test.sh`.
-4. Inspect the error.
+1. Add `#[hdk_extern]` on top of the 3 public functions.
+2. Compile and test your code: `cd tests && npm install && npm test`.
+3. Inspect the error.
 </inline-notification>
 
 <pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error[E0277]</b></span><b>: the trait bound `SomeExternalOutput: hdk::prelude::Serialize` is not satisfied</b>
@@ -201,9 +199,8 @@ To finish this exercise add the attributes to the structs.
 <inline-notification type="tip" title="Exercise">
 
 1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of the 2 structs.
-2. Compile: `./run_build.sh`.
-3. Test: `./run_tests.sh`.
-4. Inspect the error.
+2. Compile and test your code: `cd tests && npm install && npm test`.
+3. Inspect the error.
 </inline-notification>
 
 ## Agent info
@@ -233,9 +230,8 @@ You will in fact have created your very first decentralized, agent centric, boun
 4. Inside `zome/exercise/src/lib.rs`:
    - Define a new struct for your entry: 'Greeting'.
    - Implement the function with `unimplemented!()`.
-5. Compile your code: `./run_build.sh`.
-6. Run the test: `./run_tests.sh`.
-7. Don't stop until the test runs green.
+5. Compile and test your code: `cd tests && npm install && npm test`.
+6. Don't stop until the test runs green.
 
 </inline-notification>
 
