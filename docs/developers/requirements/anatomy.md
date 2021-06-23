@@ -10,7 +10,7 @@ The solution folder contains a complete and working version of the exercise fold
 
 The structure inside the exercise and solution folder very similar to a real holochain application. So let us review what you see when you open the entries exercise.
 
-![](/_assets/folder_gym_exercise.png)
+<img src="/_merged_assets/folder_gym_exercise.png" style="width: 100%; margin-top: 12px;"></img>
 
 The best place to start if you are lost is to read the **README** file again. It briefly states what you need to do to compile and test the exercise.
 
@@ -31,7 +31,7 @@ For running the tests we also provided another npm script that checks if you are
 
 The folders **.cargo** & **target** will only show when you try to build the project. You usually exclude these when committing code to a repository.
 
-Now you know enough to start the [first exercise](/developers/basic/entries) or better yet explore the main [concepts](/developers/concepts) of holochain in a hands-on way. Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
+Now you know enough to start the [first exercise](/developers/basic/entries/) or better yet explore the main [concepts](/developers/concepts/) of holochain in a hands-on way. Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
 If want to start working on your own holochain apps, separate from the holochain-gym, you can read the next section.
 
 ## Building your own Holochain app (optional)

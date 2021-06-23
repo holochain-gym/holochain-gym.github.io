@@ -34,7 +34,7 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 
 ## Recap
 
-You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/concepts/DHT).
+You learned about entries and headers: two of the most basic building blocks in any holochain app and experienced first hand, while solving the exercises, that hashes are the glue that holds everything together. We briefly mentioned something about hash tables and the DHT. You can learn more about the DHT [here](/concepts/dht/).
 
 ## Headers
 
@@ -191,7 +191,7 @@ Head over to the simulation where you will see that, underneath, it is just head
 
 ## Subconscious
 
-Even before you add your first entries, like you did in the [entries exercise](/basis/entries), 3 headers and 1 entry will be created automatically in your holochain app. These 4 elements, the [genesis events](https://developer.holochain.org/docs/glossary/#genesis-elements) are created by what you call the **subconscious** of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, _consciously_, triggered by you, the user.
+Even before you add your first entries, like you did in the [entries exercise](/developers/basic/entries/), 3 headers and 1 entry will be created automatically in your holochain app. These 4 elements, the [genesis events](https://developer.holochain.org/docs/glossary/#genesis-elements) are created by what you call the **subconscious** of your holochain app. When you talk about the subconscious of your holochain app, you are talking about all the entries, headers, DHT operations and validations that happen that are not actively, _consciously_, triggered by you, the user.
 
 The 3 headers and 1 entry are created when the happ is installed, the moment when your DNA is instantiated into a cell. Click on the headers and the entry below to learn more about them.
 
@@ -236,7 +236,7 @@ You can think of the source chain as a blank notebook with page numbers. If you 
 
 _Let's put this in to practice_
 
-In the [headers exercise](/basic/headers) you built the zome for a simple snacking logger app. The simulation below already contains your snacking logs.
+In the [headers exercise](/developers/basic/headers/) you built the zome for a simple snacking logger app. The simulation below already contains your snacking logs.
 
 - Click on all the entries (grey rounded squares) to see what you snacked recently
 - Click on the headers (blue circles) and look at `hash` in the header and at the `prev_header` value. Notice how they form a **flawless chain**, all the way down to the DNA header.

@@ -46,7 +46,7 @@ We need to code a small zome that has the following abilities:
 
 <inline-notification type="tip" title="Exercise">
 
-1. Go to the [source code for the exercise](2.intermediate/2.call-remote).
+1. Go to the [source code for the exercise](https://github.com/holochain-gym/developer-exercises/tree/main/2.intermediate/4.remote-call).
 2. Implement all `unimplemented!()` functions in the exercise.
 3. Run `npm test` to test your implementation.
 
@@ -55,6 +55,3 @@ We need to code a small zome that has the following abilities:
 ### Relevant HDK documentation: 
 - [call_remote](https://docs.rs/hdk/0.0.100/hdk/p2p/fn.call_remote.html).
 
-## Solution
-
-If you get stuck implementing this exercise, you can always look at its [solution](2.intermediate/2.call-remote). 

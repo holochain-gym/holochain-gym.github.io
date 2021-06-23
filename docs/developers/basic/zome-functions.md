@@ -21,7 +21,7 @@ customElements.define("call-zome-fns", CallZomeFns);
 
 <inline-notification type="tip" title="Useful reads">
 <ul>
-<li><a href="/concepts/dna-zomes">Gym: Dnas and zomes</a></li>
+<li><a href="/concepts/dna-zomes/">Gym: Dnas and zomes</a></li>
 </ul>
 </inline-notification>
 
@@ -52,7 +52,7 @@ You need to figure out
 - how to mark a function so it can be called from the outside
 - how data can be send in and out the zome
 
-In case you forgot, Zomes are written in [Rust](https://www.rust-lang.org/). Don't worry if you are new to the language, we will gladly help you grow comfortable with it. Look in the [Rust section](/developers/requirements/rust) or join us at the [Holochain forum](https://forum.holochain.org/).
+In case you forgot, Zomes are written in [Rust](https://www.rust-lang.org/). Don't worry if you are new to the language, we will gladly help you grow comfortable with it. Look in the [Rust section](/developers/requirements/rust/) or join us at the [Holochain forum](https://forum.holochain.org/).
 
 We went ahead and added some standard Rust code for you in the `zomes/exercise/src/lib.rs` file:
 
@@ -205,7 +205,7 @@ To finish this exercise add the attributes to the structs.
 
 ## Agent info
 
-The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_info` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created add the beginning of your [source-chain](/concepts/source-chain) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...
+The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_info` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created add the beginning of your [source-chain](/concepts/source-chain/) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...
 
 
 So now it is up to you to finish this exercise. Add all the things we just explained to your code and finish by implementing the `say_greeting` function, building your zome and running the test.
@@ -237,7 +237,7 @@ You will in fact have created your very first decentralized, agent centric, boun
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="[/concepts/dna-zomes](https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html)">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
 </ul>
 </inline-notification>
 
@@ -291,4 +291,4 @@ This is the error you see when you call a zome function that has more than one p
    <span style="color:#729FCF"><b>= </b></span><b>note</b>: this error originates in a macro (in Nightly builds, run with -Z macro-backtrace for more info)
 </pre>
 
-**[Next >](/developers/basic/entries)**
+**[Next >](/developers/basic/entries/)**

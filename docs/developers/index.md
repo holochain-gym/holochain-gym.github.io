@@ -10,7 +10,7 @@ On the left, you have a list of exercises, ordered from easy to hard.
 
 **First stop: Concepts**
 
-Work through the simulations in the [Concepts](/concepts) section, so you understand the main ideas underpinning every holochain app. 
+Work through the simulations in the [Concepts](/concepts/) section, so you understand the main ideas underpinning every holochain app. 
 
 **Next up: Requirements**
 
@@ -21,7 +21,7 @@ This will give you time to get used to the Rust syntax and see some [HDK](https:
 
 **Finally**
 
-You can hit the gym and start your [first exercise](/developers/basic/entries).
+You can hit the gym and start your [first exercise](/developers/basic/entries/).
 
 *Practice, rest, eat healthy and repeat.*  
 *Good luck!*  

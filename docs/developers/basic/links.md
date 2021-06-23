@@ -25,7 +25,7 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 
 <inline-notification type="tip" title="Useful reads">
 <ul>
-<li><a href="/concepts/entry-graph">Gym: Entry Graph</a></li>
+<li><a href="/concepts/entry-graph/">Gym: Entry Graph</a></li>
 <li><a href="https://developer.holochain.org/concepts/5_links_anchors/">Core Concepts: links and anchors</a></li>
 </ul>
 </inline-notification>
