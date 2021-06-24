@@ -1,4 +1,4 @@
-import"./099c0a8b.js";import{h as e}from"./178f3cd5.js";import{H as t,E as l,a as s,C as o,S as n,D as i,Z as c}from"./d12199c0.js";import"./962426a7.js";let r,a,m=e=>e;customElements.define("holochain-playground-container",t),customElements.define("entry-graph",l),customElements.define("entry-contents",s),customElements.define("call-zome-fns",o),customElements.define("source-chain",n),customElements.define("dht-cells",i),customElements.define("zome-fns-results",c);const d=()=>e(r||(r=m`
+import"./099c0a8b.js";import{H as e,E as t,a as l,C as s,S as o,D as n,Z as i,T as c}from"./9fd83f86.js";import"./178f3cd5.js";import"./962426a7.js";let a,r,m=e=>e;customElements.define("holochain-playground-container",e),customElements.define("entry-graph",t),customElements.define("entry-contents",l),customElements.define("call-zome-fns",s),customElements.define("source-chain",o),customElements.define("dht-cells",n),customElements.define("zome-fns-results",i);const d=()=>c(a||(a=m`
     <holochain-playground-container
       .numberOfSimulatedConductors=${0}
       @ready=${0}
@@ -16,7 +16,7 @@ import"./099c0a8b.js";import{h as e}from"./178f3cd5.js";import{H as t,E as l,a a
         </div>
       </div>
     </holochain-playground-container>
-  `),10,(e=>{const t=e.detail.conductors[0].getAllCells()[0];e.target.activeAgentPubKey=t.cellId[1]})),y=()=>e(a||(a=m`
+  `),10,(e=>{const t=e.detail.conductors[0].getAllCells()[0];e.target.activeAgentPubKey=t.cellId[1]})),f=()=>c(r||(r=m`
     <holochain-playground-container
       .numberOfSimulatedConductors=${0}
       @ready=${0}
@@ -31,4 +31,4 @@ import"./099c0a8b.js";import{h as e}from"./178f3cd5.js";import{H as t,E as l,a a
         <dht-cells id="dht-cells" style="flex:1;"></dht-cells>
       </div>
     </holochain-playground-container>
-  `),10,(e=>{const t=e.detail.conductors[0].getAllCells()[0];e.target.activeAgentPubKey=t.cellId[1]})),f=document,u=[{key:"Sim0",story:d},{key:"Sim1",story:y}];let h=!1;for(const e of u){const t=f.querySelector(`[mdjs-story-name="${e.key}"]`);t&&(t.story=e.story,t.key=e.key,h=!0,Object.assign(t,{}))}h&&(customElements.get("mdjs-preview")||import("./7010af11.js"),customElements.get("mdjs-story")||import("./be63f4b9.js"));export{d as Sim0,y as Sim1};
+  `),10,(e=>{const t=e.detail.conductors[0].getAllCells()[0];e.target.activeAgentPubKey=t.cellId[1]})),y=document,u=[{key:"Sim0",story:d},{key:"Sim1",story:f}];let p=!1;for(const e of u){const t=y.querySelector(`[mdjs-story-name="${e.key}"]`);t&&(t.story=e.story,t.key=e.key,p=!0,Object.assign(t,{}))}p&&(customElements.get("mdjs-preview")||import("./a5c23f09.js"),customElements.get("mdjs-story")||import("./4af84d5a.js"));export{d as Sim0,f as Sim1};
