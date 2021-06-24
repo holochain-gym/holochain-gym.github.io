@@ -1,7 +1,7 @@
 # Intermediate >> Capability Tokens ||206
 
 ```js script
-import { html } from "lit-html";
+import { html } from "lit";
 import "@rocket/launch/inline-notification/inline-notification.js";
 import {
   HolochainPlaygroundContainer,

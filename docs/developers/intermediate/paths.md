@@ -2,7 +2,7 @@
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
-import { html } from "lit-html";
+import { html } from "lit";
 import {
   EntryContents,
   HolochainPlaygroundContainer,

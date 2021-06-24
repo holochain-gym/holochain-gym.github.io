@@ -7,7 +7,7 @@
 
 ````js
 ```js script
-import { html } from "lit-html";
+import { html } from "lit";
 import {
   HolochainPlaygroundContainer,
   EntryContents,
