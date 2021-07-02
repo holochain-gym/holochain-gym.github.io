@@ -36,7 +36,7 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 
 # Source Chain
 
-We already know that in a Holochain DHT, every agent is running its own node. In addition to storing their appropriate shard of the DHT, **each agent is also maintaining a linear history of each action that that agent has taken**.
+We already know that in a Holochain DHT, every agent is running its own node. In addition to storing their appropriate shard of the DHT, **each agent is also maintaining a linear history of each action that agent has taken**.
 
 This is stored in the agent's node in the form of a hash-chain, with one element referencing the previous one. After that, that action gets published into the DHT, in which it will propagate and eventually made available for other agents to see.
 
