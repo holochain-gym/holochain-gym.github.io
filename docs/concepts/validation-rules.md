@@ -39,25 +39,25 @@ customElements.define("run-steps", RunSteps);
 
 # Validation Rules
 
-`Validation Rules` are probably the most important mechanism in holochain. They are encoded in the `Dna`, and define **what is valid and what is not valid in the context of it**. 
+`Validation Rules` are probably the most important mechanism in Holochain. They are encoded in the `DNA`, and define **what is valid and what is not valid in the context of it**. 
 
-You can think of it this way: if we all agree that we are playing soccer, then when someone touches the ball with your hand, we all know that that's invalid in the context of this game. But, if we are playing basketball, that's obviously allowed. 
+You can think of it this way: if we all agree that we are playing soccer, then when someone touches the ball with their hand, we all know that that's invalid in the context of this game. But if we are playing basketball, that's obviously allowed. 
 
-**Validation Rules need to be deterministic**. In short, this means that they need to give back the same result (valid or invalid) for one given element, no matter when they are run, by whom, or in what circumstances. 
+**Validation Rules need to be deterministic**. In short this means that they need to give back the same result (valid or invalid) for any given element, no matter when they are run, by whom, or in which circumstances. 
 
 ## The Immune System
 
-But! What happens if someone breaks the rules? How does Holochain keep data integrity if some malicious agent publishes bad data to the network?
+But! What happens if someone breaks the rules? How does Holochain maintain data integrity if some malicious agent publishes bad data to the network?
 
 ### Try it!
 
 Here you can see a network of 10 agents with 1 malicious node (marked with 😈). 
 
-In this `Dna` there is only one validation rule: **anyone can create posts, but only the author can update their own posts**.
+In this `DNA` there is only one validation rule: **anyone can create posts, but only the author can update their own posts**.
 
 In this scenario our malicious agent will try to update a post created by another agent, which is not allowed. Let's see what happens when you click "Run".
 
-> You can refresh the page and run it however many times you want, and you can also enable the "Step by Step" mode to get a closer look.
+> You can refresh the page and run it as many times as you want, and you can also enable the "Step by Step" mode to have a closer look.
 
 ```js story
 let headerHash = undefined;
@@ -184,23 +184,23 @@ export const Simple1 = () => {
 };
 ```
 
-So! If you look closely, all the connections between the malicious agents and the other nodes have been closed. Effectively, the malicious agent has been booted out of the network, and the other agents won't talk to it again.
+So! If you look closely, all the connections between the malicious agents and the other nodes have been closed. Effectively the malicious agent has been booted out of the network, and the other agents won't talk to it again.
 
 Here is a brief description of what has happened:
 
 1. The malicious agent was able to update its own chain without any problems (after all, they control the code that is running on their computer).
-2. Then, they published the update to the Dht, to random nodes that are called "validators".
-3. When the validators received that publish, before accepting it, they have run the validation rules for our Dna.
-4. In this case, the update was not valid, and since we all agreed to play by the same rules just by being present in this Dna, we know that the malicious agent has cheated.
+2. Then they published the update to the DHT, to random nodes that are called "validators".
+3. When the validators received that publication, before accepting it they have run the validation rules for our DNA.
+4. In this case the update was not valid, and since we all agreed to play by the same rules just by being present in this DNA, we know that the malicious agent has cheated.
 5. We then proceed to sound the alarm, creating warrants for everyone in the network to make sure they know about the cheating.
-6. The nodes that receive those warrant run the validation rules themselves to know for sure, they close any connections they had with the cheating agent and they emit new warrants.
+6. The nodes that receive those warrants run the validation rules themselves to know for sure, and close any connection they had with the cheating agent and emit new warrants.
 
 
 ## But what happens with 51% of malicious nodes?
 
 But that surely cannot sustain a 51% attack... can it?
 
-In this other scenario, we have a network of 10 nodes, with only 4 of them being honests nodes. This network has the same rules as the last one: one agent cannot update another agent's post.
+In this other scenario, we have a network of 10 nodes, with only 4 of them being honest nodes. This network has the same rules as the last one: one agent cannot update another agent's post.
 
 When you run this scenario, one of the malicious agents is going to update a post from another agent. What the other malicious agents will do is pretend that that action was valid, trying to convince the honest nodes that the update was valid in reality.
 
@@ -253,4 +253,4 @@ The honest nodes have been able to separate themselves into their own network, e
 
 How did the honest nodes know who was cheating? Every time an agent validates an element, they compare the result of their own validation with the validation done by other agents. If the results are different, that must mean that the other validator is trying to cheat as well (because remember, validation rules are deterministic!), so we close the connection as well.
 
-Keep in mind that this representation and scenarios are a bit simplistic in favour of clarity: in reality, you will have different options on what to do about cheating agents, and how your `Dna` wants to react to different offenses in the network.
+Keep in mind that this representation and scenario are a bit simplistic in favor of clarity: in reality, you will have different options on what to do about cheating agents, and how your `DNA` wants to react to different offenses in the network.

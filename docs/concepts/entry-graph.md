@@ -32,11 +32,11 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 
 # Entry Graph
 
-How does shared data in the DHT look like?
+What does shared data in the DHT look like?
 
-The easiest way you can think about how data is structured in a Holochain **application is like a graph database**.
+The easiest way you can think about how data is structured in a Holochain application is **like a graph database**.
 
-From all the actions taken from all the Source-Chains, each neighbor in the DHT aggregates them distributely to form an `Entry Graph`.
+From all the actions taken from all the Source Chains, each neighbor in the DHT aggregates them distributedly to form an `Entry Graph`.
 
 There are two main primitives that build this graph:
 
@@ -55,7 +55,7 @@ You can try creating some entries:
    - Watch out! The content for the second entry has to be different than the first one if you want the entries to be different - entries are hashed!
 4. Select the `create_link` function.
 5. Copy the hash of one of the entries from the `Entry Contents` panel, and paste it as the `base` parameter of the `create_link` function.
-6. Select the other entry, and copy the hash its hash to the `target` parameter of the `create_link` function.
+6. Select the other entry, and copy its hash to the `target` parameter of the `create_link` function.
 7. Click `Execute`.
    - See how the two entries are now linked together.
 
