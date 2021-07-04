@@ -41,13 +41,13 @@ customElements.define("dht-cells", DhtCells);
 
 A Holochain network is a DHT (Distributed Hash Table) of peers, playing together by the same rules. The DHT is the main way in which agents share data in Holochain. Every agent runs its own node: if you want to participate in the DHT, you have to run your own instance and join the network.
 
-Usually, DHTs are just key-value stores: you can create some piece of data, which gets hashed, and after that anyone can query its contents with that hash.
+Usually, DHTs are just key-value stores: you can create some piece of data which gets hashed, and after that anyone can query its contents with that hash.
 
 **Holochain's DHT is eventually consistent**: data takes some time to propagate throughout the network. This means that there is no guarantee about the order in which different pieces of data will arrive, or that you are seeing all the data that has been published.
 
 However, since the internal data structures are [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type), no matter the order of arrival of each piece of data, the end state will always be the same.
 
-Holochain security model based on validation rules enables attachment of metadata in the DHT: not only we can create entries, but we can add links to them, or update them. This way, we can build complex graph structures in our DHTs that allow for efficient navigation of the data.
+Holochain security model based on validation rules enables attachment of metadata in the DHT: not only can we create entries, but also we can add links to them, or update them. This way we can build complex graph structures in our DHTs that allow for efficient navigation of the data.
 
 ## Try it!
 
@@ -61,7 +61,7 @@ To try to visualize how DHT behaves:
 2. Click "Execute".
 3. See how the data gets published to the DHT and validated there.
 
-If you need more time, you can active the step-by-step mode and click play whenever you are ready to continue. Have fun!
+If you need more time, you can activate the step-by-step mode and click "Play" whenever you are ready to continue. Have fun!
 
 ```js story
 const simulatedDna = {
