@@ -30,6 +30,12 @@ customElements.define("zome-fns-results", ZomeFnsResults);
 </ul>
 </inline-notification>
 
+## Check-In
+
+So, if you arrived at this point, you might be thinking: "oh okey, I'm beginning to get this! What should I do next as I'm learning this?"
+
+If this is the case, we'd love for you to join our developer community! [Click here](/whatsnext/).
+
 ## What is a link?
 
 A good way to think about the public DHT holochain data is like a graph: entries are nodes, and links are the edges that connect the entries.
