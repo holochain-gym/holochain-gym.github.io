@@ -158,7 +158,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/concepts/source-chain/">Source-Chain</a>
+<a href="/concepts/source-chain/">Source Chain</a>
 
 </li>
 <li class="menu-item">
@@ -206,10 +206,10 @@
 </inline-notification>
 <h1 id="holochains-dht"><a class="anchor" href="#holochains-dht"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Holochain's DHT</h1>
 <p>A Holochain network is a DHT (Distributed Hash Table) of peers, playing together by the same rules. The DHT is the main way in which agents share data in Holochain. Every agent runs its own node: if you want to participate in the DHT, you have to run your own instance and join the network.</p>
-<p>Usually, DHTs are just key-value stores: you can create some piece of data, which gets hashed, and after that anyone can query its contents with that hash.</p>
+<p>Usually, DHTs are just key-value stores: you can create some piece of data which gets hashed, and after that anyone can query its contents with that hash.</p>
 <p><strong>Holochain's DHT is eventually consistent</strong>: data takes some time to propagate throughout the network. This means that there is no guarantee about the order in which different pieces of data will arrive, or that you are seeing all the data that has been published.</p>
 <p>However, since the internal data structures are <a href="https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type">CRDTs</a>, no matter the order of arrival of each piece of data, the end state will always be the same.</p>
-<p>Holochain security model based on validation rules enables attachment of metadata in the DHT: not only we can create entries, but we can add links to them, or update them. This way, we can build complex graph structures in our DHTs that allow for efficient navigation of the data.</p>
+<p>Holochain security model based on validation rules enables attachment of metadata in the DHT: not only can we create entries, but also we can add links to them, or update them. This way we can build complex graph structures in our DHTs that allow for efficient navigation of the data.</p>
 <h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
 <p>Here you have it! In this representation of the DHT, every node is a cell (an instance of the DNA running), and the connections between them indicate that they are neighbors which gossip regularly with each other.</p>
 <p>Every node belongs to a person running it. You can see the name of the person to which the node belongs.</p>
@@ -219,7 +219,7 @@
 <li>Click "Execute".</li>
 <li>See how the data gets published to the DHT and validated there.</li>
 </ol>
-<p>If you need more time, you can active the step-by-step mode and click play whenever you are ready to continue. Have fun!</p>
+<p>If you need more time, you can activate the step-by-step mode and click "Play" whenever you are ready to continue. Have fun!</p>
 <mdjs-story mdjs-story-name="Simple"></mdjs-story>
         
       
@@ -273,7 +273,7 @@
             </li>
           
             <li>
-              <a href="https://github.com/holochain-gym/holochain.github.io/issues">Tasks for Contributors to the Gym</a>
+              <a href="https://github.com/holochain-gym/holochain-gym.github.io/issues">Tasks for Contributors to the Gym</a>
             </li>
           
         </ul>

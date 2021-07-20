@@ -153,7 +153,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/concepts/source-chain/">Source-Chain</a>
+<a href="/concepts/source-chain/">Source Chain</a>
 
 </li>
 <li class="menu-item">
@@ -208,38 +208,38 @@
 </ul>
 </inline-notification>
 <h1 id="validation-rules"><a class="anchor" href="#validation-rules"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Validation Rules</h1>
-<p><code>Validation Rules</code> are probably the most important mechanism in holochain. They are encoded in the <code>Dna</code>, and define <strong>what is valid and what is not valid in the context of it</strong>.</p>
-<p>You can think of it this way: if we all agree that we are playing soccer, then when someone touches the ball with your hand, we all know that that's invalid in the context of this game. But, if we are playing basketball, that's obviously allowed.</p>
-<p><strong>Validation Rules need to be deterministic</strong>. In short, this means that they need to give back the same result (valid or invalid) for one given element, no matter when they are run, by whom, or in what circumstances.</p>
+<p><code>Validation Rules</code> are probably the most important mechanism in Holochain. They are encoded in the <code>DNA</code>, and define <strong>what is valid and what is not valid in the context of it</strong>.</p>
+<p>You can think of it this way: if we all agree that we are playing soccer, then when someone touches the ball with their hand, we all know that that's invalid in the context of this game. But if we are playing basketball, that's obviously allowed.</p>
+<p><strong>Validation Rules need to be deterministic</strong>. In short this means that they need to give back the same result (valid or invalid) for any given element, no matter when they are run, by whom, or in which circumstances.</p>
 <h2 id="the-immune-system"><a class="anchor" href="#the-immune-system"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>The Immune System</h2>
-<p>But! What happens if someone breaks the rules? How does Holochain keep data integrity if some malicious agent publishes bad data to the network?</p>
+<p>But! What happens if someone breaks the rules? How does Holochain maintain data integrity if some malicious agent publishes bad data to the network?</p>
 <h3 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h3>
 <p>Here you can see a network of 10 agents with 1 malicious node (marked with 😈).</p>
-<p>In this <code>Dna</code> there is only one validation rule: <strong>anyone can create posts, but only the author can update their own posts</strong>.</p>
+<p>In this <code>DNA</code> there is only one validation rule: <strong>anyone can create posts, but only the author can update their own posts</strong>.</p>
 <p>In this scenario our malicious agent will try to update a post created by another agent, which is not allowed. Let's see what happens when you click "Run".</p>
 <blockquote>
-<p>You can refresh the page and run it however many times you want, and you can also enable the "Step by Step" mode to get a closer look.</p>
+<p>You can refresh the page and run it as many times as you want, and you can also enable the "Step by Step" mode to have a closer look.</p>
 </blockquote>
 <mdjs-story mdjs-story-name="Simple1"></mdjs-story>
-<p>So! If you look closely, all the connections between the malicious agents and the other nodes have been closed. Effectively, the malicious agent has been booted out of the network, and the other agents won't talk to it again.</p>
+<p>So! If you look closely, all the connections between the malicious agents and the other nodes have been closed. Effectively the malicious agent has been booted out of the network, and the other agents won't talk to it again.</p>
 <p>Here is a brief description of what has happened:</p>
 <ol>
 <li>The malicious agent was able to update its own chain without any problems (after all, they control the code that is running on their computer).</li>
-<li>Then, they published the update to the Dht, to random nodes that are called "validators".</li>
-<li>When the validators received that publish, before accepting it, they have run the validation rules for our Dna.</li>
-<li>In this case, the update was not valid, and since we all agreed to play by the same rules just by being present in this Dna, we know that the malicious agent has cheated.</li>
+<li>Then they published the update to the DHT, to random nodes that are called "validators".</li>
+<li>When the validators received that publication, before accepting it they have run the validation rules for our DNA.</li>
+<li>In this case the update was not valid, and since we all agreed to play by the same rules just by being present in this DNA, we know that the malicious agent has cheated.</li>
 <li>We then proceed to sound the alarm, creating warrants for everyone in the network to make sure they know about the cheating.</li>
-<li>The nodes that receive those warrant run the validation rules themselves to know for sure, they close any connections they had with the cheating agent and they emit new warrants.</li>
+<li>The nodes that receive those warrants run the validation rules themselves to know for sure, and close any connection they had with the cheating agent and emit new warrants.</li>
 </ol>
 <h2 id="but-what-happens-with-51-of-malicious-nodes"><a class="anchor" href="#but-what-happens-with-51-of-malicious-nodes"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>But what happens with 51% of malicious nodes?</h2>
 <p>But that surely cannot sustain a 51% attack... can it?</p>
-<p>In this other scenario, we have a network of 10 nodes, with only 4 of them being honests nodes. This network has the same rules as the last one: one agent cannot update another agent's post.</p>
+<p>In this other scenario, we have a network of 10 nodes, with only 4 of them being honest nodes. This network has the same rules as the last one: one agent cannot update another agent's post.</p>
 <p>When you run this scenario, one of the malicious agents is going to update a post from another agent. What the other malicious agents will do is pretend that that action was valid, trying to convince the honest nodes that the update was valid in reality.</p>
 <p>Try for yourself: click "Run" and see what happens.</p>
 <mdjs-story mdjs-story-name="Simple2"></mdjs-story>
 <p>The honest nodes have been able to separate themselves into their own network, effectively excluding the other ones from participating.</p>
 <p>How did the honest nodes know who was cheating? Every time an agent validates an element, they compare the result of their own validation with the validation done by other agents. If the results are different, that must mean that the other validator is trying to cheat as well (because remember, validation rules are deterministic!), so we close the connection as well.</p>
-<p>Keep in mind that this representation and scenarios are a bit simplistic in favour of clarity: in reality, you will have different options on what to do about cheating agents, and how your <code>Dna</code> wants to react to different offenses in the network.</p>
+<p>Keep in mind that this representation and scenario are a bit simplistic in favor of clarity: in reality, you will have different options on what to do about cheating agents, and how your <code>DNA</code> wants to react to different offenses in the network.</p>
         
       
 
@@ -292,7 +292,7 @@
             </li>
           
             <li>
-              <a href="https://github.com/holochain-gym/holochain.github.io/issues">Tasks for Contributors to the Gym</a>
+              <a href="https://github.com/holochain-gym/holochain-gym.github.io/issues">Tasks for Contributors to the Gym</a>
             </li>
           
         </ul>

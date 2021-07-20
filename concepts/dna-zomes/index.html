@@ -153,7 +153,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/concepts/source-chain/">Source-Chain</a>
+<a href="/concepts/source-chain/">Source Chain</a>
 
 </li>
 <li class="menu-item">
@@ -207,36 +207,36 @@
 <li><a href="https://en.wikipedia.org/wiki/Modularity">Modularity</a></li>
 </ul>
 </inline-notification>
-<h1 id="dna"><a class="anchor" href="#dna"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Dna</h1>
-<p><code>Dnas</code> are one of the most important building blocks in Holochain. Simply put, a <code>Dna</code> is the source-code for the game you are playing with your peers in Holochain.</p>
-<p>And here is the twist: in Holochain, <strong>every Dna creates its own peer-to-peer DHT network</strong>. This makes it so that <strong>you are agreeing to the rules of the game before actually joining the network</strong> and beginning to play with peers. This is going to be key for validation rules.</p>
-<p>One of the most important characteristics of a <code>Dna</code> is that <strong>it's identified by the hash of the source-code</strong>. And that makes it so that, if you change something from that code and install that <code>Dna</code> again, you are literally creating a new network.</p>
+<h1 id="dna"><a class="anchor" href="#dna"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>DNA</h1>
+<p><code>DNAs</code> are one of the most important building blocks in Holochain. Simply put, a <code>DNA</code> is the source-code for the game you are playing with your peers in Holochain.</p>
+<p>And here is the twist: in Holochain, <strong>every DNA creates its own peer-to-peer DHT network</strong>. This makes it so that <strong>you are agreeing to the rules of the game before actually joining the network</strong> and beginning to play with peers. This is going to be key for validation rules.</p>
+<p>One of the most important characteristics of a <code>DNA</code> is that <strong>it's identified by the hash of the source-code</strong>. It follows that if you change something from that code and install that <code>DNA</code> again, you are literally creating a new network.</p>
 <h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
 <ol>
-<li>Edit the current <code>Dna</code> by clicking <code>Edit</code> in the <code>Dna Code</code> block.</li>
+<li>Edit the current <code>DNA</code> by clicking <code>Edit</code> in the <code>DNA Code</code> block.</li>
 <li>Change something: it can be as simple as renaming a function, or removing a block.</li>
 <li>Click <code>Compile</code>!
 <ul>
-<li>By this small change, you have changed the source code for the <code>Dna</code>.</li>
-<li>This, at its turn, changes the hash of that <code>Dna</code>, so it's a new <code>Dna</code>.</li>
+<li>By this small change, you have changed the source code for the <code>DNA</code>.</li>
+<li>This in turn changes the hash of that <code>DNA</code>, so it's a new <code>DNA</code>.</li>
 <li>By installing it in your node, you are creating a new Holochain DHT network.</li>
 <li>But! You are the only one playing that game, so you are in a network of only one node.</li>
 </ul>
 </li>
-<li>Try to start playing with other people: select the initial <code>Dna</code> in the <code>Select Active Dna</code> block.</li>
+<li>Try to start playing with other people: select the initial <code>DNA</code> in the <code>Select Active DNA</code> block.</li>
 <li>Select another agent.</li>
-<li>Edit the <code>Dna</code>, with only the exact same modifications that you did in step 2.</li>
+<li>Edit the <code>DNA</code>, with only the exact same modifications that you did in step 2.</li>
 <li>Click <code>Compile</code>!
 <ul>
 <li>You should now see a network of 2 nodes!</li>
-<li>What has happened is that you both made the same modifications to the code, and as the ID of the <code>Dna</code> is the hash of the source code, that means that you are playing the same game, and hence you are in the same network.</li>
+<li>What has happened is that you both made the same modifications to the code, and as the ID of the <code>DNA</code> is the hash of the source code, that means that you are playing the same game, and hence you are in the same network.</li>
 </ul>
 </li>
 </ol>
 <mdjs-story mdjs-story-name="Simple"></mdjs-story>
-<p>You can also create some entries in one <code>Dna</code> and switch back and forth <code>Dnas</code> to realise that when you create a new network, none of the data is ported.</p>
+<p>You can also create some entries in one <code>DNA</code> and switch back and forth <code>DNAs</code> to realise that when you create a new network, none of the data is ported.</p>
 <h2 id="zomes"><a class="anchor" href="#zomes"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Zomes</h2>
-<p><code>Dnas</code> in Holochain are composed out of multiple <code>zomes</code>. <code>Zomes</code> are like modules: you can compose them together to aggregate its functionality.</p>
+<p><code>DNAs</code> in Holochain are composed out of multiple <code>zomes</code>. <code>Zomes</code> are like modules: you can compose them together to aggregate its functionality.</p>
 <p>These are examples for different zomes:</p>
 <ul>
 <li>Roles zome</li>
@@ -275,7 +275,7 @@
 <h3 id="declarations"><a class="anchor" href="#declarations"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Declarations</h3>
 <p>Each zome has to declare:</p>
 <ul>
-<li>Zome functions: these are the functions that can be executed from outside Holochain (the UI of a web-app, for example).</li>
+<li>Zome functions: these are the functions that can be executed from outside Holochain (the UI of a web app, for example).</li>
 <li>Entry types: the kinds of entries that this zome is going to create in its zome functions.</li>
 <li>Validation rules: the rules by which the entry types of this zome are valid or not.</li>
 </ul>
@@ -284,7 +284,7 @@
 <ul>
 <li>Each <code>zome</code> can see the entries committed by any other <code>zome</code>, both in the DHT and in the source chain.</li>
 <li>Each <code>zome</code> is responsible for validating the entries and links it creates.</li>
-<li><code>Zomes</code> can call functions from each other.</li>
+<li><code>Zomes</code> can call functions from one another.</li>
 <li>A <code>zome</code> can attach links to entries created from other <code>zomes</code>.</li>
 </ul>
         
@@ -339,7 +339,7 @@
             </li>
           
             <li>
-              <a href="https://github.com/holochain-gym/holochain.github.io/issues">Tasks for Contributors to the Gym</a>
+              <a href="https://github.com/holochain-gym/holochain-gym.github.io/issues">Tasks for Contributors to the Gym</a>
             </li>
           
         </ul>

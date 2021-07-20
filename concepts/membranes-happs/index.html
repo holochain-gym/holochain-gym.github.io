@@ -153,7 +153,7 @@
 
 </li>
 <li class="menu-item">
-<a href="/concepts/source-chain/">Source-Chain</a>
+<a href="/concepts/source-chain/">Source Chain</a>
 
 </li>
 <li class="menu-item">
@@ -203,7 +203,7 @@
         <main class="markdown-body">
   
     <h1 id="concepts-membranes-and-happs"><a class="anchor" href="#concepts-membranes-and-happs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Concepts: Membranes and hApps</h1>
-<p><strong>TLDR: one special case for validation rules are membrane rules: they dictate who is allowed to enter one network and who isn't. Also, Dnas can be composed together into hApps.</strong></p>
+<p><strong>TLDR: one special case for validation rules are membrane rules: they dictate who is allowed to enter a network and who isn't. Also, DNAs can be combined into hApps.</strong></p>
 <inline-notification type="tip" title="Useful reads">
 <ul>
 <li><a href="https://developer.holochain.org/concepts/2_application_architecture/">Core Concepts: Application Architecture</a></li>
@@ -211,20 +211,20 @@
 </ul>
 </inline-notification>
 <h2 id="membranes"><a class="anchor" href="#membranes"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Membranes</h2>
-<p>We have already seen that each <code>Dna</code> creates its own network, and that can leave out agents based on their actions inside the network.</p>
-<p>Using the same mechanism of validation rules, we can define a special kind of validation rules in our <code>Dna</code>: <strong>validation for an agent trying to join the network</strong>.</p>
-<p>When the agents install the <code>Dna</code>, they can pass a <strong><code>MembraneProof</code> in the process: a piece of data that is going to be used to validate whether this agent is valid or not in this network</strong>.</p>
-<p>This allows Holochain to have private and decentralized networks, with a lot of flexibility around the mechanisms by which one agent is allowed into a network. For example, a membrane proof could be a verifyable claim from some authority, a ticket for an event, or the signature of one agent that's already inside the network.</p>
-<p>Because all of this, <strong>the membrane rules dictate who gets to see what data in Holochain</strong> (except for the case of private entries). If you have access to a DHT, you can scan all the data that is published there, and copy it as you like. This is why it's really important to design appropriate membrane for your use case, thinking about access-control from the beginning.</p>
+<p>We have already seen that each <code>DNA</code> creates its own network, and that it can exclude agents based on their actions inside the network.</p>
+<p>Using the same mechanism of validation rules, we can define a special kind of validation rule in our <code>DNA</code>: <strong>validation for an agent trying to join the network</strong>.</p>
+<p>When the agents install the <code>DNA</code>, they can pass a <strong><code>MembraneProof</code> in the process: a piece of data that is going to be used to validate whether this agent is valid in this network or not</strong>.</p>
+<p>This allows Holochain to have private and decentralized networks, with a lot of flexibility around the mechanisms by which one agent is allowed into a network. For example a membrane proof could be a verifyable claim from some authority, a ticket for an event, or the signature of one agent that's already inside the network.</p>
+<p>Because of all this, <strong>the membrane rules dictate who gets to see which data in Holochain</strong> (except for the case of private entries). If you have access to a DHT, you can scan all the data that is published there, and copy it as you like. This is why it's really important to design appropriate membranes for your use case, thinking about accessncontrol from the beginning.</p>
 <h2 id="happs"><a class="anchor" href="#happs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>hApps</h2>
 <p>And what about hApps? They are really important, because at the end of the day they are what the Holochain conductor has to install.</p>
-<p>When you define a hApp, you are defining a collection of <code>Dnas</code> that should be installed when that hApp is installed. Not only you can define new <code>Dnas</code> that the conductor didn't know about, you also can rely on existing <code>Dnas</code> being already present and running.</p>
-<p>One of the most important mechanisms that we have available when designing hApps is <strong>cloning <code>Dnas</code></strong>. When you clone a <code>Dna</code>, you are using the exact same source code for that <code>Dna</code>, but overriding some configuration (its <code>uid</code> field or its <code>properties</code> field). These configurations change the hash for that <code>Dna</code>, so you are effectively creating a new network with the same functionality than the initial one, but with different configuration, and as a result different rules.</p>
-<p>In this way, a hApp can define complex interactions between agents: you can have one <code>Dna</code> for every functionality for your app, or have different communities</p>
+<p>When you define a hApp, you are defining a collection of <code>DNAs</code> that should be installed when that hApp is installed. Not only can you define new <code>DNAs</code> that the conductor didn't know about, but you can also rely on existing <code>DNAs</code> being already present and running.</p>
+<p>One of the most important mechanisms that we have available when designing hApps is <strong>cloning <code>DNAs</code></strong>. When you clone a <code>DNA</code>, you are using the exact same source code for that <code>DNA</code>, but overriding some configuration (its <code>uid</code> or <code>properties</code> field). These configurations change the hash for that <code>DNA</code>, so you are effectively creating a new network with the same functionality as the initial one, but with different configuration, and as a result different rules.</p>
+<p>In this way a hApp can define complex interactions between agents: you can have one <code>DNA</code> for all the functionality of your app, or have different communities.</p>
 <h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
-<p>In this scenario, we have a hApp with two <code>Dna</code> slots: a "lobby" <code>Dna</code>, and a "privateChat" one. When the agents install the hApp, only the lobby one is installed, and that one doesn't have any membrane so all the agents can join without any issues.</p>
-<p>You can see the list of <code>Cells</code> that each <code>Conductor</code> has installed in the <code>Conductor Admin</code> panel. A <code>Cell</code> is an instance of a running <code>Dna</code>, paired with the public key of the agent running it.</p>
-<p>As we said, the "lobby" <code>Dna</code> is open, but the "privateChat" one is not: it has a very strict membrane rule that <strong>only allows the agents that have "supersecretcode" in their membrane proofs</strong>.</p>
+<p>In this scenario, we have a hApp with two <code>DNA</code> slots: a "lobby" <code>DNA</code>, and a "privateChat" one. When the agents install the hApp, only the lobby one is installed, and that one doesn't have any membrane so all the agents can join without any issues.</p>
+<p>You can see the list of <code>Cells</code> that each <code>Conductor</code> has installed in the <code>Conductor Admin</code> panel. A <code>Cell</code> is an instance of a running <code>DNA</code>, paired with the public key of the agent running it.</p>
+<p>As we said, the "lobby" <code>DNA</code> is open, but the "privateChat" one is not: it has a very strict membrane rule that <strong>only allows the agents that have "supersecretcode" in their membrane proofs</strong>.</p>
 <p>We are going to try to create 2 different private group chats with this hApp:</p>
 <ol>
 <li>Select the "Admin API" tab in the "Conductor Admin" panel.
@@ -236,31 +236,31 @@
 <li>Select the "privateChat" DNA slot.</li>
 <li>Add some random text in the <code>uid</code> field.
 <ul>
-<li>This ensures that different private chats have different dna hashes, so they stay separate networks.</li>
+<li>This ensures that different private chats have different DNA hashes, so they become separate networks.</li>
 <li>In a real hApp we would probably do this with properties.</li>
 </ul>
 </li>
-<li>Input "supersecretcode" as the membrane proof.</li>
+<li>Input "supersecretcode" as membrane proof.</li>
 <li>Click "Execute"!
 <ul>
-<li>You should see that the "DHT Cells" panel has now only the agent that has cloned the <code>Dna</code>.</li>
-<li>This is because we are the only ones that have installed this particular <code>Dna</code>.</li>
+<li>You should see that the "DHT Cells" panel contains now only the agent that has cloned the <code>DNA</code>.</li>
+<li>This is because we are the only ones that have installed this particular <code>DNA</code>.</li>
 </ul>
 </li>
 <li>Select the "Cells" tab in the "Conductor Admin" panel.
 <ul>
-<li>You can see the 2 <code>Dnas</code> that are running in this node: the "lobby" one, and the "privateChat" one.</li>
+<li>You can see the 2 <code>DNAs</code> that are running in this node: the "lobby" one, and the "privateChat" one.</li>
 </ul>
 </li>
-<li>Select the lobby <code>Dna</code>.</li>
-<li>Select another agent, and confirm that they only one cell running in their conductor.</li>
-<li>Clone the "privateChat" <code>Dna</code> with exactly the same <code>uid</code> as in step 4.
+<li>Select the lobby <code>DNA</code>.</li>
+<li>Select another agent, and confirm that they have only one cell running in their conductor.</li>
+<li>Clone the "privateChat" <code>DNA</code> with exactly the same <code>uid</code> as in step 4.
 <ul>
-<li>You should now see that the newly created network has two agents now: we have joined the first agent that cloned the <code>Dna</code>!</li>
+<li>You should now see that the newly created network has two agents: we have joined the first agent that cloned the <code>DNA</code>!</li>
 </ul>
 </li>
 </ol>
-<p>Repeat the process with other agents and with other <code>uid</code> to create multiple networks with multiple private chats. Have fun!</p>
+<p>Repeat the process with other agents and with another <code>uid</code> to create multiple networks with multiple private chats. Have fun!</p>
 <mdjs-story mdjs-story-name="Simple"></mdjs-story>
         
       
@@ -314,7 +314,7 @@
             </li>
           
             <li>
-              <a href="https://github.com/holochain-gym/holochain.github.io/issues">Tasks for Contributors to the Gym</a>
+              <a href="https://github.com/holochain-gym/holochain-gym.github.io/issues">Tasks for Contributors to the Gym</a>
             </li>
           
         </ul>

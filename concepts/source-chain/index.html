@@ -8,8 +8,8 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concepts: Source-Chain: Holochain Gym</title>
-<meta property="og:title" content="Concepts: Source-Chain: Holochain Gym">
+<title>Concepts: Source Chain: Holochain Gym</title>
+<meta property="og:title" content="Concepts: Source Chain: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
 <link rel="canonical" href="/concepts/source-chain/">
@@ -34,7 +34,7 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../9b484555.png">
+<meta property="og:image" content="../../51e1f92f.png">
 <meta property="og:url" content="/concepts/source-chain/">
 
 <meta name="twitter:card" content="summary_large_image">
@@ -153,7 +153,7 @@
 
 </li>
 <li class="menu-item current">
-<a href="/concepts/source-chain/">Source-Chain</a>
+<a href="/concepts/source-chain/">Source Chain</a>
 <ul>
   <li class="menu-item anchor">
     <a href="#try-it" class="anchor">Try it!</a>
@@ -199,7 +199,7 @@
       
         <main class="markdown-body">
   
-    <h1 id="concepts-source-chain"><a class="anchor" href="#concepts-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Concepts: Source-Chain</h1>
+    <h1 id="concepts-source-chain"><a class="anchor" href="#concepts-source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Concepts: Source Chain</h1>
 <p><strong>TLDR: every agent maintains an append-only linear hash-chain which contains all the actions that agent has taken.</strong></p>
 <inline-notification type="tip" title="Useful reads">
 <ul>
@@ -208,14 +208,14 @@
 </ul>
 </inline-notification>
 <h1 id="source-chain"><a class="anchor" href="#source-chain"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Source Chain</h1>
-<p>We already know that in a Holochain DHT, every agent is running its own node. In addition to storing their appropriate shard of the DHT, <strong>each agent is also maintaining a linear history of each action that that agent has taken</strong>.</p>
-<p>This is stored in the agent's node in the form of a hash-chain, with one element referencing the previous one. After that, that action gets published into the DHT, in which it will propagate and eventually made available for other agents to see.</p>
+<p>We already know that in a Holochain DHT, every agent is running its own node. In addition to storing their individual shard of the DHT, <strong>each agent is also maintaining a linear history of each action that it has taken</strong>.</p>
+<p>This is stored in the agent's node in the form of a hash chain, with one element referencing the previous one. After taking an action, that action gets published into the DHT, in which it will propagate and eventually be made available for other agents to see.</p>
 <h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
-<p>Here you can see a source chain for an agent, in its initial state after installing the hApp.</p>
+<p>Here you can see a source chain for an agent in its initial state after installing the hApp.</p>
 <p>Every piece of data added to the source chain is called an <strong>element</strong>. An element consists of:</p>
 <ul>
 <li>A header: contains the metadata of that action (author, timestamp, signature...).</li>
-<li>Maybe an entry: some actions create entries in the DHT, so the element also contains the entry.</li>
+<li>Optionally an entry: some actions create entries in the DHT, so the element also contains the entry.</li>
 </ul>
 <p>Let's try to add more elements to it:</p>
 <ol>
@@ -240,7 +240,7 @@
 </ol>
 <mdjs-story mdjs-story-name="Sim0"></mdjs-story>
 <h2 id="source-chain--dht"><a class="anchor" href="#source-chain--dht"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Source Chain + DHT</h2>
-<p>So, how does the source chain combine with the DHT?</p>
+<p>So how is the source chain integrated with the DHT?</p>
 <p>You can think of Holochain as the combination of a local and linear source chain, and a public DHT space to which you can publish data.</p>
 <p>One of the most important characteristics of the source chain is that it's linear and ordered, representing all the actions an agent has taken in sequence.</p>
 <p>All the events that happen linearly in each of these hash chains are the ones that get aggregated and modify the public DHT data, in a CRDT manner.</p>
@@ -249,7 +249,7 @@
 <ol>
 <li>Select one of the agents in the "DHT Cells" block.
 <ul>
-<li>See that its source-chain already contains the initial 3 elements chained together.</li>
+<li>See that its source chain already contains the initial 3 elements chained together.</li>
 </ul>
 </li>
 <li>Create an entry with arbitrary content.
@@ -263,7 +263,7 @@
 </ul>
 </li>
 </ol>
-<p>You can switch through different agents and do different actions and see how holochain behaves.</p>
+<p>You can switch through different agents and run different actions and see how Holochain behaves.</p>
 <mdjs-story mdjs-story-name="Sim1"></mdjs-story>
         
       
@@ -317,7 +317,7 @@
             </li>
           
             <li>
-              <a href="https://github.com/holochain-gym/holochain.github.io/issues">Tasks for Contributors to the Gym</a>
+              <a href="https://github.com/holochain-gym/holochain-gym.github.io/issues">Tasks for Contributors to the Gym</a>
             </li>
           
         </ul>

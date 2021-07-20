@@ -315,6 +315,15 @@ The <strong>Entry hash</strong> is the last of the three. You could think of the
 <span class="token punctuation">}</span>
 
 </code></pre>
+<h3 id="import-hdk-functions"><a class="anchor" href="#import-hdk-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Import HDK functions</h3>
+<p>The first thing you need to do is import all the necessary tools in your code.</p>
+<p>The Holochain team built a Rust library <code>hdk</code>, which stands for <em>Holochain Development Kit</em> and contains all important Holochain functions you will want to call from within your zome. So add this line to the top of your file.</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> hdk<span class="token punctuation">::</span>prelude<span class="token punctuation">::</span><span class="token operator">*</span><span class="token punctuation">;</span>
+</code></pre>
+<p>This is how imports are done in Rust. You start with <code>use</code> followed by the name of the library <code>hdk</code>. In this case we further select <code>prelude</code> which is just a file inside the hdk library where the team has gathered all the useful HDK functions in one place. This way you can add all these functions at once, simply by adding the <code>*</code>.</p>
+<p>Go ahead and take a quick look at that <code>prelude</code> file:<br>
+<a href="https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs">https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs</a><br>
+You will find most of the things you will use in this exercise listed in that file.</p>
 <h3 id="external-inputs"><a class="anchor" href="#external-inputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External inputs</h3>
 <p>By themselves, Zomes don't do much - you need to feed them data and ask them to do stuff!</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
@@ -332,15 +341,6 @@ The <strong>Entry hash</strong> is the last of the three. You could think of the
     <span class="token function">unimplemented</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="import-hdk-functions"><a class="anchor" href="#import-hdk-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Import HDK functions</h3>
-<p>The other thing you need to do is tell the code where this <code>#[hdk_extern]</code> comes from. This attribute may give our public function special powers, so it cannot come out of nowhere.<br>
-The Holochain team built a Rust library <code>hdk</code>, which stands for <em>Holochain Development Kit</em> and contains all important Holochain functions you will want to call from within your zome. So add this line to the top of your file.</p>
-<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> hdk<span class="token punctuation">::</span>prelude<span class="token punctuation">::</span><span class="token operator">*</span><span class="token punctuation">;</span>
-</code></pre>
-<p>This is how imports are done in Rust. You start with <code>use</code> followed by the name of the library <code>hdk</code>. In this case we further select <code>prelude</code> which is just a file inside the hdk library where the team has gathered all the useful HDK functions in one place. This way you can add all these functions at once, simply by adding the <code>*</code>.</p>
-<p>Go ahead and take a quick look at that <code>prelude</code> file:<br>
-<a href="https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs">https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs</a><br>
-You will find most of the things you will use in this exercise listed in that file.</p>
 <h3 id="external-outputs"><a class="anchor" href="#external-outputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External outputs</h3>
 <p>The challenge is to create an entry which contains the text "Hello, World!". The text will be passed to the zome as a <code>SomeExternalInput</code> struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply <code>create_entry</code>. And since you imported all functions from the prelude already, you can use this function immediately in your code.</p>
 <p>So, your first attempt might look something like <code>create_entry(String::from("Hello, World!"))</code> or <code>create_entry(input.content)</code>. But this won't work.<br>
@@ -348,7 +348,7 @@ Because an entry needs to be saved locally and sent over the network, it has to 
 <pre class="language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token function">Greeting</span><span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
 <p>The name of the struct, in this case <code>Greeting</code>, is just a name you choose. And <code>Greeting(String)</code> is a Rust way of saying that you want to disguise a String as a Greeting struct, so you can put attributes on it. When you start developing your own zomes you will likely have multiple fields in a struct, but for now we will keep it simple.</p>
-<h3 id="hdk_entry"><a class="anchor" href="#hdk_entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>hdk_entry</h3>
+<h3 id="hdk_entry"><a class="anchor" href="#hdk_entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a><code>hdk_entry</code></h3>
 <p>Wrapping your "Hello, World!" in a struct is not enough. You need to add an attribute. And that attribute is <code>#[hdk_entry()]</code>. The nice thing about it is that it already adds a <code>Serialize</code> and <code>Deserialize</code> attribute behind the screens. So you only need to add one attribute, not three.</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[hdk_entry(id = "greeting")]</span>
 <span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token function">Greeting</span><span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -391,6 +391,7 @@ You only need to add a few lines in this first exercise, but know that when the 
 </inline-notification>
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
+<li><a href="https://docs.rs/hdk/0.0.101/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
 <li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
 <li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_def.html">`entry_def`</a></li>
 <li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_defs.html">`entry_defs`</a></li>
@@ -468,7 +469,7 @@ You only need to add a few lines in this first exercise, but know that when the 
             </li>
           
             <li>
-              <a href="https://github.com/holochain-gym/holochain.github.io/issues">Tasks for Contributors to the Gym</a>
+              <a href="https://github.com/holochain-gym/holochain-gym.github.io/issues">Tasks for Contributors to the Gym</a>
             </li>
           
         </ul>
