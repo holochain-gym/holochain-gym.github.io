@@ -62,7 +62,7 @@ const sampleZome1 = {
             entry_def_id: "post",
           });
           await hdk.create_entry({
-            content: "POSTS",
+            content: "ALL_POSTS",
             entry_def_id: "anchor",
           });
           const anchorHash = await hdk.hash_entry({ content: "ALL_POSTS" });
