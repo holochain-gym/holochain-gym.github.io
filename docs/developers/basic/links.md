@@ -23,18 +23,18 @@ customElements.define("source-chain", SourceChain);
 customElements.define("zome-fns-results", ZomeFnsResults);
 ```
 
+## Check-In
+
+So, if you arrived at this point, you might be thinking: "oh okey, I'm beginning to get this! Where should I go next as I'm learning this?"
+
+If this is the case, we'd love for you to join our developer community! [Click here](/whatsnext/). It's the best place to collaborate and learn from each other.
+
 <inline-notification type="tip" title="Useful reads">
 <ul>
 <li><a href="/concepts/entry-graph/">Gym: Entry Graph</a></li>
 <li><a href="https://developer.holochain.org/concepts/5_links_anchors/">Core Concepts: links and anchors</a></li>
 </ul>
 </inline-notification>
-
-## Check-In
-
-So, if you arrived at this point, you might be thinking: "oh okey, I'm beginning to get this! What should I do next as I'm learning this?"
-
-If this is the case, we'd love for you to join our developer community! [Click here](/whatsnext/).
 
 ## What is a link?
 
