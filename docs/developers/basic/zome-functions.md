@@ -32,25 +32,25 @@ In this chapter you will learn
 * about some commons errors you encounter while coding
 
 ## Zome Functions
-Before you talk about a [zome function](https://developer.holochain.org/docs/glossary/#zome-function) you need to understand what a [zome](https://developer.holochain.org/docs/glossary/#zome) is. A zome is a "basic unit of modularity inside a DNA". You can think of it as a package inside your codebase. Let's take a look. 
+Before we talk about a [zome function](https://developer.holochain.org/docs/glossary/#zome-function), you need to understand what a [zome](https://developer.holochain.org/docs/glossary/#zome) is. A zome is a "basic unit of modularity inside a DNA". You can think of it as a package inside your codebase. Let's take a look. 
 
 Open the zomes folder `developers/1.basic/0.zome-functions/exercise/zomes` in the developers-exercise git repo you [cloned](/developers/requirements/setup/#clone-repo).
 
-It contains just one folder: `exercise`. But you can rename the folder or add more zomes folders, so you can separate different concerns in different folders. Most exercises in the gym will have only one zome, named 'exercise'. This is just to keep things simple. 
+It contains just one folder: `exercise`. But you can rename the folder or add more zome folders, so you can separate different concerns in different folders. Most exercises in the gym will have only one zome, named 'exercise'. This is just to keep things simple. 
 
 ### DNA
 All your zome(s) together form a DNA. Just like the chromosomes in a cell in your body form one DNA. This DNA is compiled into a 
-WASM binary. This means that when you want call a function in your zome from your UI or your integration test, you are calling an actual program. This is the point where you need zome functions.
+WASM binary. This means that when you want to call a function in your zome from your UI or your integration test, you are calling an actual program. This is the point where you need zome functions.
 
 ### Zome function
 
-A zome function is the bridge between the inside and the outside world. The inside world is your Rust code your zomes, entries in the DHT, ... The outside world is your UI or integration test that calls your code with the help of the [conductor](https://developer.holochain.org/docs/glossary/#conductor). So basically a zome function is a **function** that can be called **from the outside**.
+A zome function is the bridge between the inside and the outside world. The inside world is your Rust code, your zomes, entries in the DHT, ... The outside world is your UI or integration test that calls your code with the help of the [conductor](https://developer.holochain.org/docs/glossary/#conductor). So basically a zome function is a **function** that can be called **from the outside**.
 
 ### Getting ready
 
 You need to figure out
 - how to mark a function so it can be called from the outside
-- how data can be send in and out the zome
+- how data can be sent in and out of the zome
 
 In case you forgot, Zomes are written in [Rust](https://www.rust-lang.org/). Don't worry if you are new to the language, we will gladly help you grow comfortable with it. Look in the [Rust section](/developers/requirements/rust/) or join us at the [Holochain forum](https://forum.holochain.org/).
 
@@ -91,11 +91,11 @@ pub fn get_agent_id(_:()) -> ExternResult<AgentInfo> {
 Next you have 3 **public functions**. If you are new to Rust, then `_:()` might seem weird. The input parameter has a name `_` and the type is an Object `()`. But it just means: "I accept anything, because I will not be using it". 
 
 Finally you see the **return type** of each function.
-Functions that return a `Result` are very [common](https://learning-rust.github.io/docs/e3.option_and_result.html) in Rust. `ExternResult` is an enhanced Result type, specially adapted for use in zomes. In stead of a standard `Err`, you need a `WasmError` as the error type in your result. Because, as we mentioned above, your zome is compiled into a WASM binary. So every error you want to report to the outside world is in fact a [WasmError](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html).
+Functions that return a `Result` are very [common](https://learning-rust.github.io/docs/e3.option_and_result.html) in Rust. `ExternResult` is an enhanced Result type, specially adapted for use in zomes. Instead of a standard `Err`, you need a `WasmError` as the error type in your result. Because, as we mentioned above, your zome is compiled into a WASM binary. So every error you want to report to the outside world is in fact a [WasmError](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html).
 
 ### Import HDK
 
-Becoming an expert starts by making every possible error. So go ahead and make some errors.
+Becoming an expert starts by making every possible mistake. So go ahead and make some mistakes.
 
 <inline-notification type="tip" title="Exercise">
 
@@ -162,13 +162,14 @@ You should see the following error:
 }
 not ok 1 Test threw an exception. See output for details.</pre>
 
-It simply means that our test code `.call("exercise", "hello_world", null);`, which calls the `hello_world` function in the zome `exercise`, cannot find that function. So making a function public in your zome is *not* enough. You need to add an attribute on the top of a public function to make it possible for this function to be called from outside the zome. The attribute you need to add is `#[hdk_extern]`. Only public functions with this attribute can be called from outside a zome. Adding the attribute makes it a **zome function**.
+It simply means that our test code `.call("exercise", "hello_world", null);`, which calls the `hello_world` function in the zome `exercise`, cannot find that function. So making a function public in your zome is *not* enough. You need to add an attribute on top of a public function to make it possible for this function to be called from outside the zome. The attribute you need to add is `#[hdk_extern]`. Only public functions with this attribute can be called from outside a zome. Adding the attribute makes it a **zome function**.
 
 <inline-notification type="tip" title="Exercise">
 
 1. Add `#[hdk_extern]` on top of the 3 public functions.
 2. Compile and test your code: `cd tests && npm install && npm test`.
 3. Inspect the error.
+
 </inline-notification>
 
 <pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error[E0277]</b></span><b>: the trait bound `SomeExternalOutput: hdk::prelude::Serialize` is not satisfied</b>
@@ -179,7 +180,7 @@ It simply means that our test code `.call("exercise", "hello_world", null);`, wh
    <span style="color:#729FCF"><b>| </b></span>
 </pre>
 
-The compiler is complaining that our `SomeExternalOutput` struct is not implementing the trait `hdk::prelude::Serialize`. You will also see `#[hdk_extern]` mentioned. `#[hdk_extern]` is a Rust macro and it requires that the function it is added to, has one input parameter and that this parameter can be serialized. Because zome functions live on the boundary of your WASM binary, they need to be able to serialize and deserialize all data structs that go in or out the zome.  
+The compiler is complaining that our `SomeExternalOutput` struct is not implementing the trait `hdk::prelude::Serialize`. You will also see `#[hdk_extern]` mentioned. `#[hdk_extern]` is a Rust macro and it requires that the function it is added to have one input parameter and that this parameter can be serialized. Because zome functions live on the boundary of your WASM binary, they need to be able to serialize and deserialize all data structs that go in or out of the zome.  
 Luckily this is all standard Rust stuff. Annotate the 2 structs `SomeExternalInput` and `SomeExternalOutput` with the following attribute **#[derive(Serialize, Deserialize, Debug)]**. This attribute makes sure the data in the structs can be sent to this zome over a network, from a GUI, or – like in our case – from a test script.  
 It is also the reason why you cannot use a simple String as the input or output for a zome function. You cannot add `#[derive(Serialize, Deserialize, Debug)]` to a String, only to a struct.
 
@@ -201,11 +202,12 @@ To finish this exercise add the attributes to the structs.
 1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of the 2 structs.
 2. Compile and test your code: `cd tests && npm install && npm test`.
 3. Inspect the error.
+
 </inline-notification>
 
 ## Agent info
 
-The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_info` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created add the beginning of your [source-chain](/concepts/source-chain/) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...
+The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_info` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created at the beginning of your [source-chain](/concepts/source-chain/) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app, an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and an Agent ID is created, they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power does not survive...
 
 
 So now it is up to you to finish this exercise. Add all the things we just explained to your code and finish by implementing the `say_greeting` function, building your zome and running the test.
@@ -243,7 +245,7 @@ You will in fact have created your very first decentralized, agent centric, boun
 
 ### Errors
 
-If you encounter an error check here if you can find something that looks like your error. If not head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
+If you encounter an error check here if you can find something that looks like your error. If not, head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
 
 - You forgot to add the `#[hdk_extern]` attribute on the `say_greeting` function.
 
@@ -276,7 +278,7 @@ This is the error you see when you call a zome function that has no params
    <span style="color:#729FCF"><b>= </b></span><b>help</b>: message: internal error: entered unreachable code
 </pre>
 
-This is the error you see when you call a zome function that has more than one params
+This is the error you see when you call a zome function that has more than one param
 <pre style="background-color:black;color:white"><span style="color:#EF2929"><b>error[E0061]</b></span><b>: this function takes 2 arguments but 1 argument was supplied</b>
   <span style="color:#729FCF"><b>--&gt; </b></span>zomes/exercise/src/lib.rs:20:1
    <span style="color:#729FCF"><b>|</b></span>

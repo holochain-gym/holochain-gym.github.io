@@ -12,6 +12,10 @@ We are gathering in "Holochain in Action". You can begin by watching the videos 
 
 https://www.youtube.com/channel/UCJwIuwkCI5HMSzHJpKys-RQ
 
+And you can apply to join the weekly meetings here:
+
+https://dawumck27xt.typeform.com/to/uZTCoYs1
+
 It would be lovely to have you, an already Gym trained Holochain developer, join our weekly calls.
 
 We are also creating open source modules here:

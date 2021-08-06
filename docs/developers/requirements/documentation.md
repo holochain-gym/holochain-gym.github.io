@@ -10,6 +10,8 @@ Here you can find useful technical documentation for holochain:
 
 Here you can find useful resources:
 
-- [Acorn](https://github.com/h-be/acorn-hc): the most complete holochain application up-to-date, full-stack.
+- [Acorn](https://github.com/h-be/acorn): the most complete holochain application up-to-date, full-stack.
+- [Kizuna](https://github.com/hc-institute-japan/Kizuna): messaging hApp, really complete also.
 - [Holochain Open Dev](https://github.com/holochain-open-dev): collection of small holochain modules.
+- [Holochain In Action](https://www.youtube.com/channel/UCJwIuwkCI5HMSzHJpKys-RQ): weekly call for hApp developers.
 - [RSM playtime](https://www.youtube.com/watch?v=u6iUg1BVzsY&list=PLOuXrtFJO6zWNK41Wgv62v5ju5CP3FbOT): deep dive video series on holochain rsm.

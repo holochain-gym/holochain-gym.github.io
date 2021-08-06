@@ -40,7 +40,7 @@ When you create an entry a few things will happen:
 1. Your data is validated locally _(we will learn how this works in later exercises)_.
 2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) _(hence the 'chain' in 'Holochain')_.
 3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp _(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)_.
-4. The random people that received your data will validate your data using the same rules that were used in the first step. _(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)_.
+4. The random people that received your data will validate your data using the same rules that were used in the first step. _(This is where the holo (coming from holographic) part comes into play. To become a real entry, your entry has to be seen and validated by different people/agents)_.
 
 Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.
 
@@ -157,6 +157,21 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 }
 
 ```
+### Import HDK functions
+
+The first thing you need to do is import all the necessary tools in your code.
+
+The Holochain team built a Rust library `hdk`, which stands for _Holochain Development Kit_ and contains all important Holochain functions you will want to call from within your zome. So add this line to the top of your file.
+
+```rust
+use hdk::prelude::*;
+```
+
+This is how imports are done in Rust. You start with `use` followed by the name of the library `hdk`. In this case we further select `prelude` which is just a file inside the hdk library where the team has gathered all the useful HDK functions in one place. This way you can add all these functions at once, simply by adding the `*`.
+
+Go ahead and take a quick look at that `prelude` file:  
+https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs  
+You will find most of the things you will use in this exercise listed in that file.
 
 ### External inputs
 
@@ -186,21 +201,6 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 }
 ```
 
-### Import HDK functions
-
-The other thing you need to do is tell the code where this `#[hdk_extern]` comes from. This attribute may give our public function special powers, so it cannot come out of nowhere.  
-The Holochain team built a Rust library `hdk`, which stands for _Holochain Development Kit_ and contains all important Holochain functions you will want to call from within your zome. So add this line to the top of your file.
-
-```rust
-use hdk::prelude::*;
-```
-
-This is how imports are done in Rust. You start with `use` followed by the name of the library `hdk`. In this case we further select `prelude` which is just a file inside the hdk library where the team has gathered all the useful HDK functions in one place. This way you can add all these functions at once, simply by adding the `*`.
-
-Go ahead and take a quick look at that `prelude` file:  
-https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs  
-You will find most of the things you will use in this exercise listed in that file.
-
 ### External outputs
 
 The challenge is to create an entry which contains the text "Hello, World!". The text will be passed to the zome as a `SomeExternalInput` struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply `create_entry`. And since you imported all functions from the prelude already, you can use this function immediately in your code.
@@ -214,7 +214,7 @@ pub struct Greeting(String);
 
 The name of the struct, in this case `Greeting`, is just a name you choose. And `Greeting(String)` is a Rust way of saying that you want to disguise a String as a Greeting struct, so you can put attributes on it. When you start developing your own zomes you will likely have multiple fields in a struct, but for now we will keep it simple.
 
-### hdk_entry
+### `hdk_entry`
 
 Wrapping your "Hello, World!" in a struct is not enough. You need to add an attribute. And that attribute is `#[hdk_entry()]`. The nice thing about it is that it already adds a `Serialize` and `Deserialize` attribute behind the screens. So you only need to add one attribute, not three.
 
@@ -265,6 +265,7 @@ You will in fact have created your very first decentralized, agent centric, boun
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
+<li><a href="https://docs.rs/hdk/0.0.101/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
 <li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
 <li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_def.html">`entry_def`</a></li>
 <li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_defs.html">`entry_defs`</a></li>

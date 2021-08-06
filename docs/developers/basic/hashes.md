@@ -284,7 +284,7 @@ let book = await alice_common.cells[0].call(
 t.ok(book, "test get book"); // tape test assertion
 ```
 
-Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test, is the test that failed at least once. That way you know you are actually testing something real.
+Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test is the test that failed at least once. That way you know you are actually testing something real.
 
 ### Get book
 
