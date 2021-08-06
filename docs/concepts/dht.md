@@ -49,6 +49,7 @@ However, since the internal data structures are [CRDTs](https://en.wikipedia.org
 
 Holochain's security model based on validation rules enables attachment of metadata in the DHT: not only can we create entries, but also we can add links to them, or update them. This way we can build complex graph structures in our DHTs that allow for efficient navigation of the data.
 
+
 ## Try it!
 
 Here you have it! In this representation of the DHT, every node is a cell (an instance of the DNA running), and the connections between them indicate that they are neighbors which gossip regularly with each other.
