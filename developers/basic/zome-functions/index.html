@@ -298,7 +298,7 @@ WASM binary. This means that when you want call a function in your zome from you
     <span class="token function">Ok</span><span class="token punctuation">(</span>output<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">say_my_name</span><span class="token punctuation">(</span>external_input<span class="token punctuation">:</span>SomeExternalInput<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>SomeExternalOutput<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+<span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">say_my_name</span><span class="token punctuation">(</span>external_input<span class="token punctuation">:</span> SomeExternalInput<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>SomeExternalOutput<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
     <span class="token keyword">let</span> message<span class="token punctuation">:</span> String <span class="token operator">=</span> <span class="token function">format!</span><span class="token punctuation">(</span><span class="token string">"Your name is {} {}"</span><span class="token punctuation">,</span> 
                                     external_input<span class="token punctuation">.</span>first_name<span class="token punctuation">,</span> 
                                     external_input<span class="token punctuation">.</span>last_name<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -408,8 +408,8 @@ Requirements for a zome function:</p>
 </ol>
 </inline-notification>
 <h2 id="agent-info"><a class="anchor" href="#agent-info"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Agent info</h2>
-<p>The <code>hello_world</code> and <code>say_my_name</code> are very simple toy functions. In <code>get_agent_info</code> on the other hand you call a real hdk function <a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html"><code>agent_info()</code></a>. AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or <a href="https://developer.holochain.org/docs/glossary/#agent-id">Agent ID</a> is one of the four genesis events that are created add the beginning of your <a href="/concepts/source-chain/">source-chain</a> by the <a href="/developers/basic/source-chain/#subconscious">subconscious</a> part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>. Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...</p>
-<p>So now it is up to you to finish this exercise. Add all the things we just explained to your code and finish by implementing the <code>say_greeting</code> function, building your zome and running the test.
+<p>The <code>hello_world</code> and <code>say_my_name</code> are very simple toy functions. In <code>get_agent_id</code> on the other hand you call a real hdk function <a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html"><code>agent_info()</code></a>. AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or <a href="https://developer.holochain.org/docs/glossary/#agent-id">Agent ID</a> is one of the four genesis events that are created add the beginning of your <a href="/concepts/source-chain/">source-chain</a> by the <a href="/developers/basic/source-chain/#subconscious">subconscious</a> part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>. Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...</p>
+<p>So now it is up to you to finish this exercise. Add all the things we just explained to your code, and try building your zome and running the test.
 You only need to add a few lines in this first exercise, but know that when the test succeeds, you:</p>
 <ul>
 <li>made your first zome module in Rust</li>
@@ -429,8 +429,8 @@ You only need to add a few lines in this first exercise, but know that when the 
 <li>Go to folder with the exercise <code>basic/0.zome-functions/exercise</code>.</li>
 <li>Inside <code>zome/exercise/src/lib.rs</code>:
 <ul>
-<li>Define a new struct for your entry: 'Greeting'.</li>
-<li>Implement the function with <code>unimplemented!()</code>.</li>
+<li>Import the HDK library and functions.</li>
+<li>Add the <code>#[hdk_extern]</code> macro in the necessary functions.</li>
 </ul>
 </li>
 <li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
@@ -439,19 +439,19 @@ You only need to add a few lines in this first exercise, but know that when the 
 </inline-notification>
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
 </ul>
 </inline-notification>
 <h3 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h3>
 <p>If you encounter an error check here if you can find something that looks like your error. If not head to the <a href="https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15">forum.holochain.org</a> and ask for help.</p>
 <ul>
-<li>You forgot to add the <code>#[hdk_extern]</code> attribute on the <code>say_greeting</code> function.</li>
+<li>You forgot to add the <code>#[hdk_extern]</code> attribute on the <code>get_agent_id</code> function.</li>
 </ul>
 <pre class="language-js"><code class="language-js">got an error <span class="token keyword">for</span> test <span class="token string">'say a greeting'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
   type<span class="token punctuation">:</span> <span class="token string">'error'</span><span class="token punctuation">,</span>
   data<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     type<span class="token punctuation">:</span> <span class="token string">'ribosome_error'</span><span class="token punctuation">,</span>
-    data<span class="token punctuation">:</span> <span class="token string">"Attempted to call a zome function that doesn't exist: Zome: exercise Fn say_greeting"</span>
+    data<span class="token punctuation">:</span> <span class="token string">"Attempted to call a zome function that doesn't exist: Zome: exercise Fn get_agent_id"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
