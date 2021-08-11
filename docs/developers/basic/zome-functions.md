@@ -57,11 +57,6 @@ In case you forgot, Zomes are written in [Rust](https://www.rust-lang.org/). Don
 We went ahead and added some standard Rust code for you in the `zomes/exercise/src/lib.rs` file:
 
 ```rust
-pub struct SomeExternalInput {
-    first_name: String,
-    last_name: String,
-}
-
 pub struct SomeExternalOutput(String);
 
 pub fn hello_world(_:()) -> ExternResult<SomeExternalOutput> {
@@ -71,27 +66,17 @@ pub fn hello_world(_:()) -> ExternResult<SomeExternalOutput> {
     Ok(output)
 }
 
-pub fn say_my_name(external_input: SomeExternalInput) -> ExternResult<SomeExternalOutput> {
-    let message: String = format!("Your name is {} {}", 
-                                    external_input.first_name, 
-                                    external_input.last_name);
-    let output: SomeExternalOutput = SomeExternalOutput(message);
-    
-    Ok(output)
-}
-
 pub fn get_agent_id(_:()) -> ExternResult<AgentInfo> {
     Ok(agent_info()?)
 }
-
 ```
 
-`SomeExternalInput` and `SomeExternalOutput` are just simple **structs**. A [struct](https://doc.rust-lang.org/std/keyword.struct.html) in Rust is similar to classes in other languages. `SomeExternalInput` has 2 fields: first_name and last_name. `SomeExternalOutput` is a struct wrapped around a simple String. _You will soon see why you need to wrap a String in a struct when you want to use them as input/output. And why you cannot send simple Strings in and outside of your zome._
+`SomeExternalOutput` is just a simple **struct**. A [struct](https://doc.rust-lang.org/std/keyword.struct.html) in Rust is similar to classes in other languages. `SomeExternalOutput` is a struct wrapped around a simple String. _You will soon see why you need to wrap a String in a struct when you want to use them as input/output. And why you cannot send simple Strings in and outside of your zome._
 
-Next you have 3 **public functions**. If you are new to Rust, then `_:()` might seem weird. The input parameter has a name `_` and the type is an Object `()`. But it just means: "I accept anything, because I will not be using it". 
+Next you have 2 **public functions**. If you are new to Rust, then `_:()` might seem weird. The input parameter has a name `_` and the type is an Object `()`. But it just means: "I accept anything, because I will not be using it". 
 
 Finally you see the **return type** of each function.
-Functions that return a `Result` are very [common](https://learning-rust.github.io/docs/e3.option_and_result.html) in Rust. `ExternResult` is an enhanced Result type, specially adapted for use in zomes. In stead of a standard `Err`, you need a `WasmError` as the error type in your result. Because, as we mentioned above, your zome is compiled into a WASM binary. So every error you want to report to the outside world is in fact a [WasmError](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html).
+Functions that return a `Result` are very [common](https://learning-rust.github.io/docs/e3.option_and_result.html) in Rust. `ExternResult` is an enhanced Result type, specially adapted for use in zomes. Instead of a standard `Err`, you need a `WasmError` as the error type in your result. Because, as we mentioned above, your zome is compiled into a WASM binary. So every error you want to report to the outside world is in fact a [WasmError](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html).
 
 ### Import HDK
 
@@ -100,11 +85,12 @@ Becoming an expert starts by making every possible error. So go ahead and make s
 <inline-notification type="tip" title="Exercise">
 
 1. Open a terminal in `developer-exercises` folder.
-2. Enter the nix-shell by running: `nix-shell`  
-   _You should run this in the folder containing the default.nix file_
-3. Go to folder with the exercise `1.basic/0.zome-functions/exercise`
+2. Enter the nix-shell: `nix-shell`.
+   _You should run this in the folder containing the default.nix file_. 
+   _Starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes. After this initial time it will take just a few seconds_.
+3. Go to the folder with the exercise `1.basic/0.zome-functions/exercise`.
 4. Compile and test your code: `cd tests && npm install && npm run build`.
-5. Inspect the Rust compiler error
+5. Inspect the Rust compiler error.
 
 </inline-notification>
 
@@ -123,7 +109,7 @@ You should see the following error:
 </pre>
 
 The compiler tells you:
-1. it cannot find ExternResult
+1. it cannot find ExternResult and
 2. suggests you might want to import it using: `use hdk::prelude::ExternResult;` _The Rust compiler makes this lovely suggestion because we added `hdk` as a dependency in `cargo.toml`_
 
 The Holochain team built a Rust library `hdk`, which stands for _Holochain Development Kit_ and contains all important Holochain functions, types and attributes you will want to use in your zome. Since you will be using more than one HDK function or type, it is best to add the following statement to the top of the `lib.rs` file.
@@ -135,10 +121,10 @@ use hdk::prelude::*;
 
 Go ahead and take a quick look at that [prelude](https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs) file to get a taste of what the HDK provides.
 
-### External inputs
+### External results
 
 Now that you have fixed the import statement, you will discover that building your zome succeeds. Let's see if we can break something else.  
-We wrote an integration test for you, to test if everything works correctly. The best way to write integration/scenario tests in typescript is to use [Tryorama](https://developer.holochain.org/docs/glossary/#tryorama), a holochain typescript library, to write these tests. Take a look in the `1.basic/0.zome-functions/exercise/tests/src/index.ts` file. Run the test to see what fails.
+We wrote an integration test for you, to test if everything works correctly. The best way to write integration/scenario tests in TypeScript is to use [Tryorama](https://developer.holochain.org/docs/glossary/#tryorama), a Holochain TypeScript library. Take a look in the `1.basic/0.zome-functions/exercise/tests/src/index.ts` file. Run the test to see what fails.
 
 
 <inline-notification type="tip" title="Exercise">
@@ -166,7 +152,7 @@ It simply means that our test code `.call("exercise", "hello_world", null);`, wh
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add `#[hdk_extern]` on top of the 3 public functions.
+1. Add `#[hdk_extern]` on top of the 2 public functions.
 2. Compile and test your code: `cd tests && npm install && npm test`.
 3. Inspect the error.
 </inline-notification>
@@ -180,13 +166,13 @@ It simply means that our test code `.call("exercise", "hello_world", null);`, wh
 </pre>
 
 The compiler is complaining that our `SomeExternalOutput` struct is not implementing the trait `hdk::prelude::Serialize`. You will also see `#[hdk_extern]` mentioned. `#[hdk_extern]` is a Rust macro and it requires that the function it is added to, has one input parameter and that this parameter can be serialized. Because zome functions live on the boundary of your WASM binary, they need to be able to serialize and deserialize all data structs that go in or out the zome.  
-Luckily this is all standard Rust stuff. Annotate the 2 structs `SomeExternalInput` and `SomeExternalOutput` with the following attribute **#[derive(Serialize, Deserialize, Debug)]**. This attribute makes sure the data in the structs can be sent to this zome over a network, from a GUI, or – like in our case – from a test script.  
+Luckily this is all standard Rust stuff. Annotate the struct `SomeExternalOutput` with the following attribute **#[derive(Serialize, Deserialize, Debug)]**. This attribute makes sure the data in the struct can be sent to this zome over a network, from a GUI, or – like in our case – from a test script.  
 It is also the reason why you cannot use a simple String as the input or output for a zome function. You cannot add `#[derive(Serialize, Deserialize, Debug)]` to a String, only to a struct.
 
 **Side note**  
 Requirements for a zome function:
 * needs to be a public function
-* needs to return a `ExternResult<T>`
+* needs to return an `ExternResult<T>`
 * needs to be decorated with `#[hdk_extern]` 
 * takes exactly 1 input param
 
@@ -194,42 +180,54 @@ To test this last requirement remove the input param `external_input` or `_:()` 
 
 ## Exercise
 
-To finish this exercise add the attributes to the structs.
+To finish this exercise, add the attributes to the struct.
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of the 2 structs.
+1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of the struct.
 2. Compile and test your code: `cd tests && npm install && npm test`.
 3. Inspect the error.
 </inline-notification>
 
-## Agent info
+Again you should the following error, indicating that the zome function `say_greeting` we're trying to call doesn't exist:
 
-The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_id` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created add the beginning of your [source-chain](/concepts/source-chain/) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...
+<pre style="background-color:black;color:white">tryorama] <strong><span style="color:#CC0000">error</span></strong>: Test error: {
+  type: &apos;error&apos;,
+  data: {
+    type: &apos;ribosome_error&apos;,
+    data: &quot;Attempted to call a zome function that doesn&apos;t exist: Zome: exercise Fn say_greeting&quot;
+  }
+}
+not ok 1 Test threw an exception. See output for details.</pre>
 
+### Agent info
+
+`hello_world` is a very simple toy function. In `get_agent_info` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created at the beginning of your [source-chain](/concepts/source-chain/) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your Holochain application. When you install a Holochain app, an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and an Agent ID is created, they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of Holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power does not survive...
+
+## Exercise
 
 So now it is up to you to finish this exercise. Add all the things we just explained to your code, and try building your zome and running the test.
 You only need to add a few lines in this first exercise, but know that when the test succeeds, you:
 
 - made your first zome module in Rust
 - compiled your zome into a DNA in WASM, a state of the art binary format
-- ran a test script, written in Typescript, executed in Nodejs
-- initiated an actual real holochain conductor
-- which instantiated your DNA into a real, actual Holochain cell
-- and executed a test script that asked your cell to make a real entry with the words "Hello, World!"
+- ran a test script, written in TypeScript, executed in Node.js
+- initiated an actual real Holochain conductor
+- which instantiated your DNA into a real actual Holochain cell
+- and executed a test script that asked your cell to return the words "Hello Holochain"
 
 You will in fact have created your very first decentralized, agent centric, boundary pushing Holochain app. A real hApp!
 
 <inline-notification type="tip" title="Exercise">
 
 1. Go to the `developer-exercises`.
-2. Enter the nix-shell: `nix-shell`.
-   _you should run this in the folder containing the default.nix file_  
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_
-3. Go to folder with the exercise `basic/0.zome-functions/exercise`.
+2. Enter the nix-shell by running: `nix-shell`  
+   _You should run this in the folder containing the default.nix file_.
+3. Go to the folder with the exercise `basic/0.zome-functions/exercise`.
 4. Inside `zome/exercise/src/lib.rs`:
    - Import the HDK library and functions.
    - Add the `#[hdk_extern]` macro in the necessary functions.
+   - Add `#[derive(Serialize, Deserialize, Debug)]` on top of the struct.
 5. Compile and test your code: `cd tests && npm install && npm test`.
 6. Don't stop until the test runs green.
 
@@ -248,7 +246,7 @@ If you encounter an error check here if you can find something that looks like y
 - You forgot to add the `#[hdk_extern]` attribute on the `get_agent_id` function.
 
 ```js
-got an error for test 'say a greeting': {
+got an error for test 'get_agent_id': {
   type: 'error',
   data: {
     type: 'ribosome_error',
