@@ -132,7 +132,7 @@ It's really important to think about elements when getting content from the DHT 
 2. **Create the same entry** a second time.
    - You should see the two `Create` headers accompanying the entry.
 3. Now, switch to the `get` zome fn. Click on the entry and copy its hash to the `hash` argument, and execute the `get`.
-   - See that only the second header is returned with the `get`. This is because, as the [`get` documentation](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) explains, `get` is the simplified version for getting things from the DHT, that only returns the latest header when getting an entry.
+   - See that only the first (= oldest) header is returned with the `get`. This is because, as the [`get` documentation](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) explains, `get` is the simplified version for getting things from the DHT, that only returns the "oldest live" header when getting an entry.
 4. Switch to the `get_details` zome fn, and execute it with the same `EntryHash`.
    - See that, in this case, all the headers are returned. This is because `get_details` returns all the metadata that is accompanying the entry.
 5. Click on one of the headers, and copy its hash. Try to do a `get_details` with it.
