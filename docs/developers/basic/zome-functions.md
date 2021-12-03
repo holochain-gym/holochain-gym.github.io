@@ -50,7 +50,7 @@ A zome function is the bridge between the inside and the outside world. The insi
 
 You need to figure out
 - how to mark a function so it can be called from the outside
-- how data can be send in and out the zome
+- how data can be sent in and out of the zome
 
 In case you forgot, Zomes are written in [Rust](https://www.rust-lang.org/). Don't worry if you are new to the language, we will gladly help you grow comfortable with it. Look in the [Rust section](/developers/requirements/rust/) or join us at the [Holochain forum](https://forum.holochain.org/).
 
