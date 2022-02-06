@@ -338,7 +338,7 @@ We need to code a small zome that has the following abilities:
 
 <inline-notification type="tip" title="Exercise">
 
-1. Go to the [source code for the exercise](https://github.com/holochain-gym/developer-exercises/tree/main/2.intermediate/4.remote-call).
+1. Go to the [source code for the exercise](https://github.com/holochain-gym/developer-exercises/tree/main/2.intermediate/5.capability-tokens).
 2. Implement all `unimplemented!()` functions in the exercise.
 3. Run `npm test` to test your implementation.
 
