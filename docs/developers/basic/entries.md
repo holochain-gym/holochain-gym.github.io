@@ -136,13 +136,13 @@ export const Simple = () => {
 In the details you see 3 things: the _entry hash_, the _entry type_ and _content_.
 **Content** is a custom field, meaning you can give it a different name if you want to. You could add more fields as well, but for now one will do.  
 The **Entry type** is something specific to the Holochain technology underpinning our app. There are 4 types of entries: Agent, App, CapClaim, CapGrant. For this exercise we limit our focus to App entries.  
-The **Entry hash** is the last of the three. You could think of the entry hash as the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.
+The **Entry hash** is the last of the three. You could think of the entry hash as the unique address of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.
 
 ## Getting ready
 
 _So, lets get to the real work!_
 
-In case you forgot, Zomes are written in [Rust](https://www.rust-lang.org/). Don't worry if you are new to the language, we will gladly help you grow comfortable with it - join us over at the [Holochain forum](https://forum.holochain.org/).
+Zomes are written in [Rust](https://www.rust-lang.org/). Don't worry if you are new to the language, we will gladly help you grow comfortable with it - join us over at the [Holochain forum](https://forum.holochain.org/).
 
 We went ahead and added some code already for you in the `1.basic/1.entries/zomes/exercise/src/lib.rs` file:
 
@@ -157,25 +157,16 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 }
 
 ```
-### Import HDK functions
+### Import and annotate
 
-The first thing you need to do is import all the necessary tools in your code.
-
-The Holochain team built a Rust library `hdk`, which stands for _Holochain Development Kit_ and contains all important Holochain functions you will want to call from within your zome. So add this line to the top of your file.
+Like in the previous exercise, we need to setup a few thing to make our code callable from the outside world.
+Import the HDK functions.
 
 ```rust
 use hdk::prelude::*;
 ```
 
-This is how imports are done in Rust. You start with `use` followed by the name of the library `hdk`. In this case we further select `prelude` which is just a file inside the hdk library where the team has gathered all the useful HDK functions in one place. This way you can add all these functions at once, simply by adding the `*`.
-
-Go ahead and take a quick look at that `prelude` file:  
-https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs  
-You will find most of the things you will use in this exercise listed in that file.
-
-### External inputs
-
-By themselves, Zomes don't do much - you need to feed them data and ask them to do stuff!
+Mark the structs that will move in and out of your zome with the proper annotations.
 
 ```rust
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -184,15 +175,7 @@ pub struct SomeExternalInput {
 }
 ```
 
-The `SomeExternalInput` struct is a simple [Rust struct](https://doc.rust-lang.org/std/keyword.struct.html). A struct is similar to classes in other languages. In this case, it contains one custom field to hold your "Hello, World!" greeting.
-
-On top of it you see `#[derive(Serialize, Deserialize, Clone, Debug)]`. This is what they call an ['attribute' in Rust](https://doc.rust-lang.org/rust-by-example/attribute.html). This annotation adds some useful metadata - `Serialize` and `Deserialize` are crucial; they make sure the data in this struct can be sent to this Zome over a network, from a GUI, or – like in our case – from a test script.
-
-### External calls
-
-So we have a struct that can carry our data from the outside into our zome. Now we need to know how to actually send this data to our zome. We have this public function `say_greeting` in our code, but it being a public function is not enough. We need to add two more things.
-
-First, you need to add an attribute on top of this function to make it clear that this function can be called from outside the zome. The attribute you need to add is `#[hdk_extern]`. Only public functions with this attribute can be called from outside a zome.
+Add `#[hdk_extern]` to the public function `say_greeting` so it can be called from outside a zome.
 
 ```rust
 #[hdk_extern]         // add this attribute
@@ -201,7 +184,7 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 }
 ```
 
-### External outputs
+### Create entry
 
 The challenge is to create an entry which contains the text "Hello, World!". The text will be passed to the zome as a `SomeExternalInput` struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply `create_entry`. And since you imported all functions from the prelude already, you can use this function immediately in your code.
 
