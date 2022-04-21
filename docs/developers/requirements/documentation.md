@@ -6,7 +6,7 @@ Here you can find useful technical documentation for holochain:
 - [Glossary of terms](https://developer.holochain.org/docs/glossary/)
 - [HDK documentation](https://docs.rs/hdk/0.0.129/hdk/)
 - [Tryorama documentation](https://github.com/holochain/tryorama)
-- [Conductor API](https://github.com/holochain/holochain-conductor-api)
+- [Holochain client api](https://github.com/holochain/holochain-client-js)
 
 Here you can find useful resources:
 

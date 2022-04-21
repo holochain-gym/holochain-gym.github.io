@@ -275,12 +275,12 @@ If you really want to take your exercises seriously, you need to know how to add
 The tests are fairly straightforward. Take a look at the code in `tests\src\index.ts`. If you are done exploring, add the code here below, just behind this line `t.ok(entryHash, "test add book");`.
 
 ```typescript
-let book = await alice_common.cells[0].call(
+let entry = await alice_common.cells[0].call(
   "exercise", // name of zome
   "get_book", // function to call
   entryHash // value to pass to the function
 );
-t.ok(book, "test get book"); // tape test assertion
+t.deepEqual(entry, book, "test book found"); // tape test assertion
 ```
 
 Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test, is the test that failed at least once. That way you know you are actually testing something real.

@@ -87,6 +87,27 @@ nix-shell
 npm install
 ```
 
+Running `nix-shell` for the first time will take a few minutes, after that it will take just seconds. 
+Try it... You exit the nix shell like any other shell: type `exit` or press Ctrl+C. Then run `nix-shell` again.
+
+Among some of the thing that nix-shell install is a tool called `hn-introspect`. It helps to inspect which version of holochain, HDK and its dependencies are installed. Look at this example:
+
+```bash
+$ hn-introspect 
+List of applications and their version information
+
+main
+- hc-0.0.19: https://github.com/holochain/holochain/tree/8a0cd9283fd881ddbc467b1d0d97ee2fcd49d992
+- holochain-0.0.118: https://github.com/holochain/holochain/tree/8a0cd9283fd881ddbc467b1d0d97ee2fcd49d992
+- kitsune-p2p-proxy-0.0.14: https://github.com/holochain/holochain/tree/8a0cd9283fd881ddbc467b1d0d97ee2fcd49d992
+- lair-keystore-0.0.9: https://github.com/holochain/lair/tree/v0.0.9
+
+- rustc: rustc 1.55.0 (c8dfcfe04 2021-09-06)
+- cargo fmt: rustfmt 1.4.37-stable (c8dfcfe 2021-09-06)
+- cargo clippy: clippy 0.1.55 (c8dfcfe 2021-09-06)
+- perf: perf version 5.10.81
+```
+
 If you want to know about the Holochain development environment, you can read a bit more about why the Holochain projects use Nix in the article [here](https://developer.holochain.org/docs/install-advanced/#more-info-on-nix).
 
 ## Devtools

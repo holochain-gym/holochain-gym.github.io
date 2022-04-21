@@ -12,13 +12,25 @@ Each exercise will have two folders:
 * exercise
 * solution
 
-The solution folder contains a complete and working version of the exercise folder. After you solved the exercise you can compare your solution with our solution. Or if you are really lost, you can take a quick look...
+The solution folder contains a complete and working version of the exercise folder. After you solved the exercise you can compare your solution with our solution. Or, if you are really lost, you can take a quick look...
 
-The structure inside the exercise and solution folder very similar to a real holochain application. So let us review what you see when you open the entries exercise.
+The structure inside the exercise and solution folder are very similar to a real holochain application. So let us review what you see when you open the entries exercise.
+
+
+``` 
+  > 1.entries
+      > exercise
+          > tests
+          > workdir
+          > zomes
+          README.md
+          ...
+      > solution
+```
 
 The best place to start if you are lost is to read the **README** file again. It briefly states what you need to do to compile and test the exercise.
 
-The heart of the exercise lies withing **zomes/exercise**. This is a pure and simple Rust project and contains its own `Cargo.toml` and `Cargo.lock` file. You start adding Rust code in `src/lib.rs`
+The heart of the exercise lies in **zomes/exercise**. This is a pure and simple Rust project and contains its own `Cargo.toml` and `Cargo.lock` file. You start adding Rust code in `src/lib.rs`
 
 Once you are done adding code you need to compile your Rust code to a [WASM](https://webassembly.org/) binary and package it in a DNA, a holochain specific format. The result will be stored in **workdir**.
 

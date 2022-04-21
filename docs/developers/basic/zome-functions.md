@@ -166,7 +166,7 @@ It simply means that our test code `.call("exercise", "hello_world", null);`, wh
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add `#[hdk_extern]` on top of the 3 public functions.
+1. Add `#[hdk_extern]` on top of each of the 3 public functions.
 2. Compile and test your code: `cd tests && npm test`.
 3. Inspect the error.
 </inline-notification>
@@ -198,7 +198,7 @@ To finish this exercise add the attributes to the structs.
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of the 2 structs.
+1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of each of the 2 structs.
 2. Compile and test your code: `cd tests && npm test`.
 3. Inspect the error.
 </inline-notification>

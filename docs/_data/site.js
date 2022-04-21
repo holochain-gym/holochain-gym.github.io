@@ -10,7 +10,7 @@ module.exports = async function () {
       },
     ],
     gitSiteUrl: 'https://github.com/holochain-gym/holochain-gym.github.io',
-    gitBranch: 'master',
+    gitBranch: 'main',
     helpUrl: "https://github.com/holochain-gym/",
     logoAlt: "A gym tool",
     socialMediaImage: "/_assets/holochain-gym.png",
