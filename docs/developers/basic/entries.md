@@ -253,22 +253,21 @@ You will in fact have created your very first decentralized, agent centric, boun
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`.
    _you should run this in the folder containing the default.nix file_.
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_.
 3. Go to folder with the exercise `1.basic/1.entries/exercise`.
 4. Inside `zomes/exercise/src/lib.rs`
    - Define a new struct for your entry: 'Greeting'.
    - Implement the function with `unimplemented!()`.
-5. Compile and test your code: `cd tests && npm install && npm test`.
+5. Compile and test your code: `cd tests && npm test`.
 6. Don't stop until the test runs green.
 
 </inline-notification>
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.101/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_def.html">`entry_def`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_defs.html">`entry_defs`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/info/fn.agent_info.html">`agent_info`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/macro.entry_def.html">`entry_def`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/macro.entry_defs.html">`entry_defs`</a></li>
 </ul>
 </inline-notification>
 

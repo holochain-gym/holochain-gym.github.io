@@ -38,7 +38,7 @@ customElements.define("golden-layout-component", GoldenLayoutComponent);
 <inline-notification type="tip" title="Useful reads">
 <ul>
 <li><a href="/developers/basic/entries/">Gym: Creating Entries</a></li>
-<li><a href="https://docs.rs/hdk/0.0.110/hdk/prelude/struct.Update.html">HDK Docs: Update header</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/struct.Update.html">HDK Docs: Update header</a></li>
 </ul>
 </inline-notification>
 
@@ -158,7 +158,7 @@ export const Simple = () => {
         e.target.activeAgentPubKey = cellId[1];
       }}
     >
-      <golden-layout-root style="flex: 1;">
+      <golden-layout-root style="width: 100%; height: 800px; margin-bottom: 40px;">
         <golden-layout-column>
           <golden-layout-row>
             <golden-layout-component title="Call Zome Fns">

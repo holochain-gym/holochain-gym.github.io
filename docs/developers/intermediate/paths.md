@@ -134,7 +134,7 @@ Keep in mind that paths are already incorporated in the core hdk, so you don't n
 
 ```rust
 entry_defs![
-    Path::entry_def(),
+    PathEntry::entry_def(),
     ...
 ];
 ```
@@ -270,11 +270,10 @@ export const Exercise = () => {
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`  
    _you should run this in the folder containing the default.nix file_  
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_
 3. Go to folder with the exercise `intermediate/1.paths`
 4. Inside `zome/exercise/src/lib.rs`
    - Implement all `unimplemented!()` functions
-5. Compile and test your code: `cd tests && npm install && npm test`.
+5. Compile and test your code: `cd tests && npm test`.
 6. Don't stop until the test runs green
 
 </inline-notification>
@@ -282,11 +281,11 @@ export const Exercise = () => {
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html">`create_link`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html">`get_links`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/hash_path/path/struct.Path.html">`Path`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/link/fn.create_link.html">`create_link`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/link/fn.get_links.html">`get_links`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/hash_path/path/struct.Path.html">`Path`</a></li>
 </ul>
 </inline-notification>
 

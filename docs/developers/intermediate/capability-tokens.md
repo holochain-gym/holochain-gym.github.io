@@ -346,8 +346,8 @@ We need to code a small zome that has the following abilities:
 
 ### Relevant HDK documentation:
 
-- [call_remote](https://docs.rs/hdk/0.0.100/hdk/p2p/fn.call_remote.html).
-- [create_cap_grant](https://docs.rs/hdk/0.0.100/hdk/capability/fn.create_cap_grant.html)
+- [call_remote](https://docs.rs/hdk/0.0.129/hdk/p2p/fn.call_remote.html).
+- [create_cap_grant](https://docs.rs/hdk/0.0.129/hdk/capability/fn.create_cap_grant.html)
 
 ## Solution
 

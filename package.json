@@ -28,10 +28,11 @@
     "doc": "docs"
   },
   "dependencies": {
-    "@holochain-playground/blockly": "git+https://github.com/holochain-playground/blockly.git#build",
     "@holochain-playground/core": "git+https://github.com/holochain-playground/core.git#build",
     "@holochain-playground/elements": "git+https://github.com/holochain-playground/elements.git#build",
-    "lit": "^2.0.2"
+    "lit": "^2.0.2",
+    "lit-element": "^3.0.1",
+    "lit-html": "^2.0.1"
   },
   "description": ""
 }

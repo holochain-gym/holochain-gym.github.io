@@ -376,7 +376,7 @@ export const Sim2 = () => {
 This time we will do some lightweight exercises, just to get a feel for the chain part of our source chain. You need to implement 3 functions.
 
 - `query_all_elements` returns the full array of elements contained in the source chain of the agent.
-- `query_snackings` queries the source chain and returns only the elements that contain a `Snacking` entry. WARNING! This query should also [return the entries themselves](https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html#method.include_entries).
+- `query_snackings` queries the source chain and returns only the elements that contain a `Snacking` entry. WARNING! This query should also [return the entries themselves](https://docs.rs/hdk/0.0.129/hdk/prelude/struct.ChainQueryFilter.html#method.include_entries).
 - `query_by_time` queries the source chain and filters it by a time range of when the element was committed.
 
 <inline-notification type="tip" title="Exercise">
@@ -384,17 +384,17 @@ This time we will do some lightweight exercises, just to get a feel for the chai
 1. Check if you are still inside the nix-shell  
    _Your terminal should look similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
 2. Implement `query_all_elements`, `query_snackings`, `query_by_time`
-3. Compile and test your code: `cd tests && npm install && npm test`
+3. Compile and test your code: `cd tests && npm test`
 4. Don't stop until the tests run green
 
 </inline-notification>
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/chain/fn.query.html">`query`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html">`ChainQueryFilter`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/chain/fn.query.html">`query`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/struct.ChainQueryFilter.html">`ChainQueryFilter`</a></li>
 </ul>
 </inline-notification>
 

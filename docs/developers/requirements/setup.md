@@ -84,6 +84,7 @@ So go ahead and run:
 
 ```bash
 nix-shell
+npm install
 ```
 
 If you want to know about the Holochain development environment, you can read a bit more about why the Holochain projects use Nix in the article [here](https://developer.holochain.org/docs/install-advanced/#more-info-on-nix).
