@@ -20,8 +20,6 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
-    <script src="../../../37b22479.js"></script>
-  
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
@@ -34,15 +32,27 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../72d9dd48.png">
+<meta property="og:image" content="../../../323ce679.png">
 <meta property="og:url" content="/developers/requirements/anatomy/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;display=optional" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=optional" rel="stylesheet">
+
+<style>
+  body {
+    font-family: Arial !important;
+  }
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
     <link rel="stylesheet" href="../../../be94ee0c.css">
-<link rel="stylesheet" href="../../../58e8f57f.css">
-<link rel="stylesheet" href="../../../1eb700f2.css">
+<link rel="stylesheet" href="../../../0f4765a3.css">
+<link rel="stylesheet" href="../../../ac2ea3b8.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
 
   
@@ -50,11 +60,9 @@
 
   
 
-<link rel="preload" href="../../../6938c105.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../81b16c1a.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../d67d4614.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d15d5a5d.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -231,11 +239,11 @@
 
 </li></ul>
   <div class="sidebar-bottom">
-  <hr>
-  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+  <hr> <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
-
-  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
+    <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
 </div>
 
 </rocket-navigation>
@@ -249,25 +257,32 @@
         <main class="markdown-body">
   
     <h1 id="requirements-anatomy"><a class="anchor" href="#requirements-anatomy"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Requirements: Anatomy</h1>
+<p>The <a href="https://github.com/holochain-gym/developer-exercises"><code>developer-exercises</code></a> repository contains exercises for each of the lessons presented here in the Gym.</p>
+<p>The repository itself is a cargo workspace, and each of the exercises consists of two separate crates, one for the exercise itself and another for the solution to the exercise.</p>
+<p>It is also an NPM workspace, since we are using tryorama for the tests.</p>
 <h2 id="anatomy-of-an-exercise"><a class="anchor" href="#anatomy-of-an-exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Anatomy of an exercise</h2>
 <p>Each exercise will have two folders:</p>
 <ul>
 <li>exercise</li>
 <li>solution</li>
 </ul>
-<p>The solution folder contains a complete and working version of the exercise folder. After you solved the exercise you can compare your solution with our solution. Or if you are really lost, you can take a quick look...</p>
-<p>The structure inside the exercise and solution folder very similar to a real holochain application. So let us review what you see when you open the entries exercise.</p>
-<p><img src="../../../2f99671c.png" style="width: 100%; margin-top: 12px;"></p>
+<p>The solution folder contains a complete and working version of the exercise folder. After you solved the exercise you can compare your solution with our solution. Or, if you are really lost, you can take a quick look...</p>
+<p>The structure inside the exercise and solution folder are very similar to a real holochain application. So let us review what you see when you open the entries exercise.</p>
+<pre><code>  &gt; 1.entries
+      &gt; exercise
+          &gt; tests
+          &gt; workdir
+          &gt; zomes
+          README.md
+          ...
+      &gt; solution
+</code></pre>
 <p>The best place to start if you are lost is to read the <strong>README</strong> file again. It briefly states what you need to do to compile and test the exercise.</p>
-<p>The exercise is a <a href="https://doc.rust-lang.org/book/ch14-03-cargo-workspaces.html">Cargo workspace</a>. Cargo, is the build system for Rust. And a workspace is place in which you can define one or more Rust projects. <strong>Cargo.toml</strong> contains the configuration of the workspace. Open the file and you will see that is has one member <code>zomes/exercise</code>.
-Our gym exercise only contain one member, but holochain app will typically have multiple members.</p>
-<p><strong>Cargo.lock</strong> contains a snapshot of all the rust dependencies. It works much like <code>package-lock.json</code> in node projects. You should commit this file to the git repository if you are working with several people on the same project.</p>
-<p>The heart of the exercise lies withing <strong>zomes/exercise</strong>. This is a pure and simple Rust project and contains its own <code>Cargo.toml</code> and <code>Cargo.lock</code> file. You start adding Rust code in <code>src/lib.rs</code></p>
+<p>The heart of the exercise lies in <strong>zomes/exercise</strong>. This is a pure and simple Rust project and contains its own <code>Cargo.toml</code> and <code>Cargo.lock</code> file. You start adding Rust code in <code>src/lib.rs</code></p>
 <p>Once you are done adding code you need to compile your Rust code to a <a href="https://webassembly.org/">WASM</a> binary and package it in a DNA, a holochain specific format. The result will be stored in <strong>workdir</strong>.</p>
 <p>To make your live easy we put together a npm script in the <code>tests/package.json</code> that checks if you are running in the nix-shell and builds the code. To build your zome you only need to run <strong>npm run build</strong> inside the <code>tests</code> folder.</p>
-<p>The <strong>tests</strong> folder contains a full node/typescript project, complete with <code>package.json</code>,<code>package-lock.json</code>,<code>tsconfig.json</code> and a <code>src</code> folder. These tests can be viewed as integration tests. They actually run your compiled DNA in a real holochain <a href="https://developer.holochain.org/docs/glossary/#conductor">conductor</a>. The tests call your code, just like a regular web app would do.</p>
+<p>The <strong>tests</strong> folder contains a full node/typescript project, complete with <code>package.json</code>,<code>tsconfig.json</code> and a <code>src</code> folder. These tests can be viewed as integration tests. They actually run your compiled DNA in a real holochain <a href="https://developer.holochain.org/docs/glossary/#conductor">conductor</a>. The tests call your code, just like a regular web app would do.</p>
 <p>For running the tests we also provided another npm script that checks if you are running in the nix-shell and runs the tests. You only need to call <strong>npm test</strong> inside the <code>tests</code> folder.</p>
-<p>The folders <strong>.cargo</strong> &amp; <strong>target</strong> will only show when you try to build the project. You usually exclude these when committing code to a repository.</p>
 <p>Now you know enough to start the <a href="/developers/basic/entries/">first exercise</a> or better yet explore the main <a href="/concepts/">concepts</a> of holochain in a hands-on way. Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
 If want to start working on your own holochain apps, separate from the holochain-gym, you can read the next section.</p>
 <h2 id="building-your-own-holochain-app-optional"><a class="anchor" href="#building-your-own-holochain-app-optional"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Building your own Holochain app (optional)</h2>
@@ -303,7 +318,7 @@ hc app pack workdir/happ
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/requirements/anatomy.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/main/./docs/developers/requirements/anatomy.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -410,6 +425,8 @@ Commons Attribution 4.0</a>
 
 
 
+
+
   
 
 
@@ -417,7 +434,7 @@ Commons Attribution 4.0</a>
   
 
 
-<script type="module" src="../../../6938c105.js"></script>
-<script type="module" src="../../../d67d4614.js" inject-service-worker=""></script>
+<script type="module" src="../../../81b16c1a.js"></script>
+<script type="module" src="../../../d15d5a5d.js" inject-service-worker=""></script>
 
 </body></html>

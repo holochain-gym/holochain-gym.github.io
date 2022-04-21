@@ -20,8 +20,6 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
-    <script src="../../../37b22479.js"></script>
-  
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
@@ -34,15 +32,27 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../714181c8.png">
+<meta property="og:image" content="../../../582d67d5.png">
 <meta property="og:url" content="/developers/intermediate/update/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;display=optional" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=optional" rel="stylesheet">
+
+<style>
+  body {
+    font-family: Arial !important;
+  }
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
     <link rel="stylesheet" href="../../../be94ee0c.css">
-<link rel="stylesheet" href="../../../58e8f57f.css">
-<link rel="stylesheet" href="../../../1eb700f2.css">
+<link rel="stylesheet" href="../../../0f4765a3.css">
+<link rel="stylesheet" href="../../../ac2ea3b8.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
 
   
@@ -50,11 +60,12 @@
 
   
 
-<link rel="preload" href="../../../6938c105.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../81b16c1a.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../d67d4614.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d15d5a5d.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../eaeed010.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../2af62055.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../8ad3a711.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -203,7 +214,14 @@
 </li>
 <li class="menu-item current">
 <a href="/developers/intermediate/update/">Update</a>
-
+<ul>
+  <li class="menu-item anchor">
+    <a href="#updating-entries" class="anchor">Updating Entries</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#try-it" class="anchor">Try it!</a>
+  </li>
+</ul>
 
 </li>
 <li class="menu-item">
@@ -224,11 +242,11 @@
 
 </li></ul>
   <div class="sidebar-bottom">
-  <hr>
-  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+  <hr> <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
-
-  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
+    <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
 </div>
 
 </rocket-navigation>
@@ -242,12 +260,61 @@
         <main class="markdown-body">
   
     <h1 id="intermediate-update"><a class="anchor" href="#intermediate-update"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Update</h1>
+<inline-notification type="tip" title="Useful reads">
+<ul>
+<li><a href="/developers/basic/entries/">Gym: Creating Entries</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/struct.Update.html">HDK Docs: Update header</a></li>
+</ul>
+</inline-notification>
+<h2 id="updating-entries"><a class="anchor" href="#updating-entries"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Updating Entries</h2>
+<p>Updates on entries are another basic primitive that Holochain offers via the HDK to hApp developers. It consists of <strong>marking</strong> an old entry as updated, and <strong>creating</strong> a new one with updated content.</p>
+<p>It's important to understand this: the DHT is an append only store, in which you can't <em>really</em> modify data. The only thing you can do is add new data that refers to old data in it.</p>
+<p>So, when we <em>update</em> an entry, <strong>we are not modifying the contents of the original entry</strong>, we are <strong>creating a new entry</strong> and <strong>marking the old entry as updated by the new one</strong>.</p>
+<p>This means that if we for example do a <code>get</code> with the hash of the original entry, <strong>we are going to get the contens of the original entry, even if that entry has been updated</strong>.</p>
+<p>So, let's see what updating an entry looks like:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> hdk<span class="token punctuation">::</span>prelude<span class="token punctuation">::</span><span class="token operator">*</span><span class="token punctuation">;</span>
+
+<span class="token attribute attr-name">#[hdk_entry(id = "post")]</span>
+<span class="token keyword">struct</span> <span class="token function">Post</span><span class="token punctuation">(</span>String<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">entry_defs!</span><span class="token punctuation">[</span>Post<span class="token punctuation">::</span><span class="token function">entry_def</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token attribute attr-name">#[hdk_extern]</span>
+<span class="token keyword">fn</span> <span class="token function">create_post</span><span class="token punctuation">(</span>post<span class="token punctuation">:</span> Post<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>HeaderHash<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">create_entry</span><span class="token punctuation">(</span>post<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token attribute attr-name">#[hdk_extern]</span>
+<span class="token keyword">fn</span> <span class="token function">update_post</span><span class="token punctuation">(</span>old_header_address<span class="token punctuation">:</span> HeaderHash<span class="token punctuation">,</span> new_post<span class="token punctuation">:</span> Post<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>HeaderHash<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">update_entry</span><span class="token punctuation">(</span>old_header_address<span class="token punctuation">,</span> new_post<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>Do you see something interesting in the <code>update_post</code> function? <strong>We are not really updating an entry, we are updating its header</strong>!</p>
+<p>Here you can start to see the importance of <code>Elements</code>, <code>Headers</code> and <code>HeaderHashes</code>: it's not enough to know the entry hash that we want to update, we need to know <em>which header created that entry</em> in order to update it.</p>
+<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
+<p>Here is a very simple interactive simulation of creating an update chain:</p>
+<ol>
+<li>Click in one of the nodes.</li>
+<li>Create an entry with arbritary content in <code>Call Zome Fns</code>.</li>
+<li>Select its header in the <code>Entry Graph</code>, and see its contents in <code>Entry Contents</code>.
+<ul>
+<li>Copy the hash of the header by clicking on the "Copy" button inside that <code>Entry Contents</code> while having the header selected.</li>
+</ul>
+</li>
+<li>In <code>Call Zome Fns</code>, select the<code>update_entry</code> function.</li>
+<li>In the <code>original_header_address</code> field, paste the header that you copied, and in <code>new_content</code> pass some arbritatry content as well.</li>
+<li>See the <code>Entry Graph</code> that is created from these actions.</li>
+</ol>
+<mdjs-story mdjs-story-name="Simple"></mdjs-story>
+<p>You can play around with update chains for a while. You can also try to update the same entry multiple times! What happens then?</p>
+        
+      
 
   
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/update.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/main/./docs/developers/intermediate/update.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -354,6 +421,8 @@ Commons Attribution 4.0</a>
 
 
 
+
+
   
 
 
@@ -361,7 +430,8 @@ Commons Attribution 4.0</a>
   
 
 
-<script type="module" src="../../../6938c105.js"></script>
-<script type="module" src="../../../d67d4614.js" inject-service-worker=""></script>
+<script type="module" src="../../../81b16c1a.js"></script>
+<script type="module" src="../../../d15d5a5d.js" inject-service-worker=""></script>
+<script type="module" src="../../../eaeed010.js" mdjs-setup=""></script>
 
 </body></html>

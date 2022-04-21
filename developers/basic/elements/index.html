@@ -20,8 +20,6 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
-    <script src="../../../37b22479.js"></script>
-  
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
@@ -34,15 +32,27 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../40611f02.png">
+<meta property="og:image" content="../../../10e9fe44.png">
 <meta property="og:url" content="/developers/basic/elements/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;display=optional" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=optional" rel="stylesheet">
+
+<style>
+  body {
+    font-family: Arial !important;
+  }
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
     <link rel="stylesheet" href="../../../be94ee0c.css">
-<link rel="stylesheet" href="../../../58e8f57f.css">
-<link rel="stylesheet" href="../../../1eb700f2.css">
+<link rel="stylesheet" href="../../../0f4765a3.css">
+<link rel="stylesheet" href="../../../ac2ea3b8.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
 
   
@@ -50,14 +60,12 @@
 
   
 
-<link rel="preload" href="../../../6938c105.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../81b16c1a.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../d67d4614.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../91c602fa.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../099c0a8b.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../9fd83f86.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d15d5a5d.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../4c18fb3a.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../2af62055.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../8ad3a711.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -243,11 +251,11 @@
 
 </li></ul>
   <div class="sidebar-bottom">
-  <hr>
-  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+  <hr> <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
-
-  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
+    <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
 </div>
 
 </rocket-navigation>
@@ -307,7 +315,7 @@
 </li>
 <li>Now, switch to the <code>get</code> zome fn. Click on the entry and copy its hash to the <code>hash</code> argument, and execute the <code>get</code>.
 <ul>
-<li>See that only the second header is returned with the <code>get</code>. This is because, as the <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code> documentation</a> explains, <code>get</code> is the simplified version for getting things from the DHT, that only returns the latest header when getting an entry.</li>
+<li>See that only the first header is returned with the <code>get</code>. This is because, as the <a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html"><code>get</code> documentation</a> explains, <code>get</code> is the simplified version for getting things from the DHT, that only returns the "oldest live" header when getting an entry.</li>
 </ul>
 </li>
 <li>Switch to the <code>get_details</code> zome fn, and execute it with the same <code>EntryHash</code>.
@@ -338,10 +346,10 @@ The function <code>register_snacking</code> requires some extra attention. You n
 <p>Hashes are basic arrays with bytes. An easier way to send hashes back and forth between your UI, or, in our case, tests, and the zome code is to use encode the array as a Base64 string. You can use <code>holo_hash::HeaderHashB64</code> &amp; <code>holo_hash::EntryHashB64</code>.</p>
 </li>
 <li>
-<p>Returning stuff to the UI or tests is always done inside <a href="https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html">ExternResult</a></p>
+<p>Returning stuff to the UI or tests is always done inside <a href="https://docs.rs/hdk/0.0.129/hdk/map_extern/type.ExternResult.html">ExternResult</a></p>
 </li>
 <li>
-<p><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code></a> returns a <a href="https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html">ExternResult&lt;Option<element>&gt;</element></a>. So if you call <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html"><code>get</code></a> at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the <code>Element</code> inside your function somehow, you need to unwrap the <code>Option</code>. And in Rust that means you need to handle the error. For instance like this:</p>
+<p><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html"><code>get</code></a> returns a <a href="https://docs.rs/hdk/0.0.129/hdk/map_extern/type.ExternResult.html">ExternResult&lt;Option<element>&gt;</element></a>. So if you call <a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html"><code>get</code></a> at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the <code>Element</code> inside your function somehow, you need to unwrap the <code>Option</code>. And in Rust that means you need to handle the error. For instance like this:</p>
 </li>
 </ul>
 <pre><code>  .ok_or(WasmError::Guest(String::from("Could not find SnackingLog for entry hash")))?;
@@ -352,7 +360,7 @@ The function <code>register_snacking</code> requires some extra attention. You n
 <h2 id="experiment"><a class="anchor" href="#experiment"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Experiment</h2>
 <p>After you are done implementing the 3 functions, you can, by way of experiment, change the tests so that you use a header hash in the <code>get_by_entry_hash</code> function instead of a entry hash and see what happens.</p>
 <p><em>Spoiler</em><br>
-Although the HDK uses the same function to get an element with an entry based on an entry hash or a header hash: <a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html">get</a> it won't work if you try to change the test. But it is interesting to see how it fails.</p>
+Although the HDK uses the same function to get an element with an entry based on an entry hash or a header hash: <a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html">get</a> it won't work if you try to change the test. But it is interesting to see how it fails.</p>
 <h2 id="extra"><a class="anchor" href="#extra"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Extra</h2>
 <p>You have to tackle one extra challenge which we didn't cover in the simulation. <code>get_by_entry_hash</code> and <code>get_by_header_hash</code> are good ways to retrieve a snacking log. But what happens if you know the content of the entry but not the header hash?
 Implement a function <code>get_all_headers_from_content</code> that returns the array of headers that have committed the entry with the given contents. The last test in the exercise passes in "april 2: lemon pie" as a String and you need to return the all the headers that have committed that same String. Hint: use <code>get_details</code>, and return an empty vector if <code>Details</code> is <code>None</code>.</p>
@@ -364,17 +372,17 @@ Implement a function <code>get_all_headers_from_content</code> that returns the 
 <li>Add a struct <code>SnackingLog</code>.</li>
 <li>Implement <code>register_snacking</code>, <code>get_by_entry_hash</code> and <code>get_by_header_hash</code>.</li>
 <li>Implement <code>get_all_headers_from_content</code>.</li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm test</code>.</li>
 <li>Don't stop until the tests run green.</li>
 </ol>
 </inline-notification>
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/enum.Header.html">`Header`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get_details.html">`get_details`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/enum.Header.html">`Header`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.get_details.html">`get_details`</a></li>
 </ul>
 </inline-notification>
 <h1 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h1>
@@ -390,7 +398,7 @@ your favorite search engine.</p>
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/basic/elements.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/main/./docs/developers/basic/elements.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -497,6 +505,8 @@ Commons Attribution 4.0</a>
 
 
 
+
+
   
 
 
@@ -504,8 +514,8 @@ Commons Attribution 4.0</a>
   
 
 
-<script type="module" src="../../../6938c105.js"></script>
-<script type="module" src="../../../d67d4614.js" inject-service-worker=""></script>
-<script type="module" src="../../../91c602fa.js" mdjs-setup=""></script>
+<script type="module" src="../../../81b16c1a.js"></script>
+<script type="module" src="../../../d15d5a5d.js" inject-service-worker=""></script>
+<script type="module" src="../../../4c18fb3a.js" mdjs-setup=""></script>
 
 </body></html>

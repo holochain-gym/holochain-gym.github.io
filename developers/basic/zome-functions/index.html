@@ -20,8 +20,6 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
-    <script src="../../../37b22479.js"></script>
-  
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
@@ -34,15 +32,27 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../05d289de.png">
+<meta property="og:image" content="../../../2ae8cd47.png">
 <meta property="og:url" content="/developers/basic/zome-functions/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;display=optional" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=optional" rel="stylesheet">
+
+<style>
+  body {
+    font-family: Arial !important;
+  }
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
     <link rel="stylesheet" href="../../../be94ee0c.css">
-<link rel="stylesheet" href="../../../58e8f57f.css">
-<link rel="stylesheet" href="../../../1eb700f2.css">
+<link rel="stylesheet" href="../../../0f4765a3.css">
+<link rel="stylesheet" href="../../../ac2ea3b8.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
 
   
@@ -50,14 +60,12 @@
 
   
 
-<link rel="preload" href="../../../6938c105.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../81b16c1a.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../d67d4614.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../1a24af4d.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../099c0a8b.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../9fd83f86.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d15d5a5d.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../9694cc70.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../2af62055.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../8ad3a711.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -237,11 +245,11 @@
 
 </li></ul>
   <div class="sidebar-bottom">
-  <hr>
-  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+  <hr> <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
-
-  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
+    <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
 </div>
 
 </rocket-navigation>
@@ -315,7 +323,7 @@ WASM binary. This means that when you want call a function in your zome from you
 <p><code>SomeExternalInput</code> and <code>SomeExternalOutput</code> are just simple <strong>structs</strong>. A <a href="https://doc.rust-lang.org/std/keyword.struct.html">struct</a> in Rust is similar to classes in other languages. <code>SomeExternalInput</code> has 2 fields: first_name and last_name. <code>SomeExternalOutput</code> is a struct wrapped around a simple String. <em>You will soon see why you need to wrap a String in a struct when you want to use them as input/output. And why you cannot send simple Strings in and outside of your zome.</em></p>
 <p>Next you have 3 <strong>public functions</strong>. If you are new to Rust, then <code>_:()</code> might seem weird. The input parameter has a name <code>_</code> and the type is an Object <code>()</code>. But it just means: "I accept anything, because I will not be using it".</p>
 <p>Finally you see the <strong>return type</strong> of each function.
-Functions that return a <code>Result</code> are very <a href="https://learning-rust.github.io/docs/e3.option_and_result.html">common</a> in Rust. <code>ExternResult</code> is an enhanced Result type, specially adapted for use in zomes. In stead of a standard <code>Err</code>, you need a <code>WasmError</code> as the error type in your result. Because, as we mentioned above, your zome is compiled into a WASM binary. So every error you want to report to the outside world is in fact a <a href="https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html">WasmError</a>.</p>
+Functions that return a <code>Result</code> are very <a href="https://learning-rust.github.io/docs/e3.option_and_result.html">common</a> in Rust. <code>ExternResult</code> is an enhanced Result type, specially adapted for use in zomes. In stead of a standard <code>Err</code>, you need a <code>WasmError</code> as the error type in your result. Because, as we mentioned above, your zome is compiled into a WASM binary. So every error you want to report to the outside world is in fact a <a href="https://docs.rs/hdk/0.0.129/hdk/map_extern/type.ExternResult.html">WasmError</a>.</p>
 <h3 id="import-hdk"><a class="anchor" href="#import-hdk"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Import HDK</h3>
 <p>Becoming an expert starts by making every possible error. So go ahead and make some errors.</p>
 <inline-notification type="tip" title="Exercise">
@@ -324,7 +332,7 @@ Functions that return a <code>Result</code> are very <a href="https://learning-r
 <li>Enter the nix-shell by running: <code>nix-shell</code><br>
 <em>You should run this in the folder containing the default.nix file</em></li>
 <li>Go to folder with the exercise <code>1.basic/0.zome-functions/exercise</code></li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm run build</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm run build</code>.</li>
 <li>Inspect the Rust compiler error</li>
 </ol>
 </inline-notification>
@@ -358,7 +366,7 @@ We wrote an integration test for you, to test if everything works correctly. The
 <li>Check that your are still in a <code>nix-shell</code>.
 <em>The beginning of the command line should have nix-shell in it</em></li>
 <li>Check that your are still in the folder <code>1.basic/0.zome-functions/exercise</code>.</li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm test</code>.</li>
 <li>Inspect the error.</li>
 </ol>
 </inline-notification>
@@ -374,8 +382,8 @@ not ok 1 Test threw an exception. See output for details.</pre>
 <p>It simply means that our test code <code>.call("exercise", "hello_world", null);</code>, which calls the <code>hello_world</code> function in the zome <code>exercise</code>, cannot find that function. So making a function public in your zome is <em>not</em> enough. You need to add an attribute on the top of a public function to make it possible for this function to be called from outside the zome. The attribute you need to add is <code>#[hdk_extern]</code>. Only public functions with this attribute can be called from outside a zome. Adding the attribute makes it a <strong>zome function</strong>.</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
-<li>Add <code>#[hdk_extern]</code> on top of the 3 public functions.</li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
+<li>Add <code>#[hdk_extern]</code> on top of each of the 3 public functions.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm test</code>.</li>
 <li>Inspect the error.</li>
 </ol>
 </inline-notification>
@@ -402,13 +410,13 @@ Requirements for a zome function:</p>
 <p>To finish this exercise add the attributes to the structs.</p>
 <inline-notification type="tip" title="Exercise">
 <ol>
-<li>Add <code>#[derive(Serialize, Deserialize, Debug)]</code> on top of the 2 structs.</li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
+<li>Add <code>#[derive(Serialize, Deserialize, Debug)]</code> on top of each of the 2 structs.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm test</code>.</li>
 <li>Inspect the error.</li>
 </ol>
 </inline-notification>
 <h2 id="agent-info"><a class="anchor" href="#agent-info"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Agent info</h2>
-<p>The <code>hello_world</code> and <code>say_my_name</code> are very simple toy functions. In <code>get_agent_id</code> on the other hand you call a real hdk function <a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html"><code>agent_info()</code></a>. AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or <a href="https://developer.holochain.org/docs/glossary/#agent-id">Agent ID</a> is one of the four genesis events that are created add the beginning of your <a href="/concepts/source-chain/">source-chain</a> by the <a href="/developers/basic/source-chain/#subconscious">subconscious</a> part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>. Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...</p>
+<p>The <code>hello_world</code> and <code>say_my_name</code> are very simple toy functions. In <code>get_agent_id</code> on the other hand you call a real hdk function <a href="https://docs.rs/hdk/0.0.129/hdk/info/fn.agent_info.html"><code>agent_info()</code></a>. AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or <a href="https://developer.holochain.org/docs/glossary/#agent-id">Agent ID</a> is one of the four genesis events that are created add the beginning of your <a href="/concepts/source-chain/">source-chain</a> by the <a href="/developers/basic/source-chain/#subconscious">subconscious</a> part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a <a href="https://developer.holochain.org/docs/glossary/#cell">cell</a>. Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...</p>
 <p>So now it is up to you to finish this exercise. Add all the things we just explained to your code, and try building your zome and running the test.
 You only need to add a few lines in this first exercise, but know that when the test succeeds, you:</p>
 <ul>
@@ -424,8 +432,7 @@ You only need to add a few lines in this first exercise, but know that when the 
 <ol>
 <li>Go to the <code>developer-exercises</code>.</li>
 <li>Enter the nix-shell: <code>nix-shell</code>.
-<em>you should run this in the folder containing the default.nix file</em><br>
-<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds</em></li>
+<em>you should run this in the folder containing the default.nix file</em></li>
 <li>Go to folder with the exercise <code>basic/0.zome-functions/exercise</code>.</li>
 <li>Inside <code>zome/exercise/src/lib.rs</code>:
 <ul>
@@ -433,13 +440,13 @@ You only need to add a few lines in this first exercise, but know that when the 
 <li>Add the <code>#[hdk_extern]</code> macro in the necessary functions.</li>
 </ul>
 </li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm test</code>.</li>
 <li>Don't stop until the test runs green.</li>
 </ol>
 </inline-notification>
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/info/fn.agent_info.html">`agent_info`</a></li>
 </ul>
 </inline-notification>
 <h3 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h3>
@@ -493,7 +500,7 @@ You only need to add a few lines in this first exercise, but know that when the 
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/basic/zome-functions.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/main/./docs/developers/basic/zome-functions.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -600,6 +607,8 @@ Commons Attribution 4.0</a>
 
 
 
+
+
   
 
 
@@ -607,8 +616,8 @@ Commons Attribution 4.0</a>
   
 
 
-<script type="module" src="../../../6938c105.js"></script>
-<script type="module" src="../../../d67d4614.js" inject-service-worker=""></script>
-<script type="module" src="../../../1a24af4d.js" mdjs-setup=""></script>
+<script type="module" src="../../../81b16c1a.js"></script>
+<script type="module" src="../../../d15d5a5d.js" inject-service-worker=""></script>
+<script type="module" src="../../../9694cc70.js" mdjs-setup=""></script>
 
 </body></html>

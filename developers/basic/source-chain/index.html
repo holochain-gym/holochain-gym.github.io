@@ -20,8 +20,6 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
-    <script src="../../../37b22479.js"></script>
-  
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
@@ -34,15 +32,27 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../442ead60.png">
+<meta property="og:image" content="../../../7c15804a.png">
 <meta property="og:url" content="/developers/basic/source-chain/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;display=optional" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=optional" rel="stylesheet">
+
+<style>
+  body {
+    font-family: Arial !important;
+  }
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
     <link rel="stylesheet" href="../../../be94ee0c.css">
-<link rel="stylesheet" href="../../../58e8f57f.css">
-<link rel="stylesheet" href="../../../1eb700f2.css">
+<link rel="stylesheet" href="../../../0f4765a3.css">
+<link rel="stylesheet" href="../../../ac2ea3b8.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
 
   
@@ -50,14 +60,12 @@
 
   
 
-<link rel="preload" href="../../../6938c105.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../81b16c1a.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../d67d4614.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../e2c34681.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../099c0a8b.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../9fd83f86.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d15d5a5d.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../93430990.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../2af62055.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../8ad3a711.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -246,11 +254,11 @@
 
 </li></ul>
   <div class="sidebar-bottom">
-  <hr>
-  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+  <hr> <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
-
-  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
+    <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
 </div>
 
 </rocket-navigation>
@@ -384,7 +392,7 @@ Head over to the simulation where you will see that, underneath, it is just head
 <p>This time we will do some lightweight exercises, just to get a feel for the chain part of our source chain. You need to implement 3 functions.</p>
 <ul>
 <li><code>query_all_elements</code> returns the full array of elements contained in the source chain of the agent.</li>
-<li><code>query_snackings</code> queries the source chain and returns only the elements that contain a <code>Snacking</code> entry. WARNING! This query should also <a href="https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html#method.include_entries">return the entries themselves</a>.</li>
+<li><code>query_snackings</code> queries the source chain and returns only the elements that contain a <code>Snacking</code> entry. WARNING! This query should also <a href="https://docs.rs/hdk/0.0.129/hdk/prelude/struct.ChainQueryFilter.html#method.include_entries">return the entries themselves</a>.</li>
 <li><code>query_by_time</code> queries the source chain and filters it by a time range of when the element was committed.</li>
 </ul>
 <inline-notification type="tip" title="Exercise">
@@ -392,16 +400,16 @@ Head over to the simulation where you will see that, underneath, it is just head
 <li>Check if you are still inside the nix-shell<br>
 <em>Your terminal should look similar to this</em> <code>[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$</code></li>
 <li>Implement <code>query_all_elements</code>, <code>query_snackings</code>, <code>query_by_time</code></li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code></li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm test</code></li>
 <li>Don't stop until the tests run green</li>
 </ol>
 </inline-notification>
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/chain/fn.query.html">`query`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html">`ChainQueryFilter`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/chain/fn.query.html">`query`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/struct.ChainQueryFilter.html">`ChainQueryFilter`</a></li>
 </ul>
 </inline-notification>
 <h1 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h1>
@@ -417,7 +425,7 @@ your favorite search engine.</p>
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/basic/source-chain.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/main/./docs/developers/basic/source-chain.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -524,6 +532,8 @@ Commons Attribution 4.0</a>
 
 
 
+
+
   
 
 
@@ -531,8 +541,8 @@ Commons Attribution 4.0</a>
   
 
 
-<script type="module" src="../../../6938c105.js"></script>
-<script type="module" src="../../../d67d4614.js" inject-service-worker=""></script>
-<script type="module" src="../../../e2c34681.js" mdjs-setup=""></script>
+<script type="module" src="../../../81b16c1a.js"></script>
+<script type="module" src="../../../d15d5a5d.js" inject-service-worker=""></script>
+<script type="module" src="../../../93430990.js" mdjs-setup=""></script>
 
 </body></html>

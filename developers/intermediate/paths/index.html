@@ -20,8 +20,6 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
-    <script src="../../../37b22479.js"></script>
-  
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
@@ -34,15 +32,27 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../b5872107.png">
+<meta property="og:image" content="../../../0579608c.png">
 <meta property="og:url" content="/developers/intermediate/paths/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;display=optional" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=optional" rel="stylesheet">
+
+<style>
+  body {
+    font-family: Arial !important;
+  }
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
     <link rel="stylesheet" href="../../../be94ee0c.css">
-<link rel="stylesheet" href="../../../58e8f57f.css">
-<link rel="stylesheet" href="../../../1eb700f2.css">
+<link rel="stylesheet" href="../../../0f4765a3.css">
+<link rel="stylesheet" href="../../../ac2ea3b8.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
 
   
@@ -50,14 +60,12 @@
 
   
 
-<link rel="preload" href="../../../6938c105.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../81b16c1a.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../d67d4614.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../0ca35d33.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../099c0a8b.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../9fd83f86.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d15d5a5d.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d023cc83.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../2af62055.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../8ad3a711.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -234,11 +242,11 @@
 
 </li></ul>
   <div class="sidebar-bottom">
-  <hr>
-  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+  <hr> <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
-
-  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
+    <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
 </div>
 
 </rocket-navigation>
@@ -285,7 +293,7 @@
 <inline-notification type="warning" title="Including paths in zomes">
 Keep in mind that paths are already incorporated in the core hdk, so you don't need to import them from an external library. Although it is necessary to define them as an entry definition in your zome like this:
 <pre class="language-rust"><code class="language-rust"><span class="token function">entry_defs!</span><span class="token punctuation">[</span>
-    Path<span class="token punctuation">::</span><span class="token function">entry_def</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    PathEntry<span class="token punctuation">::</span><span class="token function">entry_def</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token punctuation">...</span>
 <span class="token punctuation">]</span><span class="token punctuation">;</span>
 </code></pre>
@@ -314,25 +322,24 @@ Keep in mind that paths are already incorporated in the core hdk, so you don't n
 <ol>
 <li>Go to the <code>developer-exercises</code>.</li>
 <li>Enter the nix-shell: <code>nix-shell</code><br>
-<em>you should run this in the folder containing the default.nix file</em><br>
-<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds</em></li>
+<em>you should run this in the folder containing the default.nix file</em></li>
 <li>Go to folder with the exercise <code>intermediate/1.paths</code></li>
 <li>Inside <code>zome/exercise/src/lib.rs</code>
 <ul>
 <li>Implement all <code>unimplemented!()</code> functions</li>
 </ul>
 </li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm test</code>.</li>
 <li>Don't stop until the test runs green</li>
 </ol>
 </inline-notification>
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html">`create_link`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html">`get_links`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/hash_path/path/struct.Path.html">`Path`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/link/fn.create_link.html">`create_link`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/link/fn.get_links.html">`get_links`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/hash_path/path/struct.Path.html">`Path`</a></li>
 </ul>
 </inline-notification>
         
@@ -342,7 +349,7 @@ Keep in mind that paths are already incorporated in the core hdk, so you don't n
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/intermediate/paths.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/main/./docs/developers/intermediate/paths.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -449,6 +456,8 @@ Commons Attribution 4.0</a>
 
 
 
+
+
   
 
 
@@ -456,8 +465,8 @@ Commons Attribution 4.0</a>
   
 
 
-<script type="module" src="../../../6938c105.js"></script>
-<script type="module" src="../../../d67d4614.js" inject-service-worker=""></script>
-<script type="module" src="../../../0ca35d33.js" mdjs-setup=""></script>
+<script type="module" src="../../../81b16c1a.js"></script>
+<script type="module" src="../../../d15d5a5d.js" inject-service-worker=""></script>
+<script type="module" src="../../../d023cc83.js" mdjs-setup=""></script>
 
 </body></html>

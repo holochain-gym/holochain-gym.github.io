@@ -20,8 +20,6 @@
 <meta property="og:description" content="Holochain Gym contains exercises, resources and trainings to learn holochain">
 
   
-    <script src="../../../37b22479.js"></script>
-  
     <link rel="apple-touch-icon" sizes="180x180" href="../../../assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../../assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../../assets/favicon-16x16.png">
@@ -34,15 +32,27 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../86f4c0f5.png">
+<meta property="og:image" content="../../../b7cb86d7.png">
 <meta property="og:url" content="/developers/basic/entries/">
 
 <meta name="twitter:card" content="summary_large_image">
 
   
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&amp;display=optional" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&amp;display=optional" rel="stylesheet">
+
+<style>
+  body {
+    font-family: Arial !important;
+  }
+</style>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
     <link rel="stylesheet" href="../../../be94ee0c.css">
-<link rel="stylesheet" href="../../../58e8f57f.css">
-<link rel="stylesheet" href="../../../1eb700f2.css">
+<link rel="stylesheet" href="../../../0f4765a3.css">
+<link rel="stylesheet" href="../../../ac2ea3b8.css">
 <link rel="stylesheet" href="../../../b8c01bc2.css">
 
   
@@ -50,14 +60,12 @@
 
   
 
-<link rel="preload" href="../../../6938c105.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../178f3cd5.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../de191b48.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../81b16c1a.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../d67d4614.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../dd1538ee.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../099c0a8b.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../9fd83f86.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../d15d5a5d.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../700b3fbe.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../2af62055.js" as="script" crossorigin="anonymous">
+<link rel="preload" href="../../../8ad3a711.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -243,11 +251,11 @@
 
 </li></ul>
   <div class="sidebar-bottom">
-  <hr>
-  <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
+  <hr> <launch-dark-switch class="light-dark-switch" label="Toggle darkmode">Toggle darkmode</launch-dark-switch>
 
-
-  <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
+    <a href="https://github.com/holochain-gym/">Help and Feedback</a>
+  
 </div>
 
 </rocket-navigation>
@@ -298,10 +306,10 @@
 <p>In the details you see 3 things: the <em>entry hash</em>, the <em>entry type</em> and <em>content</em>.
 <strong>Content</strong> is a custom field, meaning you can give it a different name if you want to. You could add more fields as well, but for now one will do.<br>
 The <strong>Entry type</strong> is something specific to the Holochain technology underpinning our app. There are 4 types of entries: Agent, App, CapClaim, CapGrant. For this exercise we limit our focus to App entries.<br>
-The <strong>Entry hash</strong> is the last of the three. You could think of the entry hash as the unique adress of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.</p>
+The <strong>Entry hash</strong> is the last of the three. You could think of the entry hash as the unique address of this specific entry. Add another greeting and inspect the details. You will see that the hashes are completely different. Hashes have some interesting properties and benefits and we will learn more about them in the next exercise.</p>
 <h2 id="getting-ready"><a class="anchor" href="#getting-ready"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Getting ready</h2>
 <p><em>So, lets get to the real work!</em></p>
-<p>In case you forgot, Zomes are written in <a href="https://www.rust-lang.org/">Rust</a>. Don't worry if you are new to the language, we will gladly help you grow comfortable with it - join us over at the <a href="https://forum.holochain.org/">Holochain forum</a>.</p>
+<p>Zomes are written in <a href="https://www.rust-lang.org/">Rust</a>. Don't worry if you are new to the language, we will gladly help you grow comfortable with it - join us over at the <a href="https://forum.holochain.org/">Holochain forum</a>.</p>
 <p>We went ahead and added some code already for you in the <code>1.basic/1.entries/zomes/exercise/src/lib.rs</code> file:</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
 <span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
@@ -313,33 +321,24 @@ The <strong>Entry hash</strong> is the last of the three. You could think of the
 <span class="token punctuation">}</span>
 
 </code></pre>
-<h3 id="import-hdk-functions"><a class="anchor" href="#import-hdk-functions"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Import HDK functions</h3>
-<p>The first thing you need to do is import all the necessary tools in your code.</p>
-<p>The Holochain team built a Rust library <code>hdk</code>, which stands for <em>Holochain Development Kit</em> and contains all important Holochain functions you will want to call from within your zome. So add this line to the top of your file.</p>
+<h3 id="import-and-annotate"><a class="anchor" href="#import-and-annotate"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Import and annotate</h3>
+<p>Like in the previous exercise, we need to setup a few thing to make our code callable from the outside world.
+Import the HDK functions.</p>
 <pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> hdk<span class="token punctuation">::</span>prelude<span class="token punctuation">::</span><span class="token operator">*</span><span class="token punctuation">;</span>
 </code></pre>
-<p>This is how imports are done in Rust. You start with <code>use</code> followed by the name of the library <code>hdk</code>. In this case we further select <code>prelude</code> which is just a file inside the hdk library where the team has gathered all the useful HDK functions in one place. This way you can add all these functions at once, simply by adding the <code>*</code>.</p>
-<p>Go ahead and take a quick look at that <code>prelude</code> file:<br>
-<a href="https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs">https://github.com/holochain/holochain/blob/develop/crates/hdk/src/prelude.rs</a><br>
-You will find most of the things you will use in this exercise listed in that file.</p>
-<h3 id="external-inputs"><a class="anchor" href="#external-inputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External inputs</h3>
-<p>By themselves, Zomes don't do much - you need to feed them data and ask them to do stuff!</p>
+<p>Mark the structs that will move in and out of your zome with the proper annotations.</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[derive(Serialize, Deserialize, Clone, Debug)]</span>
 <span class="token keyword">pub</span> <span class="token keyword">struct</span> SomeExternalInput <span class="token punctuation">{</span>
     greeting_text<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p>The <code>SomeExternalInput</code> struct is a simple <a href="https://doc.rust-lang.org/std/keyword.struct.html">Rust struct</a>. A struct is similar to classes in other languages. In this case, it contains one custom field to hold your "Hello, World!" greeting.</p>
-<p>On top of it you see <code>#[derive(Serialize, Deserialize, Clone, Debug)]</code>. This is what they call an <a href="https://doc.rust-lang.org/rust-by-example/attribute.html">'attribute' in Rust</a>. This annotation adds some useful metadata - <code>Serialize</code> and <code>Deserialize</code> are crucial; they make sure the data in this struct can be sent to this Zome over a network, from a GUI, or – like in our case – from a test script.</p>
-<h3 id="external-calls"><a class="anchor" href="#external-calls"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External calls</h3>
-<p>So we have a struct that can carry our data from the outside into our zome. Now we need to know how to actually send this data to our zome. We have this public function <code>say_greeting</code> in our code, but it being a public function is not enough. We need to add two more things.</p>
-<p>First, you need to add an attribute on top of this function to make it clear that this function can be called from outside the zome. The attribute you need to add is <code>#[hdk_extern]</code>. Only public functions with this attribute can be called from outside a zome.</p>
+<p>Add <code>#[hdk_extern]</code> to the public function <code>say_greeting</code> so it can be called from outside a zome.</p>
 <pre class="language-rust"><code class="language-rust"><span class="token attribute attr-name">#[hdk_extern]</span>         <span class="token comment">// add this attribute</span>
 <span class="token keyword">pub</span> <span class="token keyword">fn</span> <span class="token function">say_greeting</span><span class="token punctuation">(</span>input<span class="token punctuation">:</span> SomeExternalInput<span class="token punctuation">)</span> <span class="token punctuation">-&gt;</span> ExternResult<span class="token operator">&lt;</span>HeaderHash<span class="token operator">&gt;</span> <span class="token punctuation">{</span>
     <span class="token function">unimplemented</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">!</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h3 id="external-outputs"><a class="anchor" href="#external-outputs"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>External outputs</h3>
+<h3 id="create-entry"><a class="anchor" href="#create-entry"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Create entry</h3>
 <p>The challenge is to create an entry which contains the text "Hello, World!". The text will be passed to the zome as a <code>SomeExternalInput</code> struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply <code>create_entry</code>. And since you imported all functions from the prelude already, you can use this function immediately in your code.</p>
 <p>So, your first attempt might look something like <code>create_entry(String::from("Hello, World!"))</code> or <code>create_entry(input.content)</code>. But this won't work.<br>
 Because an entry needs to be saved locally and sent over the network, it has to be serializable. And a String itself is not serializable. To do this we create a <code>struct</code> that will hold our data.</p>
@@ -374,8 +373,7 @@ You only need to add a few lines in this first exercise, but know that when the 
 <ol>
 <li>Go to the <code>developer-exercises</code>.</li>
 <li>Enter the nix-shell: <code>nix-shell</code>.
-<em>you should run this in the folder containing the default.nix file</em>.
-<em>starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds</em>.</li>
+<em>you should run this in the folder containing the default.nix file</em>.</li>
 <li>Go to folder with the exercise <code>1.basic/1.entries/exercise</code>.</li>
 <li>Inside <code>zomes/exercise/src/lib.rs</code>
 <ul>
@@ -383,16 +381,16 @@ You only need to add a few lines in this first exercise, but know that when the 
 <li>Implement the function with <code>unimplemented!()</code>.</li>
 </ul>
 </li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm install &amp;&amp; npm test</code>.</li>
+<li>Compile and test your code: <code>cd tests &amp;&amp; npm test</code>.</li>
 <li>Don't stop until the test runs green.</li>
 </ol>
 </inline-notification>
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.101/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_def.html">`entry_def`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_defs.html">`entry_defs`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/info/fn.agent_info.html">`agent_info`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/macro.entry_def.html">`entry_def`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/macro.entry_defs.html">`entry_defs`</a></li>
 </ul>
 </inline-notification>
 <h3 id="errors"><a class="anchor" href="#errors"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Errors</h3>
@@ -422,7 +420,7 @@ You only need to add a few lines in this first exercise, but know that when the 
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/master/./docs/developers/basic/entries.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/main/./docs/developers/basic/entries.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -529,6 +527,8 @@ Commons Attribution 4.0</a>
 
 
 
+
+
   
 
 
@@ -536,8 +536,8 @@ Commons Attribution 4.0</a>
   
 
 
-<script type="module" src="../../../6938c105.js"></script>
-<script type="module" src="../../../d67d4614.js" inject-service-worker=""></script>
-<script type="module" src="../../../dd1538ee.js" mdjs-setup=""></script>
+<script type="module" src="../../../81b16c1a.js"></script>
+<script type="module" src="../../../d15d5a5d.js" inject-service-worker=""></script>
+<script type="module" src="../../../700b3fbe.js" mdjs-setup=""></script>
 
 </body></html>
