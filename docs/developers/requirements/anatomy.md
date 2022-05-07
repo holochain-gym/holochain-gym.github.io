@@ -2,17 +2,17 @@
 
 The [`developer-exercises`](https://github.com/holochain-gym/developer-exercises) repository contains exercises for each of the lessons presented here in the Gym.
 
-The repository itself is a cargo workspace, and each of the exercises consists of two separate crates, one for the exercise itself and another for the solution to the exercise.
+The repository itself is a cargo workspace. Each of the exercises consists of two separate crates—one for the exercise itself and another for the solution to the exercise.
 
 It is also an NPM workspace, since we are using tryorama for the tests.
 
 ## Anatomy of an exercise
 
-Each exercise will have two folders:
+Each exercise has two folders:
 * exercise
 * solution
 
-The solution folder contains a complete and working version of the exercise folder. After you solved the exercise you can compare your solution with our solution. Or, if you are really lost, you can take a quick look...
+The solution folder contains a complete and working version of the exercise folder. After you solve the exercise you can compare your solution with our solution. Or, if you are really lost, you can take a quick look...
 
 The structure inside the exercise and solution folder are very similar to a real holochain application. So let us review what you see when you open the entries exercise.
 
@@ -34,14 +34,14 @@ The heart of the exercise lies in **zomes/exercise**. This is a pure and simple 
 
 Once you are done adding code you need to compile your Rust code to a [WASM](https://webassembly.org/) binary and package it in a DNA, a holochain specific format. The result will be stored in **workdir**.
 
-To make your live easy we put together a npm script in the `tests/package.json` that checks if you are running in the nix-shell and builds the code. To build your zome you only need to run **npm run build** inside the `tests` folder.
+To make your life easy we put together a npm script in the `tests/package.json` that checks if you are running in the nix-shell and builds the code. To build your zome you only need to run **npm run build** inside the `tests` folder.
 
 The **tests** folder contains a full node/typescript project, complete with `package.json`,`tsconfig.json` and a `src` folder. These tests can be viewed as integration tests. They actually run your compiled DNA in a real holochain [conductor](https://developer.holochain.org/docs/glossary/#conductor). The tests call your code, just like a regular web app would do.
 
 For running the tests we also provided another npm script that checks if you are running in the nix-shell and runs the tests. You only need to call **npm test** inside the `tests` folder.
 
-Now you know enough to start the [first exercise](/developers/basic/entries/) or better yet explore the main [concepts](/concepts/) of holochain in a hands-on way. Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
-If want to start working on your own holochain apps, separate from the holochain-gym, you can read the next section.
+Now you know enough to start the [first exercise](/developers/basic/entries/) or you could start by exploring the main [concepts](/concepts/) of holochain in a hands-on way. Except for a few minor differences, the holochain-gym exercises look and act just like real holochain app projects.
+If you want to start working on your own holochain apps, separate from the holochain-gym, you can read the next section.
 
 ## Building your own Holochain app (optional)
 
