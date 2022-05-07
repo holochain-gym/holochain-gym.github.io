@@ -205,7 +205,7 @@ To finish this exercise add the attributes to the structs.
 
 ## Agent info
 
-The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_id` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.129/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created add the beginning of your [source-chain](/concepts/source-chain/) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and Agent ID is created they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...
+The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_id` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.129/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created at the beginning of your [source-chain](/concepts/source-chain/) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app, an Agent ID is created. When a DNA (composed of one or more zomes) is instantiated, an Agent ID is created and they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...
 
 
 So now it is up to you to finish this exercise. Add all the things we just explained to your code, and try building your zome and running the test.
@@ -213,7 +213,7 @@ You only need to add a few lines in this first exercise, but know that when the 
 
 - made your first zome module in Rust
 - compiled your zome into a DNA in WASM, a state of the art binary format
-- ran a test script, written in Typescript, executed in Nodejs
+- ran a test script, written in Typescript, executed in Node.js
 - initiated an actual real holochain conductor
 - which instantiated your DNA into a real, actual Holochain cell
 - and executed a test script that asked your cell to make a real entry with the words "Hello, World!"
