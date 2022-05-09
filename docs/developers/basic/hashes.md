@@ -304,7 +304,7 @@ Run the tests. And if everything passes, then it is time to put your feet up, re
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
 <li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/hash/fn.hash_entry.html">`hash_entry`</a></li>
 <li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html">`get`</a></li>
 </ul>
 </inline-notification>
