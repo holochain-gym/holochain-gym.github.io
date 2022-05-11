@@ -4,35 +4,19 @@
 import "@rocket/launch/inline-notification/inline-notification.js";
 import { html } from "lit";
 import {
-  HolochainPlaygroundGoldenLayout,
+  HolochainPlaygroundContainer,
   EntryContents,
   EntryGraph,
   CallZomeFns,
-  SourceChain,
-  ZomeFnsResults,
 } from "@holochain-playground/elements";
-import {
-  GoldenLayoutRoot,
-  GoldenLayoutRow,
-  GoldenLayoutColumn,
-  GoldenLayoutStack,
-  GoldenLayoutComponent,
-} from "@scoped-elements/golden-layout";
 
 customElements.define(
-  "holochain-playground-golden-layout",
-  HolochainPlaygroundGoldenLayout
+  "holochain-playground-container",
+  HolochainPlaygroundContainer
 );
 customElements.define("entry-graph", EntryGraph);
 customElements.define("entry-contents", EntryContents);
 customElements.define("call-zome-fns", CallZomeFns);
-customElements.define("source-chain", SourceChain);
-customElements.define("zome-fns-results", ZomeFnsResults);
-customElements.define("golden-layout-root", GoldenLayoutRoot);
-customElements.define("golden-layout-row", GoldenLayoutRow);
-customElements.define("golden-layout-column", GoldenLayoutColumn);
-customElements.define("golden-layout-stack", GoldenLayoutStack);
-customElements.define("golden-layout-component", GoldenLayoutComponent);
 ```
 
 <inline-notification type="tip" title="Useful reads">
@@ -147,7 +131,7 @@ const simulatedHapp = {
 };
 export const Simple = () => {
   return html`
-    <holochain-playground-golden-layout
+    <holochain-playground-container
       .numberOfSimulatedConductors=${1}
       .simulatedHapp=${simulatedHapp}
       @ready=${(e) => {
@@ -158,42 +142,26 @@ export const Simple = () => {
         e.target.activeAgentPubKey = cellId[1];
       }}
     >
-      <golden-layout-root style="width: 100%; height: 800px; margin-bottom: 40px;">
-        <golden-layout-column>
-          <golden-layout-row>
-            <golden-layout-component title="Call Zome Fns">
-              <call-zome-fns
-                id="call-zome"
-                style="margin: 12px;"
-                hide-zome-selector
-                hide-agent-pub-key
-              >
-              </call-zome-fns>
-            </golden-layout-component>
-
-            <golden-layout-stack>
-              <golden-layout-component title="Entry Contents">
-                <entry-contents style="margin: 12px;"> </entry-contents>
-              </golden-layout-component>
-
-              <golden-layout-component title="Zome Fns Results">
-                <zome-fns-results style="margin: 12px;"> </zome-fns-results>
-              </golden-layout-component>
-            </golden-layout-stack>
-          </golden-layout-row>
-
-          <golden-layout-component title="Entry Graph">
-            <entry-graph
-              hide-filter
-              show-headers
-              .excludedEntryTypes=${["Agent"]}
-              style="margin: 12px;"
-            >
-            </entry-graph>
-          </golden-layout-component>
-        </golden-layout-column>
-      </golden-layout-root>
-    </holochain-playground-golden-layout>
+      <div
+        style="display: flex; flex-direction: row; align-items: start; margin-bottom: 20px;"
+      >
+        <call-zome-fns
+          id="call-zome"
+          style="height: 250px; margin-right: 20px;"
+          hide-zome-selector
+          hide-agent-pub-key
+        >
+        </call-zome-fns>
+        <entry-contents style="flex-basis: 500px; height: 250px;">
+        </entry-contents>
+      </div>
+      <entry-graph
+        show-headers
+        .excludedEntryTypes=${["Agent"]}
+        style="flex: 1; height: 500px;"
+      >
+      </entry-graph>
+    </holochain-playground-container>
   `;
 };
 ```
