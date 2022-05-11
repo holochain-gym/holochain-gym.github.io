@@ -15,7 +15,7 @@ import {
   GetStrategy,
   NetworkRequestType,
   WorkflowType,
-} from "@holochain-playground/core";
+} from "@holochain-playground/simulator";
 
 customElements.define(
   "holochain-playground-container",

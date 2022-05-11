@@ -19,7 +19,7 @@ import {
   WorkflowType,
   hash,
   HashType,
-} from "@holochain-playground/core";
+} from "@holochain-playground/simulator";
 
 customElements.define(
   "holochain-playground-container",
