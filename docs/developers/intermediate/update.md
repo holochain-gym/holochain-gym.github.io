@@ -86,9 +86,9 @@ const sampleZome = {
   zome_functions: {
     create_entry: {
       call:
-        (hdk) =>
-        async ({ content }) => {
-          return await hdk.create_entry({ content: content, entry_def_id: "demo_entry" });
+        ({ create_entry }) =>
+        ({ content }) => {
+          return create_entry({ content: content, entry_def_id: "demo_entry" });
         },
       arguments: [{ name: "content", type: "String" }],
     },
