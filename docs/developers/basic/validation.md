@@ -1,4 +1,4 @@
-# Basic >> Validation
+# Basic >> Validation ||107
 
 <inline-notification type="tip" title="Useful reads">
   <ul>
@@ -39,22 +39,22 @@ for any cell containing the zome.
 The argument your `validate` will receive is an
 [`holochain_integrity_types::op::Op`](https://docs.rs/holochain_integrity_types/0.0.5/holochain_integrity_types/op/enum.Op.html).
 
-Every change to the source chain will produce a Op::RegisterAgentActivity and a Op::StoreElement.
-Here's a list of the possible `Op` types and the conditions under which they occur:
+`Op` is short for "DHT Operation". Every time you commit some action in your source chain, multiple DHT Operations are created and published to different parts of the DHT. This is because different read operations need to read different parts of the DHT, so we need to store the same element in multiple places.
 
-* `StoreElement`: Any change to the agent source chain requires adding an
-  [Element](https://developer.holochain.org/glossary/#element) and a
-  [Header](https://developer.holochain.org/glossary/#header).
-* `StoreEntry`: Create an [Entry](https://developer.holochain.org/glossary/#entry).
-   Storing data on the chain that isn't just a header requires an Entry.
-* `RegisterUpdate`: Update an [Entry](https://developer.holochain.org/glossary/#entry)
-* `RegisterDelete`: Delete an [Entry](https://developer.holochain.org/glossary/#entry).
-* `RegisterAgentActivity`: "Registers a new Header on an agent source chain."
-* `RegisterCreateLink`: Create a [Link](https://developer.holochain.org/glossary/#entry).
-* `RegisterDeleteLink`: Delete a [Link](https://developer.holochain.org/glossary/#entry).
+This is a table describing the "DhtOps" that each action creates:
 
-Your validation function must handle `RegisterAgentActivity` and `StoreElement`. Which other
-`Op`s you support depend on what agent actions your DNA supports, according to [these rules](https://docs.rs/holochain_integrity_types/0.0.5/holochain_integrity_types/op/enum.Op.html#producing-operations).
+
+| Chain Action | DhtOp Name | Targeted hash basis | Payload | Metadata |
+|--------------|------------|---------------------|---------|----------|
+|create_content(content)| RegisterAgentActivity<br/> StoreRecord<br/> StoreContent | Author's public key<br/> Hash of the action <br/> Hash of the content | Action <br/> Record <br/> Record | Hash of the action <br/> -  <br/> - |
+|update_content(original_action_hash, new_content)| RegisterAgentActivity<br/> StoreRecord<br/> StoreContent<br/> RegisterContentUpdate<br/> RegisterRecordUpdate | Author's public key<br/> Hash of the action <br/> Hash of the content <br/> Hash of the original content <br/> Hash of the original action | New action <br/> New Record <br/> New record <br/> New action <br/> New action | Hash of the action <br/> - <br/> New content updates old content <br/> Old content is updated to new content <br/> Old action is updated to new action |
+|bury_content(action_hash)| RegisterAgentActivity<br/> StoreRecord<br/> RegisterContentDelete<br/> RegisterRecordDelete| Author's public key <br/> Hash of the new action <br/> Hash of the deleted content <br/> Hash of the deleted action | New action <br/> New Record <br/> New action <br/> New action | Hash of the action <br/> - <br/> Old content deleted by new action <br/> Old action deleted by new action |
+|create_link(base, target, tag)| RegisterAgentActivity<br/> StoreRecord<br/> RegisterCreateLink| Author's public key <br/> Hash of the new action <br/> "Base" hash | Action <br/> Record <br/> Action |  Hash of the action <br/> - <br/> Link from the base to the target hash|
+|delete_link(create_link_action_hash)| RegisterAgentActivity<br/> StoreRecord<br/> RegisterDeleteLink | Author's public key <br/> Hash of the new action <br/> Hash of the deleted create link action hash | Action <br/> Record <br/> Action | Hash of the action <br/> - <br/> Deleted link sent to tombstone | 
+
+After the action is committed to the source chain and published to the DHT in those different parts, the agents who receive those publish requests first have to validate that the DHT Operation is actually valid and playing by the rules of the game. After making sure that the change is valid, the agents will start to answer DHT read operations (`get`, `get_links`, etc.) with its data.
+
+To know more about how to implement validation rules in your application, read [this documentation](https://docs.rs/holochain_integrity_types/0.0.5/holochain_integrity_types/op/enum.Op.html#producing-operations).
 
 ## Exercise
 
