@@ -201,6 +201,10 @@
 <li class="menu-item">
 <a href="/developers/basic/elements/">Getting Elements</a>
 
+</li>
+<li class="menu-item">
+<a href="/developers/basic/validation/">Validation</a>
+
 </li></ul>
 </li>
 <li class="menu-item">
@@ -258,15 +262,15 @@
   
     <h1 id="requirements-anatomy"><a class="anchor" href="#requirements-anatomy"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Requirements: Anatomy</h1>
 <p>The <a href="https://github.com/holochain-gym/developer-exercises"><code>developer-exercises</code></a> repository contains exercises for each of the lessons presented here in the Gym.</p>
-<p>The repository itself is a cargo workspace, and each of the exercises consists of two separate crates, one for the exercise itself and another for the solution to the exercise.</p>
+<p>The repository itself is a cargo workspace. Each of the exercises consists of two separate crates—one for the exercise itself and another for the solution to the exercise.</p>
 <p>It is also an NPM workspace, since we are using tryorama for the tests.</p>
 <h2 id="anatomy-of-an-exercise"><a class="anchor" href="#anatomy-of-an-exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Anatomy of an exercise</h2>
-<p>Each exercise will have two folders:</p>
+<p>Each exercise has two folders:</p>
 <ul>
 <li>exercise</li>
 <li>solution</li>
 </ul>
-<p>The solution folder contains a complete and working version of the exercise folder. After you solved the exercise you can compare your solution with our solution. Or, if you are really lost, you can take a quick look...</p>
+<p>The solution folder contains a complete and working version of the exercise folder. After you solve the exercise you can compare your solution with our solution. Or, if you are really lost, you can take a quick look...</p>
 <p>The structure inside the exercise and solution folder are very similar to a real holochain application. So let us review what you see when you open the entries exercise.</p>
 <pre><code>  &gt; 1.entries
       &gt; exercise
@@ -280,11 +284,11 @@
 <p>The best place to start if you are lost is to read the <strong>README</strong> file again. It briefly states what you need to do to compile and test the exercise.</p>
 <p>The heart of the exercise lies in <strong>zomes/exercise</strong>. This is a pure and simple Rust project and contains its own <code>Cargo.toml</code> and <code>Cargo.lock</code> file. You start adding Rust code in <code>src/lib.rs</code></p>
 <p>Once you are done adding code you need to compile your Rust code to a <a href="https://webassembly.org/">WASM</a> binary and package it in a DNA, a holochain specific format. The result will be stored in <strong>workdir</strong>.</p>
-<p>To make your live easy we put together a npm script in the <code>tests/package.json</code> that checks if you are running in the nix-shell and builds the code. To build your zome you only need to run <strong>npm run build</strong> inside the <code>tests</code> folder.</p>
+<p>To make your life easy we put together a npm script in the <code>tests/package.json</code> that checks if you are running in the nix-shell and builds the code. To build your zome you only need to run <strong>npm run build</strong> inside the <code>tests</code> folder.</p>
 <p>The <strong>tests</strong> folder contains a full node/typescript project, complete with <code>package.json</code>,<code>tsconfig.json</code> and a <code>src</code> folder. These tests can be viewed as integration tests. They actually run your compiled DNA in a real holochain <a href="https://developer.holochain.org/docs/glossary/#conductor">conductor</a>. The tests call your code, just like a regular web app would do.</p>
 <p>For running the tests we also provided another npm script that checks if you are running in the nix-shell and runs the tests. You only need to call <strong>npm test</strong> inside the <code>tests</code> folder.</p>
-<p>Now you know enough to start the <a href="/developers/basic/entries/">first exercise</a> or better yet explore the main <a href="/concepts/">concepts</a> of holochain in a hands-on way. Except for a few minor differences the holochain-gym exercises look and act just like real holochain app projects.
-If want to start working on your own holochain apps, separate from the holochain-gym, you can read the next section.</p>
+<p>Now you know enough to start the <a href="/developers/basic/entries/">first exercise</a> or you could start by exploring the main <a href="/concepts/">concepts</a> of holochain in a hands-on way. Except for a few minor differences, the holochain-gym exercises look and act just like real holochain app projects.
+If you want to start working on your own holochain apps, separate from the holochain-gym, you can read the next section.</p>
 <h2 id="building-your-own-holochain-app-optional"><a class="anchor" href="#building-your-own-holochain-app-optional"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Building your own Holochain app (optional)</h2>
 <p>If you want to familiarize yourself with a sample Holochain project, clone the <a href="https://github.com/holochain/holochain-dna-build-tutorial">Holochain DNA Build Tutorial</a>.</p>
 <ul>

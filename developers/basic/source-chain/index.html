@@ -216,6 +216,10 @@
 <li class="menu-item">
 <a href="/developers/basic/elements/">Getting Elements</a>
 
+</li>
+<li class="menu-item">
+<a href="/developers/basic/validation/">Validation</a>
+
 </li></ul>
 </li>
 <li class="menu-item">
@@ -286,7 +290,7 @@ In one of the previous exercises you already saw some header stuff passing by. S
 <p>In the simulation below we already added one entry.</p>
 <p>First click on the grey rounded square with the text <code>snacking_log</code>. This should look familiar. It is just an entry. Then click on the top most blue circle with the text 'Create' that points directly to the entry. And look at what you see on the righthand side in the Header Contents panel.</p>
 <mdjs-story mdjs-story-name="Sim0"></mdjs-story>
-<p>When you click on the blue square, you will see a blob of json data, similar to the one you see below. The response you get is something that is called a <strong>header</strong> in Holochain language.</p>
+<p>When you click on the blue circle, you will see a blob of json data, similar to the one you see below. The response you get is something that is called a <strong>header</strong> in Holochain language.</p>
 <pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"header"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"content"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -316,7 +320,7 @@ In one of the previous exercises you already saw some header stuff passing by. S
 <p>Let's take a look what we can decypher from the example above.</p>
 <ul>
 <li><strong>author</strong>: the public key of the agent (cell) that signed the entry. This is a crucial component to prove to others you are really the author of this entry. Luckily it is all added automatically.</li>
-<li><strong>timestamp</strong>: timestamp of when this entry was committed. It will state the time for when the entry was created. This the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is a combination of standard Linux Epoch Time e.g.<em>1616571211</em> combined with elapsed nanoseconds, e.g.<em>293000</em>. While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.</li>
+<li><strong>timestamp</strong>: timestamp of when this entry was committed. It will state the time for when the entry was created. This is the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is a combination of standard Linux Epoch Time e.g.<em>1616571211</em> combined with elapsed microseconds, e.g.<em>293000</em>. While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.</li>
 <li><strong>header_seq</strong> &amp; <strong>prev_header</strong> are a better way to determine order. We will talk about them in another exercise.</li>
 <li><strong>type</strong> indicates what type of header this is. There are a number of header types:
 <ul>
@@ -332,7 +336,7 @@ In one of the previous exercises you already saw some header stuff passing by. S
 </li>
 </ul>
 <p>In this exercise you will only have to deal with <code>Create</code>. All headers have the above mentioned fields, with one small exception of the Dna header, which doesn't have a prev_header, for the very simple reason that it is always the first header to be created in a holochain app.</p>
-<p>And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these fields tell something about entries. Because entries a very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header.</p>
+<p>And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these fields tell something about entries. Because entries are very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header.</p>
 <ul>
 <li>
 <p><strong>entry_hash</strong> is the hash of the entry. It is exactly the same hash you worked with in the previous exercise. And since you can get the entry based on its hash, it is enough to store the entry hash inside the header. This makes a header a lightweight data structure. Whether your entry contains a 25000 page document or just a single "Hello world" string, the size of the header will be roughly the same size. That is why entries and headers make such a good team: <em><strong>entries are simple, headers are light</strong></em>.</p>

@@ -8,11 +8,11 @@
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Intermediate: Paths: Holochain Gym</title>
-<meta property="og:title" content="Intermediate: Paths: Holochain Gym">
+<title>Basic: Validation: Holochain Gym</title>
+<meta property="og:title" content="Basic: Validation: Holochain Gym">
 
 <meta name="generator" content="rocket 0.1">
-<link rel="canonical" href="/developers/intermediate/paths/">
+<link rel="canonical" href="/developers/basic/validation/">
 
 
 
@@ -32,8 +32,8 @@
     <meta property="og:site_name" content="Holochain Gym">
 <meta property="og:type" content="website">
 
-<meta property="og:image" content="../../../0579608c.png">
-<meta property="og:url" content="/developers/intermediate/paths/">
+<meta property="og:image" content="../../../649a55e1.png">
+<meta property="og:url" content="/developers/basic/validation/">
 
 <meta name="twitter:card" content="summary_large_image">
 
@@ -63,9 +63,6 @@
 <link rel="preload" href="../../../81b16c1a.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../962426a7.js" as="script" crossorigin="anonymous">
 <link rel="preload" href="../../../d15d5a5d.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../d023cc83.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../2af62055.js" as="script" crossorigin="anonymous">
-<link rel="preload" href="../../../8ad3a711.js" as="script" crossorigin="anonymous">
 </head>
 
   
@@ -171,7 +168,7 @@
 
 </li></ul>
 </li>
-<li class="menu-item">
+<li class="menu-item active">
 <a href="/developers/basic/">Basic</a>
 <ul><li class="menu-item">
 <a href="/developers/basic/zome-functions/">Zome functions</a>
@@ -197,27 +194,30 @@
 <a href="/developers/basic/elements/">Getting Elements</a>
 
 </li>
-<li class="menu-item">
-<a href="/developers/basic/validation/">Validation</a>
-
-</li></ul>
-</li>
-<li class="menu-item active">
-<a href="/developers/intermediate/">Intermediate</a>
-<ul><li class="menu-item">
-<a href="/developers/intermediate/anchors/">Anchors</a>
-
-</li>
 <li class="menu-item current">
-<a href="/developers/intermediate/paths/">Paths</a>
+<a href="/developers/basic/validation/">Validation</a>
 <ul>
   <li class="menu-item anchor">
-    <a href="#try-it" class="anchor">Try it!</a>
+    <a href="#background" class="anchor">Background</a>
+  </li>
+  <li class="menu-item anchor">
+    <a href="#about-validation" class="anchor">About validation</a>
   </li>
   <li class="menu-item anchor">
     <a href="#exercise" class="anchor">Exercise</a>
   </li>
 </ul>
+
+</li></ul>
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/">Intermediate</a>
+<ul><li class="menu-item">
+<a href="/developers/intermediate/anchors/">Anchors</a>
+
+</li>
+<li class="menu-item">
+<a href="/developers/intermediate/paths/">Paths</a>
 
 </li>
 <li class="menu-item">
@@ -263,97 +263,103 @@
       
         <main class="markdown-body">
   
-    <h1 id="intermediate-paths"><a class="anchor" href="#intermediate-paths"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Intermediate: Paths</h1>
+    <h1 id="basic-validation"><a class="anchor" href="#basic-validation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Basic: Validation</h1>
 <inline-notification type="tip" title="Useful reads">
-<ul>
-<li><a href="/developers/intermediate/anchors/">Gym: Anchors</a></li>
-<li><a href="https://developer.holochain.org/concepts/5_links_anchors/">Core Concepts: links and anchors</a></li>
-</ul>
+  <ul>
+    <li><a href="/concepts/validation-rules/">Validation Rules</a></li>
+  </ul>
 </inline-notification>
-<p>Paths are an extension of <strong>anchors</strong> that have been introduced in RSM. They fill the same role but add a lot more flexibility and dimensionality, and allows you to create complex indexes to quickly query the DHT easily.</p>
-<p>You can think of paths like <strong>anchor trees</strong>, in which we don't only create one anchor entry to hold all the links to a particular type of entry, but rather create more than one, to distribute those links much more homogeneously in the DHT. If you haven't done the anchors exercise, do it now before doing the paths one.</p>
-<p>The content of each path is a string with segments separated by a dot, for example: <code>all_tasks.project1.finished</code>. This path will create these entries:</p>
-<ul>
-<li><code>all_tasks</code></li>
-<li><code>all_tasks.project1</code></li>
-<li><code>all_tasks.project1.finished</code></li>
-</ul>
-<p>Here, you can see that the root parent of the path is <code>all_tasks</code>, which has <code>all_tasks.project1</code> as a child. Each of these entries has a hash in the DHT like any other entry. Also, every parent will have a link pointing to all its children.</p>
-<p>There are two goals we have in mind when using paths:</p>
-<ul>
-<li><strong>Reducing DHT hotspots</strong></li>
-</ul>
-<p>If we only create one anchor entry and attach all the links to posts from that entry, the poor nodes that will be holding that entry will end up holding all those links as well - this can get big in terms of storage. Creating multiple entries makes it so that the links get distributed around in the DHT much more evenly.</p>
-<ul>
-<li><strong>Read performance</strong></li>
-</ul>
-<p>Usually we don't want to query "all the posts that have been ever created". Imagine that you want to get the posts for the last day. If we only have one anchor entry, this can get really slow, because we need to do a <code>get</code> for every post to check whether it has been made in the last day, and then return the ones that have been. Instead, if we are a bit smart in the way we create the paths, we can just query the appropriate anchors that will only hold the posts for that day.</p>
-<h2 id="try-it"><a class="anchor" href="#try-it"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Try it!</h2>
-<p>Here you can create paths yourself, and see which entries and links are created.</p>
-<mdjs-story mdjs-story-name="Simple"></mdjs-story>
-<p>The basic mechanism for which these entries are useful is to attach links to them. If you attach a link to the <code>all_tasks.project1.finished</code> that points to all tasks related with <code>project1</code> that have finished, now you can do a <code>get_links</code> on that path to get only those.</p>
-<p>If, on the contrary, you want to get all tasks within the project regardless of status, you can get all the children paths from <code>all_tasks.project1</code>, which will give you for example <code>all_tasks.project1.todo</code>, <code>all_tasks.project1.doing</code> and <code>all_tasks.project1.finished</code>, and then do a <code>get_links</code> to tasks on those.</p>
-<p>You can imagine different types of indexes built on top of paths, with multidimensional properties.</p>
-<inline-notification type="warning" title="Including paths in zomes">
-Keep in mind that paths are already incorporated in the core hdk, so you don't need to import them from an external library. Although it is necessary to define them as an entry definition in your zome like this:
-<pre class="language-rust"><code class="language-rust"><span class="token function">entry_defs!</span><span class="token punctuation">[</span>
-    PathEntry<span class="token punctuation">::</span><span class="token function">entry_def</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-    <span class="token punctuation">...</span>
-<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<h2 id="background"><a class="anchor" href="#background"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Background</h2>
+<p>In this exercise we will implement validation. Validation ensures that only valid data ends up on
+the chain used by an agent's hApp.</p>
+<p>This hApp estimates work items. Agents can submit an <code>Estimate</code> with an estimate value:</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">pub</span> <span class="token keyword">struct</span> Estimate <span class="token punctuation">{</span>
+    item<span class="token punctuation">:</span> String<span class="token punctuation">,</span>
+    value<span class="token punctuation">:</span> u8<span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
 </code></pre>
-</inline-notification>
+<p>Our hApp has one requirement: all estimates must conform to the agile estimation recommendation of
+using <a href="https://en.wikipedia.org/wiki/Fibonacci_number">Fibonacci numbers</a> less than or equal to 21.
+(Here's an <a href="https://www.mountaingoatsoftware.com/blog/why-the-fibonacci-sequence-works-well-for-estimating">agile estimation Fibonacci explainer</a>).</p>
+<pre class="language-rust"><code class="language-rust"><span class="token keyword">let</span> valid_estimate_values <span class="token operator">=</span> <span class="token function">vec!</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>
+<p>So in addition to the <code>add_estimate</code> zome function allowing us to create new estimates, we will also
+implement the <code>validate</code> zome function that ensures that only valid data is saved to the source chain.</p>
+<h2 id="about-validation"><a class="anchor" href="#about-validation"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>About validation</h2>
+<p>If your zome implements a <code>validate</code> function, the conductor will call it for all changes to the DHT
+for any cell containing the zome.</p>
+<p>The argument your <code>validate</code> will receive is an
+<a href="https://docs.rs/holochain_integrity_types/0.0.5/holochain_integrity_types/op/enum.Op.html"><code>holochain_integrity_types::op::Op</code></a>.</p>
+<p><code>Op</code> is short for "DHT Operation". Every time you commit some action in your source chain, multiple DHT Operations are created and published to different parts of the DHT. This is because different read operations need to read different parts of the DHT, so we need to store the same element in multiple places.</p>
+<p>This is a table describing the "DhtOps" that each action creates:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Chain Action</th><th>DhtOp Name</th><th>Targeted hash basis</th><th>Payload</th><th>Metadata</th></tr></thead><tbody><tr><td>create_content(content)</td><td>RegisterAgentActivity<br> StoreRecord<br> StoreContent</td><td>Author's public key<br> Hash of the action <br> Hash of the content</td><td>Action <br> Record <br> Record</td><td>Hash of the action <br> -  <br> -</td></tr><tr><td>update_content(original_action_hash, new_content)</td><td>RegisterAgentActivity<br> StoreRecord<br> StoreContent<br> RegisterContentUpdate<br> RegisterRecordUpdate</td><td>Author's public key<br> Hash of the action <br> Hash of the content <br> Hash of the original content <br> Hash of the original action</td><td>New action <br> New Record <br> New record <br> New action <br> New action</td><td>Hash of the action <br> - <br> New content updates old content <br> Old content is updated to new content <br> Old action is updated to new action</td></tr><tr><td>bury_content(action_hash)</td><td>RegisterAgentActivity<br> StoreRecord<br> RegisterContentDelete<br> RegisterRecordDelete</td><td>Author's public key <br> Hash of the new action <br> Hash of the deleted content <br> Hash of the deleted action</td><td>New action <br> New Record <br> New action <br> New action</td><td>Hash of the action <br> - <br> Old content deleted by new action <br> Old action deleted by new action</td></tr><tr><td>create_link(base, target, tag)</td><td>RegisterAgentActivity<br> StoreRecord<br> RegisterCreateLink</td><td>Author's public key <br> Hash of the new action <br> "Base" hash</td><td>Action <br> Record <br> Action</td><td>Hash of the action <br> - <br> Link from the base to the target hash</td></tr><tr><td>delete_link(create_link_action_hash)</td><td>RegisterAgentActivity<br> StoreRecord<br> RegisterDeleteLink</td><td>Author's public key <br> Hash of the new action <br> Hash of the deleted create link action hash</td><td>Action <br> Record <br> Action</td><td>Hash of the action <br> - <br> Deleted link sent to tombstone</td></tr></tbody></table>
+<p>After the action is committed to the source chain and published to the DHT in those different parts, the agents who receive those publish requests first have to validate that the DHT Operation is actually valid and playing by the rules of the game. After making sure that the change is valid, the agents will start to answer DHT read operations (<code>get</code>, <code>get_links</code>, etc.) with its data.</p>
+<p>To know more about how to implement validation rules in your application, read <a href="https://docs.rs/holochain_integrity_types/0.0.5/holochain_integrity_types/op/enum.Op.html#producing-operations">this documentation</a>.</p>
 <h2 id="exercise"><a class="anchor" href="#exercise"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Exercise</h2>
-<h3 id="problem-statement"><a class="anchor" href="#problem-statement"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Problem statement</h3>
-<p>We need to code a small zome that satisfies these capabilities:</p>
-<ul>
-<li>Create a new post, passing a content and some tags</li>
-<li>Get all posts within a day or an hour, examples:
-<ul>
-<li>"get me all posts posted on 21st February, 2021"</li>
-<li>"get me all posts posted between 21:00 and 22:00 of 21st February, 2021"</li>
-</ul>
-</li>
-<li>Get all the tags that have been created</li>
-<li>Get all posts that have been created with a certain tag
-<ul>
-<li>"get me all posts that have been posted with the tag "nature""</li>
-</ul>
-</li>
-</ul>
-<p>You can follow this entry design to accomplish it:</p>
-<mdjs-story mdjs-story-name="Exercise"></mdjs-story>
-<inline-notification type="tip" title="Exercise">
+<p>We have provided the basic structure of validating a DNA that allows the creation of <code>Estimate</code>s.
+Your task is to add the validation business logic for the <code>Estimate</code>s:</p>
 <ol>
-<li>Go to the <code>developer-exercises</code>.</li>
-<li>Enter the nix-shell: <code>nix-shell</code><br>
-<em>you should run this in the folder containing the default.nix file</em></li>
-<li>Go to folder with the exercise <code>intermediate/1.paths</code></li>
-<li>Inside <code>zome/exercise/src/lib.rs</code>
-<ul>
-<li>Implement all <code>unimplemented!()</code> functions</li>
-</ul>
-</li>
-<li>Compile and test your code: <code>cd tests &amp;&amp; npm test</code>.</li>
-<li>Don't stop until the test runs green</li>
+<li>An Estimate value must be an agile Fibonacci value.</li>
+<li>An Estimate's <code>item</code> must be non-empty.</li>
 </ol>
-</inline-notification>
-<inline-notification type="tip" title="Relevant HDK documentation">
+<h3 id="extra-credit"><a class="anchor" href="#extra-credit"><svg class="octicon octicon-link" viewBox="0 0 16 16" aria-hidden="true" width="16" height="16"><path fill-rule="evenodd" d="M7.775 3.275a.75.75 0 001.06 1.06l1.25-1.25a2 2 0 112.83 2.83l-2.5 2.5a2 2 0 01-2.83 0 .75.75 0 00-1.06 1.06 3.5 3.5 0 004.95 0l2.5-2.5a3.5 3.5 0 00-4.95-4.95l-1.25 1.25zm-4.69 9.64a2 2 0 010-2.83l2.5-2.5a2 2 0 012.83 0 .75.75 0 001.06-1.06 3.5 3.5 0 00-4.95 0l-2.5 2.5a3.5 3.5 0 004.95 4.95l1.25-1.25a.75.75 0 00-1.06-1.06l-1.25 1.25a2 2 0 01-2.83 0z"></path></svg></a>Extra credit</h3>
+<p>Add this validation rule:</p>
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.129/hdk/link/fn.create_link.html">`create_link`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.129/hdk/link/fn.get_links.html">`get_links`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.129/hdk/hash_path/path/struct.Path.html">`Path`</a></li>
+<li>Each agent can only estimate the same <code>item</code> once.</li>
 </ul>
-</inline-notification>
-        
-      
 
   
     <div class="content-footer">
   <p>
     Caught a mistake or want to contribute to the documentation?
-    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/main/./docs/developers/intermediate/paths.md">Edit this page on GitHub!</a>
+    <a href="https://github.com/holochain-gym/holochain-gym.github.io/edit/main/./docs/developers/basic/validation.md">Edit this page on GitHub!</a>
   </p>
 </div>
 
@@ -471,6 +477,5 @@ Commons Attribution 4.0</a>
 
 <script type="module" src="../../../81b16c1a.js"></script>
 <script type="module" src="../../../d15d5a5d.js" inject-service-worker=""></script>
-<script type="module" src="../../../d023cc83.js" mdjs-setup=""></script>
 
 </body></html>
