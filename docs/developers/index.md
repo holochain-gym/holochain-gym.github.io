@@ -21,7 +21,7 @@ This will give you time to get used to the Rust syntax and see some [HDK](https:
 
 **Finally**
 
-You can hit the gym and start your [first exercise](/developers/basic/entries/).
+You can hit the gym and start your [first exercise](/developers/basic/zome-functions/).
 
 *Practice, rest, eat healthy and repeat.*  
 *Good luck!*  
