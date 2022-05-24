@@ -102,9 +102,10 @@ Becoming an expert starts by making every possible error. So go ahead and make s
 1. Open a terminal in `developer-exercises` folder.
 2. Enter the nix-shell by running: `nix-shell`  
    _You should run this in the folder containing the default.nix file_
-3. Go to folder with the exercise `1.basic/0.zome-functions/exercise`
-4. Compile and test your code: `cd tests && npm run build`.
-5. Inspect the Rust compiler error
+3. Make sure you have dependencies installed, if you are not sure, run `npm install`.
+4. Go to folder with the exercise `1.basic/0.zome-functions/exercise`
+5. Compile and test your code: `cd tests && npm run build`.
+6. Inspect the Rust compiler error
 
 </inline-notification>
 
@@ -146,7 +147,7 @@ We wrote an integration test for you, to test if everything works correctly. The
 1. Check that your are still in a `nix-shell`.
    _The beginning of the command line should have nix-shell in it_
 2. Check that your are still in the folder `1.basic/0.zome-functions/exercise`.
-3. Compile and test your code: `cd tests && npm install && npm test`.
+3. Compile and test your code: `cd tests && npm test`.
 4. Inspect the error.
 
 </inline-notification>
