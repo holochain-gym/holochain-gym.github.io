@@ -189,7 +189,7 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 The challenge is to create an entry which contains the text "Hello, World!". The text will be passed to the zome as a `SomeExternalInput` struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply `create_entry`. And since you imported all functions from the prelude already, you can use this function immediately in your code.
 
 So, your first attempt might look something like `create_entry(String::from("Hello, World!"))` or `create_entry(input.content)`. But this won't work.  
-Because an entry needs to be saved locally and sent over the network, it has to be serializable. And a String itself is not serializable. To do this we create a `struct` that will hold our data.
+Because an entry needs to be saved locally and sent over the network, it has to be serializable. And a String itself is not serializable. To do this we create a `struct` that will hold our data (in more details, you are creating a [tuple struct](https://doc.rust-lang.org/std/keyword.struct.html) in rust) 
 
 ```rust
 pub struct Greeting(String);
