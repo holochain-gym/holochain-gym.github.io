@@ -251,6 +251,17 @@ export const Demo = () => html` <holochain-playground-container
 </holochain-playground-container>`;
 ```
 
+## Sequence diagram
+
+Here is a sequence diagram of how two clients might interact using CapGrants and CapClaims.
+First Alice creates a CapGrant and sends it to Bob. Then when Bob wants to send Alice a
+message, Bob first retrieves the CapClaim from Bob's chain and uses it to send a message to
+Alice.
+
+Note that the Test acts like an artificial driver of the two Agents' behavior.
+
+![capability tokens sequence diagram](capability-tokens-sequence-diagram.png)
+
 ## Subconsious Checks
 
 When a zome function call is received, holochain's subconscious does these checks:
