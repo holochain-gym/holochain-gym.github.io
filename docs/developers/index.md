@@ -3,7 +3,7 @@
 Welcome to our gym!
 
 We love that you decided to work on your holochain skills. 
-This is the right place to train yourself to become a holochain developer.
+This is the right place to train yourself to become a Holochain developer.
 
 In our gym you will find interactive *simulations*, working example *code* and hands-on *exercises*.
 On the left, you have a list of exercises, ordered from easy to hard. 
@@ -33,11 +33,11 @@ import '@rocket/launch/inline-notification/inline-notification.js';
 ```
 <inline-notification type="warning" title="UNDER CONSTRUCTION">
 
-Notice that this site is in its early stages and under heavy construction. More exercises will be added progressively, existing exercises might break. All feedback and contributions are welcome. Just ping us in the [holochain forum](https://forum.holochain.org/t/gym-help-needed-offer-request/4622)!
+Notice that this site is in its early stages and under heavy construction. More exercises will be added progressively, existing exercises might break. All feedback and contributions are welcome. Just ping us in the [Holochain forum](https://forum.holochain.org/t/gym-help-needed-offer-request/4622)!
 
 </inline-notification>
 
 <inline-notification type="tip" title="COMMUNITY PROJECT">
 
-The holochain-gym is a project from the holochain community for the holochain community. It is not part of the official documentation, though we seek to be as correct as possible and align our content as much as possible with the official holochain documentation.
+The holochain-gym is a project from the Holochain community for the holochain community. It is not part of the official documentation, though we seek to be as correct as possible and align our content as much as possible with the official Holochain documentation.
 </inline-notification>

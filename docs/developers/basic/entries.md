@@ -46,7 +46,7 @@ When you create an entry a few things will happen:
 1. Your data is validated locally _(we will learn how this works in later exercises)_.
 2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) _(hence the 'chain' in 'Holochain')_.
 3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp _(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)_.
-4. The random people that received your data will validate your data using the same rules that were used in the first step. _(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)_.
+4. The random people that received your data will validate your data using the same rules that were used in the first step. _(This is where the holo (coming from holographic) part comes into play. To become a real entry, your entry has to be seen and validated by different people/agents)_.
 
 Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.
 

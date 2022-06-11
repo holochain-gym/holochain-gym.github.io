@@ -1,4 +1,4 @@
-# Concepts >> Dna and Zomes ||40
+# Concepts >> DNA and Zomes ||40
 
 ```js script
 import "@rocket/launch/inline-notification/inline-notification.js";
@@ -54,7 +54,7 @@ You can also create some entries in one `DNA` and switch back and forth `DNAs` t
 
 ## Zomes
 
-`DNAs` in Holochain are composed out of multiple `zomes`. `Zomes` are like modules: you can compose them together to aggregate its functionality.
+In Holochain `DNAs` are composed of multiple `zomes`. `Zomes` are like modules: you can put them together to aggregate its functionality.
 
 These are examples for different zomes:
 
