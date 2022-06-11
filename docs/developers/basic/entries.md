@@ -25,6 +25,12 @@ customElements.define("call-zome-fns", CallZomeFns);
 </ul>
 </inline-notification>
 
+In this chapter you will learn
+
+* what a entry is
+* what a entry definition is
+* how to create and retrieve an entry
+
 ## What is an entry
 
 An entry is a basic unit of user data. As a Holochain developer one of the most basic things you can do is create an entry in a Zome.

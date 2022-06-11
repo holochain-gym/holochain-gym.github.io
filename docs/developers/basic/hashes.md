@@ -27,6 +27,12 @@ customElements.define("call-zome-fns", CallZomeFns);
 </ul>
 </inline-notification>
 
+In this chapter you will learn
+
+* what a hashes are and how they work
+* why hashes are important in holochain
+* how to add an integration test
+
 ## Recap
 
 Welcome back to our Holochain gym. In the previous exercise you learned how to create a entry in a zome. You compiled your zome to a dna, you asked the holochain conductor to turn that dna in a cell, you tested your zome code in that cell through a test script. And you learned that you needed the following things in your code:
@@ -252,7 +258,7 @@ pub fn get_book(hash: String) -> ExternResult<Book> {
 ```
 
 It is up to you to add Book struct with two fields: title and content, to define your entry, add all the attributes and to register your entry definition.
-There is one thing we didn't tell in the previous exercise: `create_entry` returns a `ExternResult<HeaderHash>` and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look [here](https://docs.rs/hdk/0.0.100/hdk/prelude/index.html) to see what function might be suited for that.
+There is one thing we didn't tell in the previous exercise: `create_entry` returns a `ExternResult<HeaderHash>` and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look [here](https://docs.rs/hdk/0.0.118/hdk/prelude/index.html) to see what function might be suited for that.
 
 <inline-notification type="tip" title="Exercise">
 
