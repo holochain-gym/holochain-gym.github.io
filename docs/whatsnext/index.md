@@ -8,7 +8,11 @@ Very well...
 
 We have a community of very passionate Holochain developers that can help you along your way!
 
-We are gathering in "Holochain in Action". You can begin by watching the videos of past calls:
+We have an open "Dev.HC" discord server! You can join it here:
+
+https://discord.gg/V6brUUuz3T
+
+We are also gathering in a weekly fashion in "Holochain in Action". You can begin by watching the videos of past calls:
 
 https://www.youtube.com/channel/UCJwIuwkCI5HMSzHJpKys-RQ
 

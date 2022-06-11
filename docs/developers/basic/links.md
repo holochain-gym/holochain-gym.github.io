@@ -44,6 +44,7 @@ A link has 3 basic properties:
 
 - A base entry
 - A target entry
+- A link type (a number that identifies the type of the link)
 - A tag with arbitrary content
 
 ## Try it!
@@ -268,18 +269,17 @@ export const Simple2 = () => {
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`.
    _you should run this in the folder containing the default.nix file_.
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_.
 3. Implement the functions `create_post` and `get_posts_for_agent`.
-4. Compile and test your code: `cd tests && npm install && npm test`.
+4. Compile and test your code: `cd tests && npm test`.
 5. Don't stop until the test runs green.
 
 </inline-notification>
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.create_link.html">`create_link`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/link/fn.get_links.html">`get_links`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/link/fn.create_link.html">`create_link`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/link/fn.get_links.html">`get_links`</a></li>
 </ul>
 </inline-notification>

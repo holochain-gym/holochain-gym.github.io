@@ -71,7 +71,7 @@ pub fn hello_world(_:()) -> ExternResult<SomeExternalOutput> {
     Ok(output)
 }
 
-pub fn say_my_name(external_input:SomeExternalInput) -> ExternResult<SomeExternalOutput> {
+pub fn say_my_name(external_input: SomeExternalInput) -> ExternResult<SomeExternalOutput> {
     let message: String = format!("Your name is {} {}", 
                                     external_input.first_name, 
                                     external_input.last_name);
@@ -91,7 +91,8 @@ pub fn get_agent_id(_:()) -> ExternResult<AgentInfo> {
 Next you have 3 **public functions**. If you are new to Rust, then `_:()` might seem weird. The input parameter has a name `_` and the type is an Object `()`. But it just means: "I accept anything, because I will not be using it". 
 
 Finally you see the **return type** of each function.
-Functions that return a `Result` are very [common](https://learning-rust.github.io/docs/e3.option_and_result.html) in Rust. `ExternResult` is an enhanced Result type, specially adapted for use in zomes. Instead of a standard `Err`, you need a `WasmError` as the error type in your result. Because, as we mentioned above, your zome is compiled into a WASM binary. So every error you want to report to the outside world is in fact a [WasmError](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html).
+
+Functions that return a `Result` are very [common](https://learning-rust.github.io/docs/e3.option_and_result.html) in Rust. `ExternResult` is an enhanced Result type, specially adapted for use in zomes. In stead of a standard `Err`, you need a `WasmError` as the error type in your result. Because, as we mentioned above, your zome is compiled into a WASM binary. So every error you want to report to the outside world is in fact a [WasmError](https://docs.rs/hdk/0.0.129/hdk/map_extern/type.ExternResult.html).
 
 ### Import HDK
 
@@ -102,9 +103,10 @@ Becoming an expert starts by making every possible mistake. So go ahead and make
 1. Open a terminal in `developer-exercises` folder.
 2. Enter the nix-shell by running: `nix-shell`  
    _You should run this in the folder containing the default.nix file_
-3. Go to folder with the exercise `1.basic/0.zome-functions/exercise`
-4. Compile and test your code: `cd tests && npm install && npm run build`.
-5. Inspect the Rust compiler error
+3. Make sure you have dependencies installed, if you are not sure, run `npm install`.
+4. Go to folder with the exercise `1.basic/0.zome-functions/exercise`
+5. Compile and test your code: `cd tests && npm run build`.
+6. Inspect the Rust compiler error
 
 </inline-notification>
 
@@ -146,7 +148,7 @@ We wrote an integration test for you, to test if everything works correctly. The
 1. Check that your are still in a `nix-shell`.
    _The beginning of the command line should have nix-shell in it_
 2. Check that your are still in the folder `1.basic/0.zome-functions/exercise`.
-3. Compile and test your code: `cd tests && npm install && npm test`.
+3. Compile and test your code: `cd tests && npm test`.
 4. Inspect the error.
 
 </inline-notification>
@@ -166,8 +168,8 @@ It simply means that our test code `.call("exercise", "hello_world", null);`, wh
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add `#[hdk_extern]` on top of the 3 public functions.
-2. Compile and test your code: `cd tests && npm install && npm test`.
+1. Add `#[hdk_extern]` on top of each of the 3 public functions.
+2. Compile and test your code: `cd tests && npm test`.
 3. Inspect the error.
 
 </inline-notification>
@@ -199,23 +201,23 @@ To finish this exercise add the attributes to the structs.
 
 <inline-notification type="tip" title="Exercise">
 
-1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of the 2 structs.
-2. Compile and test your code: `cd tests && npm install && npm test`.
+1. Add `#[derive(Serialize, Deserialize, Debug)]` on top of each of the 2 structs.
+2. Compile and test your code: `cd tests && npm test`.
 3. Inspect the error.
 
 </inline-notification>
 
 ## Agent info
 
-The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_info` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created at the beginning of your [source-chain](/concepts/source-chain/) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app, an Agent ID is created. When a DNA, composed of one or more zomes, is instantiated and an Agent ID is created, they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power does not survive...
+The `hello_world` and `say_my_name` are very simple toy functions. In `get_agent_id` on the other hand you call a real hdk function [`agent_info()`](https://docs.rs/hdk/0.0.129/hdk/info/fn.agent_info.html). AgentInfo is the current agent’s original pubkey/address that they joined the network with and their most recent pubkey/address. Your agent info or [Agent ID](https://developer.holochain.org/docs/glossary/#agent-id) is one of the four genesis events that are created at the beginning of your [source-chain](/concepts/source-chain/) by the [subconscious](/developers/basic/source-chain/#subconscious) part of your holochain application. When you install a holochain app, an Agent ID is created. When a DNA (composed of one or more zomes) is instantiated, an Agent ID is created and they form a [cell](https://developer.holochain.org/docs/glossary/#cell). Zomes, DNA, cells might sound confusing at first. Stick with it because the design principles of holochain are deeply rooted in nature. And everything in nature that is slow and consumes too much power, does not survive ...
 
 
-So now it is up to you to finish this exercise. Add all the things we just explained to your code and finish by implementing the `say_greeting` function, building your zome and running the test.
+So now it is up to you to finish this exercise. Add all the things we just explained to your code, and try building your zome and running the test.
 You only need to add a few lines in this first exercise, but know that when the test succeeds, you:
 
 - made your first zome module in Rust
 - compiled your zome into a DNA in WASM, a state of the art binary format
-- ran a test script, written in Typescript, executed in Nodejs
+- ran a test script, written in Typescript, executed in Node.js
 - initiated an actual real holochain conductor
 - which instantiated your DNA into a real, actual Holochain cell
 - and executed a test script that asked your cell to make a real entry with the words "Hello, World!"
@@ -227,19 +229,18 @@ You will in fact have created your very first decentralized, agent centric, boun
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`.
    _you should run this in the folder containing the default.nix file_  
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_
 3. Go to folder with the exercise `basic/0.zome-functions/exercise`.
 4. Inside `zome/exercise/src/lib.rs`:
-   - Define a new struct for your entry: 'Greeting'.
-   - Implement the function with `unimplemented!()`.
-5. Compile and test your code: `cd tests && npm install && npm test`.
+   - Import the HDK library and functions.
+   - Add the `#[hdk_extern]` macro in the necessary functions.
+5. Compile and test your code: `cd tests && npm test`.
 6. Don't stop until the test runs green.
 
 </inline-notification>
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/info/fn.agent_info.html">`agent_info`</a></li>
 </ul>
 </inline-notification>
 
@@ -247,14 +248,14 @@ You will in fact have created your very first decentralized, agent centric, boun
 
 If you encounter an error check here if you can find something that looks like your error. If not, head to the [forum.holochain.org](https://forum.holochain.org/t/gym-help-needed-offer-request/4622/15) and ask for help.
 
-- You forgot to add the `#[hdk_extern]` attribute on the `say_greeting` function.
+- You forgot to add the `#[hdk_extern]` attribute on the `get_agent_id` function.
 
 ```js
 got an error for test 'say a greeting': {
   type: 'error',
   data: {
     type: 'ribosome_error',
-    data: "Attempted to call a zome function that doesn't exist: Zome: exercise Fn say_greeting"
+    data: "Attempted to call a zome function that doesn't exist: Zome: exercise Fn get_agent_id"
   }
 }
 ```

@@ -132,7 +132,7 @@ It's really important to think about elements when getting content from the DHT 
 2. **Create the same entry** a second time.
    - You should see the two `Create` headers accompanying the entry.
 3. Now, switch to the `get` zome fn. Click on the entry and copy its hash to the `hash` argument, and execute the `get`.
-   - See that only the second header is returned with the `get`. This is because, as the [`get` documentation](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) explains, `get` is the simplified version for getting things from the DHT, that only returns the latest header when getting an entry.
+   - See that only the first header is returned with the `get`. This is because, as the [`get` documentation](https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html) explains, `get` is the simplified version for getting things from the DHT, that only returns the "oldest live" header when getting an entry.
 4. Switch to the `get_details` zome fn, and execute it with the same `EntryHash`.
    - See that, in this case, all the headers are returned. This is because `get_details` returns all the metadata that is accompanying the entry.
 5. Click on one of the headers, and copy its hash. Try to do a `get_details` with it.
@@ -245,9 +245,9 @@ pub struct HeaderAndEntryHash {
 A few more tips:
 
 - Hashes are basic arrays with bytes. An easier way to send hashes back and forth between your UI, or, in our case, tests, and the zome code is to use encode the array as a Base64 string. You can use `holo_hash::HeaderHashB64` & `holo_hash::EntryHashB64`.
-- Returning stuff to the UI or tests is always done inside [ExternResult](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html)
+- Returning stuff to the UI or tests is always done inside [ExternResult](https://docs.rs/hdk/0.0.129/hdk/map_extern/type.ExternResult.html)
 
-- [`get`](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) returns a [ExternResult<Option<Element>>](https://docs.rs/hdk/0.0.100/hdk/map_extern/type.ExternResult.html). So if you call [`get`](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the `Element` inside your function somehow, you need to unwrap the `Option`. And in Rust that means you need to handle the error. For instance like this:
+- [`get`](https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html) returns a [ExternResult<Option<Element>>](https://docs.rs/hdk/0.0.129/hdk/map_extern/type.ExternResult.html). So if you call [`get`](https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html) at the end of a external function it works smoothly, because at the end of externally accessed function, you need to return a ExternResult. But if you want to use the `Element` inside your function somehow, you need to unwrap the `Option`. And in Rust that means you need to handle the error. For instance like this:
 
 ```
   .ok_or(WasmError::Guest(String::from("Could not find SnackingLog for entry hash")))?;
@@ -264,7 +264,7 @@ Look at the tests or in previous exercises if you need some inspiration. And if 
 After you are done implementing the 3 functions, you can, by way of experiment, change the tests so that you use a header hash in the `get_by_entry_hash` function instead of a entry hash and see what happens.
 
 _Spoiler_  
-Although the HDK uses the same function to get an element with an entry based on an entry hash or a header hash: [get](https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html) it won't work if you try to change the test. But it is interesting to see how it fails.
+Although the HDK uses the same function to get an element with an entry based on an entry hash or a header hash: [get](https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html) it won't work if you try to change the test. But it is interesting to see how it fails.
 
 ## Extra
 
@@ -279,18 +279,18 @@ Implement a function `get_all_headers_from_content` that returns the array of he
 3. Add a struct `SnackingLog`.
 4. Implement `register_snacking`, `get_by_entry_hash` and `get_by_header_hash`.
 5. Implement `get_all_headers_from_content`.
-6. Compile and test your code: `cd tests && npm install && npm test`.
+6. Compile and test your code: `cd tests && npm test`.
 7. Don't stop until the tests run green.
 
 </inline-notification>
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/enum.Header.html">`Header`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get_details.html">`get_details`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/enum.Header.html">`Header`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.get_details.html">`get_details`</a></li>
 </ul>
 </inline-notification>
 

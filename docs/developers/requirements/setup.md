@@ -10,13 +10,12 @@ To install the package manager you run this command:
 
 ```bash
 sh <(curl -L https://nixos.org/nix/install)
-```
-
-After installing Nix, run the following command so you do not have to log in and out again:
-
-```bash
 . ~/.nix-profile/etc/profile.d/nix.sh
+nix-env -iA cachix -f https://cachix.org/api/v1/install
+cachix use holochain-ci
 ```
+
+The above commands will also setup your current shell, and the cachix cache so that Holochain builds are cached.
 
 ### Windows
 
@@ -29,20 +28,23 @@ Make sure you have the `Command Line Tools for XCode` installed, then on
 **macOS 10.15 Catalina and later**  
 ```bash
 sh <(curl -L https://nixos.org/nix/install) --darwin-use-unencrypted-nix-store-volume
+. ~/.nix-profile/etc/profile.d/nix.sh
+nix-env -iA cachix -f https://cachix.org/api/v1/install
+cachix use holochain-ci
 ```
+
+The above commands will also setup your current shell, and the cachix cache so that Holochain builds are cached.
 
 **macOS 10.14 Mojave and earlier**  
 
 ```bash
 sh <(curl -L https://nixos.org/nix/install)
-```
-
-After installing Nix, run the following command so you do not have to log in and out again:
-
-```bash
 . ~/.nix-profile/etc/profile.d/nix.sh
+nix-env -iA cachix -f https://cachix.org/api/v1/install
+cachix use holochain-ci
 ```
 
+The above commands will also setup your current shell, and the cachix cache so that Holochain builds are cached.
 
 ## Clone repo
 
@@ -57,7 +59,6 @@ After that jump in to the base folder of the repository
 ```bash
 cd developer-exercises
 ```
-
 
 
 ## Check
@@ -78,20 +79,46 @@ ls default.nix
 ## Nix-shell
 
 Now you are about to run the `nix-shell` command. This command will look for a default.nix file and build a complete development environment with all the necessary tools and dependencies with all the right versions.
-But... because Holochain development is still in a fast-paced alpha state, you cannot download everything as binary files. That means you have to build Holochain and some of its dependencies on your machine. And that means that **running the nix-shell command for the first time will take somewhere between 20 to 80 minutes**.
-It only takes this long the very first time or when we upgrade the Holochain version. **After that it will take a few seconds.** In the future, once Holochain is ready to release regular versions, we can skip the long build.
 
-So go ahead and run
+But... because Holochain development is still in a fast-paced alpha state, you cannot download everything as binary files. That means you have to build Holochain and some of its dependencies on your machine. And that means that **running the nix-shell command for the first time will take a few minutes**.
+It only takes this long the very first time or when we upgrade the Holochain version. **After that it will take just a few seconds.** In the future, once Holochain is ready to release regular versions, we can skip the long build.
+
+
+So go ahead and run:
 
 ```bash
 nix-shell
+npm install
 ```
+
+Running `nix-shell` for the first time will take a few minutes, after that it will take just seconds. 
+Try it... You exit the nix shell like any other shell: type `exit` or press Ctrl+C. Then run `nix-shell` again.
+
+Among some of the thing that nix-shell install is a tool called `hn-introspect`. It helps to inspect which version of holochain, HDK and its dependencies are installed. Look at this example:
+
+```bash
+$ hn-introspect 
+List of applications and their version information
+
+main
+- hc-0.0.19: https://github.com/holochain/holochain/tree/8a0cd9283fd881ddbc467b1d0d97ee2fcd49d992
+- holochain-0.0.118: https://github.com/holochain/holochain/tree/8a0cd9283fd881ddbc467b1d0d97ee2fcd49d992
+- kitsune-p2p-proxy-0.0.14: https://github.com/holochain/holochain/tree/8a0cd9283fd881ddbc467b1d0d97ee2fcd49d992
+- lair-keystore-0.0.9: https://github.com/holochain/lair/tree/v0.0.9
+
+- rustc: rustc 1.55.0 (c8dfcfe04 2021-09-06)
+- cargo fmt: rustfmt 1.4.37-stable (c8dfcfe 2021-09-06)
+- cargo clippy: clippy 0.1.55 (c8dfcfe 2021-09-06)
+- perf: perf version 5.10.81
+```
+
 If you have no idea what to do in the meantime...
 - go for a long walk in nature
 - call a friend you have not been in contact with for a long time
 - bake some [cookies](https://www.bbcgoodfood.com/recipes/basic-cookies) and share them with your neighbors
 
 or if you want to stay on topic, you can read a bit more about why the Holochain projects use Nix [in this article](https://developer.holochain.org/docs/install-advanced/#more-info-on-nix).
+
 
 ## Devtools
 

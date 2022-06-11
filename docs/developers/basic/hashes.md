@@ -252,20 +252,19 @@ pub fn get_book(hash: String) -> ExternResult<Book> {
 ```
 
 It is up to you to add Book struct with two fields: title and content, to define your entry, add all the attributes and to register your entry definition.
-There is one thing we didn't tell in the previous exercise: `create_entry` returns a `ExternResult<HeaderHash>` and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look [here](https://docs.rs/hdk/0.0.100/hdk/prelude/index.html) to see what function might be suited for that.
+There is one thing we didn't tell in the previous exercise: `create_entry` returns a `ExternResult<HeaderHash>` and not an EntryHash. So you will have to calculate the Entry hash yourself and return it. Look [here](https://docs.rs/hdk/0.0.129/hdk/prelude/index.html) to see what function might be suited for that.
 
 <inline-notification type="tip" title="Exercise">
 
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`  .
    _You should run this in the folder containing the default.nix file_  .
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_.
    _When it is done your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`.
 3. Go to folder with the exercise `1.basic/2.hashes`.
 4. Inside `zomes/exercise/src/lib.rs`:
    - Define a new struct for your entry: 'Book'.
    - Implement the function `add_book`.
-5. Compile and test your code: `cd tests && npm install && npm test`.
+5. Compile and test your code: `cd tests && npm test`.
 6. Don't stop until the test runs green.
 
 </inline-notification>
@@ -276,12 +275,12 @@ If you really want to take your exercises seriously, you need to know how to add
 The tests are fairly straightforward. Take a look at the code in `tests\src\index.ts`. If you are done exploring, add the code here below, just behind this line `t.ok(entryHash, "test add book");`.
 
 ```typescript
-let book = await alice_common.cells[0].call(
+let entry = await alice_common.cells[0].call(
   "exercise", // name of zome
   "get_book", // function to call
   entryHash // value to pass to the function
 );
-t.ok(book, "test get book"); // tape test assertion
+t.deepEqual(entry, book, "test book found"); // tape test assertion
 ```
 
 Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test is the test that failed at least once. That way you know you are actually testing something real.
@@ -297,16 +296,16 @@ Run the tests. And if everything passes, then it is time to put your feet up, re
 2. Check if you are still inside the nix-shell.
    _Your terminal should similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`.
 3. Implement the function `get_book`.
-4. Compile and test your code: `cd tests && npm install && npm test`.
+4. Compile and test your code: `cd tests && npm test`.
 5. Don't stop until the test runs green.
 
 </inline-notification>
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.hash_entry.html">`hash_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.get.html">`get`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/hash/fn.hash_entry.html">`hash_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.get.html">`get`</a></li>
 </ul>
 </inline-notification>
 
