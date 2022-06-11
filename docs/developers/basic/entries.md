@@ -195,7 +195,7 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 The challenge is to create an entry which contains the text "Hello, World!". The text will be passed to the zome as a `SomeExternalInput` struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply `create_entry`. And since you imported all functions from the prelude already, you can use this function immediately in your code.
 
 So, your first attempt might look something like `create_entry(String::from("Hello, World!"))` or `create_entry(input.content)`. But this won't work.  
-Because an entry needs to be saved locally and sent over the network, it has to be serializable. And a String itself is not serializable. To do this we create a `struct` that will hold our data.
+Because an entry needs to be saved locally and sent over the network, it has to be serializable. And a String itself is not serializable. To do this we create a `struct` that will hold our data (in more details, you are creating a [tuple struct](https://doc.rust-lang.org/std/keyword.struct.html) in rust) 
 
 ```rust
 pub struct Greeting(String);
@@ -242,22 +242,21 @@ You will in fact have created your very first decentralized, agent centric, boun
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`.
    _you should run this in the folder containing the default.nix file_.
-   _starting the nix-shell for the very first time might take a long time, somewhere between 20 to 80 minutes, after that it will take just a few seconds_.
 3. Go to folder with the exercise `1.basic/1.entries/exercise`.
 4. Inside `zomes/exercise/src/lib.rs`
    - Define a new struct for your entry: 'Greeting'.
    - Implement the function with `unimplemented!()`.
-5. Compile and test your code: `cd tests && npm install && npm test`.
+5. Compile and test your code: `cd tests && npm test`.
 6. Don't stop until the test runs green.
 
 </inline-notification>
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.101/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/info/fn.agent_info.html">`agent_info`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_def.html">`entry_def`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/macro.entry_defs.html">`entry_defs`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/info/fn.agent_info.html">`agent_info`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/macro.entry_def.html">`entry_def`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/macro.entry_defs.html">`entry_defs`</a></li>
 </ul>
 </inline-notification>
 

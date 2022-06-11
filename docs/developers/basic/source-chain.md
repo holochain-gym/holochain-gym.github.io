@@ -113,7 +113,7 @@ export const Sim0 = () => {
 };
 ```
 
-When you click on the blue square, you will see a blob of json data, similar to the one you see below. The response you get is something that is called a **header** in Holochain language.
+When you click on the blue circle, you will see a blob of json data, similar to the one you see below. The response you get is something that is called a **header** in Holochain language.
 
 ```json
 {
@@ -147,7 +147,7 @@ An entry does not tell you who created the entry, when it was created or any oth
 Let's take a look what we can decypher from the example above.
 
 - **author**: the public key of the agent (cell) that signed the entry. This is a crucial component to prove to others you are really the author of this entry. Luckily it is all added automatically.
-- **timestamp**: timestamp of when this entry was committed. It will state the time for when the entry was created. This the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is a combination of standard Linux Epoch Time e.g._1616571211_ combined with elapsed nanoseconds, e.g._293000_. While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.
+- **timestamp**: timestamp of when this entry was committed. It will state the time for when the entry was created. This is the time of a specific machine, not some universal, global atomic clock. The time is in UTC, so no timezone information. And the format is a combination of standard Linux Epoch Time e.g._1616571211_ combined with elapsed microseconds, e.g._293000_. While all this is very helpful to know, it cannot -reliably- be used to order events. Clocks on machine can be skewed, changed manually or do funny stuff on new years eve.
 - **header_seq** & **prev_header** are a better way to determine order. We will talk about them in another exercise.
 - **type** indicates what type of header this is. There are a number of header types:
   - Dna
@@ -161,7 +161,7 @@ Let's take a look what we can decypher from the example above.
 
 In this exercise you will only have to deal with `Create`. All headers have the above mentioned fields, with one small exception of the Dna header, which doesn't have a prev_header, for the very simple reason that it is always the first header to be created in a holochain app.
 
-And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these fields tell something about entries. Because entries a very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header.
+And some headers have some extra fields. Create and Update have 2 more fields. And not surprisingly these fields tell something about entries. Because entries are very lightweight and most of the metadata is in the header, like author, timestamp, etcetera there has to be a link between an entry and its header.
 
 - **entry_hash** is the hash of the entry. It is exactly the same hash you worked with in the previous exercise. And since you can get the entry based on its hash, it is enough to store the entry hash inside the header. This makes a header a lightweight data structure. Whether your entry contains a 25000 page document or just a single "Hello world" string, the size of the header will be roughly the same size. That is why entries and headers make such a good team: _**entries are simple, headers are light**_.
 - **entry_type**: contains some additional information on about the entry itself, like the id of the hApp, the id of the zome, it's visibility. We touch on this in a future exercise.
@@ -376,7 +376,7 @@ export const Sim2 = () => {
 This time we will do some lightweight exercises, just to get a feel for the chain part of our source chain. You need to implement 3 functions.
 
 - `query_all_elements` returns the full array of elements contained in the source chain of the agent.
-- `query_snackings` queries the source chain and returns only the elements that contain a `Snacking` entry. WARNING! This query should also [return the entries themselves](https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html#method.include_entries).
+- `query_snackings` queries the source chain and returns only the elements that contain a `Snacking` entry. WARNING! This query should also [return the entries themselves](https://docs.rs/hdk/0.0.129/hdk/prelude/struct.ChainQueryFilter.html#method.include_entries).
 - `query_by_time` queries the source chain and filters it by a time range of when the element was committed.
 
 <inline-notification type="tip" title="Exercise">
@@ -384,17 +384,17 @@ This time we will do some lightweight exercises, just to get a feel for the chai
 1. Check if you are still inside the nix-shell  
    _Your terminal should look similar to this_ `[nix-shell:~/path-to-workspace/developer-exercises/path-to-exercise]$`
 2. Implement `query_all_elements`, `query_snackings`, `query_by_time`
-3. Compile and test your code: `cd tests && npm install && npm test`
+3. Compile and test your code: `cd tests && npm test`
 4. Don't stop until the tests run green
 
 </inline-notification>
 
 <inline-notification type="tip" title="Relevant HDK documentation">
 <ul>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/chain/fn.query.html">`query`</a></li>
-<li><a href="https://docs.rs/hdk/0.0.100/hdk/prelude/struct.ChainQueryFilter.html">`ChainQueryFilter`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/entry/fn.create_entry.html">`create_entry`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/type.HeaderHash.html">`HeaderHash`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/chain/fn.query.html">`query`</a></li>
+<li><a href="https://docs.rs/hdk/0.0.129/hdk/prelude/struct.ChainQueryFilter.html">`ChainQueryFilter`</a></li>
 </ul>
 </inline-notification>
 

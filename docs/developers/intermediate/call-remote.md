@@ -53,5 +53,5 @@ We need to code a small zome that has the following abilities:
 </inline-notification>
 
 ### Relevant HDK documentation: 
-- [call_remote](https://docs.rs/hdk/0.0.100/hdk/p2p/fn.call_remote.html).
+- [call_remote](https://docs.rs/hdk/0.0.129/hdk/p2p/fn.call_remote.html).
 
