@@ -283,7 +283,7 @@ let entry = await alice_common.cells[0].call(
 t.deepEqual(entry, book, "test book found"); // tape test assertion
 ```
 
-Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test, is the test that failed at least once. That way you know you are actually testing something real.
+Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test is the test that failed at least once. That way you know you are actually testing something real.
 
 ### Get book
 
