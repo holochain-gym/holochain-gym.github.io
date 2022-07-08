@@ -229,7 +229,7 @@ You will in fact have created your very first decentralized, agent centric, boun
 1. Go to the `developer-exercises`.
 2. Enter the nix-shell: `nix-shell`.
    _you should run this in the folder containing the default.nix file_  
-3. Go to folder with the exercise `basic/0.zome-functions/exercise`.
+3. Go to folder with the exercise `1.basic/0.zome-functions/exercise`.
 4. Inside `zome/exercise/src/lib.rs`:
    - Import the HDK library and functions.
    - Add the `#[hdk_extern]` macro in the necessary functions.
