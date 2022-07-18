@@ -25,6 +25,12 @@ customElements.define("call-zome-fns", CallZomeFns);
 </ul>
 </inline-notification>
 
+In this chapter you will learn
+
+* what a entry is
+* what a entry definition is
+* how to create and retrieve an entry
+
 ## What is an entry
 
 An entry is a basic unit of user data. As a Holochain developer one of the most basic things you can do is create an entry in a Zome.
@@ -40,7 +46,7 @@ When you create an entry a few things will happen:
 1. Your data is validated locally _(we will learn how this works in later exercises)_.
 2. The entry is written to your local [source chain](https://developer.holochain.org/docs/glossary/#source-chain) _(hence the 'chain' in 'Holochain')_.
 3. If your [entry type](https://developer.holochain.org/docs/glossary/#entry-type) is marked as [public](https://developer.holochain.org/docs/glossary/#public-entry) like the one in this first exercise, your hApp will send it to some random people who are running the same hApp _(don't worry - soon we will talk about source chains, agents and why sending data to random people is not as scary as it may sound!)_.
-4. The random people that received your data will validate your data using the same rules that were used in the first step. _(this is where the holo, coming from holographic, part comes in to play. To become an real entry, your entry has to be seen and validated by different people/agents)_.
+4. The random people that received your data will validate your data using the same rules that were used in the first step. _(This is where the holo (coming from holographic) part comes into play. To become a real entry, your entry has to be seen and validated by different people/agents)_.
 
 Luckily you do not have to worry about all of this yet. Since we are skipping all the validation steps in this exercise, creating an entry should just be as easy as in any other common application.
 
@@ -189,7 +195,7 @@ pub fn say_greeting(input: SomeExternalInput) -> ExternResult<HeaderHash> {
 The challenge is to create an entry which contains the text "Hello, World!". The text will be passed to the zome as a `SomeExternalInput` struct by the test script. But we still need to create an actual entry. Luckily, the HDK has a specific function for that, named simply `create_entry`. And since you imported all functions from the prelude already, you can use this function immediately in your code.
 
 So, your first attempt might look something like `create_entry(String::from("Hello, World!"))` or `create_entry(input.content)`. But this won't work.  
-Because an entry needs to be saved locally and sent over the network, it has to be serializable. And a String itself is not serializable. To do this we create a `struct` that will hold our data.
+Because an entry needs to be saved locally and sent over the network, it has to be serializable. And a String itself is not serializable. To do this we create a `struct` that will hold our data (in more details, you are creating a [tuple struct](https://doc.rust-lang.org/std/keyword.struct.html) in rust) 
 
 ```rust
 pub struct Greeting(String);
@@ -277,3 +283,4 @@ thread 'holochain-tokio-thread' panicked at 'TODO: DnaError
 (ZomeNotFound("Zome \'exercise\' not found"))',
 /build/source/crates/holochain/src/core/ribosome.rs:336:14
 ```
+**[Next >](/developers/basic/hashes/)**

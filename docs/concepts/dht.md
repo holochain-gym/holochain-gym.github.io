@@ -47,7 +47,8 @@ Usually, DHTs are just key-value stores: you can create some piece of data which
 
 However, since the internal data structures are [CRDTs](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type), no matter the order of arrival of each piece of data, the end state will always be the same.
 
-Holochain security model based on validation rules enables attachment of metadata in the DHT: not only can we create entries, but also we can add links to them, or update them. This way we can build complex graph structures in our DHTs that allow for efficient navigation of the data.
+Holochain's security model based on validation rules enables attachment of metadata in the DHT: not only can we create entries, but also we can add links to them, or update them. This way we can build complex graph structures in our DHTs that allow for efficient navigation of the data.
+
 
 ## Try it!
 

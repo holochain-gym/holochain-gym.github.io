@@ -27,6 +27,12 @@ customElements.define("call-zome-fns", CallZomeFns);
 </ul>
 </inline-notification>
 
+In this chapter you will learn
+
+* what a hashes are and how they work
+* why hashes are important in holochain
+* how to add an integration test
+
 ## Recap
 
 Welcome back to our Holochain gym. In the previous exercise you learned how to create a entry in a zome. You compiled your zome to a dna, you asked the holochain conductor to turn that dna in a cell, you tested your zome code in that cell through a test script. And you learned that you needed the following things in your code:
@@ -125,7 +131,7 @@ Nothing happens. And that is a feature, not a bug. Because the same input, alway
 
 ## Hash table
 
-When you combine all these properties of hashes you can do interesting stuff. If for every piece of data or content you have, you can calculate the hash value, then you could easily make a nice big list of all the hashes. No matter the size of the data you want to store, each piece will have it's own hash, which is unique but has the same size as all other hashes. And since all those hashes can be mapped to their content, you can use that list as an index. This type of list has a name, it's a **hash table**. The fancy name for this way of storing and retrieving your data this way is called **content addressable storage**. Because the content, well actually the hash of the content, is be used as a unique address for the content. It will really get interesting when we upgrade this hash table to a distributed hash table, a DHT.
+When you combine all these properties of hashes you can do interesting stuff. If for every piece of data or content you have, you can calculate the hash value, then you could easily make a nice big list of all the hashes. No matter the size of the data you want to store, each piece will have its own hash, which is unique but has the same size as all other hashes. And since all those hashes can be mapped to their content, you can use that list as an index. This type of list has a name, it's a **hash table**. The fancy name for this way of storing and retrieving your data this way is called **content addressable storage**. Because the content, well actually the hash of the content, is being used as a unique address for the content. It will really get interesting when we upgrade this hash table to a distributed hash table, a DHT.
 
 ## Getting ready
 
@@ -283,7 +289,7 @@ let entry = await alice_common.cells[0].call(
 t.deepEqual(entry, book, "test book found"); // tape test assertion
 ```
 
-Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test, is the test that failed at least once. That way you know you are actually testing something real.
+Run the tests and verify that you have a second assertion in your test, and that it fails. The only good test is the test that failed at least once. That way you know you are actually testing something real.
 
 ### Get book
 
