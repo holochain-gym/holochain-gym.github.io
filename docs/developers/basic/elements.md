@@ -12,7 +12,7 @@ import {
   SourceChain,
   DhtCells,
 } from "@holochain-playground/elements";
-import { WorkflowType, NetworkRequestType } from "@holochain-playground/core";
+import { WorkflowType, NetworkRequestType } from "@holochain-playground/simulator";
 
 customElements.define(
   "holochain-playground-container",

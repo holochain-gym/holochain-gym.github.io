@@ -29,4 +29,3 @@ This will start a server with hot reload that should open automatically.
 ```bash
 npm run gh-pages
 ```
-
